@@ -5,8 +5,8 @@ import DungeonCrawlerGame from './scenes/DungeonCrawlerGame';
 import DungeonCrawlerOverlay from './scenes/DungeonCrawlerOverlay';
 
 const config = {
-    width: 600,
-    height: 600,
+    width: 800,
+    height: 800,
     type: Phaser.AUTO,
     physics: {
         default: 'arcade',
