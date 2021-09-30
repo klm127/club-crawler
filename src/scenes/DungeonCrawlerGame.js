@@ -8,6 +8,7 @@ export default class DungeonCrawlerGame extends Phaser.Scene
         Player.preload({scene: this});
         DungeonMapManager.preload({scene:this, mapName:'blueworld'});
     }
+
     create() {
 
         let mapManager = new DungeonMapManager({scene: this, map: 'blueworld'});
