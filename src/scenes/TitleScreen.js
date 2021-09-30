@@ -4,20 +4,35 @@ export default class TitleScreen extends Phaser.Scene
 {
     preload()
     {
-
     }
     create()
     {
-        this.titleText = this.add.text(300,100, "Club Crawler");
-        this.titleText.setColor(`rgb(0,0,250)`);
-        this.titleText.setShadow(5,5,'gray', 5, true);
-        this.titleText.setFontSize(50);
-        this.titleText.setFontFamily('Consolas, Times New Roman');
-        this.titleText.setOrigin(0.5,0.5);
-        this.titleText.setStroke('green', 5);
+        this.titleText = this.add.text(300,100, "Club Crawler", {
+            color:`rgb(0,0,250)`,
+            shadow: {
+                offsetX: 5,
+                offsetY: 5,
+                color: 'gray',
+                blur: 5
+            },
+            fontFamily: 'Consolas, Courier',
+            stroke: 'rgb(0,100,0)',
+            strokeThickness: 5,
+            fontSize: 50
+            
+        }).setOrigin(0.5,0.5);
+
+        let startText = this.add.text(300, 300, "Start", {
+            color: 'rgb(0,250,0)'
+        }).setOrigin(0.5, 0.5);
+        startText.setInteractive();
+        startText.on('pointerdown', ()=> {
+            this.scene.stop('titlescreen');
+            this.scene.start('crawlergame')
+        })
+
         this.titleText.green = 0;
         this.titleText.red = 0;
-        console.log(this);
     }
     update(time,delta) {
         if(this.titleText.green < 255) {
