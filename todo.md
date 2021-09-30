@@ -8,8 +8,13 @@
     1. Should shoot at where mouse is located when sprace is pressed
     1. Set bullets to damage bad guy
 
+1. Set up documentation
+    1. Will use jsdoc
+    1. Will retrieve phaser info and directly link to those docs
+    1. Generate a sleek webpage
+
 1. Connect player health to overlay using an event emitter
-    1. Design and create eventcenter type paradigm using isntance of phaser event emitter
+    1. Design and create eventcenter type paradigm using instance of phaser event emitter
     1. Create graphics for UI
     1. Hook DungeonCrawlerOverlay into Player class
     1. Set up bad guy damaging player
@@ -17,3 +22,24 @@
 1. Create a game over scene with a restart button
 
 1. Create a high score table
+
+
+
+
+
+
+
+
+
+
+----- Notes -----
+Extend a Sprite in Phaser 3:
+
+https://phasergames.com/extend-a-sprite-in-phaser-3/?mc_cid=3f4ee26e5d&mc_eid=a4d9ee0291
+
+Issues is, how do you add it to the scene?
+
+A tutorial on tilemaps: https://medium.com/@michaelwesthadley/modular-game-worlds-in-phaser-3-tilemaps-1-958fc7e6bbd6
+
+A free alternative to TexturePacker on the web : https://free-tex-packer.com/app/
+

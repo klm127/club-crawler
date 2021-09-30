@@ -1,5 +1,7 @@
 ## Crawler
 
+![a screenshot from club-crawler](https://github.com/unhm-programming-team/club-crawler/blob/main/screen.png)
+
 This will be a dungeon crawler style javascript web game made with Phaser. It will run in the browser and eventually be embedded in the website.
 
 It will be sort of like the Arcade classic, gauntlet. Top down deal, where maybe you have to click to fire. Once we get something basic running, maybe we can add multiplayer, random map generation, etc.
@@ -33,6 +35,8 @@ I use paint.net for sprite creation. Currently tiles are 128x128 but we can supp
     - weapons / spells
     - dialogue
 
+There is a [tentative to-do list](https://github.com/unhm-programming-team/club-crawler/blob/main/todo.md)
+
 ## Dependencies
 
 #### Main dependency:
@@ -51,11 +55,14 @@ _You probably won't have to worry about these once you have node/npm_
 
 1. Install Node js and NPM
 
-1. Clone this repo `git clone http://github.com/..../club-crawler.git`
+1. Open the command line
+    - On windows: `Alt` + `R`, then type `cmd`, then hit `enter`
 
-1. Open this root directory in the command prompt `cd c:/myfiles/whereIclonedtherepo/club-crawler`
+1. Clone this repo in the command line `git clone https://github.com/unhm-programming-team/club-crawler.git`
 
-1. Execute `npm install` to install all dependencies
+1. Open this projects root directory in the command line `cd club-crawler`
+
+1. Execute `npm install` to instruct NPM to install all dependencies
 
 1. Execute `npm start` to start the web server
 
