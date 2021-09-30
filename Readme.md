@@ -1,10 +1,15 @@
 ## Crawler
 
-This will be a dungeon crawler style javascript web game made with Phaser. It will run in the browser and eventually be embedded in the website
+This will be a dungeon crawler style javascript web game made with Phaser. It will run in the browser and eventually be embedded in the website.
+
+It will be sort of like the Arcade classic, gauntlet. Top down deal, where maybe you have to click to fire. Once we get something basic running, maybe we can add multiplayer, random map generation, etc.
 
 If you would like to help on this project, it needs:
 
-Images/Sprites
+- Levels 
+    - Uses [tiled](https://www.mapeditor.org/) for level editing
+
+- Images/Sprites
     - bad guys
     - items
     - players
@@ -12,16 +17,18 @@ Images/Sprites
     - floors
     - plants
 
-Sounds
+I use paint.net for sprite creation. Currently tiles are 128x128 but we can support other sizes. Any .png of 128x128 is useful
+
+- Sounds
     - music 
     - sound effects
 
-Code
+- Code
     - items
     - bad guys
     - health
 
-Ideas
+- Ideas
     - bad guy attack patterns
     - weapons / spells
     - dialogue
