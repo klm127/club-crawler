@@ -15,6 +15,26 @@
 
 1. Connect player health to overlay using an event emitter
     1. Design and create eventcenter type paradigm using instance of phaser event emitter
+    ```
+    create ()
+    {
+        //  Create our own EventEmitter instance
+        var emitter = new Phaser.Events.EventEmitter();
+
+        //  Set-up an event handler
+        emitter.on('addImage', this.handler, this);
+
+        //  Emit it a few times with varying arguments
+        emitter.emit('addImage', 200, 300);
+        emitter.emit('addImage', 400, 300);
+        emitter.emit('addImage', 600, 300);
+    }
+
+    handler (x, y)
+    {
+        this.add.image(x, y, 'plush');
+    }
+    ```
     1. Create graphics for UI
     1. Hook DungeonCrawlerOverlay into Player class
     1. Set up bad guy damaging player

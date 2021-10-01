@@ -17,7 +17,7 @@ export default class Player extends Phaser.GameObjects.Image {
         // pick a random avatar
         let frameNames = config.scene.textures.get('playerimages').getFrameNames();
         let frameIndex = Math.floor(Math.random() * frameNames.length);
-        let selectedFrame = frameNames[frameIndex];
+        let selectedFrame = frameNames[frameIndex]; 
 
         //call super
         super(config.scene, config.x, config.y, "playerimages", selectedFrame); 

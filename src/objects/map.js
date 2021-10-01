@@ -1,7 +1,10 @@
 import Phaser from "phaser";
+import GameCoin from "./coin";
 
 /**
  * Wraps and manages a Phaser.Tilemap
+ * 
+ * First constructed, then player loaded, then placeMapObjects is called... must be done in that order for layering 
  */
 export default class DungeonMapManager {
     
@@ -13,17 +16,21 @@ export default class DungeonMapManager {
             config.scene.load.tilemapTiledJSON('blueworld','maps/blueworld.json');
             config.scene.load.image('blue-tileset', 'images/tilesets/blue-patterned-world.png');
         }
+        GameCoin.preload(config.scene); // load coin image
 
     }
 
     constructor(config) {
-        let scene = config.scene;
-        let mapKey = config.map ? config.map : 'blueworld';
+
+        this.scene = config.scene;
         // scaling not implemented yet
         this.scale = config.scale ? config.scale : 1;
 
-        console.log(scene);
-        this.map = scene.make.tilemap({key: mapKey})
+        // blue world will be the default world
+        let mapKey = config.map ? config.map : 'blueworld';
+
+        // Phaser.Tilemap
+        this.map = this.scene.make.tilemap({key: mapKey})
 
         if(mapKey == 'blueworld') {
             this.tileset = this.map.addTilesetImage('blue-patterned-world','blue-tileset'); 
@@ -34,6 +41,7 @@ export default class DungeonMapManager {
         this.startX = 0;
         this.startY = 0;
 
+        // set up spawns
         this.map.getObjectLayer('Spawns').objects.forEach( (item) => {
             if(item.type == "playerspawn") {
                 console.log('good');
@@ -41,13 +49,19 @@ export default class DungeonMapManager {
                 this.startY = item.y;
             }
         });
-        console.log('map manager construction complete')
-
-        console.log(this.floors);
-
-        this.scene = scene;
 
     }
+
+    placeMapObjects() {
+        // set up coins / points
+        this.map.getObjectLayer('Items').objects.forEach( (item) => {
+            if(item.type == "points") {
+                let coin = new GameCoin({scene:this.scene, player:this.scene.player},item);
+
+            }
+        });
+    }
+
     startPlayer(player) {
         player.setX(this.startX);
         player.setY(this.startY);        
