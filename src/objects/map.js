@@ -91,7 +91,8 @@ class DungeonMapManager {
      */
      startPlayer(player) {
         player.setX(this.startX);
-        player.setY(this.startY);        
+        player.setY(this.startY);
+        player.reticle.moveToPlayer();
         this.scene.physics.add.collider(this.walls, player);
     }
 

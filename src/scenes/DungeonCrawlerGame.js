@@ -63,6 +63,7 @@ class DungeonCrawlerGame extends Phaser.Scene
          * @type {Phaser.Types.Input.Keyboard.CursorKeys}
          */
         this.cursors = this.input.keyboard.createCursorKeys();
+        // Locks pointer on mousedown
 
     }
     /**
@@ -84,7 +85,7 @@ class DungeonCrawlerGame extends Phaser.Scene
         if(this.cursors.up.isDown) {
             this.player.move('n');
         }
-
+        this.player.reticle.update();
     }
 
 }

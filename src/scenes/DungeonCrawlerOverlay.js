@@ -48,7 +48,6 @@ class DungeonCrawlerOverlay extends Phaser.Scene
     pointsChange(){
         this.pointCount.setText("Points  " + dataManager.score);
         this.pointCount.updateText();
-        console.log('event detected');
     }
 
     

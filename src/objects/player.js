@@ -23,7 +23,8 @@ class Player extends Phaser.GameObjects.Image {
             key:'playerimages', 
             textureURL: 'images/discord-avatars.png', 
             atlasURL: 'atlas/discord-avatars.json'
-        })
+        });
+        Reticle.preload(config.scene);
     }
     /**
      * Constructs the player, gives it a physics body, selects a random Discord avatar to use as the image.
@@ -62,7 +63,9 @@ class Player extends Phaser.GameObjects.Image {
         this.health = config.health ? config.health : 50;
         this.velocityIncrement = config.velocityIncrement ? config.velocityIncrement : 25;
         this.weapon = null; // todo
-        console.log('player construction complete');
+
+        //create reticle
+        this.reticle = new Reticle({player:this, scene:config.scene, x:config.x, y:config.y});
     }
     /**
      * Applies velocity to the player, such as in response to keyboard input
@@ -82,6 +85,80 @@ class Player extends Phaser.GameObjects.Image {
             this.body.setVelocityY(this.body.velocity.y - this.velocityIncrement);
         }
     }
+}
+
+/**
+ * @classdesc
+ * 
+ * The targetting reticle for aiming with the mouse.
+ * 
+ * @memberof ClubCrawler.Objects.Player
+ */
+class Reticle extends Phaser.GameObjects.Image {
+
+    /**
+     * Preloads the reticle image asset
+     * @param {Phaser.Scene} scene - See {@link https://newdocs.phaser.io/docs/3.55.2/Phaser.Scene Phaser.Scene}
+     */
+    static preload(scene) {
+        scene.load.image('reticle', 'images/reticle.png');
+    }
+
+    /**
+     * Description
+     * @param {Object} config - The config object
+     * @param {Phaser.Scene} config.scene - The {@link https://newdocs.phaser.io/docs/3.55.2/Phaser.Scene Phaser.Scene}
+     * @param {number} [config.x = 0] - The x coordinate to start the reticle... will be updated when player moves
+     * @param {number} [config.y = 0] - The y coordinate to start the reticle... updated when player moves 
+     */
+    constructor(config) {
+        super(config.scene, config.x ? config.x : 0, config.y ? config.y : 0, 'reticle');
+        this.scene.add.existing(this);
+        // this.scene.physics.add.existing(this);
+        
+        /**
+         * @type {ClubCrawler.Objects.Player}
+         */
+        this.player = config.player;
+
+        /**
+         * The offset from the player the mouse was at last time it moved, for updating position as player moves
+         * @type {number}
+         */
+        this.offsetX = 0;
+        /**
+         * The offset from the player the mouse was at last time it moved, for updating position as player moves
+         * @type {number}
+         */
+        this.offsetY = 0;
+
+        this.scene.input.on('pointermove', function(pointer) {
+            this.setX(pointer.worldX);
+            this.setY(pointer.worldY);
+            this.offsetX = this.x - this.player.x;
+            this.offsetY = this.y - this.player.y;
+        }, this)
+
+    }
+    /**
+     * Called by Map Manager when player is placed
+     */
+    moveToPlayer() {
+        this.setX(this.player.x);
+        this.setY(this.player.y);
+    }
+    /**
+     * Called by DungeonCrawlerGame each update to ensure position relative to player is the same
+     */
+    update() {
+        // this.setX(this.scene.input.activePointer.worldX);
+        // this.setY(this.scene.input.activePointer.worldY);
+        // this.body.setVelocityX(this.player.body.velocity.x);
+        // this.body.setVelocityY(this.player.body.velocity.y);
+        this.setX(this.player.x + this.offsetX);
+        this.setY(this.player.y + this.offsetY);
+    }
+
 }
 
 module.exports = Player
