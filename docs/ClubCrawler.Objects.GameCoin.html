@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: DungeonMapManager</title>
+    <title>JSDoc: Class: GameCoin</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: DungeonMapManager</h1>
+    <h1 class="page-title">Class: GameCoin</h1>
 
     
 
@@ -29,9 +29,9 @@
 <header>
     
         <h2><span class="attribs"><span class="type-signature"></span></span>
-            <span class="ancestors"><a href="ClubCrawler.Objects.html">.Objects</a>.</span>DungeonMapManager<span class="signature">(config)</span><span class="type-signature"></span></h2>
+            <span class="ancestors"><a href="ClubCrawler.Objects.html">.Objects</a>.</span>GameCoin<span class="signature">(config, item)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">Wraps and manages a Phaser.Tilemap, loads objects, applies physics to objects, and places player in the scene.Will eventually handle loading of other maps.</div>
+            <div class="class-description">A class for representing a Coin object, which increases the player score.Renders sprite based on images/coin.png. Created by <a href="ClubCrawler.Objects.DungeonMapManager.html">ClubCrawler.Objects.DungeonMapManager</a> for each Object in the Map Layer of type "points".When a player overlaps a coin, it increases dataManager.score, begins spinning and moving in a random direction, then scales down to 0 and is destroyed.</div>
         
     
 </header>
@@ -46,16 +46,12 @@
     
 
     
-    <h4 class="name" id="DungeonMapManager"><span class="type-signature"></span>new DungeonMapManager<span class="signature">(config)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="GameCoin"><span class="type-signature"></span>new GameCoin<span class="signature">(config, item)</span><span class="type-signature"></span></h4>
     
 
     
 
 
-
-<div class="description">
-    Creates the map floor tiles, wall tiles, and spawns.
-</div>
 
 
 
@@ -106,7 +102,7 @@
 
             
 
-            <td class="description last">A configuration object
+            <td class="description last">Configuration
                 <h6>Properties</h6>
                 
 
@@ -164,14 +160,141 @@
                 </td>
             
 
-            <td class="description last">The <a href="https://newdocs.phaser.io/docs/3.55.2/Phaser.Scene">Phaser.Scene</a> creating this map manager</td>
+            <td class="description last">The <a href="https://newdocs.phaser.io/docs/3.52.0/Phaser.Scene">Phaser.Scene</a> where this is drawn</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>scale</code></td>
+                <td class="name"><code>player</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="ClubCrawler.Objects.Player.html">ClubCrawler.Objects.Player</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">The player which can trigger the coin</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>spinrate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    4000
+                
+                </td>
+            
+
+            <td class="description last">The angular velocity to apply when the coin is touched</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>item</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Phaser.Types.Tilemaps.TiledObject</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">item structured by Tiled as per <a href="https://newdocs.phaser.io/docs/3.52.0/Phaser.Tilemaps.TiledObject">Phaser.Types.Tilemaps.TiledObject</a>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>properties.value</code></td>
             
 
             <td class="type">
@@ -203,44 +326,7 @@
                 </td>
             
 
-            <td class="description last">The amount to scale the Tilemap. (Not yet implemented)</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>map</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last">The map to load. Should match what was loaded in preload function. (Todo - Create documentation for available maps)</td>
+            <td class="description last">The value of the coin as set in Tiled custom properties</td>
         </tr>
 
     
@@ -288,12 +374,19 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_map.js.html">objects/map.js</a>, <a href="objects_map.js.html#line15">line 15</a>
+        <a href="objects_coin.js.html">objects/coin.js</a>, <a href="objects_coin.js.html#line17">line 17</a>
     </li></ul></dd>
     
 
     
 
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://newdocs.phaser.io/docs/3.55.2/Phaser.GameObjects.Image">Phaser.GameObjects.Image</a></li>
+        </ul>
+    </dd>
     
 
     
@@ -322,6 +415,17 @@
     </div>
 
     
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li>Phaser.GameObjects.Image</li>
+    </ul>
+
+
+    
 
     
 
@@ -338,188 +442,26 @@
 
         
             
-<h4 class="name" id="map"><span class="type-signature"></span>map<span class="type-signature"></span></h4>
+<h4 class="name" id="coinValue"><span class="type-signature"></span>coinValue<span class="type-signature"> :number</span></h4>
 
 
 
 
 <div class="description">
-    The <a href="https://newdocs.phaser.io/docs/3.52.0/Phaser.Tilemaps.Tilemap">Phaser.Tilemaps.Tilemap</a> for the current scene
+    The value of the coin
 </div>
 
 
 
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_map.js.html">objects/map.js</a>, <a href="objects_map.js.html#line56">line 56</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
+    <h5>Type:</h5>
+    <ul>
+        <li>
             
-<h4 class="name" id="scale"><span class="type-signature"></span>scale<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    The amount to scale the map - not yet implemented
-</div>
-
-
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-
-            <td class="type">
-            
-                
 <span class="param-type">number</span>
 
 
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_map.js.html">objects/map.js</a>, <a href="objects_map.js.html#line48">line 48</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="startX"><span class="type-signature"></span>startX<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    Player start X coordinates.
-</div>
-
-
+        </li>
+    </ul>
 
 
 
@@ -552,14 +494,14 @@
     
     <dt class="tag-default">Default Value:</dt>
     <dd class="tag-default"><ul class="dummy">
-            <li>0</li>
+            <li>1</li>
         </ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_map.js.html">objects/map.js</a>, <a href="objects_map.js.html#line68">line 68</a>
+        <a href="objects_coin.js.html">objects/coin.js</a>, <a href="objects_coin.js.html#line65">line 65</a>
     </li></ul></dd>
     
 
@@ -577,16 +519,26 @@
 
         
             
-<h4 class="name" id="startY"><span class="type-signature"></span>startY<span class="type-signature"></span></h4>
+<h4 class="name" id="spinning"><span class="type-signature"></span>spinning<span class="type-signature"> :boolean</span></h4>
 
 
 
 
 <div class="description">
-    Player start Y coordinates.
+    Whether the coin has already been triggered
 </div>
 
 
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+
+
+        </li>
+    </ul>
 
 
 
@@ -619,14 +571,14 @@
     
     <dt class="tag-default">Default Value:</dt>
     <dd class="tag-default"><ul class="dummy">
-            <li>0</li>
+            <li>false</li>
         </ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_map.js.html">objects/map.js</a>, <a href="objects_map.js.html#line73">line 73</a>
+        <a href="objects_coin.js.html">objects/coin.js</a>, <a href="objects_coin.js.html#line59">line 59</a>
     </li></ul></dd>
     
 
@@ -654,7 +606,7 @@
     
 
     
-    <h4 class="name" id=".preload"><span class="type-signature">(static) </span>preload<span class="signature">(config)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".preload"><span class="type-signature">(static) </span>preload<span class="signature">(scene)</span><span class="type-signature"></span></h4>
     
 
     
@@ -662,7 +614,7 @@
 
 
 <div class="description">
-    Preloads assets the map will require
+    Preloads image. Called by DungeonMapManager.preload.Reserves the "coin" key in the scene images.
 </div>
 
 
@@ -675,48 +627,6 @@
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>config</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The configuration to preload
-                <h6>Properties</h6>
-                
 
 <table class="params">
     <thead>
@@ -756,37 +666,7 @@
 
             
 
-            <td class="description last">The <a href="https://newdocs.phaser.io/docs/3.55.2/Phaser.Scene">Phaser.Scene</a> which will load the assets</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>mapName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The map assets to load</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
+            <td class="description last">Game scene preloading</td>
         </tr>
 
     
@@ -827,7 +707,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_map.js.html">objects/map.js</a>, <a href="objects_map.js.html#line23">line 23</a>
+        <a href="objects_coin.js.html">objects/coin.js</a>, <a href="objects_coin.js.html#line27">line 27</a>
     </li></ul></dd>
     
 
@@ -863,7 +743,7 @@
     
 
     
-    <h4 class="name" id="placeMapObjects"><span class="type-signature"></span>placeMapObjects<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="fadeCoin"><span class="type-signature"></span>fadeCoin<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -871,7 +751,7 @@
 
 
 <div class="description">
-    Places objects in the 'Items' layer. Should be called after startPlayer has been called so objects do not overlap player.
+    The fade out function for the coin. 'This' scope is the Coin, as applied by <a href="https://newdocs.phaser.io/docs/3.55.1/Phaser.Time.Clock#delayedCall">scene.time.delayedCall</a>. Callback triggered on a timer after spinning starts. Shrinks coin and deletes it after it shrinks to nothing.
 </div>
 
 
@@ -915,7 +795,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_map.js.html">objects/map.js</a>, <a href="objects_map.js.html#line102">line 102</a>
+        <a href="objects_coin.js.html">objects/coin.js</a>, <a href="objects_coin.js.html#line91">line 91</a>
     </li></ul></dd>
     
 
@@ -951,7 +831,7 @@
     
 
     
-    <h4 class="name" id="startPlayer"><span class="type-signature"></span>startPlayer<span class="signature">(player)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="overlapWithPlayer"><span class="type-signature"></span>overlapWithPlayer<span class="signature">(player, coin)</span><span class="type-signature"></span></h4>
     
 
     
@@ -959,7 +839,7 @@
 
 
 <div class="description">
-    Places player at startX, startY, which should have been set by the Spawn object on map creation. Sets player to collide with walls.
+    Callback function applied when player touches the coin. Increases the score and begins spinning the coin.
 </div>
 
 
@@ -1001,7 +881,7 @@
             <td class="type">
             
                 
-<span class="param-type">Player</span>
+<span class="param-type"><a href="ClubCrawler.Objects.Player.html">ClubCrawler.Objects.Player</a></span>
 
 
             
@@ -1012,6 +892,29 @@
             
 
             <td class="description last">The player</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>coin</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="ClubCrawler.Objects.GameCoin.html">ClubCrawler.Objects.GameCoin</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The coin</td>
         </tr>
 
     
@@ -1052,7 +955,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_map.js.html">objects/map.js</a>, <a href="objects_map.js.html#line92">line 92</a>
+        <a href="objects_coin.js.html">objects/coin.js</a>, <a href="objects_coin.js.html#line76">line 76</a>
     </li></ul></dd>
     
 
@@ -1104,7 +1007,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Oct 01 2021 13:05:22 GMT-0400 (Eastern Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Oct 01 2021 13:49:23 GMT-0400 (Eastern Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

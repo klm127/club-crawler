@@ -4,9 +4,9 @@
   "description": "A Phaser dungeon crawler learning project",
   "main": "index.js",
   "scripts": {
-    "start": "parcel src/index.html -p 1234",
-    "document": "jsdoc src -r -d ./doc/ -R Readme.md && start ./doc/index.html",
-    "document-minami": "jsdoc src -r -d ./doc/ -R Readme.md -t ./node_modules/minami && start ./doc/index.html"
+    "start": "start http://localhost:1234 & echo Wait for project to build! & parcel src/index.html -p 1234",
+    "document": "jsdoc src -r -d ./docs/ -R Readme.md && start ./docs/index.html",
+    "document-minami": "jsdoc src -r -d ./docs/ -R Readme.md -t ./node_modules/minami && start ./docs/index.html"
   },
   "keywords": [
     "dungeon-crawler",
