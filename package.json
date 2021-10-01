@@ -26,6 +26,7 @@
     "phaser": "^3.55.2"
   },
   "devDependencies": {
+    "jsdoc": "^3.6.7",
     "minami": "^1.2.3"
   }
 }

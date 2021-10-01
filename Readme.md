@@ -56,7 +56,7 @@ _You probably won't have to worry about these once you have node/npm_
 1. Install Node js and NPM
 
 1. Open the command line
-    - On windows: `Alt` + `R`, then type `cmd`, then hit `enter`
+    - On windows: `Windows Key` + `R`, then type `cmd`, then hit `enter`
 
 1. Clone this repo in the command line `git clone https://github.com/unhm-programming-team/club-crawler.git`
 
