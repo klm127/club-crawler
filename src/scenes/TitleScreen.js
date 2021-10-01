@@ -1,12 +1,22 @@
 import Phaser from "phaser";
 
-export default class TitleScreen extends Phaser.Scene 
+
+/** 
+ * @classdesc
+ * 
+ * The Title Screen and start button
+ * 
+ * @memberof ClubCrawler.Scenes
+ * @see {@link https://newdocs.phaser.io/docs/3.55.2/Phaser.Scene Phaser.Scene}
+ */
+class TitleScreen extends Phaser.Scene 
 {
     preload()
     {
     }
     create()
     {
+        console.log('creating title screen')
         this.titleText = this.add.text(300,100, "Club Crawler", {
             color:`rgb(0,0,250)`,
             shadow: {
@@ -55,3 +65,5 @@ export default class TitleScreen extends Phaser.Scene
 
     }
 }
+
+module.exports = TitleScreen

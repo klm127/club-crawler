@@ -1,8 +1,24 @@
 import Phaser from "phaser";
-import {dataManager} from "../objects/data";
 
-export default class DungeonCrawlerOverlay extends Phaser.Scene 
+const dataManager = require('../objects/data');
+
+
+
+/**
+ * @classdesc
+ * The overlay showing health, score, etc.
+ * Updates using {@link ClubCrawler.Objects.dataManager dataManager}
+ * 
+ * @memberof ClubCrawler.Scenes
+ * @extends Phaser.Scene
+ * @see {@link https://newdocs.phaser.io/docs/3.55.2/Phaser.Scene Phaser.Scene}
+*/
+class DungeonCrawlerOverlay extends Phaser.Scene 
 {
+
+    /**
+     * @inheritdoc
+     */
     preload() {
 
     }
@@ -41,3 +57,5 @@ export default class DungeonCrawlerOverlay extends Phaser.Scene
     }
 
 }
+
+module.exports = DungeonCrawlerOverlay;

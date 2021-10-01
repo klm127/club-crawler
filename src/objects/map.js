@@ -1,15 +1,24 @@
 import Phaser from "phaser";
-import GameCoin from "./coin";
+
+const Player = require('./player');
+const GameCoin = require('./coin');
 
 /**
- * Wraps and manages a Phaser.Tilemap
+ * @classdesc 
  * 
- * First constructed, then player loaded, then placeMapObjects is called... must be done in that order for layering 
+ * Wraps and manages a Phaser.Tilemap, loads objects, applies physics to objects, and places player in the scene.
+ * 
+ * Will eventually handle loading of other maps.
+ * 
+ * @memberof ClubCrawler.Objects
  */
-export default class DungeonMapManager {
+class DungeonMapManager {
     
     /**
-     * Preload calls load methods on the scene it is passed in the config object.
+     * Preloads assets the map will require
+     * @param {Object} config - The configuration to preload
+     * @param {Phaser.Scene} config.scene - The {@link https://newdocs.phaser.io/docs/3.55.2/Phaser.Scene Phaser.Scene} which will load the assets
+     * @param {string} config.mapName - The map assets to load
      */
     static preload(config) {
         if(config.mapName == 'blueworld') {
@@ -20,16 +29,30 @@ export default class DungeonMapManager {
 
     }
 
+    /**
+     * Creates the map floor tiles, wall tiles, and spawns.
+     * @constructor
+     * @param {Object} config - A configuration object
+     * @param {Phaser.Scene} config.scene - The {@link https://newdocs.phaser.io/docs/3.55.2/Phaser.Scene Phaser.Scene} creating this map manager
+     * @param {number} [config.scale=1] - The amount to scale the Tilemap. (Not yet implemented)
+     * @param {string} [config.map] - The map to load. Should match what was loaded in preload function. (Todo - Create documentation for available maps)
+     * 
+     */
     constructor(config) {
 
         this.scene = config.scene;
-        // scaling not implemented yet
+        /**
+         * The amount to scale the map - not yet implemented
+         * @property {number}
+         */
         this.scale = config.scale ? config.scale : 1;
 
         // blue world will be the default world
         let mapKey = config.map ? config.map : 'blueworld';
 
-        // Phaser.Tilemap
+        /**
+         * The {@link https://newdocs.phaser.io/docs/3.52.0/Phaser.Tilemaps.Tilemap Phaser.Tilemaps.Tilemap} for the current scene
+         */
         this.map = this.scene.make.tilemap({key: mapKey})
 
         if(mapKey == 'blueworld') {
@@ -38,7 +61,15 @@ export default class DungeonMapManager {
             this.walls = this.map.createLayer('Walls', this.tileset, 0, 0);            
             this.walls.setCollisionByExclusion(-1, true);
         }
+        /**
+         * Player start X coordinates.
+         * @default 0
+         */
         this.startX = 0;
+        /**
+         * Player start Y coordinates.
+         * @default 0
+         */
         this.startY = 0;
 
         // set up spawns
@@ -52,19 +83,32 @@ export default class DungeonMapManager {
 
     }
 
+    
+    /**
+     * Places player at startX, startY, which should have been set by the Spawn object on map creation. Sets player to collide with walls.
+     * 
+     * @param {Player} player - The player
+     */
+     startPlayer(player) {
+        player.setX(this.startX);
+        player.setY(this.startY);        
+        this.scene.physics.add.collider(this.walls, player);
+    }
+
+
+    /**
+     * Places objects in the 'Items' layer. Should be called after startPlayer has been called so objects do not overlap player.
+     */
     placeMapObjects() {
         // set up coins / points
         this.map.getObjectLayer('Items').objects.forEach( (item) => {
             if(item.type == "points") {
                 let coin = new GameCoin({scene:this.scene, player:this.scene.player},item);
-
             }
         });
     }
 
-    startPlayer(player) {
-        player.setX(this.startX);
-        player.setY(this.startY);        
-        this.scene.physics.add.collider(this.walls, player);
-    }
+
 }
+
+module.exports = DungeonMapManager;

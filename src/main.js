@@ -1,8 +1,8 @@
 import Phaser from 'phaser';
 
-import TitleScreen  from './scenes/TitleScreen';
-import DungeonCrawlerGame from './scenes/DungeonCrawlerGame';
-import DungeonCrawlerOverlay from './scenes/DungeonCrawlerOverlay';
+const TitleScreen = require('./scenes/TitleScreen');
+const DungeonCrawlerGame = require('./scenes/DungeonCrawlerGame');
+const DungeonCrawlerOverlay = require('./scenes/DungeonCrawlerOverlay')
 
 const config = {
     width: 800,

@@ -4,7 +4,9 @@
   "description": "A Phaser dungeon crawler learning project",
   "main": "index.js",
   "scripts": {
-    "start": "parcel src/index.html -p 1234"
+    "start": "parcel src/index.html -p 1234",
+    "document": "jsdoc src -r -d ./doc/ -R Readme.md && start ./doc/index.html",
+    "document-minami": "jsdoc src -r -d ./doc/ -R Readme.md -t ./node_modules/minami && start ./doc/index.html"
   },
   "keywords": [
     "dungeon-crawler",
@@ -22,5 +24,8 @@
     "parcel-bundler": "^1.12.5",
     "parcel-plugin-static-files-copy": "^2.6.0",
     "phaser": "^3.55.2"
+  },
+  "devDependencies": {
+    "minami": "^1.2.3"
   }
 }
