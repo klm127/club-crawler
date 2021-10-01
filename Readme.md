@@ -2,6 +2,8 @@
 
 ![a screenshot from club-crawler](https://github.com/unhm-programming-team/club-crawler/blob/main/screen.png)
 
+[documentation](https://unhm-programming-team.github.io/club-crawler/)
+
 This will be a dungeon crawler style javascript web game made with Phaser. It will run in the browser and eventually be embedded in the website.
 
 It will be sort of like the Arcade classic, gauntlet. Top down deal, where maybe you have to click to fire. Once we get something basic running, maybe we can add multiplayer, random map generation, etc.

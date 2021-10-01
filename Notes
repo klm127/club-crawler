@@ -1,4 +1,4 @@
-Regarding documentation
+-------documentation---------
 
 Some ideas on better js documentation:
 https://softwarebrothers.co/blog/javascript-code-documentation/
@@ -6,3 +6,15 @@ https://softwarebrothers.co/blog/javascript-code-documentation/
 Configuring js doc
 
 https://jsdoc.app/about-configuring-jsdoc.html
+
+
+
+
+
+------- bad guy movement --------
+
+click to move example:
+https://phaser.io/examples/v3/view/physics/arcade/move-and-stop-at-position#
+
+Uses: Phaser.Math.Distance.Between(source.x, source.y, target.x, target.y)
+
