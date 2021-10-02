@@ -39,6 +39,8 @@ import Phaser from "phaser";
         this.speed = config.speed ? config.speed : 800;
         this.body.setAngularVelocity(config.angularVelocity ? config.angularVelocity : 2000);
         this.body.setBounce(0.3,0.3);
+        this.body.setMass(config.mass ? config.mass : 0.1);
+        this.damage = 5;
 
         //create two SFX sprites, one for shot and one for bounce
         this.shotFX = this.scene.sound.addAudioSprite('bullet');
@@ -47,25 +49,37 @@ import Phaser from "phaser";
         this.scene.physics.add.collider( this, this.scene.mapManager.walls, ()=>{
             this.bounceFX.play('bounce1') 
         }, undefined, this);
-        // this.scene.physics.add.collider(this, this.scene.mapManager.targets, hitTarget);
+        this.scene.physics.add.collider(this, this.scene.mapManager.targets, this.hitTarget);
 
         //destory the bullet after a time
-        this.scene.time.delayedCall(1000,()=>{  
-            //destroy the sfx sprites a little later
-            this.scene.time.delayedCall(1000, (shot, bounce)=> { 
-                shot.destroy();
-                bounce.destroy();
-            },[this.shotFX, this.bounceFX]);
-            this.destroy();
-        }, [], this);
+        this.scene.time.delayedCall(1000,this.destroy, [], this);
+    }
+
+    hitTarget(bullet, target) {
+        if(bullet) {
+            bullet.bounceFX.play('bounce1');
+            bullet.destroy();
+        }
+        if(target) {
+            target.hit(bullet);
+        }
     }
     /**
      * override to destroy sfx also
      */
     destroyWithFX() {
-        this.shotFX.destroy();
-        this.bounceFX.destroy();
-        this.destroy();    
+        //destroy the fx sprites a little later so sounds can complete
+        let shot = this.shotFX;
+        let bounce = this.bounceFX;
+        // this.scene.time.delayedCall(1000, (shotfx, bouncefx)=> { 
+        //     if(shotfx) {
+        //         shotfx.destroy();
+        //     }
+        //     if(bouncefx) {
+        //         bouncefx.destroy();
+        //     }
+        // },[shot, bounce]);
+        this.destroy();
     }
 
     static makeBullet(player) {

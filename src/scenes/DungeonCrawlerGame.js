@@ -50,8 +50,6 @@ class DungeonCrawlerGame extends Phaser.Scene
         //draw the map objects
         this.mapManager.placeMapObjects();
 
-        console.log('player',this.player);
-
         //launch the overlay 
         this.scene.launch('crawleroverlay');
 

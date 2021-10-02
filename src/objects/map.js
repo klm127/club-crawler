@@ -76,7 +76,6 @@ class DungeonMapManager {
         // set up player spawn
         this.map.getObjectLayer('Spawns').objects.forEach( (item) => {
             if(item.type == "playerspawn") {
-                console.log('good');
                 this.startX = item.x;
                 this.startY = item.y;
             }
@@ -121,7 +120,6 @@ class DungeonMapManager {
             if(item.type == "spawn-point") {
                 let spawnType = "cylinder";
                 let targettable = false;
-                console.log(item);
                 item.properties.forEach( (property)=> {
                     if(property.name == "spawns") {
                         spawnType = property.value;
@@ -130,7 +128,7 @@ class DungeonMapManager {
                         targettable = property.value;
                     }
                 } );
-                if(spawnType == "cylinder") {
+                if(spawnType == "cylinder") { 
                     let newItem = new Target({
                         scene:this.scene, 
                         x:item.x, 
@@ -144,7 +142,7 @@ class DungeonMapManager {
         });
         this.scene.physics.add.collider(this.targets, this.scene.player);
         this.scene.physics.add.collider(this.targets, this.walls);
-        this.scene.physics.add.collider(this.targets);
+        this.scene.physics.add.collider(this.targets, this.targets);
     }
 
 

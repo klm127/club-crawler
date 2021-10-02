@@ -48,7 +48,11 @@ class GameCoin extends Phaser.GameObjects.Image {
 
         if(config.player) {
             this.scene.physics.add.overlap(config.player, this, this.overlapWithPlayer);
+        } else if(config.scene) {
+            this.scene.physics.add.overlap(config.scene.player, this, this.overlapWithPlayer);
         }
+
+        this.scene.physics.add.collider(this, this.scene.mapManager.walls);
 
 
         this.spinrate = config.spinrate ? config.spinrate : 4000;
@@ -65,6 +69,7 @@ class GameCoin extends Phaser.GameObjects.Image {
          */
         this.coinValue = item.value ? item.value : 1;
         this.body.setMass(config.mass ? config.mass : 0.05);
+        this.body.setDrag(10,10);
         this.sfx = this.scene.sound.addAudioSprite('gamecoin');
 
 
