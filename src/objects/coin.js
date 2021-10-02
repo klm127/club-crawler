@@ -26,6 +26,7 @@ class GameCoin extends Phaser.GameObjects.Image {
      */
     static preload(scene) {
         scene.load.image('coin', "images/coin.png");
+        scene.load.audioSprite('gamecoin', 'sounds/gamecoin.json', 'sounds/gamecoin.mp3');
     }
 
     /**
@@ -64,6 +65,7 @@ class GameCoin extends Phaser.GameObjects.Image {
          */
         this.coinValue = item.value ? item.value : 1;
         this.body.setMass(config.mass ? config.mass : 0.05);
+        this.sfx = this.scene.sound.addAudioSprite('gamecoin');
 
 
     }
@@ -75,6 +77,7 @@ class GameCoin extends Phaser.GameObjects.Image {
      */
     overlapWithPlayer(player, coin) {
         if(!coin.spinning) {
+            coin.sfx.play('ding');
             dataManager.changeScore(coin.coinValue);
             coin.spinning = true;
             coin.body.setAngularVelocity(coin.spinrate);
@@ -101,6 +104,7 @@ class GameCoin extends Phaser.GameObjects.Image {
             },
             
             onComplete: function(tween, targets) {
+                targets[0].sfx.destroy();
                 targets[0].destroy();
             }
         })

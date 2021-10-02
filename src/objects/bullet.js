@@ -20,6 +20,7 @@ import Phaser from "phaser";
      */
     static preload(scene) {
         scene.load.image('bullet', 'images/bullet1.png');
+        scene.load.audioSprite('bullet', 'sounds/bullet.json', 'sounds/bullet.mp3');
     }
 
     /**
@@ -34,12 +35,28 @@ import Phaser from "phaser";
         super(config.scene, config.x ? config.x : 0, config.y ? config.y : 0, 'bullet');
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
-        this.scene.physics.add.collider( this, this.scene.mapManager.walls);
         this.duration = config.duration ? config.duration : 500;
         this.speed = config.speed ? config.speed : 800;
         this.body.setAngularVelocity(config.angularVelocity ? config.angularVelocity : 2000);
         this.body.setBounce(0.3,0.3);
-        this.scene.time.delayedCall(1000,()=>{this.destroy();}, [], this);
+
+        //create two SFX sprites, one for shot and one for bounce
+        this.shotFX = this.scene.sound.addAudioSprite('bullet');
+        this.shotFX.play('shot1');
+        this.bounceFX = this.scene.sound.addAudioSprite('bullet');
+        this.scene.physics.add.collider( this, this.scene.mapManager.walls, ()=>{
+            this.bounceFX.play('bounce1') 
+        }, undefined, this);
+
+        //destory the bullet after a time
+        this.scene.time.delayedCall(1000,()=>{  
+            //destroy the sfx sprites a little later
+            this.scene.time.delayedCall(1000, (shot, bounce)=> { 
+                shot.destroy();
+                bounce.destroy();
+            },[this.shotFX, this.bounceFX]);
+            this.destroy();
+        }, [], this);
     }
     static makeBullet(player) {
         let newBullet = new Bullet({
@@ -55,16 +72,7 @@ import Phaser from "phaser";
         let cosine = adjacent/hypoteneuse;
 
         let speedX = newBullet.speed * cosine;
-        let speedY = newBullet.speed * sine;
-
-        console.log({
-            adjacent:adjacent,
-            opposite:opposite,
-            sin: sine,
-            cos: cosine,
-            speedX: speedX,
-            speedY: speedY
-        })
+        let speedY = newBullet.speed * sine; 
 
         newBullet.body.setVelocityX(speedX);
         newBullet.body.setVelocityY(speedY);

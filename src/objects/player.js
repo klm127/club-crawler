@@ -59,6 +59,7 @@ class Player extends Phaser.GameObjects.Image {
         //set physics properties
         this.body.setMaxSpeed(config.maxSpeed ? config.maxSpeed : 100);
         this.body.setDrag(config.drag ? config.drag : 100, config.drag ? config.drag : 100);
+        this.body.setBounce(0.7,0.7);
 
 
         //set game properties
