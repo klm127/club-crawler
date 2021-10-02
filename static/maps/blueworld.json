@@ -40,7 +40,7 @@
                          "value":"100000"
                         }],
                  "rotation":0,
-                 "type":"spawn",
+                 "type":"spawn-area",
                  "visible":true,
                  "width":1442.42,
                  "x":875.758,
@@ -57,6 +57,144 @@
                  "width":0,
                  "x":938,
                  "y":1214
+                }, 
+                {
+                 "height":0,
+                 "id":110,
+                 "name":"cylinder-spawn",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"spawns",
+                         "type":"string",
+                         "value":"cylinder"
+                        }, 
+                        {
+                         "name":"targettable",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"spawn-point",
+                 "visible":true,
+                 "width":0,
+                 "x":1136,
+                 "y":1120
+                }, 
+                {
+                 "height":0,
+                 "id":111,
+                 "name":"cylinder-spawn",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"spawns",
+                         "type":"string",
+                         "value":"cylinder"
+                        }, 
+                        {
+                         "name":"targettable",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"spawn-point",
+                 "visible":true,
+                 "width":0,
+                 "x":1170.66666666667,
+                 "y":1196
+                }, 
+                {
+                 "height":0,
+                 "id":112,
+                 "name":"cylinder-spawn",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"spawns",
+                         "type":"string",
+                         "value":"cylinder"
+                        }, 
+                        {
+                         "name":"targettable",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"spawn-point",
+                 "visible":true,
+                 "width":0,
+                 "x":1230.66666666667,
+                 "y":1268
+                }, 
+                {
+                 "height":0,
+                 "id":113,
+                 "name":"cylinder-spawn",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"spawns",
+                         "type":"string",
+                         "value":"cylinder"
+                        }, 
+                        {
+                         "name":"targettable",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"spawn-point",
+                 "visible":true,
+                 "width":0,
+                 "x":1148,
+                 "y":1342.66666666667
+                }, 
+                {
+                 "height":0,
+                 "id":114,
+                 "name":"cylinder-spawn",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"spawns",
+                         "type":"string",
+                         "value":"cylinder"
+                        }, 
+                        {
+                         "name":"targettable",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"spawn-point",
+                 "visible":true,
+                 "width":0,
+                 "x":1205.33333333333,
+                 "y":1404
+                }, 
+                {
+                 "height":0,
+                 "id":115,
+                 "name":"cylinder-spawn",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"spawns",
+                         "type":"string",
+                         "value":"cylinder"
+                        }, 
+                        {
+                         "name":"targettable",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"spawn-point",
+                 "visible":true,
+                 "width":0,
+                 "x":1258.66666666667,
+                 "y":1118.66666666667
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -132,7 +270,7 @@
                  "visible":true,
                  "width":0,
                  "x":756,
-                 "y":1388.66666666667
+                 "y":1388.67
                 }, 
                 {
                  "height":0,
@@ -150,7 +288,7 @@
                  "visible":true,
                  "width":0,
                  "x":3240,
-                 "y":2408.66666666667
+                 "y":2408.67
                 }, 
                 {
                  "height":0,
@@ -168,7 +306,7 @@
                  "visible":true,
                  "width":0,
                  "x":3428,
-                 "y":4832.66666666667
+                 "y":4832.67
                 }, 
                 {
                  "height":0,
@@ -186,7 +324,7 @@
                  "visible":true,
                  "width":0,
                  "x":4312,
-                 "y":7108.66666666667
+                 "y":7108.67
                 }, 
                 {
                  "height":0,
@@ -204,7 +342,7 @@
                  "visible":true,
                  "width":0,
                  "x":800,
-                 "y":2180.66666666667
+                 "y":2180.67
                 }, 
                 {
                  "height":0,
@@ -221,7 +359,7 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":1918.66666666667,
+                 "x":1918.67,
                  "y":4042
                 }, 
                 {
@@ -240,7 +378,7 @@
                  "visible":true,
                  "width":0,
                  "x":756,
-                 "y":1388.66666666667
+                 "y":1388.67
                 }, 
                 {
                  "height":0,
@@ -258,7 +396,7 @@
                  "visible":true,
                  "width":0,
                  "x":3240,
-                 "y":2408.66666666667
+                 "y":2408.67
                 }, 
                 {
                  "height":0,
@@ -276,7 +414,7 @@
                  "visible":true,
                  "width":0,
                  "x":3428,
-                 "y":4832.66666666667
+                 "y":4832.67
                 }, 
                 {
                  "height":0,
@@ -294,7 +432,7 @@
                  "visible":true,
                  "width":0,
                  "x":4312,
-                 "y":7108.66666666667
+                 "y":7108.67
                 }, 
                 {
                  "height":0,
@@ -312,7 +450,7 @@
                  "visible":true,
                  "width":0,
                  "x":800,
-                 "y":2180.66666666667
+                 "y":2180.67
                 }, 
                 {
                  "height":0,
@@ -329,8 +467,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":2034.66666666667,
-                 "y":4064.66666666667
+                 "x":2034.67,
+                 "y":4064.67
                 }, 
                 {
                  "height":0,
@@ -347,8 +485,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":486.666666666667,
-                 "y":1244.66666666667
+                 "x":486.667,
+                 "y":1244.67
                 }, 
                 {
                  "height":0,
@@ -365,8 +503,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":2970.66666666667,
-                 "y":2264.66666666667
+                 "x":2970.67,
+                 "y":2264.67
                 }, 
                 {
                  "height":0,
@@ -383,8 +521,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":3158.66666666667,
-                 "y":4688.66666666667
+                 "x":3158.67,
+                 "y":4688.67
                 }, 
                 {
                  "height":0,
@@ -401,8 +539,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":4042.66666666667,
-                 "y":6964.66666666667
+                 "x":4042.67,
+                 "y":6964.67
                 }, 
                 {
                  "height":0,
@@ -419,8 +557,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":530.666666666667,
-                 "y":2036.66666666667
+                 "x":530.667,
+                 "y":2036.67
                 }, 
                 {
                  "height":0,
@@ -437,8 +575,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":1706.66666666667,
-                 "y":3896.66666666667
+                 "x":1706.67,
+                 "y":3896.67
                 }, 
                 {
                  "height":0,
@@ -455,8 +593,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":486.666666666667,
-                 "y":1244.66666666667
+                 "x":486.667,
+                 "y":1244.67
                 }, 
                 {
                  "height":0,
@@ -473,8 +611,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":2970.66666666667,
-                 "y":2264.66666666667
+                 "x":2970.67,
+                 "y":2264.67
                 }, 
                 {
                  "height":0,
@@ -491,8 +629,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":3158.66666666667,
-                 "y":4688.66666666667
+                 "x":3158.67,
+                 "y":4688.67
                 }, 
                 {
                  "height":0,
@@ -509,8 +647,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":4042.66666666667,
-                 "y":6964.66666666667
+                 "x":4042.67,
+                 "y":6964.67
                 }, 
                 {
                  "height":0,
@@ -527,8 +665,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":530.666666666667,
-                 "y":2036.66666666667
+                 "x":530.667,
+                 "y":2036.67
                 }, 
                 {
                  "height":0,
@@ -545,8 +683,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":1706.66666666667,
-                 "y":3896.66666666667
+                 "x":1706.67,
+                 "y":3896.67
                 }, 
                 {
                  "height":0,
@@ -653,8 +791,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":1865.33333333333,
-                 "y":4339.33333333333
+                 "x":1865.33,
+                 "y":4339.33
                 }, 
                 {
                  "height":0,
@@ -762,7 +900,7 @@
                  "visible":true,
                  "width":0,
                  "x":1800,
-                 "y":4051.33333333333
+                 "y":4051.33
                 }, 
                 {
                  "height":0,
@@ -779,8 +917,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":673.333333333333,
-                 "y":1239.33333333333
+                 "x":673.333,
+                 "y":1239.33
                 }, 
                 {
                  "height":0,
@@ -797,8 +935,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":3157.33333333333,
-                 "y":2259.33333333333
+                 "x":3157.33,
+                 "y":2259.33
                 }, 
                 {
                  "height":0,
@@ -815,8 +953,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":3345.33333333333,
-                 "y":4683.33333333333
+                 "x":3345.33,
+                 "y":4683.33
                 }, 
                 {
                  "height":0,
@@ -833,8 +971,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":4229.33333333333,
-                 "y":6959.33333333333
+                 "x":4229.33,
+                 "y":6959.33
                 }, 
                 {
                  "height":0,
@@ -851,8 +989,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":717.333333333333,
-                 "y":2031.33333333333
+                 "x":717.333,
+                 "y":2031.33
                 }, 
                 {
                  "height":0,
@@ -869,8 +1007,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":1893.33333333333,
-                 "y":3891.33333333333
+                 "x":1893.33,
+                 "y":3891.33
                 }, 
                 {
                  "height":0,
@@ -887,8 +1025,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":673.333333333333,
-                 "y":1239.33333333333
+                 "x":673.333,
+                 "y":1239.33
                 }, 
                 {
                  "height":0,
@@ -905,8 +1043,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":3157.33333333333,
-                 "y":2259.33333333333
+                 "x":3157.33,
+                 "y":2259.33
                 }, 
                 {
                  "height":0,
@@ -923,8 +1061,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":3345.33333333333,
-                 "y":4683.33333333333
+                 "x":3345.33,
+                 "y":4683.33
                 }, 
                 {
                  "height":0,
@@ -941,8 +1079,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":4229.33333333333,
-                 "y":6959.33333333333
+                 "x":4229.33,
+                 "y":6959.33
                 }, 
                 {
                  "height":0,
@@ -959,8 +1097,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":717.333333333333,
-                 "y":2031.33333333333
+                 "x":717.333,
+                 "y":2031.33
                 }, 
                 {
                  "height":0,
@@ -977,8 +1115,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":1893.33333333333,
-                 "y":3891.33333333333
+                 "x":1893.33,
+                 "y":3891.33
                 }, 
                 {
                  "height":0,
@@ -996,7 +1134,7 @@
                  "visible":true,
                  "width":0,
                  "x":556,
-                 "y":1387.33333333333
+                 "y":1387.33
                 }, 
                 {
                  "height":0,
@@ -1014,7 +1152,7 @@
                  "visible":true,
                  "width":0,
                  "x":3040,
-                 "y":2407.33333333333
+                 "y":2407.33
                 }, 
                 {
                  "height":0,
@@ -1032,7 +1170,7 @@
                  "visible":true,
                  "width":0,
                  "x":3228,
-                 "y":4831.33333333333
+                 "y":4831.33
                 }, 
                 {
                  "height":0,
@@ -1050,7 +1188,7 @@
                  "visible":true,
                  "width":0,
                  "x":4112,
-                 "y":7107.33333333333
+                 "y":7107.33
                 }, 
                 {
                  "height":0,
@@ -1068,7 +1206,7 @@
                  "visible":true,
                  "width":0,
                  "x":600,
-                 "y":2179.33333333333
+                 "y":2179.33
                 }, 
                 {
                  "height":0,
@@ -1086,7 +1224,7 @@
                  "visible":true,
                  "width":0,
                  "x":2008,
-                 "y":4339.33333333333
+                 "y":4339.33
                 }, 
                 {
                  "height":0,
@@ -1104,7 +1242,7 @@
                  "visible":true,
                  "width":0,
                  "x":556,
-                 "y":1387.33333333333
+                 "y":1387.33
                 }, 
                 {
                  "height":0,
@@ -1122,7 +1260,7 @@
                  "visible":true,
                  "width":0,
                  "x":3040,
-                 "y":2407.33333333333
+                 "y":2407.33
                 }, 
                 {
                  "height":0,
@@ -1140,7 +1278,7 @@
                  "visible":true,
                  "width":0,
                  "x":3228,
-                 "y":4831.33333333333
+                 "y":4831.33
                 }, 
                 {
                  "height":0,
@@ -1158,7 +1296,7 @@
                  "visible":true,
                  "width":0,
                  "x":4112,
-                 "y":7107.33333333333
+                 "y":7107.33
                 }, 
                 {
                  "height":0,
@@ -1176,7 +1314,7 @@
                  "visible":true,
                  "width":0,
                  "x":600,
-                 "y":2179.33333333333
+                 "y":2179.33
                 }, 
                 {
                  "height":0,
@@ -1194,7 +1332,7 @@
                  "visible":true,
                  "width":0,
                  "x":1716,
-                 "y":4088.66666666667
+                 "y":4088.67
                 }, 
                 {
                  "height":0,
@@ -1211,8 +1349,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":941.333333333333,
-                 "y":1627.33333333333
+                 "x":941.333,
+                 "y":1627.33
                 }, 
                 {
                  "height":0,
@@ -1229,7 +1367,7 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":789.583333333333,
+                 "x":789.583,
                  "y":1558
                 }, 
                 {
@@ -1247,7 +1385,7 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":3273.58333333333,
+                 "x":3273.58,
                  "y":2578
                 }, 
                 {
@@ -1265,7 +1403,7 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":3461.58333333333,
+                 "x":3461.58,
                  "y":5002
                 }, 
                 {
@@ -1283,7 +1421,7 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":4345.58333333333,
+                 "x":4345.58,
                  "y":7278
                 }, 
                 {
@@ -1301,7 +1439,7 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":833.583333333333,
+                 "x":833.583,
                  "y":2350
                 }, 
                 {
@@ -1319,8 +1457,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":2094.91666666667,
-                 "y":4147.33333333333
+                 "x":2094.92,
+                 "y":4147.33
                 }, 
                 {
                  "height":0,
@@ -1337,7 +1475,7 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":789.583333333333,
+                 "x":789.583,
                  "y":1558
                 }, 
                 {
@@ -1355,7 +1493,7 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":3273.58333333333,
+                 "x":3273.58,
                  "y":2578
                 }, 
                 {
@@ -1373,7 +1511,7 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":3461.58333333333,
+                 "x":3461.58,
                  "y":5002
                 }, 
                 {
@@ -1391,7 +1529,7 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":4345.58333333333,
+                 "x":4345.58,
                  "y":7278
                 }, 
                 {
@@ -1409,7 +1547,7 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":833.583333333333,
+                 "x":833.583,
                  "y":2350
                 }, 
                 {
@@ -1427,8 +1565,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":2078.91666666667,
-                 "y":4251.33333333333
+                 "x":2078.92,
+                 "y":4251.33
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1449,7 +1587,7 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":100,
+ "nextobjectid":116,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",

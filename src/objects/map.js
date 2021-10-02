@@ -2,6 +2,7 @@ import Phaser from "phaser";
 
 const Player = require('./player');
 const GameCoin = require('./coin');
+const Target = require('./target');
 
 /**
  * @classdesc 
@@ -26,7 +27,7 @@ class DungeonMapManager {
             config.scene.load.image('blue-tileset', 'images/tilesets/blue-patterned-world.png');
         }
         GameCoin.preload(config.scene); // load coin image
-
+        Target.preload(config.scene); // load target cylinder image
     }
 
     /**
@@ -72,7 +73,7 @@ class DungeonMapManager {
          */
         this.startY = 0;
 
-        // set up spawns
+        // set up player spawn
         this.map.getObjectLayer('Spawns').objects.forEach( (item) => {
             if(item.type == "playerspawn") {
                 console.log('good');
@@ -80,6 +81,11 @@ class DungeonMapManager {
                 this.startY = item.y;
             }
         });
+
+        /**
+         * Physics Group
+         */
+        this.targets = this.scene.physics.add.group();
 
     }
 
@@ -107,6 +113,38 @@ class DungeonMapManager {
                 let coin = new GameCoin({scene:this.scene, player:this.scene.player},item);
             }
         });
+
+        /**
+         * Set up targettable world objects
+         */
+        this.map.getObjectLayer('Spawns').objects.forEach( (item)=> {
+            if(item.type == "spawn-point") {
+                let spawnType = "cylinder";
+                let targettable = false;
+                console.log(item);
+                item.properties.forEach( (property)=> {
+                    if(property.name == "spawns") {
+                        spawnType = property.value;
+                    }
+                    if(property.name == "targettable") {
+                        targettable = property.value;
+                    }
+                } );
+                if(spawnType == "cylinder") {
+                    let newItem = new Target({
+                        scene:this.scene, 
+                        x:item.x, 
+                        y:item.y
+                    });
+                    if(targettable) {
+                        this.targets.add(newItem);
+                    }
+                }
+            }
+        });
+        this.scene.physics.add.collider(this.targets, this.scene.player);
+        this.scene.physics.add.collider(this.targets, this.walls);
+        this.scene.physics.add.collider(this.targets);
     }
 
 

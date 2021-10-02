@@ -47,6 +47,7 @@ import Phaser from "phaser";
         this.scene.physics.add.collider( this, this.scene.mapManager.walls, ()=>{
             this.bounceFX.play('bounce1') 
         }, undefined, this);
+        // this.scene.physics.add.collider(this, this.scene.mapManager.targets, hitTarget);
 
         //destory the bullet after a time
         this.scene.time.delayedCall(1000,()=>{  
@@ -58,6 +59,15 @@ import Phaser from "phaser";
             this.destroy();
         }, [], this);
     }
+    /**
+     * override to destroy sfx also
+     */
+    destroyWithFX() {
+        this.shotFX.destroy();
+        this.bounceFX.destroy();
+        this.destroy();    
+    }
+
     static makeBullet(player) {
         let newBullet = new Bullet({
             scene: player.scene,
@@ -73,6 +83,7 @@ import Phaser from "phaser";
 
         let speedX = newBullet.speed * cosine;
         let speedY = newBullet.speed * sine; 
+
 
         newBullet.body.setVelocityX(speedX);
         newBullet.body.setVelocityY(speedY);
