@@ -52,3 +52,23 @@ audiosprite json format is described here: https://github.com/tonistiigi/audiosp
   "height": 0,
   "point": true
 }
+
+
+
+
+        function alpha() {
+            if(this.name) {
+                console.log('wow, my name is ', this.name, '!');
+            }
+            else {
+                console.log(`I'm not sure who the this I am!`, this);
+            }
+        }
+        class MyTestClass {
+            constructor(fun) {
+                this.name = "bob";
+                this.fun = fun;
+            }
+        }
+        let myclass = new MyTestClass(alpha);
+        myClass.fun();

@@ -1,6 +1,9 @@
 /**
+ * 
+ * @memberof ClubCrawler.Objects
  * Holds a global music object to play across title screen
  * 
+ * Needed? Not sure, but I think so
  */
 
 import Phaser from "phaser";

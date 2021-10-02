@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: GameCoin</title>
+    <title>JSDoc: Class: Bullet</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: GameCoin</h1>
+    <h1 class="page-title">Class: Bullet</h1>
 
     
 
@@ -29,9 +29,9 @@
 <header>
     
         <h2><span class="attribs"><span class="type-signature"></span></span>
-            <span class="ancestors"><a href="ClubCrawler.Objects.html">.Objects</a>.</span>GameCoin<span class="signature">(config, item)</span><span class="type-signature"></span></h2>
+            <span class="ancestors"><a href="ClubCrawler.Objects.html">.Objects</a>.</span>Bullet<span class="signature">(config)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">A class for representing a Coin object, which increases the player score.Renders sprite based on images/coin.png. Created by <a href="ClubCrawler.Objects.DungeonMapManager.html">ClubCrawler.Objects.DungeonMapManager</a> for each Object in the Map Layer of type "points".When a player overlaps a coin, it increases dataManager.score, begins spinning and moving in a random direction, then scales down to 0 and is destroyed.</div>
+            <div class="class-description">The bullet.Will probably be eventually abstracted and multiple bullet types will be created, possibly for various reticles and weaponsRight now it uses a static method to generate the bullets. This might be better as a "BulletFactory" object so the bullets can all have some set of parameters</div>
         
     
 </header>
@@ -46,7 +46,7 @@
     
 
     
-    <h4 class="name" id="GameCoin"><span class="type-signature"></span>new GameCoin<span class="signature">(config, item)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Bullet"><span class="type-signature"></span>new Bullet<span class="signature">(config)</span><span class="type-signature"></span></h4>
     
 
     
@@ -102,7 +102,7 @@
 
             
 
-            <td class="description last">Configuration
+            <td class="description last">The config object
                 <h6>Properties</h6>
                 
 
@@ -138,7 +138,7 @@
             <td class="type">
             
                 
-<span class="param-type">Phaser.Scene</span>
+<span class="param-type"><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html">ClubCrawler.Scenes.DungeonCrawlerGame</a></span>
 
 
             
@@ -160,49 +160,14 @@
                 </td>
             
 
-            <td class="description last">The <a href="https://newdocs.phaser.io/docs/3.52.0/Phaser.Scene">Phaser.Scene</a> where this is drawn</td>
+            <td class="description last">The scene</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>player</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="ClubCrawler.Objects.Player.html">ClubCrawler.Objects.Player</a></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last">The player which can trigger the coin</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>spinrate</code></td>
+                <td class="name"><code>x</code></td>
             
 
             <td class="type">
@@ -229,72 +194,19 @@
             
                 <td class="default">
                 
-                    4000
+                    0
                 
                 </td>
             
 
-            <td class="description last">The angular velocity to apply when the coin is touched</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
+            <td class="description last">The x coordinate to start</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>item</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Phaser.Types.Tilemaps.TiledObject</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">item structured by Tiled as per <a href="https://newdocs.phaser.io/docs/3.52.0/Phaser.Tilemaps.TiledObject">Phaser.Types.Tilemaps.TiledObject</a>
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>properties.value</code></td>
+                <td class="name"><code>y</code></td>
             
 
             <td class="type">
@@ -321,12 +233,12 @@
             
                 <td class="default">
                 
-                    1
+                    0
                 
                 </td>
             
 
-            <td class="description last">The value of the coin as set in Tiled custom properties</td>
+            <td class="description last">The y coordinate to start</td>
         </tr>
 
     
@@ -374,19 +286,12 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_coin.js.html">objects/coin.js</a>, <a href="objects_coin.js.html#line17">line 17</a>
+        <a href="objects_bullet.js.html">objects/bullet.js</a>, <a href="objects_bullet.js.html#line15">line 15</a>
     </li></ul></dd>
     
 
     
 
-    
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a href="https://newdocs.phaser.io/docs/3.55.2/Phaser.GameObjects.Image">Phaser.GameObjects.Image</a></li>
-        </ul>
-    </dd>
     
 
     
@@ -415,15 +320,6 @@
     </div>
 
     
-        <h3 class="subsection-title">Extends</h3>
-
-        
-
-
-    <ul>
-        <li>Phaser.GameObjects.Image</li>
-    </ul>
-
 
     
 
@@ -435,166 +331,6 @@
 
     
 
-    
-
-    
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id="coinValue"><span class="type-signature"></span>coinValue<span class="type-signature"> :number</span></h4>
-
-
-
-
-<div class="description">
-    The value of the coin
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">number</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-default">Default Value:</dt>
-    <dd class="tag-default"><ul class="dummy">
-            <li>1</li>
-        </ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_coin.js.html">objects/coin.js</a>, <a href="objects_coin.js.html#line70">line 70</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="spinning"><span class="type-signature"></span>spinning<span class="type-signature"> :boolean</span></h4>
-
-
-
-
-<div class="description">
-    Whether the coin has already been triggered
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">boolean</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-default">Default Value:</dt>
-    <dd class="tag-default"><ul class="dummy">
-            <li>false</li>
-        </ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_coin.js.html">objects/coin.js</a>, <a href="objects_coin.js.html#line64">line 64</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
     
 
     
@@ -614,7 +350,7 @@
 
 
 <div class="description">
-    Preloads image. Called by DungeonMapManager.preload.Reserves the "coin" key in the scene images.
+    Preloads the reticle image asset
 </div>
 
 
@@ -666,7 +402,7 @@
 
             
 
-            <td class="description last">Game scene preloading</td>
+            <td class="description last">See <a href="https://newdocs.phaser.io/docs/3.55.2/Phaser.Scene">Phaser.Scene</a></td>
         </tr>
 
     
@@ -707,7 +443,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_coin.js.html">objects/coin.js</a>, <a href="objects_coin.js.html#line27">line 27</a>
+        <a href="objects_bullet.js.html">objects/bullet.js</a>, <a href="objects_bullet.js.html#line21">line 21</a>
     </li></ul></dd>
     
 
@@ -743,7 +479,7 @@
     
 
     
-    <h4 class="name" id="fadeCoin"><span class="type-signature"></span>fadeCoin<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="destroyWithFX"><span class="type-signature"></span>destroyWithFX<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -751,7 +487,7 @@
 
 
 <div class="description">
-    The fade out function for the coin. 'This' scope is the Coin, as applied by <a href="https://newdocs.phaser.io/docs/3.55.1/Phaser.Time.Clock#delayedCall">scene.time.delayedCall</a>. Callback triggered on a timer after spinning starts. Shrinks coin and deletes it after it shrinks to nothing.
+    override to destroy sfx also
 </div>
 
 
@@ -795,7 +531,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_coin.js.html">objects/coin.js</a>, <a href="objects_coin.js.html#line99">line 99</a>
+        <a href="objects_bullet.js.html">objects/bullet.js</a>, <a href="objects_bullet.js.html#line75">line 75</a>
     </li></ul></dd>
     
 
@@ -831,7 +567,7 @@
     
 
     
-    <h4 class="name" id="overlapWithPlayer"><span class="type-signature"></span>overlapWithPlayer<span class="signature">(player, coin)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="hitTarget"><span class="type-signature"></span>hitTarget<span class="signature">(bullet, target)</span><span class="type-signature"></span></h4>
     
 
     
@@ -839,7 +575,7 @@
 
 
 <div class="description">
-    Callback function applied when player touches the coin. Increases the score and begins spinning the coin.
+    Description
 </div>
 
 
@@ -875,13 +611,13 @@
 
         <tr>
             
-                <td class="name"><code>player</code></td>
+                <td class="name"><code>bullet</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="ClubCrawler.Objects.Player.html">ClubCrawler.Objects.Player</a></span>
+<span class="param-type">Phaser.GameObject</span>
 
 
             
@@ -891,20 +627,20 @@
 
             
 
-            <td class="description last">The player</td>
+            <td class="description last"></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>coin</code></td>
+                <td class="name"><code>target</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="ClubCrawler.Objects.GameCoin.html">ClubCrawler.Objects.GameCoin</a></span>
+<span class="param-type">Phaser.GameObject</span>
 
 
             
@@ -914,7 +650,7 @@
 
             
 
-            <td class="description last">The coin</td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -955,7 +691,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_coin.js.html">objects/coin.js</a>, <a href="objects_coin.js.html#line83">line 83</a>
+        <a href="objects_bullet.js.html">objects/bullet.js</a>, <a href="objects_bullet.js.html#line63">line 63</a>
     </li></ul></dd>
     
 

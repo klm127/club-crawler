@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: TitleScreen</title>
+    <title>JSDoc: Source: objects/music.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,145 +17,46 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: TitleScreen</h1>
+    <h1 class="page-title">Source: objects/music.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>
-            <span class="ancestors"><a href="ClubCrawler.Scenes.html">.Scenes</a>.</span>TitleScreen<span class="signature">()</span><span class="type-signature"></span></h2>
-        
-            <div class="class-description">The Title Screen and start button</div>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-    
-    <h2>Constructor</h2>
-    
-
-    
-    <h4 class="name" id="TitleScreen"><span class="type-signature"></span>new TitleScreen<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="scenes_TitleScreen.js.html">scenes/TitleScreen.js</a>, <a href="scenes_TitleScreen.js.html#line13">line 13</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a href="https://newdocs.phaser.io/docs/3.55.2/Phaser.Scene">Phaser.Scene</a></li>
-        </ul>
-    </dd>
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * 
+ * @memberof ClubCrawler.Objects
+ * Holds a global music object to play across title screen
+ * 
+ * Needed? Not sure, but I think so
+ */
+
+import Phaser from "phaser";
+
+const musicManager = {
+    music: null,
+    preload: function(scene) {
+        scene.load.audio('music', 'sounds/Psyjamsnake.mp3');
+    },
+    /**
+     * Description
+     * @param {Phaser.Scene} scene
+     * @returns {any}
+     */
+    create: function(scene) {
+        musicManager.music = scene.sound.add('music');
+        // comment out this line if you don't want to hear the music
+        musicManager.music.play({loop:true});
+        musicManager.music.setVolume(0.2);
+    }
+};
+
+module.exports = musicManager;</code></pre>
+        </article>
+    </section>
 
 
 

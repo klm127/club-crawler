@@ -43,92 +43,110 @@
 
 
     <section>
-        <article><h2>Crawler</h2>
-<p><img src="https://github.com/unhm-programming-team/club-crawler/blob/main/screen.png" alt="a screenshot from club-crawler"></p>
-<p><a href="https://unhm-programming-team.github.io/club-crawler/">documentation</a></p>
-<p>This will be a dungeon crawler style javascript web game made with Phaser. It will run in the browser and eventually be embedded in the website.</p>
-<p>It will be sort of like the Arcade classic, gauntlet. Top down deal, where maybe you have to click to fire. Once we get something basic running, maybe we can add multiplayer, random map generation, etc.</p>
-<p>If you would like to help on this project, it needs:</p>
+        <article><h1>TODO</h1>
+<h2>Refactor and Abstract Code Logic</h2>
+<h1><em>Templat-tize the game!</em></h1>
 <ul>
 <li>
-<p>Levels</p>
+<p><strong>Event driven</strong> - there is a central update function used in Game but it's mostly just for input detection... other things update by attaching events to timers</p>
+</li>
+<li>
+<p>Information on where to place everything except the overlay (for now) is derived from map data created by <strong>Tiled</strong></p>
+</li>
+<li>
+<p><em>Keep</em> the current design of</p>
 <ul>
-<li>Uses <a href="https://www.mapeditor.org/">tiled</a> for level editing</li>
+<li>MapManager : manages the map, builds the map from the Tiled .json export, so handles that logic. Does not extend the map - but perhaps it could do that</li>
+<li>Game Scene : permanently references player and mapManager, calls the Overlay screen and detects user input</li>
+<li><strong>The MapManager places objects in the Scene</strong> based on the Tiled Map data in <code>blueworld.json</code> for example</li>
+<li>The MapManager places GameItems from the <code>Objects</code> layer of the Tiled export</li>
 </ul>
 </li>
 <li>
-<p>Images/Sprites</p>
+<p>Entities (Base Class of the objects which have any kind of physics in the Game)</p>
 <ul>
-<li>bad guys</li>
-<li>items</li>
-<li>players</li>
-<li>walls</li>
-<li>floors</li>
-<li>plants</li>
-</ul>
-</li>
-</ul>
-<p>I use paint.net for sprite creation. Currently tiles are 128x128 but we can support other sizes. Any .png of 128x128 is useful</p>
-<ul>
-<li>
-<p>Sounds</p>
-<ul>
-<li>music</li>
-<li>sound effects</li>
+<li>Have an associated object in Tiled... perhaps a <a href="https://doc.mapeditor.org/en/stable/manual/using-templates/">Tiled object template</a></li>
+<li>each have a &quot;preload&quot; function to get the relevant asset, called by the MapManager before the scene is started</li>
+<li>extend a <code>Phaser.Image</code> or <code>Phaser.Group</code> or similar and call their ancestor class (super() ) in their constructor, with the graphic(s) they preloaded</li>
+<li>add physics properties to themselves, by calling <code>this.scene.physics.add.existing()</code> - this gives them a new property called <code>this.body</code> which controls physics properties (velocity, drag, mass, etc) in the world</li>
+<li>add physics colliders/overlap relationships between themselves and groups of other physics objects, i.e. <code>this.scene.physics.add.collider(this, this.scene.mapManager.walls..)</code></li>
+<li>There will be groups of physics objects stored as properties in the <code>mapManager</code> object, such as <code>mapManager.walls</code> (or could be renamed to <code>mapManager.solids</code>) - gameitems will add colliders (or overlaps) between themselves and these groups as necessary</li>
+<li>have <code>this.updateEvent</code> if they update</li>
+<li>call <code>this.updateEvent.destroy()</code> before they are destroyed if they have an updateEvent</li>
 </ul>
 </li>
 <li>
-<p>Code</p>
+<p>Beings</p>
 <ul>
-<li>items</li>
-<li>bad guys</li>
-<li>health</li>
+<li>have health, speed, acceleration, updateSpeed</li>
+<li>Have a base way of moving , i.e. <code>this.move(angle, accelerationMultiplier=1)</code></li>
+<li>update at some interval (events)</li>
+<li>should have a way of checking the world around them. Can get distance to player or to other entities</li>
+<li>could use tweens to move in some cases? For interesting movement patterns like arcs and such</li>
 </ul>
 </li>
 <li>
-<p>Ideas</p>
+<p>Effects</p>
 <ul>
-<li>bad guy attack patterns</li>
-<li>weapons / spells</li>
-<li>dialogue</li>
+<li>probably set more overlaps than colliders</li>
+<li>sprite animations or extending <code>Phaser.Graphics</code> for special effects might be interesting</li>
 </ul>
 </li>
 </ul>
-<p>There is a <a href="https://github.com/unhm-programming-team/club-crawler/blob/main/todo.md">tentative to-do list</a></p>
-<h2>Dependencies</h2>
-<h4>Main dependency:</h4>
-<p><a href="https://nodejs.org/en/download/">Node/NPM</a> - for serving locally</p>
-<h4>NPM Installed Dependencies:</h4>
-<p><em>You probably won't have to worry about these once you have node/npm</em></p>
-<p><a href="https://phaser.io/">Phaser</a> - The game engine <strong>Lots of documentation and examples at the link</strong></p>
-<p><a href="https://www.npmjs.com/package/parcel">Parcel</a> - for serving a website in test and packaging javascript</p>
-<h2>How to Run it</h2>
+<h2>General ToDos</h2>
 <ol>
 <li>
-<p>Install Node js and NPM</p>
+<p>Create a bad guy</p>
+<ol>
+<li>Set up sprites</li>
+<li>~Spawn in map~</li>
+<li>~Set up movement~</li>
+</ol>
 </li>
 <li>
-<p>Open the command line</p>
-<ul>
-<li>On windows: <code>Windows Key</code> + <code>R</code>, then type <code>cmd</code>, then hit <code>enter</code></li>
-</ul>
+<p>~Create a basic weapon for player~</p>
+<ol>
+<li>~Shooting fireballs or something for now~</li>
+<li>Should shoot at where mouse is located when space is pressed</li>
+<li>~Set bullets to damage bad guy~</li>
+<li>Should be able to move reticle with wsad</li>
+</ol>
 </li>
 <li>
-<p>Clone this repo in the command line <code>git clone https://github.com/unhm-programming-team/club-crawler.git</code></p>
+<p>~Set up documentation~</p>
+<ol>
+<li>~Will use jsdoc~</li>
+<li>Will retrieve phaser info and directly link to those docs</li>
+<li>Generate a sleek webpage</li>
+</ol>
 </li>
 <li>
-<p>Open this projects root directory in the command line <code>cd club-crawler</code></p>
+<p>Connect player health to overlay using an event emitter</p>
+<ol>
+<li>~Design and create eventcenter type paradigm using instance of phaser event emitter~</li>
+<li>Create graphics for UI</li>
+<li>Set up bad guy damaging player</li>
+</ol>
 </li>
 <li>
-<p>Execute <code>npm install</code> to instruct NPM to install all dependencies</p>
+<p>Create a game over scene with a restart button</p>
 </li>
 <li>
-<p>Execute <code>npm start</code> to start the web server</p>
+<p>Create a high score table</p>
 </li>
 <li>
-<p>In a browser such as Firefox, navigate to http://localhost:1234/</p>
+<p>Create an inventory screen / scene and the ability to pickup objects</p>
 </li>
-</ol></article>
+<li>
+<p>Clickable buttons on the overlay that don't cause player to shoot when they're clicked, and can open an inventory overlay</p>
+</li>
+</ol>
+<h3>Other notes, links</h3>
+<p>Extend a Sprite in Phaser 3:</p>
+<p>https://phasergames.com/extend-a-sprite-in-phaser-3/?mc_cid=3f4ee26e5d&amp;mc_eid=a4d9ee0291</p>
+<p>A tutorial on tilemaps: https://medium.com/@michaelwesthadley/modular-game-worlds-in-phaser-3-tilemaps-1-958fc7e6bbd6</p>
+<p>A free alternative to TexturePacker on the web : https://free-tex-packer.com/app/</p>
+<p>Paint.net is amazing for sprite creation</p></article>
     </section>
 
 
@@ -139,13 +157,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="ClubCrawler.Objects.html">Objects</a></li><li><a href="ClubCrawler.Scenes.html">Scenes</a></li></ul><h3>Classes</h3><ul><li><a href="ClubCrawler.Objects.DungeonMapManager.html">DungeonMapManager</a></li><li><a href="ClubCrawler.Objects.GameCoin.html">GameCoin</a></li><li><a href="ClubCrawler.Objects.Player.html">Player</a></li><li><a href="ClubCrawler.Objects.Player.Reticle.html">Reticle</a></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html">DungeonCrawlerGame</a></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerOverlay.html">DungeonCrawlerOverlay</a></li><li><a href="ClubCrawler.Scenes.TitleScreen.html">TitleScreen</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="ClubCrawler.Objects.html">Objects</a></li><li><a href="ClubCrawler.Scenes.html">Scenes</a></li></ul><h3>Classes</h3><ul><li><a href="ClubCrawler.Objects.Bullet.html">Bullet</a></li><li><a href="ClubCrawler.Objects.DungeonMapManager.html">DungeonMapManager</a></li><li><a href="ClubCrawler.Objects.GameCoin.html">GameCoin</a></li><li><a href="ClubCrawler.Objects.Player.html">Player</a></li><li><a href="ClubCrawler.Objects.Reticle.html">Reticle</a></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html">DungeonCrawlerGame</a></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerOverlay.html">DungeonCrawlerOverlay</a></li><li><a href="ClubCrawler.Scenes.TitleScreen.html">TitleScreen</a></li><li><a href="Target.html">Target</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Oct 01 2021 15:19:46 GMT-0400 (Eastern Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sat Oct 02 2021 19:51:05 GMT-0400 (Eastern Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>
