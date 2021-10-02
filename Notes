@@ -24,3 +24,31 @@ Uses: Phaser.Math.Distance.Between(source.x, source.y, target.x, target.y)
 
 audiosprite json format is described here: https://github.com/tonistiigi/audiosprite
 
+
+
+---- example scheme of an item from "getObjectLayer" on map
+
+{
+  "id": 110,
+  "name": "cylinder-spawn",
+  "type": "spawn-point",
+  "rotation": 0,
+  "properties": [
+    {
+      "name": "spawns",
+      "type": "string",
+      "value": "cylinder"
+    },
+    {
+      "name": "targettable",
+      "type": "bool",
+      "value": true
+    }
+  ],
+  "visible": true,
+  "x": 1136,
+  "y": 1120,
+  "width": 0,
+  "height": 0,
+  "point": true
+}
