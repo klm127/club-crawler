@@ -18,8 +18,9 @@ class TitleScreen extends Phaser.Scene
     }
     create()
     {
-        console.log('creating title screen')
-        this.titleText = this.add.text(300,100, "Club Crawler", {
+        let gameHeight = this.game.config.height;
+        let gameWidth = this.game.config.width;
+        this.titleText = this.add.text(gameWidth/2,gameHeight/4, "Club Crawler", {
             color:`rgb(0,0,250)`,
             shadow: {
                 offsetX: 5,
@@ -34,7 +35,7 @@ class TitleScreen extends Phaser.Scene
             
         }).setOrigin(0.5,0.5);
 
-        let startText = this.add.text(300, 300, "Start", {
+        let startText = this.add.text(gameWidth/2, gameHeight/2, "Start", {
             color: 'rgb(0,250,0)'
         }).setOrigin(0.5, 0.5);
         startText.setInteractive();
