@@ -2,6 +2,7 @@ import Phaser from "phaser";
 
 const Player = require('../objects/player')
 const DungeonMapManager = require('../objects/map');
+const Bullet = require('../objects/bullet')
 
 /** 
  * @classdesc
@@ -63,7 +64,11 @@ class DungeonCrawlerGame extends Phaser.Scene
          * @type {Phaser.Types.Input.Keyboard.CursorKeys}
          */
         this.cursors = this.input.keyboard.createCursorKeys();
-        // Locks pointer on mousedown
+
+        //click to shoot
+        this.input.on('pointerdown', ()=> {
+            Bullet.makeBullet(this.player);
+        }, this);
 
     }
     /**

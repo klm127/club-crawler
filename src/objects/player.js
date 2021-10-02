@@ -1,5 +1,7 @@
 import Phaser from "phaser";
 
+const Bullet = require('./bullet');
+
 /** 
  * @classdesc 
  * A class for representing the Player in the game world.
@@ -92,7 +94,7 @@ class Player extends Phaser.GameObjects.Image {
  * 
  * The targetting reticle for aiming with the mouse.
  * 
- * @memberof ClubCrawler.Objects.Player
+ * @memberof ClubCrawler.Objects
  */
 class Reticle extends Phaser.GameObjects.Image {
 
@@ -102,6 +104,7 @@ class Reticle extends Phaser.GameObjects.Image {
      */
     static preload(scene) {
         scene.load.image('reticle', 'images/reticle.png');
+        Bullet.preload(scene);
     }
 
     /**
