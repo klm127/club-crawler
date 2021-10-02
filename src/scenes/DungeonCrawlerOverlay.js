@@ -23,7 +23,7 @@ class DungeonCrawlerOverlay extends Phaser.Scene
 
     }
     create() {
-        this.add.text(10, 20, "Club Crawler Overlay Placeholder", {
+        this.add.text(10, 20, "Club Crawler", {
             color: "rgba(100,100,200,0.8)",
             fontSize: 25
         });

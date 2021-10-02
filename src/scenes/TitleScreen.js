@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+const musicManager = require('../objects/music');    
 
 
 /** 
@@ -12,7 +13,8 @@ import Phaser from "phaser";
 class TitleScreen extends Phaser.Scene 
 {
     preload()
-    {
+    {    
+        musicManager.preload(this);
     }
     create()
     {
@@ -43,6 +45,7 @@ class TitleScreen extends Phaser.Scene
 
         this.titleText.green = 0;
         this.titleText.red = 0;
+        musicManager.create(this);
     }
     update(time,delta) {
         if(this.titleText.green < 255) {
