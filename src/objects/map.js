@@ -151,12 +151,15 @@ class DungeonMapManager {
                         x: cx,
                         y: cy
                     });
-                    this.targets.add(newOgre);
+                    this.enemies.add(newOgre);
                 }
             }
         });
         this.scene.physics.add.collider(this.targets, this.scene.player);
         this.scene.physics.add.collider(this.targets, this.walls);
+        this.scene.physics.add.collider(this.enemies, this.walls);
+        this.scene.physics.add.collider(this.enemies, this.targets);
+        this.scene.physics.add.collider(this.enemies, this.scene.player);
         this.scene.physics.add.collider(this.targets, this.targets);
     }
 

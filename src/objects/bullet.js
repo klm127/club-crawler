@@ -1,5 +1,6 @@
 
 import Phaser from "phaser";
+import Interact from "../interfaces/interact"
 
 /**
  * @classdesc
@@ -46,10 +47,11 @@ import Phaser from "phaser";
         this.shotFX = this.scene.sound.addAudioSprite('bullet');
         this.shotFX.play('shot1');
         this.bounceFX = this.scene.sound.addAudioSprite('bullet');
-        this.scene.physics.add.collider( this, this.scene.mapManager.walls, ()=>{
+        this.wallCollider = this.scene.physics.add.collider( this, this.scene.mapManager.walls, ()=>{
             this.bounceFX.play('bounce1') 
         }, undefined, this);
-        this.scene.physics.add.collider(this, this.scene.mapManager.targets, this.hitTarget);
+        this.targetCollider = this.scene.physics.add.collider(this, this.scene.mapManager.targets, this.hitTarget);
+        this.enemyCollider = this.scene.physics.add.collider(this, this.scene.mapManager.enemies, Interact.DamageCollision)
 
         //destory the bullet after a time
         this.scene.time.delayedCall(1000,this.destroy, [], this);
@@ -68,6 +70,15 @@ import Phaser from "phaser";
         if(target) {
             target.hit(bullet);
         }
+    }
+    dealDamage() {
+        this.bounceFX.play('bounce1');
+        this.destroy();
+        // this.enemyCollider.destroy();
+        // this.scene.time.delayedCall(1000, ()=>{
+        //     this.bounceFX.destroy();
+        //     this.shotFX.destroy();
+        // },[],this)
     }
     /**
      * override to destroy sfx also

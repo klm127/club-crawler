@@ -1,5 +1,9 @@
 /**
  * Functions for ais to evaluate the world around them
+ * 
+ * Like Movement, work by firing events
+ * 
+ * Objects using senses should define a sense function
  */
 import Phaser from "phaser"
 

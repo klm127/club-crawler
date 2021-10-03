@@ -3,6 +3,7 @@ import Phaser from 'phaser';
 const TitleScreen = require('./scenes/TitleScreen');
 const DungeonCrawlerGame = require('./scenes/DungeonCrawlerGame');
 const DungeonCrawlerOverlay = require('./scenes/DungeonCrawlerOverlay')
+const GameOver = require('./scenes/GameOver');
 
 const config = {
     width: 800,
@@ -24,5 +25,6 @@ const game = new Phaser.Game(config);
 
 game.scene.add('titlescreen', TitleScreen);
 game.scene.add('crawlergame', DungeonCrawlerGame);
-game.scene.add('crawleroverlay', DungeonCrawlerOverlay)
-game.scene.start('titlescreen');
+game.scene.add('crawleroverlay', DungeonCrawlerOverlay);
+game.scene.add('gameover', GameOver);
+game.scene.start('gameover');

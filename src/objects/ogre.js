@@ -6,7 +6,7 @@ const Sense = require('../interfaces/sense');
 
 const DEFAULT_OGRE_STATS = {
     health: 300,
-    speed: 100,
+    speed: 100, // might be redundant with velocity increment being the more relevant one
     maxSpeed: 500,
     updateSpeed: 1000,
     velocityIncrement: 500,
@@ -15,6 +15,7 @@ const DEFAULT_OGRE_STATS = {
     maxCoins: 10,
     minCoins: 5,
     senseRange: 800,
+    damage: 30,
     weapon: null, // implement
 }
 
@@ -49,6 +50,7 @@ class Ogre extends Phaser.GameObjects.Image {
         config.scene.physics.add.existing(this);
         Object.assign(this, DEFAULT_OGRE_STATS);
         Object.assign(this, config);
+        this.setScale(0.75, 0.75);
         
         this.scene.time.delayedCall(100, ()=> {
             this.body.setMaxSpeed(this.maxSpeed);
@@ -60,24 +62,40 @@ class Ogre extends Phaser.GameObjects.Image {
     }
 
     hit(bullet) {
-        this.health -= bullet.damage;
+        this.health -= bullet.damage;6
         if(this.health <= 0) {
-            for(let i = this.minCoins; i < Math.random() * this.maxCoins + this.minCoins; i++) {
-                let coin = new GameCoin({scene:this.scene}, {x:this.x, y:this.y});
-                coin.body.setVelocityX(Math.random() * 100 - 50);
-                coin.body.setVelocityY(Math.random() * 100 - 50);
-
-            }
-            if(this.nextMoveEvent) {
-                this.nextMoveEvent.destroy();
-            }
-            if(this.senseEvents) {
-                this.senseEvents.forEach( (event)=> {
-                    event.destroy();
-                });
-            }
-            this.destroy();
+            this.die();
         }
+    }
+    takeDamage() {
+        let ogre = this;
+        this.scene.tweens.addCounter({
+            from: 0,
+            to: 20,
+            yoyo:true,
+            duration: 100,
+            onUpdate: function(tween) {
+                console.log(tween);
+                ogre.setAngle(tween.getValue());
+            }
+        });
+    }
+    die() {
+        this.setRotation(1.5);
+        for(let i = this.minCoins; i < Math.random() * this.maxCoins + this.minCoins; i++) {
+            let coin = new GameCoin({scene:this.scene}, {x:this.x, y:this.y});
+            coin.body.setVelocityX(Math.random() * 100 - 50);
+            coin.body.setVelocityY(Math.random() * 100 - 50);
+        }
+        if(this.nextMoveEvent) {
+            this.nextMoveEvent.destroy();
+        }
+        if(this.senseEvents) {
+            this.senseEvents.forEach( (event)=> {
+                event.destroy();
+            });
+        }
+        this.destroy();
     }
     sense(sensation) {
         if(this.body.velocity.x > 0) {
