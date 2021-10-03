@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 
 const Player = require('./player');
+const Ogre = require('./ogre');
 const GameCoin = require('./coin');
 const Target = require('./target');
 
@@ -28,6 +29,7 @@ class DungeonMapManager {
         }
         GameCoin.preload(config.scene); // load coin image
         Target.preload(config.scene); // load target cylinder image
+        Ogre.preload(config.scene);
     }
 
     /**
@@ -85,6 +87,7 @@ class DungeonMapManager {
          * Physics Group
          */
         this.targets = this.scene.physics.add.group();
+        this.enemies = this.scene.physics.add.group();
 
     }
 
@@ -137,6 +140,18 @@ class DungeonMapManager {
                     if(targettable) {
                         this.targets.add(newItem);
                     }
+                }
+            }
+            if(item.type == "enemy-spawn") {
+                if(item.name == "Ogre") {
+                    let cx = item.width / 2 + item.x;
+                    let cy = item.height / 2 + item.y;
+                    let newOgre = new Ogre({
+                        scene:this.scene,
+                        x: cx,
+                        y: cy
+                    });
+                    this.targets.add(newOgre);
                 }
             }
         });

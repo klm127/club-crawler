@@ -28,8 +28,8 @@
                  "type":"playerspawn",
                  "visible":true,
                  "width":0,
-                 "x":938,
-                 "y":1214
+                 "x":914,
+                 "y":1120
                 }, 
                 {
                  "height":0,
@@ -74,8 +74,8 @@
                  "type":"spawn-point",
                  "visible":true,
                  "width":0,
-                 "x":1220.84848484848,
-                 "y":3768.48484848485
+                 "x":1220.85,
+                 "y":3768.48
                 }, 
                 {
                  "height":0,
@@ -97,8 +97,8 @@
                  "type":"spawn-point",
                  "visible":true,
                  "width":0,
-                 "x":1314.78787878788,
-                 "y":6183.63636363636
+                 "x":1314.79,
+                 "y":6183.64
                 }, 
                 {
                  "height":0,
@@ -121,7 +121,7 @@
                  "visible":true,
                  "width":0,
                  "x":1908,
-                 "y":7481.09090909091
+                 "y":7481.09
                 }, 
                 {
                  "height":0,
@@ -144,7 +144,7 @@
                  "visible":true,
                  "width":0,
                  "x":4572,
-                 "y":6609.09090909091
+                 "y":6609.09
                 }, 
                 {
                  "height":0,
@@ -167,7 +167,7 @@
                  "visible":true,
                  "width":0,
                  "x":3508,
-                 "y":4817.09090909091
+                 "y":4817.09
                 }, 
                 {
                  "height":0,
@@ -189,7 +189,7 @@
                  "type":"spawn-point",
                  "visible":true,
                  "width":0,
-                 "x":1170.66666666667,
+                 "x":1170.67,
                  "y":1196
                 }, 
                 {
@@ -212,8 +212,8 @@
                  "type":"spawn-point",
                  "visible":true,
                  "width":0,
-                 "x":1255.51515151515,
-                 "y":3844.48484848485
+                 "x":1255.52,
+                 "y":3844.48
                 }, 
                 {
                  "height":0,
@@ -235,8 +235,8 @@
                  "type":"spawn-point",
                  "visible":true,
                  "width":0,
-                 "x":1349.45454545454,
-                 "y":6259.63636363636
+                 "x":1349.45,
+                 "y":6259.64
                 }, 
                 {
                  "height":0,
@@ -258,8 +258,8 @@
                  "type":"spawn-point",
                  "visible":true,
                  "width":0,
-                 "x":1942.66666666667,
-                 "y":7557.09090909091
+                 "x":1942.67,
+                 "y":7557.09
                 }, 
                 {
                  "height":0,
@@ -281,8 +281,8 @@
                  "type":"spawn-point",
                  "visible":true,
                  "width":0,
-                 "x":4606.66666666667,
-                 "y":6685.09090909091
+                 "x":4606.67,
+                 "y":6685.09
                 }, 
                 {
                  "height":0,
@@ -304,8 +304,8 @@
                  "type":"spawn-point",
                  "visible":true,
                  "width":0,
-                 "x":3542.66666666667,
-                 "y":4893.09090909091
+                 "x":3542.67,
+                 "y":4893.09
                 }, 
                 {
                  "height":0,
@@ -327,7 +327,7 @@
                  "type":"spawn-point",
                  "visible":true,
                  "width":0,
-                 "x":1230.66666666667,
+                 "x":1230.67,
                  "y":1268
                 }, 
                 {
@@ -350,8 +350,8 @@
                  "type":"spawn-point",
                  "visible":true,
                  "width":0,
-                 "x":1315.51515151515,
-                 "y":3916.48484848485
+                 "x":1315.52,
+                 "y":3916.48
                 }, 
                 {
                  "height":0,
@@ -373,8 +373,8 @@
                  "type":"spawn-point",
                  "visible":true,
                  "width":0,
-                 "x":1409.45454545454,
-                 "y":6331.63636363636
+                 "x":1409.45,
+                 "y":6331.64
                 }, 
                 {
                  "height":0,
@@ -396,8 +396,8 @@
                  "type":"spawn-point",
                  "visible":true,
                  "width":0,
-                 "x":2002.66666666667,
-                 "y":7629.09090909091
+                 "x":2002.67,
+                 "y":7629.09
                 }, 
                 {
                  "height":0,
@@ -419,8 +419,8 @@
                  "type":"spawn-point",
                  "visible":true,
                  "width":0,
-                 "x":4666.66666666667,
-                 "y":6757.09090909091
+                 "x":4666.67,
+                 "y":6757.09
                 }, 
                 {
                  "height":0,
@@ -442,8 +442,8 @@
                  "type":"spawn-point",
                  "visible":true,
                  "width":0,
-                 "x":3602.66666666667,
-                 "y":4965.09090909091
+                 "x":3602.67,
+                 "y":4965.09
                 }, 
                 {
                  "height":0,
@@ -466,7 +466,7 @@
                  "visible":true,
                  "width":0,
                  "x":1148,
-                 "y":1342.66666666667
+                 "y":1342.67
                 }, 
                 {
                  "height":0,
@@ -488,8 +488,8 @@
                  "type":"spawn-point",
                  "visible":true,
                  "width":0,
-                 "x":1232.84848484848,
-                 "y":3991.15151515152
+                 "x":1232.85,
+                 "y":3991.15
                 }, 
                 {
                  "height":0,
@@ -511,8 +511,8 @@
                  "type":"spawn-point",
                  "visible":true,
                  "width":0,
-                 "x":1326.78787878788,
-                 "y":6406.30303030303
+                 "x":1326.79,
+                 "y":6406.3
                 }, 
                 {
                  "height":0,
@@ -535,7 +535,7 @@
                  "visible":true,
                  "width":0,
                  "x":1920,
-                 "y":7703.75757575758
+                 "y":7703.76
                 }, 
                 {
                  "height":0,
@@ -558,7 +558,7 @@
                  "visible":true,
                  "width":0,
                  "x":4584,
-                 "y":6831.75757575758
+                 "y":6831.76
                 }, 
                 {
                  "height":0,
@@ -581,30 +581,13 @@
                  "visible":true,
                  "width":0,
                  "x":3520,
-                 "y":5039.75757575758
+                 "y":5039.76
                 }, 
                 {
-                 "height":0,
                  "id":114,
-                 "name":"cylinder-spawn",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"spawns",
-                         "type":"string",
-                         "value":"cylinder"
-                        }, 
-                        {
-                         "name":"targettable",
-                         "type":"bool",
-                         "value":true
-                        }],
-                 "rotation":0,
-                 "type":"spawn-point",
-                 "visible":true,
-                 "width":0,
-                 "x":1205.33333333333,
-                 "y":1404
+                 "template":"..\/..\/Tiled Map Editor Files\/templates\/cylinder-spawn.tx",
+                 "x":1247.33,
+                 "y":1474
                 }, 
                 {
                  "height":0,
@@ -626,8 +609,8 @@
                  "type":"spawn-point",
                  "visible":true,
                  "width":0,
-                 "x":1290.18181818182,
-                 "y":4052.48484848485
+                 "x":1290.18,
+                 "y":4052.48
                 }, 
                 {
                  "height":0,
@@ -649,8 +632,8 @@
                  "type":"spawn-point",
                  "visible":true,
                  "width":0,
-                 "x":2930.18181818182,
-                 "y":1500.48484848485
+                 "x":2930.18,
+                 "y":1500.48
                 }, 
                 {
                  "height":0,
@@ -672,8 +655,8 @@
                  "type":"spawn-point",
                  "visible":true,
                  "width":0,
-                 "x":1384.12121212121,
-                 "y":6467.63636363636
+                 "x":1384.12,
+                 "y":6467.64
                 }, 
                 {
                  "height":0,
@@ -695,8 +678,8 @@
                  "type":"spawn-point",
                  "visible":true,
                  "width":0,
-                 "x":1977.33333333333,
-                 "y":7765.09090909091
+                 "x":1977.33,
+                 "y":7765.09
                 }, 
                 {
                  "height":0,
@@ -718,8 +701,8 @@
                  "type":"spawn-point",
                  "visible":true,
                  "width":0,
-                 "x":4641.33333333333,
-                 "y":6893.09090909091
+                 "x":4641.33,
+                 "y":6893.09
                 }, 
                 {
                  "height":0,
@@ -741,8 +724,8 @@
                  "type":"spawn-point",
                  "visible":true,
                  "width":0,
-                 "x":3577.33333333333,
-                 "y":5101.09090909091
+                 "x":3577.33,
+                 "y":5101.09
                 }, 
                 {
                  "height":0,
@@ -764,8 +747,8 @@
                  "type":"spawn-point",
                  "visible":true,
                  "width":0,
-                 "x":1258.66666666667,
-                 "y":1118.66666666667
+                 "x":1258.67,
+                 "y":1118.67
                 }, 
                 {
                  "height":0,
@@ -787,8 +770,8 @@
                  "type":"spawn-point",
                  "visible":true,
                  "width":0,
-                 "x":1343.51515151515,
-                 "y":3767.15151515151
+                 "x":1343.52,
+                 "y":3767.15
                 }, 
                 {
                  "height":0,
@@ -810,8 +793,8 @@
                  "type":"spawn-point",
                  "visible":true,
                  "width":0,
-                 "x":1437.45454545454,
-                 "y":6182.30303030303
+                 "x":1437.45,
+                 "y":6182.3
                 }, 
                 {
                  "height":0,
@@ -833,8 +816,8 @@
                  "type":"spawn-point",
                  "visible":true,
                  "width":0,
-                 "x":2030.66666666667,
-                 "y":7479.75757575758
+                 "x":2030.67,
+                 "y":7479.76
                 }, 
                 {
                  "height":0,
@@ -856,8 +839,8 @@
                  "type":"spawn-point",
                  "visible":true,
                  "width":0,
-                 "x":4694.66666666667,
-                 "y":6607.75757575758
+                 "x":4694.67,
+                 "y":6607.76
                 }, 
                 {
                  "height":0,
@@ -879,8 +862,36 @@
                  "type":"spawn-point",
                  "visible":true,
                  "width":0,
-                 "x":3630.66666666667,
-                 "y":4815.75757575758
+                 "x":3630.67,
+                 "y":4815.76
+                }, 
+                {
+                 "height":300,
+                 "id":147,
+                 "name":"Ogre",
+                 "polygon":[
+                        {
+                         "x":0,
+                         "y":0
+                        }, 
+                        {
+                         "x":300,
+                         "y":0
+                        }, 
+                        {
+                         "x":300,
+                         "y":300
+                        }, 
+                        {
+                         "x":0,
+                         "y":300
+                        }],
+                 "rotation":0,
+                 "type":"enemy-spawn",
+                 "visible":true,
+                 "width":300,
+                 "x":1151.5103030303,
+                 "y":1921.21121212121
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -894,20 +905,8 @@
          "name":"Triggers",
          "objects":[
                 {
-                 "height":0,
                  "id":5,
-                 "name":"teleport",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"destination",
-                         "type":"string",
-                         "value":"966,134"
-                        }],
-                 "rotation":0,
-                 "type":"teleport",
-                 "visible":true,
-                 "width":0,
+                 "template":"..\/..\/Tiled Map Editor Files\/templates\/teleport.tx",
                  "x":4671,
                  "y":6403
                 }, 
@@ -1063,8 +1062,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":756,
-                 "y":1388.67
+                 "x":645.333,
+                 "y":1447.34
                 }, 
                 {
                  "height":0,
@@ -1135,8 +1134,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":800,
-                 "y":2180.67
+                 "x":930,
+                 "y":2186.67
                 }, 
                 {
                  "height":0,
@@ -1279,8 +1278,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":486.667,
-                 "y":1244.67
+                 "x":440,
+                 "y":1319.34
                 }, 
                 {
                  "height":0,
@@ -1495,8 +1494,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":632,
-                 "y":1518
+                 "x":558.667,
+                 "y":1594
                 }, 
                 {
                  "height":0,
@@ -1675,8 +1674,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":717.333,
-                 "y":2031.33
+                 "x":665.333,
+                 "y":1941.33
                 }, 
                 {
                  "height":0,
@@ -1711,8 +1710,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":673.333,
-                 "y":1239.33
+                 "x":757.333,
+                 "y":1312.66
                 }, 
                 {
                  "height":0,
@@ -1769,22 +1768,10 @@
                  "y":6959.33
                 }, 
                 {
-                 "height":0,
                  "id":32,
-                 "name":"1pt",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"value",
-                         "type":"int",
-                         "value":1
-                        }],
-                 "rotation":0,
-                 "type":"points",
-                 "visible":true,
-                 "width":0,
-                 "x":717.333,
-                 "y":2031.33
+                 "template":"..\/..\/Tiled Map Editor Files\/templates\/1pt.tx",
+                 "x":803.333,
+                 "y":1949.33
                 }, 
                 {
                  "height":0,
@@ -1927,8 +1914,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":556,
-                 "y":1387.33
+                 "x":452,
+                 "y":1467.33
                 }, 
                 {
                  "height":0,
@@ -2161,8 +2148,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":789.583,
-                 "y":1558
+                 "x":708.25,
+                 "y":1650
                 }, 
                 {
                  "height":0,
@@ -2233,8 +2220,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":833.583,
-                 "y":2350
+                 "x":979.583,
+                 "y":2392
                 }, 
                 {
                  "height":0,
@@ -2273,7 +2260,7 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":147,
+ "nextobjectid":149,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",

@@ -1,0 +1,52 @@
+{
+	"format": "RGBA8888",
+	"size": {
+		"w": 253,
+		"h": 550
+	},
+	"scale": 1,
+	"frames": [
+		{
+			"filename": "attack.png",
+			"rotated": false,
+			"trimmed": true,
+			"sourceSize": {
+				"w": 300,
+				"h": 300
+			},
+			"spriteSourceSize": {
+				"x": 47,
+				"y": 7,
+				"w": 244,
+				"h": 293
+			},
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 244,
+				"h": 293
+			}
+		},
+		{
+			"filename": "still.png",
+			"rotated": true,
+			"trimmed": true,
+			"sourceSize": {
+				"w": 300,
+				"h": 300
+			},
+			"spriteSourceSize": {
+				"x": 40,
+				"y": 45,
+				"w": 257,
+				"h": 253
+			},
+			"frame": {
+				"x": 0,
+				"y": 293,
+				"w": 257,
+				"h": 253
+			}
+		}
+	]
+}

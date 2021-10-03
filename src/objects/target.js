@@ -7,6 +7,8 @@ const GameCoin = require('./coin');
  * 
  * A cylinder object that can be destroyed and make some coins... collides with player and walls and other cylinders
  * 
+ * This class will eventually be removed or re-done. It was just a pre-cursor to making enemies
+ * @deprecated
  */
 class Target extends Phaser.GameObjects.Image {
 
