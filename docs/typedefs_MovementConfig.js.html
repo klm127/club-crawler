@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: typedefs/Objects.js</title>
+    <title>JSDoc: Source: typedefs/MovementConfig.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: typedefs/Objects.js</h1>
+    <h1 class="page-title">Source: typedefs/MovementConfig.js</h1>
 
     
 
@@ -27,10 +27,17 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * @module ClubCrawler.Objects
- * @namespace ClubCrawler.Objects
- * @description Game Objects in Club Crawler
- */</code></pre>
+ * @typedef {Object} ClubCrawler.Types.MovementConfig
+ * 
+ * @property {Phaser.Scene} scene - The physics scene
+ * @property {number} [repeatTime] - How often to update for repeated functions
+ * @property {number} [velocityIncrement] - How fast to move the object
+ * @property {number} [moveRatio=1] - How much do multiply velocity by, relevant if velocityIncrement is determined from the object being moved instead
+ * @property {number} [maxFailedAttempts=10] - How many times a repeating movement will be executed without success before it stops trying
+ * @property {number} [failureDrift=1] - If a repeating movement, how much offset from the last x/y is considered a failed attempt after the move
+ * /
+ */
+</code></pre>
         </article>
     </section>
 

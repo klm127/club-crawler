@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: Objects</title>
+    <title>JSDoc: Class: Ogre</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: Objects</h1>
+    <h1 class="page-title">Class: Ogre</h1>
 
     
 
@@ -28,7 +28,10 @@
 
 <header>
     
-        <h2>Objects</h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>
+            <span class="ancestors"><a href="ClubCrawler.Objects.html">.Objects</a>.</span>Ogre<span class="signature">(config)</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description">A class for an Ogre enemy. Uses an atlas w two sprite animations</div>
         
     
 </header>
@@ -37,112 +40,35 @@
     <div class="container-overview">
     
         
-            <div class="description">Game Objects in Club Crawler</div>
-        
 
-        
+    
+    <h2>Constructor</h2>
+    
 
-
-<dl class="details">
-
+    
+    <h4 class="name" id="Ogre"><span class="type-signature"></span>new Ogre<span class="signature">(config)</span><span class="type-signature"></span></h4>
     
 
     
 
+
+
+<div class="description">
+    Constructs the ogre
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="typedefs_Objects.js.html">typedefs/Objects.js</a>, <a href="typedefs_Objects.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Classes</h3>
-
-        <dl>
-            <dt><a href="ClubCrawler.Objects.Bullet.html">Bullet</a></dt>
-            <dd></dd>
-        
-            <dt><a href="ClubCrawler.Objects.DungeonMapManager.html">DungeonMapManager</a></dt>
-            <dd></dd>
-        
-            <dt><a href="ClubCrawler.Objects.GameCoin.html">GameCoin</a></dt>
-            <dd></dd>
-        
-            <dt><a href="ClubCrawler.Objects.Ogre.html">Ogre</a></dt>
-            <dd></dd>
-        
-            <dt><a href="ClubCrawler.Objects.Player.html">Player</a></dt>
-            <dd></dd>
-        
-            <dt><a href="ClubCrawler.Objects.Reticle.html">Reticle</a></dt>
-            <dd></dd>
-        </dl>
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id=".dataManager"><span class="type-signature">(static, constant) </span>dataManager<span class="type-signature"></span></h4>
-
-
-
-
-
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
+<table class="params">
     <thead>
     <tr>
         
@@ -164,13 +90,13 @@
 
         <tr>
             
-                <td class="name"><code>score</code></td>
+                <td class="name"><code>config</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type">Object</span>
 
 
             
@@ -180,20 +106,62 @@
 
             
 
-            <td class="description last">The game score. Displayed on the overlay.</td>
+            <td class="description last">The configuration object
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>scene</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Phaser.Scene</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The creating scene</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>health</code></td>
+                <td class="name"><code>item</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type">Item</span>
 
 
             
@@ -203,35 +171,21 @@
 
             
 
-            <td class="description last">The player health. Todo: Display on the overlay.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>emitter</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Phaser.Events.EventEmitter</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The global <a href="https://newdocs.phaser.io/docs/3.52.0/Phaser.Events.EventEmitter">Phaser.Events.EventEmitter</a> instance for cross scene and global communication.</td>
+            <td class="description last">The Tiled item having the x,y etc</td>
         </tr>
 
     
     </tbody>
 </table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
 
 
 
@@ -265,7 +219,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_data.js.html">objects/data.js</a>, <a href="objects_data.js.html#line13">line 13</a>
+        <a href="objects_ogre.js.html">objects/ogre.js</a>, <a href="objects_ogre.js.html#line29">line 29</a>
     </li></ul></dd>
     
 
@@ -281,7 +235,46 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+        <h3 class="subsection-title">Extends</h3>
+
         
+
+
+    <ul>
+        <li>Phaser.GameObjects.Image</li>
+    </ul>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
     
 
     

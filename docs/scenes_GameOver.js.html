@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: scenes/DungeonCrawlerGame.js</title>
+    <title>JSDoc: Source: scenes/GameOver.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: scenes/DungeonCrawlerGame.js</h1>
+    <h1 class="page-title">Source: scenes/GameOver.js</h1>
 
     
 
@@ -28,13 +28,19 @@
         <article>
             <pre class="prettyprint source linenums"><code>import Phaser from "phaser";
 
-const Player = require('../objects/player')
-const DungeonMapManager = require('../objects/map');
-const Bullet = require('../objects/bullet')
+const dataManager = require('../objects/data');
+
+const STYLE = {
+    playColor: "white",
+    playOver:"blue",
+    playClick: "red",
+    gameOverColor: "#72270d"
+}
+
 
 /** 
  * @classdesc
- * The main game containing the mapmanager, player, and input detection
+ * Game over screen
  * @memberof ClubCrawler.Scenes
  * @extends Phaser.Scene
  * @see {@link https://newdocs.phaser.io/docs/3.55.2/Phaser.Scene Phaser.Scene}
@@ -47,76 +53,61 @@ class DungeonCrawlerGame extends Phaser.Scene
      * @extends Phaser.Scene.preload
      */
     preload() {
-        Player.preload({scene: this});
-        DungeonMapManager.preload({scene:this, mapName:'blueworld'});
+        //...
     }
 
     /**
-     * Creates game items needed.
+     * Creates text.
      * 
      * @extends Phaser.Scene.create
      */
     create() {
-        /**
-         * The map manager
-         * @type {ClubCrawler.Objects.DungeonMapManager}
-         */
-        this.mapManager = new DungeonMapManager({scene: this, map: 'blueworld'});
-        /**
-         * The player
-         * @type {ClubCrawler.Objects.Player}
-         */
-        this.player = new Player({scene:this, x:200, y: 200, scale:0.5, maxSpeed: 540, drag:1000, velocityIncrement: 55}); 
+        let gameHeight = this.game.config.height;
+        let gameWidth = this.game.config.width;
+        this.gameOver = this.add.text(gameWidth/2, gameHeight/3, "☠ Game Over ☠", {
+            fontFamily: 'serif',
+            shadow: {
+                color:"white",
+                x: 25,
+                offsetY: 25,
+                offsetX: 100
+            },
+            fontSize: 80,
+            color: "#72270d"
+        }).setOrigin(0.5,0.5);
 
+        this.score = this.add.text(gameWidth/2, gameHeight/2, "Your Score : " + dataManager.score, {
+            fontFamily: 'sans serif',
+            fontSize: 20,
+        }).setOrigin(0.5,0.5)
 
-        // camera follows player
-        this.cameras.main.startFollow(this.player, true);
-
-        //place the player
-        this.mapManager.startPlayer(this.player);
-
-        //draw the map objects
-        this.mapManager.placeMapObjects();
-
-        //launch the overlay 
-        this.scene.launch('crawleroverlay');
-
-        //set up input event listening
-        /**
-         * Listeners for arrow keys, space, and shift
-         * 
-         * @see {@link https://newdocs.phaser.io/docs/3.55.1/Phaser.Types.Input.Keyboard.CursorKeys Phaser.Types.Input.Keyboard.CursorKeys}
-         * 
-         * @type {Phaser.Types.Input.Keyboard.CursorKeys}
-         */
-        this.cursors = this.input.keyboard.createCursorKeys();
-
-        //click to shoot
-        this.input.on('pointerdown', ()=> {
-            Bullet.makeBullet(this.player);
-        }, this);
-
-    }
-    /**
-     * Updates items as needed. Checks for keyboard input.
-     * 
-     * @param {number} time - total elapsed time
-     * @param {number} delta - change in time since last update
-     */
-    update(time, delta) {
-        if(this.cursors.left.isDown) {
-            this.player.move('w');
+        this.playAgain = this.add.text(gameWidth/2, gameHeight/2+200, "Play Again?",{
+                fontFamily: "Sans Serif",
+                fontSize: 28,
+                color: STYLE.playColor
         }
-        if(this.cursors.right.isDown) {
-            this.player.move('e');
-        }
-        if(this.cursors.down.isDown) {
-            this.player.move('s');
-        }
-        if(this.cursors.up.isDown) {
-            this.player.move('n');
-        }
-        this.player.reticle.update();
+        ).setOrigin(0.5,0.5);
+
+        this.playAgain.setInteractive();
+
+        this.playAgain.on('pointerover', (pointer)=> {
+            this.playAgain.setColor(STYLE.playOver);
+        });
+
+        this.playAgain.on('pointerdown', (pointer)=> {
+            this.playAgain.setColor(STYLE.playClick)
+        });
+
+        this.playAgain.on('pointerout', (pointer)=> {
+            this.playAgain.setColor(STYLE.playColor);
+        })
+
+        this.playAgain.on('pointerup', (pointer)=> {
+            this.scene.stop('gameover');
+            dataManager.score = 0;
+            this.scene.start('titlescreen');
+        });
+
     }
 
 }
