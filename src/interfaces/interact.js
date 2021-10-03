@@ -1,8 +1,19 @@
 /**
- * Methods for object interactions
+ * Contains functions for interactions
  * 
- * Mostly to be set up by the MapManager for collisions
+ * @memberof ClubCrawler.Interfaces
  * 
+ * @namespace Interact
+ * 
+ */
+
+/**
+ * Description
+ * @memberof ClubCrawler.Interfaces.Interact
+ * 
+ * @param {any} damagedObject
+ * @param {any} sourceObject
+ * @returns {any}
  */
 function validateDamage(damagedObject, sourceObject) {
     if(!sourceObject.damage) {
@@ -22,6 +33,7 @@ function validateDamage(damagedObject, sourceObject) {
 
 /**
  * Damages an object... calls die() if its health is less than or equal to 0 
+ * @memberof ClubCrawler.Interfaces.Interact
  * 
  * @param {Object} sourceObject
  * @param {int} sourceObject.damage - damage done
@@ -49,6 +61,14 @@ function damageCollision(damagedObject, sourceObject) {
     }
     return true;
 }
+
+/**
+ * @memberof ClubCrawler.Interfaces.Interact
+ * Calls damageCollision with reversed parameters
+ * @param {any} sourceObject
+ * @param {any} damagedObject
+ * @returns {any}
+ */
 function damageCollisionReversed(sourceObject, damagedObject) {
     damageCollision(damagedObject,sourceObject);
 }

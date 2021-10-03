@@ -4,9 +4,23 @@
  * Like Movement, work by firing events
  * 
  * Objects using senses should define a sense function
+ * 
+ * @memberof ClubCrawler.Interfaces
+ * 
+ * @namespace Sense
+ * 
  */
+
 import Phaser from "phaser"
 
+/**
+ * Validates a SenseConfig Object
+ * 
+ * @memberof ClubCrawler.Interfaces.Sense
+ * @param {Phaser.GameObjects.GameObject} caller - The caller game object
+ * @param {ClubCrawler.Types.SenseConfig} config - The sense config
+ * @returns {boolean}
+ */
 function validateSense(caller, config) {
     if(!config) {
         config = {};
@@ -46,6 +60,14 @@ function validateSense(caller, config) {
     return true;
 
 }
+/**
+ * Senses the player, then calles sense on caller on it
+ * 
+ * @memberof ClubCrawler.Interfaces.Sense
+ * @param {Phaser.GameObjects.GameObject} caller - The caller game object
+ * @param {ClubCrawler.Types.SenseConfig} config - The sense config
+ * @returns {boolean}
+ */
 function sensePlayer(caller, config) {
     if(!caller) {
         caller=this;
@@ -60,6 +82,14 @@ function sensePlayer(caller, config) {
     });
     return true;
 }
+/**
+ * Senses the player, and repeats sensing at set intervals
+ * 
+ * @memberof ClubCrawler.Interfaces.Sense
+ * @param {Phaser.GameObjects.GameObject} caller - The caller game object
+ * @param {ClubCrawler.Types.SenseConfig} config - The sense config
+ * @returns {boolean}
+ */
 function sensePlayerRepeat(caller, config) {
     if(!caller) {
         caller = this;

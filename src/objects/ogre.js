@@ -9,7 +9,7 @@ const DEFAULT_OGRE_STATS = {
     speed: 100, // might be redundant with velocity increment being the more relevant one
     maxSpeed: 500,
     updateSpeed: 1000,
-    velocityIncrement: 500,
+    velocityIncrement: 400,
     mass: 5,
     drag: 50,
     maxCoins: 10,
@@ -70,20 +70,20 @@ class Ogre extends Phaser.GameObjects.Image {
     takeDamage(damage) {
         let ogre = this;
         ogre.health -= damage;
-        if(ogre.health > 0) {
-            this.scene.tweens.addCounter({
-                from: 0,
-                to: 20,
-                yoyo:true,
-                duration: 100,
-                onUpdate: function(tween) {
-                    //console.log(tween);
-                    if(ogre) {
-                        ogre.setAngle(tween.getValue());
-                    }
-                }
-            });
-        }
+        // if(ogre.health > 0) {
+        //     this.scene.tweens.addCounter({
+        //         from: 0,
+        //         to: 20,
+        //         yoyo:true,
+        //         duration: 100,
+        //         onUpdate: function(tween) {
+        //             //console.log(tween);
+        //             if(ogre) {
+        //                 ogre.setY(tween.getValue()+ogre.y);
+        //             }
+        //         }
+        //     });
+        // }
     }
     die() {
         this.setRotation(1.5);

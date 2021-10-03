@@ -1,10 +1,21 @@
 /**
  * Contains functions for different movement patterns
  * 
+ * @memberof ClubCrawler.Interfaces
+ * 
+ * @namespace Movement
+ * 
  */
-
 import Phaser from "phaser";
 
+/**
+ * Validates a MovementConfig Object
+ * 
+ * @memberof ClubCrawler.Interfaces.Movement
+ * @param {Phaser.GameObjects.GameObject} caller - The caller game object
+ * @param {ClubCrawler.Types.MovementConfig} config - The movement config
+ * @returns {boolean}
+ */
 function validatePhysicsMove(caller, config) {
     if(!caller) {
         validatePhysicsMove(this, config);
@@ -60,7 +71,14 @@ function validatePhysicsMove(caller, config) {
     }
     return true;
 }
-
+/**
+ * retreat from player movement pattern
+ * 
+ * @memberof ClubCrawler.Interfaces.Movement
+ * @param {Phaser.GameObjects.GameObject} caller - The caller game object
+ * @param {ClubCrawler.Types.MovementConfig} config - The movement config
+ * @returns {boolean}
+ */
 function retreatFromPlayer(caller, config) {
     if(!caller) {
         caller = this;
@@ -86,6 +104,14 @@ function retreatFromPlayer(caller, config) {
     config.scene.time.delayedCall(config.repeatTime, moveTowardsPlayer, [caller, config]);
 }
 
+/**
+ * move towards player
+ * 
+ * @memberof ClubCrawler.Interfaces.Movement
+ * @param {Phaser.GameObjects.GameObject} caller - The caller game object
+ * @param {ClubCrawler.Types.MovementConfig} config - The movement config
+ * @returns {boolean}
+ */
 function moveTowardsPlayer(caller, config) {
     if(!caller) {
         caller = this;
@@ -111,6 +137,14 @@ function moveTowardsPlayer(caller, config) {
     return true;
 }
 
+/**
+ * move towards player repeatedly (probably not necessary if you are calling it after a regular Sense update)
+ * 
+ * @memberof ClubCrawler.Interfaces.Movement
+ * @param {Phaser.GameObjects.GameObject} caller - The caller game object
+ * @param {ClubCrawler.Types.MovementConfig} config - The movement config
+ * @returns {boolean}
+ */
 function moveTowardsPlayerRepeat(caller, config) {
     if(!caller) {
         caller = this;
@@ -122,7 +156,14 @@ function moveTowardsPlayerRepeat(caller, config) {
         return false;
     }
 }
-
+/**
+ * Moves in a random direction, but tries not to move into colliding walls
+ * 
+ * @memberof ClubCrawler.Interfaces.Movement
+ * @param {Phaser.GameObjects.GameObject} caller - The caller game object
+ * @param {ClubCrawler.Types.MovementConfig} config - The movement config
+ * @returns {boolean}
+ */
 function moveRandomly(caller, config) {
     if(!validatePhysicsMove(caller, config)) {
         return false;
