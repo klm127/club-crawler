@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="128" height="128" tilewidth="128" tileheight="128" infinite="0" nextlayerid="8" nextobjectid="149">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="128" height="128" tilewidth="128" tileheight="128" infinite="0" nextlayerid="8" nextobjectid="151">
  <editorsettings>
   <export target="../static/maps/blueworld.json" format="json"/>
  </editorsettings>
@@ -396,6 +396,12 @@
    <point/>
   </object>
   <object id="147" name="Ogre" type="enemy-spawn" x="1151.51" y="1921.21" width="300" height="300">
+   <polygon points="0,0 300,0 300,300 0,300"/>
+  </object>
+  <object id="149" name="Ogre" type="enemy-spawn" x="972.722" y="3245.45" width="300" height="300">
+   <polygon points="0,0 300,0 300,300 0,300"/>
+  </object>
+  <object id="150" name="Ogre" type="enemy-spawn" x="2901.81" y="3467.63" width="300" height="300">
    <polygon points="0,0 300,0 300,300 0,300"/>
   </object>
  </objectgroup>

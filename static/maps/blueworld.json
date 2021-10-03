@@ -890,8 +890,64 @@
                  "type":"enemy-spawn",
                  "visible":true,
                  "width":300,
-                 "x":1151.5103030303,
-                 "y":1921.21121212121
+                 "x":1151.51,
+                 "y":1921.21
+                }, 
+                {
+                 "height":300,
+                 "id":149,
+                 "name":"Ogre",
+                 "polygon":[
+                        {
+                         "x":0,
+                         "y":0
+                        }, 
+                        {
+                         "x":300,
+                         "y":0
+                        }, 
+                        {
+                         "x":300,
+                         "y":300
+                        }, 
+                        {
+                         "x":0,
+                         "y":300
+                        }],
+                 "rotation":0,
+                 "type":"enemy-spawn",
+                 "visible":true,
+                 "width":300,
+                 "x":972.722121212121,
+                 "y":3245.45242424242
+                }, 
+                {
+                 "height":300,
+                 "id":150,
+                 "name":"Ogre",
+                 "polygon":[
+                        {
+                         "x":0,
+                         "y":0
+                        }, 
+                        {
+                         "x":300,
+                         "y":0
+                        }, 
+                        {
+                         "x":300,
+                         "y":300
+                        }, 
+                        {
+                         "x":0,
+                         "y":300
+                        }],
+                 "rotation":0,
+                 "type":"enemy-spawn",
+                 "visible":true,
+                 "width":300,
+                 "x":2901.81303030303,
+                 "y":3467.63424242424
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2260,7 +2316,7 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":149,
+ "nextobjectid":151,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",

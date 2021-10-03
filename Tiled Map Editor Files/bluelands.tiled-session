@@ -5,8 +5,8 @@
     },
     "activeFile": "blueworld.tmx",
     "expandedProjectPaths": [
-        "templates",
-        "."
+        ".",
+        "templates"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -83,11 +83,11 @@
             "scaleInEditor": 0.5
         },
         "blueworld.tmx": {
-            "scale": 0.33,
-            "selectedLayer": 2,
+            "scale": 0.125,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 1493.939393939394,
-                "y": 2593.939393939394
+                "x": 2928,
+                "y": 2016
             }
         },
         "blueworld.tmx#blue-patterned-world": {
