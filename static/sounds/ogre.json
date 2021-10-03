@@ -1,0 +1,27 @@
+{
+    "resources": [
+        "./ogre.mp3"
+    ],
+    "spritemap": {
+        "takedamage": {
+            "start": 0.5,
+            "loop": false,
+            "end": 2
+        },
+        "shout": {
+            "start": 7.5,
+            "end": 11,
+            "loop": false
+        },
+        "die": {
+            "start": 14,
+            "end": 25,
+            "loop": false
+        },
+        "dealdamage": {
+            "start": 28,
+            "end": 32,
+            "loop": false
+        }
+    }
+}

@@ -14,6 +14,8 @@ const dataManager = {
     score: 0,
     health: 0,
     emitter: emitter,
+    sfxVolume: 1,
+    musicVolume: 0.5,
     /**
      * Changes the score and emits the 'scoreChange' event.
      * @param {number} change - The amount to change the score by.
@@ -23,7 +25,7 @@ const dataManager = {
         dataManager.score += change;
         emitter.emit('scoreChange');
         return dataManager.score;
-    },
+    }, 
     changeHealth: function(change) {
         dataManager.health += change;
         emitter.emit('healthChange');

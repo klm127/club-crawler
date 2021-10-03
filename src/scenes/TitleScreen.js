@@ -46,7 +46,13 @@ class TitleScreen extends Phaser.Scene
 
         this.titleText.green = 0;
         this.titleText.red = 0;
-        musicManager.create(this);
+        if(!musicManager.music) { // fix overlapping music bug
+            musicManager.create(this);
+        } else {
+            if(!musicManager.music.isPlaying) {
+                musicManager.music.play();
+            }
+        }
     }
     update(time,delta) {
         if(this.titleText.green < 255) {

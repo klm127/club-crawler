@@ -55,6 +55,17 @@ class DungeonCrawlerOverlay extends Phaser.Scene
             fontSize: 18
         }).setOrigin(0.5,0.5);
 
+        let gameWidth = this.game.config.width;
+        let gameHeight = this.game.config.height;
+        this.settingsButton = this.add.text(gameWidth*.93, gameHeight*.05, 'Settings').setOrigin(0.5,0.5);
+        this.settingsButton.setInteractive();
+        this.settingsButton.on('pointerover', (pointer)=> {
+            this.settingsButton.setColor('blue');
+        });
+        this.settingsButton.on('pointerout', (pointer)=> {
+            this.settingsButton.setColor('red');
+        });
+
         dataManager.emitter.on('scoreChange', this.pointsChange, this)
         dataManager.emitter.on('healthChange', this.healthChange, this);
         
