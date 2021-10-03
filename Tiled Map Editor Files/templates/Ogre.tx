@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <object name="Ogre" type="enemy-spawn" width="300" height="300"/>
+</template>

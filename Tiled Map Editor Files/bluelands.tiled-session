@@ -1,0 +1,134 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "blueworld.tmx",
+    "expandedProjectPaths": [
+        "templates",
+        "."
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/karlm/Pictures/tileset-base/future/blue-patterned-world.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "C:/Users/karlm/Pictures/tileset-base/tiled/blueworld.tmx": {
+            "scale": 0.0625,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 136,
+                "y": 5712
+            }
+        },
+        "C:/Users/karlm/Pictures/tileset-base/tiled/blueworld.tmx#blue-patterned-world": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/karlm/Pictures/tileset-base/tiled/blueworld.tmx#blueworld": {
+            "dynamicWrapping": true,
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
+        },
+        "C:/Users/karlm/Pictures/tileset-base/tiled/extracttileset.tmx": {
+            "scale": 0.015625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": -12992,
+                "y": 8096
+            }
+        },
+        "C:/Users/karlm/Pictures/tileset-base/tiled/extracttileset.tmx#blueworld2": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "C:/Users/karlm/Pictures/tileset-base/tiled/ogre-chaser-1.tsx": {
+            "dynamicWrapping": true
+        },
+        "C:/Users/karlm/Pictures/tileset-base/tiled/ogremap.tmx": {
+            "scale": 0.125,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 3464,
+                "y": 5896
+            }
+        },
+        "C:/Users/karlm/Pictures/tileset-base/tiled/small-keep.tmx": {
+            "scale": 0.125,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 2632,
+                "y": 4096
+            }
+        },
+        "C:/Users/karlm/Pictures/tileset-base/tiled/small-keep.tmx#small_keep": {
+            "scaleInDock": 0.25
+        },
+        "C:/Users/karlm/Pictures/tileset-base/tiled/test-map-1.tmx": {
+            "scale": 0.33,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1530.3030303030305,
+                "y": 2048.4848484848485
+            }
+        },
+        "C:/Users/karlm/Projects/js/phaser-tutorial-ourcade/public/maps/ogre-chaser-1.json": {
+            "scaleInDock": 0.25,
+            "scaleInEditor": 0.5
+        },
+        "blueworld.tmx": {
+            "scale": 0.33,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 1493.939393939394,
+                "y": 2593.939393939394
+            }
+        },
+        "blueworld.tmx#blue-patterned-world": {
+            "scaleInDock": 1
+        }
+    },
+    "last.exportedFilePath": "C:/Users/karlm/Documents/Actual Documents/2021 Spring/Programming Club/club-crawler-js/static/maps",
+    "last.externalTilesetPath": "C:/Users/karlm/Pictures/tileset-base/future",
+    "last.imagePath": "C:/Users/karlm/Documents/Actual Documents/2021 Spring/Programming Club/club-crawler-js/static/images/tilesets",
+    "last.objectTemplatePath": "C:/Users/karlm/Documents/Actual Documents/2021 Spring/Programming Club/club-crawler-js/Tiled Map Editor Files/templates",
+    "last.worldFilePath": "C:/Users/karlm/Documents/Actual Documents/2021 Spring/Programming Club/club-crawler-js/Tiled Map Editor Files",
+    "lastUsedTilesetExportFilter": "All Files (*)",
+    "loadedWorlds": [
+        "C:/Users/karlm/Documents/Actual Documents/2021 Spring/Programming Club/club-crawler-js/Tiled Map Editor Files/bluelands.world"
+    ],
+    "map.height": 128,
+    "map.lastUsedExportFilter": "JSON map files (*.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 128,
+    "map.tileWidth": 128,
+    "map.width": 128,
+    "openFiles": [
+        "blueworld.tmx"
+    ],
+    "project": "bluelands.tiled-project",
+    "property.type": "string",
+    "recentFiles": [
+        "blueworld.tmx",
+        "C:/Users/karlm/Pictures/tileset-base/tiled/blueworld.tmx",
+        "C:/Users/karlm/Pictures/tileset-base/tiled/extracttileset.tmx",
+        "C:/Users/karlm/Pictures/tileset-base/tiled/small-keep.tmx",
+        "C:/Users/karlm/Pictures/tileset-base/tiled/ogremap.tmx",
+        "C:/Users/karlm/Projects/js/phaser-tutorial-ourcade/public/maps/ogre-chaser-1.json",
+        "C:/Users/karlm/Pictures/tileset-base/tiled/test-map-1.tmx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.lastUsedFilter": "All Files (*)",
+    "tileset.lastUsedFormat": "json",
+    "tileset.tileSize": {
+        "height": 128,
+        "width": 128
+    },
+    "tileset.type": 0
+}

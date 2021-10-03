@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <object name="cylinder-spawn" type="spawn-point">
+  <properties>
+   <property name="spawns" value="cylinder"/>
+   <property name="targettable" type="bool" value="true"/>
+  </properties>
+  <point/>
+ </object>
+</template>
