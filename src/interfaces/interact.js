@@ -4,13 +4,13 @@
  * Mostly to be set up by the MapManager for collisions
  * 
  */
-function validateDamage(sourceObject, damagedObject) {
+function validateDamage(damagedObject, sourceObject) {
     if(!sourceObject.damage) {
         console.error('Source object has no damage in validateDamage', sourceObject);
         return false;
     }
-    if(!damagedObject.health) {
-        console.error('damagedObject has no health', damagedObject);
+    if(!damagedObject.takeDamage) {
+        console.error('damagedObject has no take damage func', damagedObject);
         return false;
     }
     if(!damagedObject.die) {
@@ -32,23 +32,29 @@ function validateDamage(sourceObject, damagedObject) {
  * @param {function} damagedObject.damage - Function to call on damagedObject as it gets damaged
  * @returns {bool} Whether damage succesfully applied
  */
-function damageCollision(sourceObject, damagedObject) {
-    if(!validateDamage(sourceObject, damagedObject)) return false;
+function damageCollision(damagedObject, sourceObject) {
+    console.log('dam object', damagedObject.frame.name);
+    console.log('source object', sourceObject.frame.name);
+    if(!validateDamage(damagedObject, sourceObject)) return false;
 
-    damagedObject.health -= sourceObject.damage;
+    //damagedObject.health -= sourceObject.damage;
     if(sourceObject.dealDamage) {
         sourceObject.dealDamage();
     }
     if(damagedObject.takeDamage) {
-        damagedObject.takeDamage();
+        damagedObject.takeDamage(sourceObject.damage);
     }
     if(damagedObject.health <= 0) {
         damagedObject.die();
     }
     return true;
 }
+function damageCollisionReversed(sourceObject, damagedObject) {
+    damageCollision(damagedObject,sourceObject);
+}
 
 
 module.exports = {
-    DamageCollision: damageCollision
+    DamageCollision: damageCollision,
+    DamageCollisionReversed: damageCollisionReversed
 }

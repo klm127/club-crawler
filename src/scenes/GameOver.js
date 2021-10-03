@@ -76,6 +76,7 @@ class DungeonCrawlerGame extends Phaser.Scene
 
         this.playAgain.on('pointerup', (pointer)=> {
             this.scene.stop('gameover');
+            dataManager.score = 0;
             this.scene.start('titlescreen');
         });
 

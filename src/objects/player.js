@@ -2,6 +2,8 @@ import Phaser from "phaser";
 
 const Bullet = require('./bullet');
 
+const dataManager = require('./data');
+
 /** 
  * @classdesc 
  * A class for representing the Player in the game world.
@@ -61,9 +63,10 @@ class Player extends Phaser.GameObjects.Image {
         this.body.setDrag(config.drag ? config.drag : 100, config.drag ? config.drag : 100);
         this.body.setBounce(0.7,0.7);
 
-
+        dataManager.health = 0;
         //set game properties
         this.health = config.health ? config.health : 50;
+        dataManager.changeHealth(this.health);
         this.velocityIncrement = config.velocityIncrement ? config.velocityIncrement : 25;
         this.weapon = null; // todo
 
@@ -87,6 +90,20 @@ class Player extends Phaser.GameObjects.Image {
         else {
             this.body.setVelocityY(this.body.velocity.y - this.velocityIncrement);
         }
+    }
+    die() {
+        //die animation
+        this.scene.scene.stop('crawlergame');
+        this.scene.scene.start('gameover');
+    }
+    takeDamage(amount) {
+        console.log('took damage!')
+        dataManager.changeHealth(-amount);
+        this.health = dataManager.health;
+        if(this.health <= 0) {
+            this.die();
+        }
+
     }
 }
 

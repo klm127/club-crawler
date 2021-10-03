@@ -27,4 +27,4 @@ game.scene.add('titlescreen', TitleScreen);
 game.scene.add('crawlergame', DungeonCrawlerGame);
 game.scene.add('crawleroverlay', DungeonCrawlerOverlay);
 game.scene.add('gameover', GameOver);
-game.scene.start('gameover');
+game.scene.start('titlescreen');

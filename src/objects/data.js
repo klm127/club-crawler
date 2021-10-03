@@ -20,9 +20,13 @@ const dataManager = {
      * @returns {number} - The data manager score
      */
     changeScore: function(change) {
-        dataManager.score += 1;
+        dataManager.score += change;
         emitter.emit('scoreChange');
         return dataManager.score;
+    },
+    changeHealth: function(change) {
+        dataManager.health += change;
+        emitter.emit('healthChange');
     }
     
 } ;

@@ -15,7 +15,7 @@ const DEFAULT_OGRE_STATS = {
     maxCoins: 10,
     minCoins: 5,
     senseRange: 800,
-    damage: 30,
+    damage: 5,
     weapon: null, // implement
 }
 
@@ -67,18 +67,23 @@ class Ogre extends Phaser.GameObjects.Image {
             this.die();
         }
     }
-    takeDamage() {
+    takeDamage(damage) {
         let ogre = this;
-        this.scene.tweens.addCounter({
-            from: 0,
-            to: 20,
-            yoyo:true,
-            duration: 100,
-            onUpdate: function(tween) {
-                console.log(tween);
-                ogre.setAngle(tween.getValue());
-            }
-        });
+        ogre.health -= damage;
+        if(ogre.health > 0) {
+            this.scene.tweens.addCounter({
+                from: 0,
+                to: 20,
+                yoyo:true,
+                duration: 100,
+                onUpdate: function(tween) {
+                    //console.log(tween);
+                    if(ogre) {
+                        ogre.setAngle(tween.getValue());
+                    }
+                }
+            });
+        }
     }
     die() {
         this.setRotation(1.5);

@@ -51,7 +51,7 @@ import Interact from "../interfaces/interact"
             this.bounceFX.play('bounce1') 
         }, undefined, this);
         this.targetCollider = this.scene.physics.add.collider(this, this.scene.mapManager.targets, this.hitTarget);
-        this.enemyCollider = this.scene.physics.add.collider(this, this.scene.mapManager.enemies, Interact.DamageCollision)
+        this.enemyCollider = this.scene.physics.add.collider(this, this.scene.mapManager.enemies, Interact.DamageCollisionReversed);
 
         //destory the bullet after a time
         this.scene.time.delayedCall(1000,this.destroy, [], this);

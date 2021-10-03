@@ -4,6 +4,7 @@ const Player = require('./player');
 const Ogre = require('./ogre');
 const GameCoin = require('./coin');
 const Target = require('./target');
+const Interact = require('../interfaces/interact')
 
 /**
  * @classdesc 
@@ -159,8 +160,8 @@ class DungeonMapManager {
         this.scene.physics.add.collider(this.targets, this.walls);
         this.scene.physics.add.collider(this.enemies, this.walls);
         this.scene.physics.add.collider(this.enemies, this.targets);
-        this.scene.physics.add.collider(this.enemies, this.scene.player);
-        this.scene.physics.add.collider(this.targets, this.targets);
+        //this.scene.physics.add.collider(this.enemies, this.scene.player, Interact.DamageCollision);
+        this.scene.physics.add.collider(this.enemies, this.scene.player, Interact.DamageCollision);
     }
 
 
