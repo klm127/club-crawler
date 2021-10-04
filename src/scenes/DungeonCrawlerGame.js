@@ -2,7 +2,6 @@ import Phaser from "phaser";
 
 const Player = require('../objects/player')
 const DungeonMapManager = require('../objects/map');
-const Bullet = require('../objects/bullet')
 const dataManager = require('../objects/data');
 const Load = require('../utility/load');
 

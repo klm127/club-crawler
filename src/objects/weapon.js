@@ -1,15 +1,18 @@
 import Phaser from "phaser";
-const Bullet = require('./bullet');
+//const Bullet = require('./bullet');
 const Interact = require('../interfaces/interact');
 const dataManager = require('../objects/data');
 
+/**
+ * @memberof ClubCrawler.Objects.Weapon
+ */
 const DEFAULT_WEAPON = {
     duration: 1000,
-    projectileVelocity: 700,
+    projectileVelocity: 1000,
     spin: 2000,
     mass: 0.1,
-    damage: 5,
-    fireRate: 100,
+    damage: 12,
+    fireRate: 300,
     spriteKey: "bullet",
     audioSpriteKey: "bullet-sound",
     audioFireKey: "shot1",

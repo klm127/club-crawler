@@ -1,8 +1,6 @@
 import Phaser from "phaser";
 
 const Weapon = require('./weapon');
-const Bullet = require('./bullet');
-
 const dataManager = require('./data');
 
 /** 

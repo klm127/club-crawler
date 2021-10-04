@@ -1,9 +1,9 @@
 import Phaser from "phaser";
 
-const Movement = require('../interfaces/movement');
-const GameCoin = require('./coin');
-const Sense = require('../interfaces/sense');
-const dataManager = require('./data');
+const Movement = require('../../interfaces/movement');
+const GameCoin = require('../coin');
+const Sense = require('../../interfaces/sense');
+const dataManager = require('../data');
 
 /**
  * Default characteristics for the ogre - health, speed, damage, coin result, etc
@@ -25,6 +25,10 @@ const DEFAULT_OGRE_STATS = {
     senseRange: 800,
     damage: 5,
     sfxVolume: 0.1,
+    spriteKey: "ogre",
+    spriteAttackFrame: "attack.png", // not implemented yet
+    spriteStillFrame: "still.png", // not implemented yet
+    audioSpriteKey: "ogre-sound",
     weapon: null, // implement
 }
 
@@ -47,19 +51,19 @@ class Ogre extends Phaser.GameObjects.Image {
     constructor(config) {
 
         //call super
-        super(config.scene, config.x, config.y, "ogre", "still.png");
+        super(config.scene, config.x, config.y, config.spriteKey ? config.spriteKey : DEFAULT_OGRE_STATS.spriteKey, config.spriteStillFrame ? config.spriteStillFrame : DEFAULT_OGRE_STATS.spriteStillFrame);
         config.scene.add.existing(this);
         config.scene.physics.add.existing(this);
         Object.assign(this, DEFAULT_OGRE_STATS);
         Object.assign(this, config);
         this.setScale(0.75, 0.75);
-        this.dealDamageSfx = this.scene.sound.addAudioSprite('ogre-sound');
+        this.dealDamageSfx = this.scene.sound.addAudioSprite(this.audioSpriteKey);
         this.dealDamageSfx.volume = this.sfxVolume;
-        this.takeDamageSfx = this.scene.sound.addAudioSprite('ogre-sound');
+        this.takeDamageSfx = this.scene.sound.addAudioSprite(this.audioSpriteKey);
         this.takeDamageSfx.volume = this.sfxVolume;
-        this.shoutSfx = this.scene.sound.addAudioSprite('ogre-sound');
+        this.shoutSfx = this.scene.sound.addAudioSprite(this.audioSpriteKey);
         this.shoutSfx.volume = this.sfxVolume;
-        this.dieSfx = this.scene.sound.addAudioSprite('ogre-sound');
+        this.dieSfx = this.scene.sound.addAudioSprite(this.audioSpriteKey);
         this.dieSfx.volume = this.sfxVolume;
         this.hasSensedPlayer = false;
         
