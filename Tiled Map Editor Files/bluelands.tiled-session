@@ -83,11 +83,11 @@
             "scaleInEditor": 0.5
         },
         "blueworld.tmx": {
-            "scale": 0.125,
-            "selectedLayer": 1,
+            "scale": 0.33,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 1900,
-                "y": 3128
+                "x": 1137.878787878788,
+                "y": 2606.060606060606
             }
         },
         "blueworld.tmx#blue-patterned-world": {

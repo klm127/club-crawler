@@ -90,6 +90,10 @@ class Player extends Phaser.GameObjects.Image {
         else {
             this.body.setVelocityY(this.body.velocity.y - this.velocityIncrement);
         }
+        // die if out of bounds
+        if(!this.scene.mapManager.floors.getTileAtWorldXY(this.x,this.y)) {
+            this.die();
+        };
     }
     die() {
         //die animation
