@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "echo Wait for project to build! & parcel src/index.html -p 1234",
-    "build": "parcel build src/index.html",
+    "build-netlify": "parcel build src/index.html --no-minify",
     "document": "jsdoc src -r -d ./docs/ -R todo.md && start ./docs/index.html",
     "document-minami": "jsdoc src -r -d ./docs/ -R Readme.md -t ./node_modules/minami && start ./docs/index.html"
   },
