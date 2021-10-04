@@ -127,14 +127,6 @@ class Player extends Phaser.GameObjects.Image {
  */
 class Reticle extends Phaser.GameObjects.Image {
 
-    /**
-     * Preloads the reticle image asset
-     * @param {Phaser.Scene} scene - See {@link https://newdocs.phaser.io/docs/3.55.2/Phaser.Scene Phaser.Scene}
-     */
-    static preload(scene) {
-        scene.load.image('reticle', 'images/reticle.png');
-        Bullet.preload(scene);
-    }
 
     /**
      * Description

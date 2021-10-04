@@ -17,19 +17,6 @@ const Player = require('./player');
 class GameCoin extends Phaser.GameObjects.Image {
 
     /**
-     * Preloads image. Called by DungeonMapManager.preload.
-     * 
-     * Reserves the "coin" key in the scene images.
-     * 
-     * @static
-     * @param {Phaser.Scene} scene - Game scene preloading
-     */
-    static preload(scene) {
-        scene.load.image('coin', "images/coin.png");
-        scene.load.audioSprite('gamecoin', 'sounds/gamecoin.json', 'sounds/gamecoin.mp3');
-    }
-
-    /**
      * @param {Object} config - Configuration
      * @param {Phaser.Scene} config.scene - The {@link https://newdocs.phaser.io/docs/3.52.0/Phaser.Scene Phaser.Scene} where this is drawn
      * @param {ClubCrawler.Objects.Player} config.player - The player which can trigger the coin

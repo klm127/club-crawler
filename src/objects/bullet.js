@@ -16,15 +16,6 @@ import Interact from "../interfaces/interact"
  class Bullet extends Phaser.GameObjects.Image {
 
     /**
-     * Preloads the reticle image asset
-     * @param {Phaser.Scene} scene - See {@link https://newdocs.phaser.io/docs/3.55.2/Phaser.Scene Phaser.Scene}
-     */
-    static preload(scene) {
-        scene.load.image('bullet', 'images/bullet1.png');
-        scene.load.audioSprite('bullet', 'sounds/bullet.json', 'sounds/bullet.mp3');
-    }
-
-    /**
      * 
      * 
      * @param {Object} config - The config object

@@ -12,15 +12,7 @@ const GameCoin = require('./coin');
  */
 class Target extends Phaser.GameObjects.Image {
 
-    /**
-     * Preload
-     * @param {Phaser.Scene} scene
-     */
-    static preload(scene) {
-        console.log('preload target');
-        scene.load.image('cylinder', 'images/cylinder.png');
-        console.log('target preloaded');
-    }
+
 
     /**
      * Description

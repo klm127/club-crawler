@@ -37,18 +37,6 @@ const DEFAULT_OGRE_STATS = {
 */
 class Ogre extends Phaser.GameObjects.Image {
     
-    /**
-     * Load atlas as, key 'ogre'
-     * @param {Phaser.Scene} scene
-     */
-    static preload(scene) {
-        scene.load.audioSprite('ogre-sound', 'sounds/ogre.json', 'sounds/ogre.mp3');
-        scene.load.atlas({
-            key:'ogre', 
-            textureURL: 'images/ogre.png', 
-            atlasURL: 'images/ogre.json' 
-        });
-    }
 
     /**
      * Constructs the ogre

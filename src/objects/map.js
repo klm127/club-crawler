@@ -17,21 +17,7 @@ const Interact = require('../interfaces/interact')
  */
 class DungeonMapManager {
     
-    /**
-     * Preloads assets the map will require
-     * @param {Object} config - The configuration to preload
-     * @param {Phaser.Scene} config.scene - The {@link https://newdocs.phaser.io/docs/3.55.2/Phaser.Scene Phaser.Scene} which will load the assets
-     * @param {string} config.mapName - The map assets to load
-     */
-    static preload(config) {
-        if(config.mapName == 'blueworld') {
-            config.scene.load.tilemapTiledJSON('blueworld','maps/blueworld.json');
-            config.scene.load.image('blue-tileset', 'images/tilesets/blue-patterned-world.png');
-        }
-        GameCoin.preload(config.scene); // load coin image
-        Target.preload(config.scene); // load target cylinder image
-        Ogre.preload(config.scene);
-    }
+
 
     /**
      * Creates the map floor tiles, wall tiles, and spawns.
