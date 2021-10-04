@@ -13,10 +13,10 @@ const dataManager = require('./data');
  * @memberof ClubCrawler.Objects.Ogre
  */
 const DEFAULT_OGRE_STATS = {
-    health: 25,
+    health: 150,
     speed: 100, // might be redundant with velocity increment being the more relevant one
     maxSpeed: 500,
-    updateSpeed: 1000,
+    updateSpeed: 500,
     velocityIncrement: 400,
     mass: 5,
     drag: 50,
@@ -65,8 +65,10 @@ class Ogre extends Phaser.GameObjects.Image {
         Object.assign(this, DEFAULT_OGRE_STATS);
         Object.assign(this, config);
         this.setScale(0.75, 0.75);
-        this.sfx = this.scene.sound.addAudioSprite('ogre-sound');
-        this.sfx.volume = (this.sfxVolume);
+        this.dealDamageSfx = this.scene.sound.addAudioSprite('ogre-sound');
+        this.takeDamageSfx = this.scene.sound.addAudioSprite('ogre-sound');
+        this.shoutSfx = this.scene.sound.addAudioSprite('ogre-sound');
+        this.dieSfx = this.scene.sound.addAudioSprite('ogre-sound')
         this.hasSensedPlayer = false;
         
         this.scene.time.delayedCall(100, ()=> {
@@ -93,6 +95,12 @@ class Ogre extends Phaser.GameObjects.Image {
         }
     }
     /**
+     * Plays damage sound
+     */
+    dealDamage() {
+        this.dealDamageSfx.play('dealdamage');
+    }
+    /**
      * Called by collision function. Can react to damage here.
      * 
      * @param {number} damage - amount of damage taken
@@ -100,21 +108,7 @@ class Ogre extends Phaser.GameObjects.Image {
     takeDamage(damage) { 
         let ogre = this;
         ogre.health -= damage;
-        this.sfx.play('takedamage');
-        // if(ogre.health > 0) {
-        //     this.scene.tweens.addCounter({
-        //         from: 0,
-        //         to: 20,
-        //         yoyo:true,
-        //         duration: 100,
-        //         onUpdate: function(tween) {
-        //             //console.log(tween);
-        //             if(ogre) {
-        //                 ogre.setY(tween.getValue()+ogre.y);
-        //             }
-        //         }
-        //     });
-        // }
+        this.takeDamageSfx.play('takedamage');
     }
     /**
      * Called internally if the result of, for example, takeDamage causes it to die
@@ -123,8 +117,12 @@ class Ogre extends Phaser.GameObjects.Image {
      * 
      */
     die() {
-        this.sfx.play('die');
-        this.scene.time.delayedCall(6000, (sound)=> {sound.destroy()}, [this.sfx]);
+        this.dieSfx.play('die');
+        this.scene.time.delayedCall(6000, (sounds)=> {
+            sounds.forEach( (sound) => {
+                sound.destroy();
+            })
+        }, [[this.dieSfx, this.takeDamageSfx, this.dealDamageSfx, this.shoutSfx]]);
         for(let i = this.minCoins; i < Math.random() * this.maxCoins + this.minCoins; i++) {
             let coin = new GameCoin({scene:this.scene}, {x:this.x, y:this.y});
             coin.body.setVelocityX(Math.random() * 100 - 50);
@@ -151,15 +149,15 @@ class Ogre extends Phaser.GameObjects.Image {
             this.setFlipX(false);
         }
         if(sensation.distance < this.senseRange) {
+            if(!this.hasSensedPlayer || !this.shoutSfx.isPlaying) { 
+                this.hasSensedPlayer = true;
+                this.shoutSfx.play("shout");
+            }
             Movement.MoveTowardsPlayer(this, {});
         } else {
             Movement.MoveRandomly(this, {speedRatio:0.5});
         }
-        if(sensation.distance < this.senseRange/2) {
-            if(!this.hasSensedPlayer) { 
-                this.hasSensedPlayer = true;
-                this.sfx.play("shout");
-            }
+        if(sensation.distance < this.senseRange/3*2) {
             this.setFrame("attack.png")
         } else {
             this.hasSensedPlayer = false;
