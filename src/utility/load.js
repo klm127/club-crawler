@@ -2,6 +2,7 @@
  * @namespace ClubCrawler.Utility.Load
  */
 
+//const BlueWorldParser = require('../mapParsers/blueworld');
 /**
  * Preloads assets blueWorld requires
  * @memberof ClubCrawler.Utility.Load
@@ -32,6 +33,7 @@ function preloadBlueWorldAssets(scene) {
     
     scene.load.tilemapTiledJSON('blueworld','maps/blueworld.json');
     scene.load.image('blue-tileset', 'images/tilesets/blue-patterned-world.png');
+    //return BlueWorldParser;
 
 }
 

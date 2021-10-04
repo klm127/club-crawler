@@ -181,6 +181,26 @@ function moveRandomly(caller, config) {
     }
     caller.body.setVelocityX(speedX);
     caller.body.setVelocityY(speedY);
+    return true;
+}
+/**
+ * move randomly repeatedly (not necessary if you are trying to move after a sense update)
+ * 
+ * @memberof ClubCrawler.Interfaces.Movement
+ * @param {Phaser.GameObjects.GameObject} caller - The caller game object
+ * @param {ClubCrawler.Types.MovementConfig} config - The movement config
+ * @returns {boolean}
+ */
+function moveRandomlyRepeat(caller, config) {
+    if(!caller) {
+        caller = this;
+    }
+    if(moveRandomly(caller, config)) {
+        caller.nextMoveEvent = config.scene.time.delayedCall(config.repeatTime, moveRandomlyRepeat, [caller, config], this);
+        return true;
+    } else {
+        return false;
+    }
 }
 
 module.exports = {
@@ -190,5 +210,6 @@ module.exports = {
     MoveTowardsPlayerRepeat: moveTowardsPlayerRepeat,
     RetreatFromPlayer: retreatFromPlayer,
     MoveRandomly: moveRandomly,
+    MoveRandomlyRepeat: moveRandomlyRepeat,
     zigZag: null
 }

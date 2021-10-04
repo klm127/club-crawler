@@ -24,7 +24,7 @@ const DEFAULT_OGRE_STATS = {
     minCoins: 5,
     senseRange: 800,
     damage: 5,
-    sfxVolume: 0.1,
+    sfxVolume: 0.1, // not sure why i can't get this to work to turn down the volume on the ogre fx
     spriteKey: "ogre",
     spriteAttackFrame: "attack.png", // not implemented yet
     spriteStillFrame: "still.png", // not implemented yet

@@ -4,6 +4,7 @@ const Player = require('../objects/player')
 const DungeonMapManager = require('../objects/map');
 const dataManager = require('../objects/data');
 const Load = require('../utility/load');
+const MapParser = require('../mapParsers/parsers');
 
 /** 
  * @classdesc
@@ -33,7 +34,8 @@ class DungeonCrawlerGame extends Phaser.Scene
          * The map manager
          * @type {ClubCrawler.Objects.DungeonMapManager}
          */
-        this.mapManager = new DungeonMapManager({scene: this, map: 'blueworld'});
+        this.mapManager = new MapParser.BlueWorld({scene:this, map:'blueworld'});
+        // new DungeonMapManager({scene: this, map: 'blueworld'});
         /**
          * The player
          * @type {ClubCrawler.Objects.Player}
