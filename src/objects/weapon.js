@@ -88,7 +88,7 @@ class Projectile extends Phaser.GameObjects.Image {
 
         //create colliders
         if(config.hitWalls) {
-            this.scene.physics.add.collider(this, this.scene.mapManager.walls, this.hitWall);
+            this.scene.physics.add.collider(this, this.scene.mapManager.walls, this.hitWall, null, this);
         }
         if(config.hitEnemies) {
             this.scene.physics.add.collider(this, this.scene.mapManager.enemies, Interact.DamageCollisionReversed);
@@ -115,6 +115,10 @@ class Projectile extends Phaser.GameObjects.Image {
 
         this.body.setVelocityX(speedX);
         this.body.setVelocityY(speedY);
+        if(this.shotFX) {
+            this.shotFX.play(this.audioFireKey);
+
+        }
     }
     /**
      * Called by Interfaces.Interact when damage is dealt
@@ -123,7 +127,7 @@ class Projectile extends Phaser.GameObjects.Image {
         if(this.hitFX) {
             this.hitFX.play(this.audioHitKey);
         }
-        if(dataManager.debug.weapon) {
+        if(dataManager.debug.weapon.sound) {
             let hasSound = false;
             if(this.hitFX) {
                 hasSound = true;
@@ -136,6 +140,13 @@ class Projectile extends Phaser.GameObjects.Image {
      * Called when wall collide occurs
      */
     hitWall() {
+        if(dataManager.debug.weapon.sound) {
+            let hasSound = false;
+            if(this.bounceFX) {
+                hasSound = true;
+            }
+            dataManager.log('bounce bullet-sfx? ' + hasSound);
+        }
         if(this.bounceFX) {
             this.bounceFX.play(this.audioBounceKey);
         }

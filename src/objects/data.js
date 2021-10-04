@@ -17,7 +17,10 @@ const dataManager = {
     sfxVolume: 1,
     musicVolume: 0.5,
     debug: {
-        weapon: true
+        on: false,
+        weapon: {
+            sound: false
+        }
     },
     debugLines: [],
     /**
@@ -35,8 +38,10 @@ const dataManager = {
         emitter.emit('healthChange');
     },
     log: function(newText) {
-        dataManager.debugLines.push(newText);
-        emitter.emit('debugChange');
+        if(dataManager.debug.on) {
+            dataManager.debugLines.push(newText);
+            emitter.emit('debugChange');
+        }
     }
     
 };

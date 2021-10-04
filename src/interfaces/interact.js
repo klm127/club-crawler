@@ -13,7 +13,7 @@
  * 
  * @param {any} damagedObject
  * @param {any} sourceObject
- * @returns {any}
+ * @returns {boolean}
  */
 function validateDamage(damagedObject, sourceObject) {
     if(!sourceObject.damage) {
@@ -42,7 +42,7 @@ function validateDamage(damagedObject, sourceObject) {
  * @param {int} damagedObject.health - health to decrement
  * @param {function} damagedObject.die - Function to call if damagedObject dies
  * @param {function} damagedObject.damage - Function to call on damagedObject as it gets damaged
- * @returns {bool} Whether damage succesfully applied
+ * @returns {boolean} Whether damage succesfully applied
  */
 function damageCollision(damagedObject, sourceObject) {
     console.log('dam object', damagedObject.frame.name);
@@ -70,7 +70,7 @@ function damageCollision(damagedObject, sourceObject) {
  * @returns {any}
  */
 function damageCollisionReversed(sourceObject, damagedObject) {
-    damageCollision(damagedObject,sourceObject);
+    return damageCollision(damagedObject,sourceObject);
 }
 
 

@@ -66,7 +66,7 @@ class DungeonCrawlerOverlay extends Phaser.Scene
             this.settingsButton.setColor('red');
         });
 
-        if(dataManager.debug) {
+        if(dataManager.debug.on) {
             console.log('debug mode on!');
             this.debugText = this.add.text(gameWidth/4,gameHeight/4, "Debug", {
                 wordWrap: {
@@ -90,6 +90,10 @@ class DungeonCrawlerOverlay extends Phaser.Scene
         if(dataManager.debugLines.length > 10) {
             dataManager.debugLines.shift();
         }
+        this.time.delayedCall(3000, ()=> {
+            dataManager.debugLines.shift();
+            this.debugText.setText(dataManager.debugLines);
+        })
 
     }
 
