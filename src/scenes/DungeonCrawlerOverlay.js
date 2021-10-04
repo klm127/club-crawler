@@ -66,6 +66,16 @@ class DungeonCrawlerOverlay extends Phaser.Scene
             this.settingsButton.setColor('red');
         });
 
+        if(dataManager.debug) {
+            console.log('debug mode on!');
+            this.debugText = this.add.text(gameWidth/4,gameHeight/4, "Debug", {
+                wordWrap: {
+                    useAdvancedWrap: true
+                }
+            });
+            dataManager.emitter.on('debugChange', this.debugChange, this);
+        }
+
         dataManager.emitter.on('scoreChange', this.pointsChange, this)
         dataManager.emitter.on('healthChange', this.healthChange, this);
         
@@ -74,6 +84,13 @@ class DungeonCrawlerOverlay extends Phaser.Scene
     healthChange() {
         this.healthCount.setText('Health  ' + dataManager.health);
         this.healthCount.updateText();
+    }
+    debugChange(context) {
+        this.debugText.setText(dataManager.debugLines);
+        if(dataManager.debugLines.length > 10) {
+            dataManager.debugLines.shift();
+        }
+
     }
 
     pointsChange(){

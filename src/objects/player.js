@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 
+const Weapon = require('./weapon');
 const Bullet = require('./bullet');
 
 const dataManager = require('./data');
@@ -68,10 +69,16 @@ class Player extends Phaser.GameObjects.Image {
         this.health = config.health ? config.health : 50;
         dataManager.changeHealth(this.health);
         this.velocityIncrement = config.velocityIncrement ? config.velocityIncrement : 25;
-        this.weapon = null; // todo
 
         //create reticle
         this.reticle = new Reticle({player:this, scene:config.scene, x:config.x, y:config.y});
+        
+        //create weapon
+        this.weapon = new Weapon({
+            scene:this.scene,
+            wielder:this, 
+            target:this.reticle
+        });
     }
     /**
      * Applies velocity to the player, such as in response to keyboard input

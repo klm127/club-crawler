@@ -4,6 +4,7 @@ const Player = require('../objects/player')
 const DungeonMapManager = require('../objects/map');
 const Bullet = require('../objects/bullet')
 const dataManager = require('../objects/data');
+const Load = require('../utility/load');
 
 /** 
  * @classdesc
@@ -20,8 +21,7 @@ class DungeonCrawlerGame extends Phaser.Scene
      * @extends Phaser.Scene.preload
      */
     preload() {
-        Player.preload({scene: this});
-        DungeonMapManager.preload({scene:this, mapName:'blueworld'});
+        Load.blueworld(this);
     }
 
     /**
@@ -73,10 +73,15 @@ class DungeonCrawlerGame extends Phaser.Scene
          */
         this.cursors = this.input.keyboard.createCursorKeys();
 
+        this.pointerDown = false;
+
         //click to shoot
         this.input.on('pointerdown', ()=> {
-            Bullet.makeBullet(this.player);
+            this.pointerDown = true;
         }, this);
+        this.input.on('pointerup', ()=> {
+            this.pointerDown = false;
+        },this)
 
     }
     win() {
@@ -105,6 +110,9 @@ class DungeonCrawlerGame extends Phaser.Scene
             this.player.move('n');
         }
         this.player.reticle.update();
+        if(this.pointerDown) {
+            this.player.weapon.fire(time);
+        }
     }
 
 }

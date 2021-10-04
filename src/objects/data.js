@@ -16,6 +16,10 @@ const dataManager = {
     emitter: emitter,
     sfxVolume: 1,
     musicVolume: 0.5,
+    debug: {
+        weapon: true
+    },
+    debugLines: [],
     /**
      * Changes the score and emits the 'scoreChange' event.
      * @param {number} change - The amount to change the score by.
@@ -29,8 +33,13 @@ const dataManager = {
     changeHealth: function(change) {
         dataManager.health += change;
         emitter.emit('healthChange');
+    },
+    log: function(newText) {
+        dataManager.debugLines.push(newText);
+        emitter.emit('debugChange');
     }
     
-} ;
+};
+
 
 module.exports = dataManager;
