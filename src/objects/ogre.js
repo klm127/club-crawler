@@ -13,7 +13,7 @@ const dataManager = require('./data');
  * @memberof ClubCrawler.Objects.Ogre
  */
 const DEFAULT_OGRE_STATS = {
-    health: 50,
+    health: 150,
     speed: 100, // might be redundant with velocity increment being the more relevant one
     maxSpeed: 500,
     updateSpeed: 500,
