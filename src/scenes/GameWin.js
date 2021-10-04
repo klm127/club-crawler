@@ -5,19 +5,18 @@ const dataManager = require('../objects/data');
 const STYLE = {
     playColor: "white",
     playOver:"blue",
-    playClick: "red",
-    gameOverColor: "#72270d"
+    playClick: "red"
 }
 
 
 /** 
  * @classdesc
- * Game over screen
+ * Game win screen
  * @memberof ClubCrawler.Scenes
  * @extends Phaser.Scene
  * @see {@link https://newdocs.phaser.io/docs/3.55.2/Phaser.Scene Phaser.Scene}
  */
-class GameOver extends Phaser.Scene  
+class GameWin extends Phaser.Scene  
 {
     /**
      * Preloads assets
@@ -36,7 +35,7 @@ class GameOver extends Phaser.Scene
     create() {
         let gameHeight = this.game.config.height;
         let gameWidth = this.game.config.width;
-        this.gameOver = this.add.text(gameWidth/2, gameHeight/3, "☠ Game Over ☠", {
+        this.gameOver = this.add.text(gameWidth/2, gameHeight/3, "😎 You win! 😎", {
             fontFamily: 'serif',
             shadow: {
                 color:"white",
@@ -45,7 +44,7 @@ class GameOver extends Phaser.Scene
                 offsetX: 100
             },
             fontSize: 80,
-            color: "#72270d"
+            color: "#c7d398"
         }).setOrigin(0.5,0.5);
 
         this.score = this.add.text(gameWidth/2, gameHeight/2, "Your Score : " + dataManager.score, {
@@ -75,7 +74,7 @@ class GameOver extends Phaser.Scene
         })
 
         this.playAgain.on('pointerup', (pointer)=> {
-            this.scene.stop('gameover');
+            this.scene.stop('gamewin');
             dataManager.score = 0;
             this.scene.start('titlescreen');
         });
@@ -84,4 +83,4 @@ class GameOver extends Phaser.Scene
 
 }
 
-module.exports = GameOver;
+module.exports = GameWin;

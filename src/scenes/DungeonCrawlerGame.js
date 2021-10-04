@@ -3,6 +3,7 @@ import Phaser from "phaser";
 const Player = require('../objects/player')
 const DungeonMapManager = require('../objects/map');
 const Bullet = require('../objects/bullet')
+const dataManager = require('../objects/data');
 
 /** 
  * @classdesc
@@ -52,6 +53,15 @@ class DungeonCrawlerGame extends Phaser.Scene
 
         //launch the overlay 
         this.scene.launch('crawleroverlay');
+        
+        //listen for win condition
+        dataManager.emitter.on("enemyDied", ()=> {
+            let remainingEnemies = this.scene.scene.mapManager.enemies.children.entries.length;
+            if(remainingEnemies <= 0) {
+                this.scene.scene.win();
+            }
+
+        });
 
         //set up input event listening
         /**
@@ -67,6 +77,12 @@ class DungeonCrawlerGame extends Phaser.Scene
         this.input.on('pointerdown', ()=> {
             Bullet.makeBullet(this.player);
         }, this);
+
+    }
+    win() {
+        dataManager.changeScore(100);
+        this.scene.stop(this);
+        this.scene.start('gamewin');
 
     }
     /**

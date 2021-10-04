@@ -13,7 +13,7 @@ const dataManager = require('./data');
  * @memberof ClubCrawler.Objects.Ogre
  */
 const DEFAULT_OGRE_STATS = {
-    health: 150,
+    health: 50,
     speed: 100, // might be redundant with velocity increment being the more relevant one
     maxSpeed: 500,
     updateSpeed: 500,
@@ -66,9 +66,13 @@ class Ogre extends Phaser.GameObjects.Image {
         Object.assign(this, config);
         this.setScale(0.75, 0.75);
         this.dealDamageSfx = this.scene.sound.addAudioSprite('ogre-sound');
+        this.dealDamageSfx.volume = this.sfxVolume;
         this.takeDamageSfx = this.scene.sound.addAudioSprite('ogre-sound');
+        this.takeDamageSfx.volume = this.sfxVolume;
         this.shoutSfx = this.scene.sound.addAudioSprite('ogre-sound');
-        this.dieSfx = this.scene.sound.addAudioSprite('ogre-sound')
+        this.shoutSfx.volume = this.sfxVolume;
+        this.dieSfx = this.scene.sound.addAudioSprite('ogre-sound');
+        this.dieSfx.volume = this.sfxVolume;
         this.hasSensedPlayer = false;
         
         this.scene.time.delayedCall(100, ()=> {
@@ -136,6 +140,7 @@ class Ogre extends Phaser.GameObjects.Image {
                 event.destroy();
             });
         }
+        dataManager.emitter.emit("enemyDied");
         this.destroy();
     }
     /**
