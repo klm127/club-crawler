@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: typedefs/SenseConfig.js</title>
+    <title>JSDoc: Source: typedefs/SensationConfig.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: typedefs/SenseConfig.js</h1>
+    <h1 class="page-title">Source: typedefs/SensationConfig.js</h1>
 
     
 
@@ -27,14 +27,15 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * @typedef {Object} ClubCrawler.Types.SenseConfig
+ * @typedef ClubCrawler.Types.SensationConfig
  * 
- * For configuring a Sense function, especially repeating sense functions.
+ * Created by {@link ClubCrawler.Interfaces.Sense Sense} procedures, based on the results of their calculations. Typically not created directly.
  * 
- * @property {Phaser.Scene} scene
- * @property {ClubCrawler.Objects.Player} player
- * @property {int} repeatTime - Will be set to the updateInterval of the calling object if there is one, if not provided in configuration object
- * ...
+ * Passed to the .sense() member method of the gameobject recieving the sensation
+ *  
+ * @property {GameObject | string} [target] - The target being sensed, if there is one
+ * @property {number} [distance] - The distance away the target is, if there is one
+ * 
  */</code></pre>
         </article>
     </section>
