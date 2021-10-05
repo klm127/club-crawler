@@ -186,20 +186,34 @@ class BlueWorldParser {
     }
 
     placeMappedObjects() {
-        let layers = this.objectConstructorMappings.layers;
-        for(let layerName in Object.keys(layers)) {
-            let mapLayer = this.map.getObjectLayer(layerName);
-            mapLayer.objects.forEach( (tiledObject)=> {
-                if(tiledObject.properties) {
-                    let extractedProperties = Parse.TiledObjectCustomProperties(tiledObject.properties);
-                    Object.assign(tiledObject, extractedProperties);
+        let mapManager = this; // for pass through
+        let layers = this.objectConstructorMappings.layers; // see DEFAULTS const at top of this file for layer mapping example
+        for(let layerName in Object.keys(layers)) { 
+            let mapLayer = this.map.getObjectLayer(layerName); // get the layer from Phaser
+            mapLayer.objects.forEach( (tiledObject)=> { // iterate through each object in the layer
+                let extractedProperties = Parse.getFlatTiledObjectProperties(tiledObject.properties); // get the custom properties, flattened
+                Object.assign(tiledObject, extractedProperties); // assign the custom properties to this object as top level properties rather than nested
+                let constructorConfig = Parse.getConstructorConfigFromLayerMap(tiledObject, layers[layerName]); // find the object with the "create" property that matches to this
+                if(constructorConfig.group) { // if the constructor configuration says the new object will be part of a group...
+                    if(!mapManager[constructorConfig.group]) {  // if this mapManager doesn't have a property corresponding to that group name yet...
+                        mapManager[constructorConfig.group] = mapManager.scene.physics.add.group(); // then create that property as a new physics group
+                    }
                 }
-
+                if(constructorConfig.create) {
+                    let targetClass = constructorConfig.create; // this should check if it's a function instead and call that
+                    let newInstance = new targetClass({
+                        scene: mapManager.scene,
+                        x: tiledObject.x,
+                        y: tiledObject.y,
+                        tiledData: tiledObject
+                    });
+                    if(constructorConfig.group) {
+                        mapManager[constructorConfig.group].add(newInstance);
+                    }
+                }
             });
         }
     }
-
-
 }
 
 module.exports = BlueWorldParser;
