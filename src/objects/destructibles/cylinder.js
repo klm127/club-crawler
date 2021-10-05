@@ -14,6 +14,7 @@ const dataManager = require('../data');
  * @memberof ClubCrawler.Objects.Destructibles.Cylinder
  */
 const DEFAULT_CYLINDER_STATS = {
+    name: "Cylinder",
     health: 15,
     speed: 100, // might be redundant with velocity increment being the more relevant one
     maxSpeed: 500,
@@ -52,7 +53,6 @@ class Cylinder extends Phaser.GameObjects.Image {
 
         //call super
         super(config.scene, config.x, config.y, config.spriteKey ? config.spriteKey : DEFAULT_CYLINDER_STATS.spriteKey);
-        this.name = "Cylinder";
         config.scene.add.existing(this);
         config.scene.physics.add.existing(this);
         Object.assign(this, DEFAULT_CYLINDER_STATS);

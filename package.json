@@ -8,7 +8,9 @@
     "build-netlify": "parcel build src/index.html --no-minify",
     "document": "jsdoc src -r -d ./docs/ -R todo.md && start ./docs/index.html",
     "document-minami": "jsdoc src -r -d ./docs/ -R Readme.md -t ./node_modules/minami && start ./docs/index.html",
-    "test": "node tests/testParse.js"
+    "test": "node tests/testParse.js",
+    "test-ui": "parcel ui-mockup/index.html -d dist-uiTest -p 1234",
+    "test-ui-mockup": "start ./ui-mockup/mockup.html"
   },
   "keywords": [
     "dungeon-crawler",

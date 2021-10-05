@@ -7,6 +7,7 @@ const dataManager = require('../objects/data');
  * @memberof ClubCrawler.Objects.Weapon
  */
 const DEFAULT_WEAPON = {
+    name: "popper",
     duration: 1000,
     projectileVelocity: 1000,
     spin: 2000,

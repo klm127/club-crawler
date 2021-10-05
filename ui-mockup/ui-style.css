@@ -1,0 +1,117 @@
+body {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    letter-spacing: 0.6mm;
+    color: rgb(213, 223, 230);
+}
+
+#club-crawler-container {
+    display: block;
+    width: 802px;
+    height: 802px;
+    margin-left: auto;
+    margin-right: auto;
+    margin: auto;
+    position: relative;
+    background-color: orange;
+}
+
+#rightUI {
+    background-color:rgb(44, 107, 107);
+    position: absolute;
+    left: 801px;
+    width: 200px;
+    height: 800px;
+    top: 0px;
+}
+
+#inventory-title {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 110%;
+}
+
+#inventory {
+    box-sizing:border-box;
+    display: flex;
+    flex-direction:column;
+    text-align: center;
+}
+
+#inventory-items {
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-items:stretch;
+    gap: 10px;
+    align-content: end;
+}
+
+.inventory-item {
+    border: 2px dashed gray;
+    width: 50px;
+    height: 50px;
+}
+
+#character-area {
+    padding-top: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+#char-name {
+    font-size: 150%;
+}
+
+#weapon {
+    padding-top: 25px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    width: 100%;
+}
+
+#weapon-title{
+    width: 100%;
+    box-sizing: border-box;
+}
+#weapon-name {
+    width: 50%;
+    justify-content: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    box-sizing: border-box;
+}
+#weapon-graphic {
+    width: 50%;
+}
+
+#health-area {
+    padding-top: 25px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#health-title {
+    width: 50%;
+}
+
+#health-bar {
+    width: 50%;
+}
+
+#points-area {
+    padding-top: 25px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#points-title {
+    width: 50%;
+}
+#points-value {
+    width: 50%;
+}

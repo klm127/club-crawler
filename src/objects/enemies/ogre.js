@@ -13,6 +13,7 @@ const dataManager = require('../data');
  * @memberof ClubCrawler.Objects.Ogre
  */
 const DEFAULT_OGRE_STATS = {
+    name: "Ogre",
     health: 150,
     speed: 100, // might be redundant with velocity increment being the more relevant one
     maxSpeed: 500,
@@ -52,7 +53,6 @@ class Ogre extends Phaser.GameObjects.Image {
 
         //call super
         super(config.scene, config.x, config.y, config.spriteKey ? config.spriteKey : DEFAULT_OGRE_STATS.spriteKey, config.spriteStillFrame ? config.spriteStillFrame : DEFAULT_OGRE_STATS.spriteStillFrame);
-        this.name = "Ogre";
         config.scene.add.existing(this);
         config.scene.physics.add.existing(this);
         Object.assign(this, DEFAULT_OGRE_STATS);
