@@ -47,14 +47,12 @@ class DungeonCrawlerGame extends Phaser.Scene
             h: this.game.config.height
         }
 
+        //draw the map objects
+        this.mapManager.placeMappedObjects();
+        this.mapManager.addColliders();
+
         //place the player
         this.mapManager.startPlayer(this.player);
-
-        //draw the map objects
-        this.mapManager.placeMapObjects();
-
-        //launch the overlay 
-        this.scene.launch('crawleroverlay');
 
         //create the minimap
         let minimap = this.cameras.add(size.w/5*4,size.h/5*4, size.h/5, size.h/5,false,'minimap');
@@ -101,6 +99,10 @@ class DungeonCrawlerGame extends Phaser.Scene
         this.input.on('pointerup', ()=> {
             this.pointerDown = false;
         },this);
+        
+
+        //launch the overlay 
+        this.scene.launch('crawleroverlay');
 
     }
     win() {

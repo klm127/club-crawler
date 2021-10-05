@@ -18,7 +18,7 @@ class DebugOverlay extends Phaser.Scene {
         let gameWidth = this.game.config.width;
         let gameHeight = this.game.config.height;
         
-        this.debugText = this.add.text(gameWidth/4,gameHeight/4, dataManager.debugLines, {
+        this.debugText = this.add.text(10,10, dataManager.debugLines, {
             wordWrap: {
                 useAdvancedWrap: true
             }
@@ -28,13 +28,15 @@ class DebugOverlay extends Phaser.Scene {
     }
     debugChange() {
         this.debugText.setText(dataManager.debugLines);
-        if(dataManager.debugLines.length > 10) {
+        if(dataManager.debugLines.length > dataManager.debug.max) {
             dataManager.debugLines.shift();
         }
-        this.time.delayedCall(3000, ()=> {
-            dataManager.debugLines.shift();
-            this.debugText.setText(dataManager.debugLines);
-        })
+        if(dataManager.debug.duration > 0) {
+            this.time.delayedCall(dataManager.debug.duration, ()=> {
+                dataManager.debugLines.shift();
+                this.debugText.setText(dataManager.debugLines);
+            })
+        }
 
     }
 }

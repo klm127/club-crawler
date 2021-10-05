@@ -75,8 +75,23 @@ function isConstructorConfig(object) {
 }
 
 
+/**
+ * Sets the scene.startX and scene.startY properties to the x and y in the constructor config
+ * @param {Object} constructorConfig - must have scene, x, and y
+ */
+function setPlayerStart(constructorConfig) {
+    constructorConfig.scene.mapManager.startX = constructorConfig.x;
+    constructorConfig.scene.mapManager.startY = constructorConfig.y;
+    return([
+        constructorConfig.scene.startX,
+        constructorConfig.scene.startY
+    ])
+}
+
+
 
 module.exports = {
     getFlatTiledObjectProperties: getFlatTiledObjectProperties,
-    getConstructorConfigFromLayerMap: getConstructorConfigFromLayerMap
+    getConstructorConfigFromLayerMap: getConstructorConfigFromLayerMap,
+    setPlayerStart: setPlayerStart
 }

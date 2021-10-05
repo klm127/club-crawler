@@ -52,6 +52,7 @@ class Ogre extends Phaser.GameObjects.Image {
 
         //call super
         super(config.scene, config.x, config.y, config.spriteKey ? config.spriteKey : DEFAULT_OGRE_STATS.spriteKey, config.spriteStillFrame ? config.spriteStillFrame : DEFAULT_OGRE_STATS.spriteStillFrame);
+        this.name = "Ogre";
         config.scene.add.existing(this);
         config.scene.physics.add.existing(this);
         Object.assign(this, DEFAULT_OGRE_STATS);
@@ -120,7 +121,7 @@ class Ogre extends Phaser.GameObjects.Image {
             })
         }, [[this.dieSfx, this.takeDamageSfx, this.dealDamageSfx, this.shoutSfx]]);
         for(let i = this.minCoins; i < Math.random() * this.maxCoins + this.minCoins; i++) {
-            let coin = new GameCoin({scene:this.scene}, {x:this.x, y:this.y});
+            let coin = new GameCoin({scene:this.scene, x:this.x, y:this.y});
             coin.body.setVelocityX(Math.random() * 100 - 50);
             coin.body.setVelocityY(Math.random() * 100 - 50);
         }

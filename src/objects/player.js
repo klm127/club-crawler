@@ -48,6 +48,7 @@ class Player extends Phaser.GameObjects.Image {
         //call super
         super(config.scene, config.x, config.y, "playerimages", selectedFrame); 
 
+        this.name = "Player";
         //add to scene
         config.scene.add.existing(this);
         if(config.scale) {
@@ -77,6 +78,9 @@ class Player extends Phaser.GameObjects.Image {
             wielder:this, 
             target:this.reticle
         });
+        if(dataManager.debug.on && dataManager.debug.player.construction) {
+            dataManager.log(`player constructor? ${this.constructor.name} created, props ${Object.keys(this)}`)
+        }
     }
     /**
      * Applies velocity to the player, such as in response to keyboard input

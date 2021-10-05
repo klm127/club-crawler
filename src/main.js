@@ -25,10 +25,10 @@ const config = {
 const game = new Phaser.Game(config);
 
 
-game.scene.add('debugoverlay', DebugOverlay);
 game.scene.add('titlescreen', TitleScreen);
 game.scene.add('crawlergame', DungeonCrawlerGame);
-game.scene.add('crawleroverlay', DungeonCrawlerOverlay);
 game.scene.add('gameover', GameOver);
 game.scene.add('gamewin', GameWin);
+game.scene.add('debugoverlay', DebugOverlay);
+game.scene.add('crawleroverlay', DungeonCrawlerOverlay);
 game.scene.start('titlescreen');

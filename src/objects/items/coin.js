@@ -24,9 +24,9 @@ class GameCoin extends Phaser.GameObjects.Image {
      * @param {Phaser.Types.Tilemaps.TiledObject} item - item structured by Tiled as per {@link https://newdocs.phaser.io/docs/3.52.0/Phaser.Tilemaps.TiledObject Phaser.Types.Tilemaps.TiledObject}
      * @param {number} [item.properties.value=1] - The value of the coin as set in Tiled custom properties
      */
-    constructor(config, item) {
+    constructor(config) {
 
-        super(config.scene, item.x, item.y, 'coin');
+        super(config.scene, config.x, config.y, 'coin');
 
 
         this.scene.add.existing(this);
@@ -54,7 +54,7 @@ class GameCoin extends Phaser.GameObjects.Image {
          * @default 1
          * @type {number}
          */
-        this.coinValue = item.value ? item.value : 1;
+        this.coinValue = config.value ? config.value : config.tiledData ? config.tiledData.value : 1;
         this.body.setMass(config.mass ? config.mass : 0.05);
         this.body.setDrag(10,10);
         this.sfx = this.scene.sound.addAudioSprite('gamecoin');
