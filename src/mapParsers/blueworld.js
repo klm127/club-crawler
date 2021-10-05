@@ -15,27 +15,28 @@ const BLUEWORLD_DEFAULTS = {
     objectConstructorMappings: {
         layers: {
             Items: {
-                points: {
-                    create: GameCoin
+                points: { //second level is type - type: points
+                    create: GameCoin // if there's a create, git the sister property group if it exists and return it
                 }
             },
             Spawns: {
-                "spawn-point": {
-                    spawnType: {
-                        cylinder: {
-                            create: Cylinder,
-                            group: "destructibles"
+                type: {
+                    "spawn-point": {
+                        spawnType: {
+                            "cylinder": {
+                                create: Cylinder,
+                                group: "destructibles"
+                            }
+                        }
+                    },
+                    "enemy-spawn": {
+                        name: {
+                            Ogre: {
+                                create: Ogre,
+                                group: "enemies"
+                            }
                         }
                     }
-                },
-                "enemy-spawn": {
-                    name: {
-                        Ogre: {
-                            create: Ogre,
-                            group: "enemies"
-                        }
-                    }
-
                 }
             }
         }
