@@ -42,10 +42,10 @@ class DungeonCrawlerGame extends Phaser.Scene
          */
         this.player = new Player({scene:this, x:200, y: 200, scale:0.5, maxSpeed: 540, drag:1000, velocityIncrement: 55}); 
 
-
-        // camera follows player
-        this.cameras.main.startFollow(this.player, true);
-        this.cameras.main.setZoom(0.75);
+        let size = {
+            w: this.game.config.width,
+            h: this.game.config.height
+        }
 
         //place the player
         this.mapManager.startPlayer(this.player);
@@ -55,6 +55,17 @@ class DungeonCrawlerGame extends Phaser.Scene
 
         //launch the overlay 
         this.scene.launch('crawleroverlay');
+
+        //create the minimap
+        let minimap = this.cameras.add(size.w/5*4,size.h/5*4, size.h/5, size.h/5,false,'minimap');
+        minimap.setZoom(0.05,0.05);
+        minimap.startFollow(this.player, true);
+        minimap.setAlpha(0.5);
+        minimap.ignore(this.mapManager.enemies);
+
+        // main camera follows player
+        this.cameras.main.startFollow(this.player, true);
+        
         
         var gamescenepassthrough = this;
         //listen for win condition
