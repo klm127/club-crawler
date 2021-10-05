@@ -16,7 +16,7 @@ const dataManager = {
     sfxVolume: 1,
     musicVolume: 0.5,
     debug: {
-        on: false,
+        on: true,
         weapon: {
             sound: false
         },
@@ -27,10 +27,13 @@ const dataManager = {
             colliders: false
         },
         logic: {
-            win: true
+            win: false
+        },
+        map: {
+            placePlayer: true
         }
     },
-    debugLines: [],
+    debugLines: ['debug'],
     /**
      * Changes the score and emits the 'scoreChange' event.
      * @param {number} change - The amount to change the score by.

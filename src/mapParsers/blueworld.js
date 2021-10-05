@@ -16,7 +16,7 @@ const BLUEWORLD_DEFAULTS = {
         layers: {
             Items: {
                 points: { //second level is type - type: points
-                    create: GameCoin // if there's a create, git the sister property group if it exists and return it
+                    create: GameCoin // if there's a create, get the sister property group if it exists and return it
                 }
             },
             Spawns: {
@@ -117,6 +117,9 @@ class BlueWorldParser {
      * @param {Player} player - The player
      */
     startPlayer(player) {
+        if(dataManager.debug.on && dataManager.debug.map.placePlayer) {
+            dataManager.log(`Starting player at ${this.startX}, ${this.startY}`);
+        }
         player.setX(this.startX);
         player.setY(this.startY);
         if(player.reticle) {

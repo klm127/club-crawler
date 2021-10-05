@@ -1,5 +1,6 @@
 import Phaser from "phaser";
-const musicManager = require('../objects/music');    
+const musicManager = require('../objects/music');
+const dataManager = require('../objects/data');
 
 
 /** 
@@ -52,6 +53,10 @@ class TitleScreen extends Phaser.Scene
             if(!musicManager.music.isPlaying) {
                 musicManager.music.play();
             }
+        }
+        if(dataManager.debug.on) {
+            console.log('debug on in title screen, trying to launch overlay')
+            console.log(this.scene.launch('debugoverlay'));
         }
     }
     update(time,delta) {
