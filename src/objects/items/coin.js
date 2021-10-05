@@ -1,7 +1,7 @@
 import Phaser from "phaser";
 
-const dataManager = require('./data');
-const Player = require('./player');
+const dataManager = require('../data');
+const Player = require('../player');
 
 /** 
  * @classdesc

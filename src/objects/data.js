@@ -1,8 +1,6 @@
 import Phaser from "phaser";
 
 const emitter = new Phaser.Events.EventEmitter()
-const c = require('console');
-
 
 /**
  * @memberof ClubCrawler.Objects
@@ -18,7 +16,7 @@ const dataManager = {
     sfxVolume: 1,
     musicVolume: 0.5,
     debug: {
-        on: true,
+        on: false,
         weapon: {
             sound: false
         },

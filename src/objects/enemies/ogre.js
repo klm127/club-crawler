@@ -1,13 +1,13 @@
 import Phaser from "phaser";
 
 const Movement = require('../../interfaces/movement');
-const GameCoin = require('../coin');
+const GameCoin = require('../items/coin');
 const Sense = require('../../interfaces/sense');
 const dataManager = require('../data');
 
 /**
  * Default characteristics for the ogre - health, speed, damage, coin result, etc
- * 
+ * gamescenepassthrough.constructor.name
  * @static
  * @final
  * @memberof ClubCrawler.Objects.Ogre

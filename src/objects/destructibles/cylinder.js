@@ -1,7 +1,7 @@
 import Phaser from "phaser";
 
 const Movement = require('../../interfaces/movement');
-const GameCoin = require('../coin');
+const GameCoin = require('../items/coin');
 const dataManager = require('../data');
 
 /**

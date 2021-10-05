@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 
-const GameCoin = require('./coin');
+const GameCoin = require('../../src/objects/items/coin');
 
 /** 
  * @classdesc

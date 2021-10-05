@@ -3,7 +3,7 @@ import Phaser from "phaser";
 
 const Player = require('../objects/player');
 const Ogre = require('../objects/enemies/ogre');
-const GameCoin = require('../objects/coin');
+const GameCoin = require('../objects/items/coin');
 const Cylinder = require('../objects/destructibles/cylinder');
 const Interact = require('../interfaces/interact');
 const Parse = require('../utility/parse');
@@ -178,7 +178,8 @@ class BlueWorldParser {
         this.scene.physics.add.collider(this.destructibles, this.scene.player);
         this.scene.physics.add.collider(this.destructibles, this.walls);
         this.scene.physics.add.collider(this.enemies, this.walls);
-        this.scene.physics.add.collider(this.enemies, this.targets);
+        this.scene.physics.add.collider(this.enemies, this.destructibles);
+        this.scene.physics.add.collider(this.enemies, this.enemies);
         //this.scene.physics.add.collider(this.enemies, this.scene.player, Interact.DamageCollision);
         this.scene.physics.add.collider(this.enemies, this.scene.player, Interact.DamageCollision);
     }

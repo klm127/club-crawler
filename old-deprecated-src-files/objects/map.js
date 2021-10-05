@@ -1,10 +1,10 @@
 import Phaser from "phaser";
 
-const Player = require('./player');
-const Ogre = require('./enemies/ogre');
-const GameCoin = require('./coin');
+const Player = require('../../src/objects/player');
+const Ogre = require('../../src/objects/enemies/ogre');
+const GameCoin = require('../../src/objects/items/coin');
 const Target = require('./target');
-const Interact = require('../interfaces/interact')
+const Interact = require('../../src/interfaces/interact')
 
 /**
  * @classdesc 
@@ -12,6 +12,8 @@ const Interact = require('../interfaces/interact')
  * Wraps and manages a Phaser.Tilemap, loads objects, applies physics to objects, and places player in the scene.
  * 
  * Will eventually handle loading of other maps.
+ * 
+ * @deprecated
  * 
  * @memberof ClubCrawler.Objects
  */

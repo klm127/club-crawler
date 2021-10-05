@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "blueworld.tmx",
+    "activeFile": "",
     "expandedProjectPaths": [
         ".",
         "templates"
@@ -91,7 +91,8 @@
             }
         },
         "blueworld.tmx#blue-patterned-world": {
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         }
     },
     "last.exportedFilePath": "C:/Users/karlm/Documents/Actual Documents/2021 Spring/Programming Club/club-crawler-js/static/maps",
