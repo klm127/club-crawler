@@ -50,7 +50,6 @@ class Weapon {
     fire(time) {
         if(time > this.lastTimeFired + this.fireRate) {
             let newBullet = new Projectile(this);
-            console.log(newBullet.shotFX);
             this.lastTimeFired = time;
         }
     }
@@ -130,7 +129,7 @@ class Projectile extends Phaser.GameObjects.Image {
         if(this.hitFX) {
             this.hitFX.play(this.audioHitKey);
         }
-        if(dataManager.debug.weapon.sound) {
+        if(dataManager.debug.weapon.sound == true) {
             let hasSound = false;
             if(this.hitFX) {
                 hasSound = true;
@@ -156,7 +155,6 @@ class Projectile extends Phaser.GameObjects.Image {
         if(this.destroyOnWallTouch) {
             this.destroy();
         }
-        console.log('bouncefx', this.bounceFX);
     }
 }
 

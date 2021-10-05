@@ -68,7 +68,7 @@ class DungeonCrawlerOverlay extends Phaser.Scene
 
         if(dataManager.debug.on) {
             console.log('debug mode on!');
-            this.debugText = this.add.text(gameWidth/4,gameHeight/4, "Debug", {
+            this.debugText = this.add.text(gameWidth/4,gameHeight/4, dataManager.debugLines, {
                 wordWrap: {
                     useAdvancedWrap: true
                 }

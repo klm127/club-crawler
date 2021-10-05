@@ -22,6 +22,7 @@ class DungeonCrawlerGame extends Phaser.Scene
      */
     preload() {
         Load.blueworld(this);
+        console.log('game scene', this);
     }
 
     /**
@@ -45,6 +46,7 @@ class DungeonCrawlerGame extends Phaser.Scene
 
         // camera follows player
         this.cameras.main.startFollow(this.player, true);
+        this.cameras.main.setZoom(0.75);
 
         //place the player
         this.mapManager.startPlayer(this.player);
@@ -55,12 +57,18 @@ class DungeonCrawlerGame extends Phaser.Scene
         //launch the overlay 
         this.scene.launch('crawleroverlay');
         
+        var gamescenepassthrough = this;
         //listen for win condition
-        dataManager.emitter.on("enemyDied", ()=> {
-            let remainingEnemies = this.scene.scene.mapManager.enemies.children.entries.length;
-            if(remainingEnemies <= 0) {
-                this.scene.scene.win();
-            }
+        dataManager.emitter.on("enemyDied", (gamescene)=> {
+            gamescenepassthrough.time.delayedCall(2000, ()=> {
+                let remainingEnemies = this.scene.scene.mapManager.enemies.children.entries.length;
+                if(dataManager.debug.on && (dataManager.debug.logic.win || dataManager.debug.enemies.die) ) {
+                    dataManager.log(`an enemy death event was detected in Scene! remaining ${remainingEnemies}`);
+                }
+                if(remainingEnemies <= 0) {
+                    gamescenepassthrough.win();
+                }
+            })
 
         });
 
@@ -82,14 +90,18 @@ class DungeonCrawlerGame extends Phaser.Scene
         }, this);
         this.input.on('pointerup', ()=> {
             this.pointerDown = false;
-        },this)
+        },this);
 
     }
     win() {
+        
+        if(dataManager.debug.on && dataManager.debug.logic.win) {
+            dataManager.log(`Win called in scene`);
+        }
+
         dataManager.changeScore(100);
         this.scene.stop(this);
         this.scene.start('gamewin');
-
     }
     /**
      * Updates items as needed. Checks for keyboard input.

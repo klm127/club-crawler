@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 
 const emitter = new Phaser.Events.EventEmitter()
+const c = require('console');
 
 
 /**
@@ -17,9 +18,18 @@ const dataManager = {
     sfxVolume: 1,
     musicVolume: 0.5,
     debug: {
-        on: false,
+        on: true,
         weapon: {
             sound: false
+        },
+        enemies: {
+            die: true
+        },
+        destructibles: {
+            colliders: false
+        },
+        logic: {
+            win: true
         }
     },
     debugLines: [],

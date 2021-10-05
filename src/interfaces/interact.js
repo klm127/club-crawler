@@ -45,8 +45,6 @@ function validateDamage(damagedObject, sourceObject) {
  * @returns {boolean} Whether damage succesfully applied
  */
 function damageCollision(damagedObject, sourceObject) {
-    console.log('dam object', damagedObject.frame.name);
-    console.log('source object', sourceObject.frame.name);
     if(!validateDamage(damagedObject, sourceObject)) return false;
 
     //damagedObject.health -= sourceObject.damage;

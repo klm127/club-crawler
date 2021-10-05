@@ -93,4 +93,4 @@ class Cylinder extends Phaser.GameObjects.Image {
 }
 
 
-module.exports = Cylinder
+module.exports = Cylinder;

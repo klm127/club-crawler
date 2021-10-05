@@ -7,22 +7,34 @@ const GameCoin = require('../objects/coin');
 const Cylinder = require('../objects/destructibles/cylinder');
 const Interact = require('../interfaces/interact');
 const Parse = require('../utility/parse');
+const dataManager = require('../objects/data');
 
 const BLUEWORLD_DEFAULTS = {
     tileSetKey: "blue-tileset",
     mapKey: "blueworld",
-    constructorMappings: {
+    objectConstructorMappings: {
         layers: {
             Items: {
-                points: GameCoin
+                points: {
+                    create: GameCoin
+                }
             },
             Spawns: {
                 "spawn-point": {
                     spawnType: {
-                        cylinder: Cylinder
+                        cylinder: {
+                            create: Cylinder,
+                            group: "destructibles"
+                        }
                     }
                 },
                 "enemy-spawn": {
+                    name: {
+                        Ogre: {
+                            create: Ogre,
+                            group: "enemies"
+                        }
+                    }
 
                 }
             }
@@ -129,10 +141,15 @@ class BlueWorldParser {
          */
         this.map.getObjectLayer('Spawns').objects.forEach( (item)=> {
             if(item.type == "spawn-point") {
-                let properties = Parse.ParseTiledObjectProperties(item.properties);
+                let properties = Parse.TiledObjectCustomProperties(item.properties);
 
                 let spawnType = properties.spawns ? properties.spawns : "cylinder";
                 let targettable = properties.targettable ? properties.targettable : false;
+
+                if(dataManager.debug.destructibles.colliders && dataManager.debug.on) { 
+                    dataManager.log(`targettable? ${targettable} spawnType? ${spawnType}`);
+                    dataManager.log(properties)
+                }
 
                 if(spawnType == "cylinder") { 
                     let newItem = new Cylinder({
@@ -157,13 +174,27 @@ class BlueWorldParser {
                     this.enemies.add(newOgre);
                 }
             }
-        });
+        },this);
         this.scene.physics.add.collider(this.destructibles, this.scene.player);
         this.scene.physics.add.collider(this.destructibles, this.walls);
         this.scene.physics.add.collider(this.enemies, this.walls);
         this.scene.physics.add.collider(this.enemies, this.targets);
         //this.scene.physics.add.collider(this.enemies, this.scene.player, Interact.DamageCollision);
         this.scene.physics.add.collider(this.enemies, this.scene.player, Interact.DamageCollision);
+    }
+
+    placeMappedObjects() {
+        let layers = this.objectConstructorMappings.layers;
+        for(let layerName in Object.keys(layers)) {
+            let mapLayer = this.map.getObjectLayer(layerName);
+            mapLayer.objects.forEach( (tiledObject)=> {
+                if(tiledObject.properties) {
+                    let extractedProperties = Parse.TiledObjectCustomProperties(tiledObject.properties);
+                    Object.assign(tiledObject, extractedProperties);
+                }
+
+            });
+        }
     }
 
 

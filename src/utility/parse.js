@@ -12,7 +12,7 @@
  */
 function parseTiledObjectProperties(PropertiesArray) {
     let newObject = {};
-    for(let propGroup in PropertiesArray) {
+    for(let propGroup of PropertiesArray) {
         newObject[propGroup.name] = propGroup.value;
     }
     return newObject;
@@ -28,5 +28,5 @@ function parseTiledTemplate() {
 }
 
 module.exports = {
-    ParseTiledObjectProperties: parseTiledObjectProperties
+    TiledObjectCustomProperties: parseTiledObjectProperties
 }
