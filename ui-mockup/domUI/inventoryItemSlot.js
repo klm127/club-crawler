@@ -1,4 +1,5 @@
 
+const CLASS_NAME = "club-crawler-inventory-item-slot"
 const ITEM_SLOT_HARD_STYLE = {
     width: "50px",
     height: "50px",
@@ -17,6 +18,7 @@ class InventoryItemSlot {
         this.element = document.createElement('div')
         Object.assign(this.element.style, ITEM_SLOT_HARD_STYLE);
         domContainer.appendChild(this.element);
+        this.element.className = CLASS_NAME;
         this.item = null;
         this.clickListener = null;
     }
