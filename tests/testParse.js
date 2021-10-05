@@ -29,16 +29,16 @@ try {
         "x":1136,
         "y":1120
     }
-    let mappedCylinderProperties = parse.TiledObjectCustomProperties(sampleCylinderSpawn.properties);
+    let mappedCylinderProperties = parse.getFlatTiledObjectProperties(sampleCylinderSpawn.properties);
     assert.deepStrictEqual(
-        mappedCylinderProperties, 
-        {
+        mappedCylinderProperties, // actual
+        {                           // expected
             "spawns": "cylinder",
             "targettable": true
         },
-        " ☹ error- the object reutrned from TiledObjectCustomProperties was not as expected"
+        " ☹ error- the object reutrned from getFlatTiledObjectProperties was not as expected" // failure message
     );
-    console.log('👍 flatting tiled object properties works as expected');
+    console.log('👍 flatting tiled object properties works as expected'); // success message
 
 /**
  * Test finding how an object maps
@@ -70,7 +70,7 @@ try {
             }
         }
     }
-    let cylinderResult = parse.getConstructorFromLayerMap(preparedCylinderSpawn, EXAMPLE_LAYER);
+    let cylinderResult = parse.getConstructorConfigFromLayerMap(preparedCylinderSpawn, EXAMPLE_LAYER);
     assert.deepStrictEqual(
         cylinderResult, // actual
         {
@@ -112,11 +112,11 @@ try {
         "x":1965.81,
         "y":7211.63
        }
-    let mappedOgreProperties = parse.TiledObjectCustomProperties(OGRE_TEST_MODEL.properties); //OGRE_TEST_MODEL.properties is undefined, returns {}
+    let mappedOgreProperties = parse.getFlatTiledObjectProperties(OGRE_TEST_MODEL.properties); //OGRE_TEST_MODEL.properties is undefined, returns {}
     let mergedOgre = {};
     Object.assign(mergedOgre, OGRE_TEST_MODEL); 
     Object.assign(mergedOgre, mappedOgreProperties);// doesn't actually do anything here as the ogre has no custom properties
-    let ogreResult = parse.getConstructorFromLayerMap(mergedOgre, EXAMPLE_LAYER);
+    let ogreResult = parse.getConstructorConfigFromLayerMap(mergedOgre, EXAMPLE_LAYER);
     assert.deepStrictEqual(
         ogreResult, // actual
         {

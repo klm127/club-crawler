@@ -1,16 +1,20 @@
 /**
- * Map Parser helpers
+ * @namespace Parse
+ * @memberof ClubCrawler.Utility
  * 
- * Stub
+ * Helper functions for map parsing
  */
 
 
 /**
- * Gets a properly nested object from the tiled properties array
+ * Flattens custom properties of a Tiled Object into 1 object.
+ * 
+ * Converts an array of Objects to one object and returns it. Returns empty object if not possible
+ * 
  * @param {Array<Object>} PropertiesArray - The Tiled Properties Array
  * @returns {Object} - Object with top level being property name
  */
-function parseTiledObjectProperties(PropertiesArray) {
+function getFlatTiledObjectProperties(PropertiesArray) {
     let newObject = {};
     if(Array.isArray(PropertiesArray)) {
         for(let propGroup of PropertiesArray) {
@@ -20,7 +24,15 @@ function parseTiledObjectProperties(PropertiesArray) {
     return newObject;
 }
 
-function getConstructorFromLayerMap(item, layerMap) {
+/**
+ * Parses a layer map recursively to find the matching Object that has the "creates" property for an item, then returns that object.
+ * 
+ * 
+ * @param {any} item
+ * @param {any} layerMap - The layer map
+ * @returns {Object | boolean} Either an object with the property 'creates' equal to the mapping and other sibling properties, or false
+ */
+function getConstructorConfigFromLayerMap(item, layerMap) {
     let constructorConfig = isConstructorConfig(layerMap);
     if(constructorConfig) {
         return constructorConfig;
@@ -38,7 +50,7 @@ function getConstructorFromLayerMap(item, layerMap) {
             //console.log(`layerMap[${key}] = `, subKeys)
             if(subKeys.indexOf(value) >= 0) {
                 //console.log(`layerMap has property: ${value}, recursing`)
-                return getConstructorFromLayerMap(item, layerMap[key][value])
+                return getConstructorConfigFromLayerMap(item, layerMap[key][value])
             }
         }
         else {
@@ -47,6 +59,12 @@ function getConstructorFromLayerMap(item, layerMap) {
     }
 }
 
+/**
+ * Determines if an object has the property 'creates' and returns it if does. Otherwise returns false.
+ * 
+ * @param {any} object
+ * @returns {Object | boolean}
+ */
 function isConstructorConfig(object) {
     if(object.creates) {
         return object;
@@ -59,6 +77,6 @@ function isConstructorConfig(object) {
 
 
 module.exports = {
-    TiledObjectCustomProperties: parseTiledObjectProperties,
-    getConstructorFromLayerMap: getConstructorFromLayerMap
+    getFlatTiledObjectProperties: getFlatTiledObjectProperties,
+    getConstructorConfigFromLayerMap: getConstructorConfigFromLayerMap
 }
