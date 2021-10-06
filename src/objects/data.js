@@ -20,7 +20,10 @@ const dataManager = {
         duration: 3000, //how long a message stays on the screen,
         max: 10, //how many messages can appear
         weapon: {
-            sound: false
+            sound: false,
+        },
+        items: {
+            overlap: true
         },
         enemies: {
             die: true

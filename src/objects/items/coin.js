@@ -10,7 +10,7 @@ const Player = require('../player');
  * Renders sprite based on images/coin.png. Created by {@link ClubCrawler.Objects.DungeonMapManager} for each Object in the Map Layer of type "points".
  * 
  * When a player overlaps a coin, it increases dataManager.score, begins spinning and moving in a random direction, then scales down to 0 and is destroyed. 
- * @memberof ClubCrawler.Objects
+ * @memberof ClubCrawler.Objects.Items
  * @extends {Phaser.GameObjects.Image} 
  * @see {@link https://newdocs.phaser.io/docs/3.55.2/Phaser.GameObjects.Image Phaser.GameObjects.Image}
  */
