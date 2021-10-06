@@ -22,6 +22,7 @@ const DEFAULT_WEAPON = {
     bounce: 0.3,
     hitEnemies: true,
     hitWalls: true,
+    hitPlayer: false,
     hitDestructibles: true,
     destroyOnWallTouch: false,
 }
@@ -100,6 +101,9 @@ class Projectile extends Phaser.GameObjects.Image {
         if(config.hitDestructibles) {
             this.scene.physics.add.collider(this, this.scene.mapManager.destructibles, Interact.DamageCollisionReversed);
         }
+        if(config.hitPlayer) {
+            this.scene.physics.add.collider(this, this.scene.player, Interact.DamageCollisionReversed);
+        }
         this.scene.time.delayedCall(this.duration, this.destroy, [], this);
         this.fireAt(config.target)
     }
@@ -118,7 +122,6 @@ class Projectile extends Phaser.GameObjects.Image {
 
         let speedX = this.projectileVelocity * cosine;
         let speedY = this.projectileVelocity * sine; 
-
 
         this.body.setVelocityX(speedX);
         this.body.setVelocityY(speedY);
@@ -163,4 +166,7 @@ class Projectile extends Phaser.GameObjects.Image {
     }
 }
 
-module.exports = Weapon;
+module.exports = {
+    Weapon: Weapon,
+    Projectile: Projectile,
+}
