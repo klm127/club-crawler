@@ -3,6 +3,7 @@
 import Phaser from "phaser";
 
 const dataManager = require('../data');
+const FlameThrower = require('../weapons/flamethrower');
 
 /**
  * @static
@@ -40,13 +41,23 @@ class FlameThrowerSwitch extends Phaser.GameObjects.Image {
 
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
-        this.setOrigin(0.5,0.5);
-        this.scene.physics.add.overlap(this, this.scene.player, this.onPlayerTouch, null, this);
+        this.setOrigin(0,0);
+        this.setDepth(0);
+        this.scene.physics.add.overlap(this.scene.player, this, this.onPlayerTouch, null, this);
     }
 
     onPlayerTouch() {
+        var player = this.scene.player;
+    
         if(dataManager.debug.items.overlap) {
-            dataManager.log('player touched!');
+            dataManager.log(`player touched flamethrower switch!`);
+        }
+        if(player.weapon.name != "flamethrower") {
+            player.weapon = new FlameThrower({
+                scene:player.scene,
+                wielder:player,
+                target:player.reticle
+            })
         }
     }
 

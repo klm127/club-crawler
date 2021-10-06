@@ -29,6 +29,7 @@ function preloadBlueWorldAssets(scene) {
     scene.load.image('coin', "images/coin.png");
     scene.load.image('cylinder', 'images/cylinder.png');
     scene.load.image('flamethrower', 'images/flamethrower127x33.png');
+    scene.load.image('flamestream', 'images/flamethrowerstream128x59.png');
 
     //audio sprites
     scene.load.audioSprite('bullet-sound', 'sounds/bullet.json', 'sounds/bullet.mp3');

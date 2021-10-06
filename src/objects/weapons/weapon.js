@@ -1,7 +1,7 @@
 import Phaser from "phaser";
 //const Bullet = require('./bullet');
-const Interact = require('../interfaces/interact');
-const dataManager = require('../objects/data');
+const Interact = require('../../interfaces/interact');
+const dataManager = require('../data');
 
 /**
  * @memberof ClubCrawler.Objects.Weapon
