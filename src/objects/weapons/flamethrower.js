@@ -9,9 +9,9 @@ const Projectile = Weapons.Projectile;
  */
 const FLAMETHROWER_DEFAULT_STATS = {
     name: "flamethrower",
-    duration: 800,
-    projectileVelocity: 700,
-    spin: 0,
+    duration: 1000,
+    projectileVelocity: 500,
+    spin: -2000,
     mass: 0,
     damage: 1, // doesnt need a lot cause overlaps trigger a bunch
     fireRate: 75, //lower is faster
@@ -61,6 +61,8 @@ class Flame extends Projectile {
         this.initialFlameScale = FLAMETHROWER_DEFAULT_STATS.initialFlameScale;
         this.finalFlameScale = FLAMETHROWER_DEFAULT_STATS.finalFlameScale;
         this.setScale(this.initialFlameScale, this.initialFlameScale)
+        this.body.setCircle(this.width/4, this.width/4, this.height/4);
+        this.setRotation(Math.random()*359)
     }
 
     dealDamage() {
@@ -78,8 +80,8 @@ class Flame extends Projectile {
         let speedX = this.projectileVelocity * cosine;
         let speedY = this.projectileVelocity * sine; 
 
-        let offsetX = this.x + ( (this.width/2+40) * cosine);
-        let offsetY = this.y + ( (this.height/2+40) * sine);
+        let offsetX = this.x + ( (this.width/2+30) * cosine);
+        let offsetY = this.y + ( (this.height/2+30) * sine);
 
         this.setX(offsetX);
         this.setY(offsetY);
