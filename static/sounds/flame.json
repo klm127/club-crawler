@@ -1,0 +1,22 @@
+{
+    "resources": [
+        "./flame.mp3"
+    ],
+    "spritemap": {
+        "pickup": {
+            "start": 0,
+            "loop": false,
+            "end": 2
+        },
+        "fire": {
+            "start": 8,
+            "loop": false,
+            "end": 9
+        },
+        "hit": {
+            "start":24,
+            "end": 28,
+            "loop": false
+        }
+    }
+}

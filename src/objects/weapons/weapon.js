@@ -21,9 +21,12 @@ const DEFAULT_WEAPON = {
     audioHitKey: "bounce1",
     bounce: 0.3,
     hitEnemies: true,
+    overlapEnemies: false,
     hitWalls: true,
     hitPlayer: false,
+    overlapPlayer: false,
     hitDestructibles: true,
+    overlapDestructibles: false,
     destroyOnWallTouch: false,
 }
 
@@ -98,11 +101,20 @@ class Projectile extends Phaser.GameObjects.Image {
         if(config.hitEnemies) {
             this.scene.physics.add.collider(this, this.scene.mapManager.enemies, Interact.DamageCollisionReversed);
         }
+        if(config.overlapEnemies) {
+            this.scene.physics.add.overlap(this, this.scene.mapManager.enemies, Interact.DamageCollisionReversed);
+        }
         if(config.hitDestructibles) {
             this.scene.physics.add.collider(this, this.scene.mapManager.destructibles, Interact.DamageCollisionReversed);
         }
+        if(config.overlapDestructibles) {
+            this.scene.physics.add.overlap(this, this.scene.mapManager.destructibles, Interact.DamageCollisionReversed);
+        }
         if(config.hitPlayer) {
             this.scene.physics.add.collider(this, this.scene.player, Interact.DamageCollisionReversed);
+        }
+        if(config.overlapPlayer) {
+            this.scene.physics.add.overlap(this, this.scene.player, Interact.DamageCollisionReversed);
         }
         this.scene.time.delayedCall(this.duration, this.destroy, [], this);
         this.fireAt(config.target)

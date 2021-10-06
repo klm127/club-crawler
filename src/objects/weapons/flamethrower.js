@@ -10,21 +10,24 @@ const Projectile = Weapons.Projectile;
 const FLAMETHROWER_DEFAULT_STATS = {
     name: "flamethrower",
     duration: 800,
-    projectileVelocity: 1000,
+    projectileVelocity: 600,
     spin: 0,
     mass: 0,
-    damage: 15,
-    fireRate: 50, //lower is better
+    damage: 2, // doesnt need a lot cause overlaps trigger a bunch
+    fireRate: 150, //lower is better
     spriteKey: "flamestream",
-    audioSpriteKey: "bullet-sound",
-    audioFireKey: "shot1",
-    audioBounceKey: "bounce1",
-    audioHitKey: "bounce1",
+    audioSpriteKey: "flame-sound",
+    audioFireKey: "fire",
+    audioBounceKey: "hit",
+    audioHitKey: "hit",
     bounce: 0,
-    hitEnemies: true,
+    hitEnemies: false,
+    overlapEnemies: true,
     hitWalls: true,
-    hitDestructibles: true,
-    hitPlayer: true,
+    hitDestructibles: false,
+    overlapDestructibles: true,
+    hitPlayer: false,
+    overlapPlayer: true,
     destroyOnWallTouch: false,
     initialFlameScale: 0.5, // not working for some reason - have to apply directly
     finalFlameScale: 1,
@@ -58,6 +61,10 @@ class Flame extends Projectile {
         this.initialFlameScale = FLAMETHROWER_DEFAULT_STATS.initialFlameScale;
         this.finalFlameScale = FLAMETHROWER_DEFAULT_STATS.finalFlameScale;
         this.setScale(this.initialFlameScale, this.initialFlameScale)
+    }
+
+    dealDamage() {
+
     }
 
     fireAt(target) {
@@ -111,15 +118,15 @@ class Flame extends Projectile {
         //console.log(this.initialFlameScale, this.finalFlameScale);
         var tween = this.scene.tweens.addCounter({
             from: 0.7,
-            to: 3,
+            to: 2.2,
             targets:this,
             duration: flame.duration/2,
-            hold: flame.duration/3,
             ease: 'Quadratic',
             onUpdate: function() {
                 val = tween.getValue();
                 if(flame) {
-                    flame.setScale(val,val);
+                    flame.setScale(val*0.7,val);
+                    flame.setAlpha(1-tween.progress+0.5);
                 }
             }
         })
