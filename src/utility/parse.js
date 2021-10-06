@@ -1,8 +1,8 @@
 /**
- * @namespace Parse
  * @memberof ClubCrawler.Utility
+ * @namespace Parse
  * 
- * Helper functions for map parsing
+ * @description Helper functions for map parsing
  */
 
 
@@ -10,6 +10,7 @@
  * Flattens custom properties of a Tiled Object into 1 object.
  * 
  * Converts an array of Objects to one object and returns it. Returns empty object if not possible
+ * @memberof ClubCrawler.Utility.Parse
  * 
  * @param {Array<Object>} PropertiesArray - The Tiled Properties Array
  * @returns {Object} - Object with top level being property name
@@ -26,7 +27,7 @@ function getFlatTiledObjectProperties(PropertiesArray) {
 
 /**
  * Parses a layer map recursively to find the matching Object that has the "creates" property for an item, then returns that object.
- * 
+ * @memberof ClubCrawler.Utility.Parse
  * 
  * @param {any} item
  * @param {any} layerMap - The layer map
@@ -61,7 +62,7 @@ function getConstructorConfigFromLayerMap(item, layerMap) {
 
 /**
  * Determines if an object has the property 'creates' and returns it if does. Otherwise returns false.
- * 
+ * @memberof ClubCrawler.Utility.Parse
  * @param {any} object
  * @returns {Object | boolean}
  */
@@ -76,6 +77,7 @@ function isConstructorConfig(object) {
 
 
 /**
+ * @memberof ClubCrawler.Utility.Parse
  * Sets the scene.startX and scene.startY properties to the x and y in the constructor config
  * @param {Object} constructorConfig - must have scene, x, and y
  */

@@ -2436,6 +2436,17 @@
                  "width":0,
                  "x":2078.92,
                  "y":4251.33
+                }, 
+                {
+                 "height":33,
+                 "id":157,
+                 "name":"flamethrower-switch",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":127,
+                 "x":424.242424242424,
+                 "y":433.333333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2456,7 +2467,7 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":157,
+ "nextobjectid":158,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",

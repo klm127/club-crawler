@@ -1,4 +1,3 @@
-
 import Phaser from "phaser";
 
 const Player = require('../objects/player');
@@ -50,15 +49,14 @@ const BLUEWORLD_DEFAULTS = {
 
 }
 /**
- * @classdesc 
- * 
+ * @classdesc  
  * Parses the BlueWorld map found in static/maps/blueworld.json
  * 
  * Wraps and manages a Phaser.Tilemap, loads objects, applies physics to objects, and places player in the scene.
  * 
  * Will eventually handle loading of other maps.
+ * @memberof ClubCrawler.Parsers
  * 
- * @memberof ClubCrawler.Objects
  */
 class BlueWorldParser { 
 

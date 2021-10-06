@@ -1,5 +1,10 @@
 /**
- * @namespace ClubCrawler.Utility.Load
+ * @memberof ClubCrawler.Utility
+ * 
+ * @namespace Load
+ * 
+ * 
+ * @description Load Utilities
  */
 
 //const BlueWorldParser = require('../mapParsers/blueworld');
@@ -23,6 +28,7 @@ function preloadBlueWorldAssets(scene) {
     scene.load.image('bullet', 'images/bullet1.png');
     scene.load.image('coin', "images/coin.png");
     scene.load.image('cylinder', 'images/cylinder.png');
+    scene.load.image('flamethrower', 'images/flamethrower127x33.png');
 
     //audio sprites
     scene.load.audioSprite('bullet-sound', 'sounds/bullet.json', 'sounds/bullet.mp3');
