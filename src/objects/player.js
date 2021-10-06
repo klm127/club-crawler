@@ -67,7 +67,7 @@ class Player extends Phaser.GameObjects.Image {
 
         dataManager.health = 0;
         //set game properties
-        this.health = config.health ? config.health : 50;
+        this.health = config.health ? config.health : 100;
         dataManager.changeHealth(this.health);
         this.velocityIncrement = config.velocityIncrement ? config.velocityIncrement : 25;
 

@@ -12,7 +12,7 @@ const DEFAULT_WEAPON = {
     projectileVelocity: 1000,
     spin: 2000,
     mass: 0.1,
-    damage: 12,
+    damage: 20,
     fireRate: 300,
     spriteKey: "bullet",
     audioSpriteKey: "bullet-sound",
@@ -92,7 +92,7 @@ class Projectile extends Phaser.GameObjects.Image {
         //create audiosprites
         this.shotFX = this.scene.sound.addAudioSprite(config.audioSpriteKey);
         this.bounceFX = this.scene.sound.addAudioSprite(config.audioSpriteKey);
-        this.hitFX = this.scene.sound.addAudioSprite(config.audioSpriteKey);
+        this.hitFX = this.scene.sound.addAudioSprite(config.audioSpriteKey); 
 
         //create colliders
         if(config.hitWalls) {

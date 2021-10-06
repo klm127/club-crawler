@@ -14,7 +14,7 @@ const dataManager = require('../data');
  */
 const DEFAULT_OGRE_STATS = {
     name: "Ogre",
-    health: 150,
+    health: 300,
     speed: 100, // might be redundant with velocity increment being the more relevant one
     maxSpeed: 500,
     updateSpeed: 500,

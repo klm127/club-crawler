@@ -10,11 +10,11 @@ const Projectile = Weapons.Projectile;
 const FLAMETHROWER_DEFAULT_STATS = {
     name: "flamethrower",
     duration: 800,
-    projectileVelocity: 600,
+    projectileVelocity: 700,
     spin: 0,
     mass: 0,
-    damage: 2, // doesnt need a lot cause overlaps trigger a bunch
-    fireRate: 150, //lower is better
+    damage: 1, // doesnt need a lot cause overlaps trigger a bunch
+    fireRate: 75, //lower is faster
     spriteKey: "flamestream",
     audioSpriteKey: "flame-sound",
     audioFireKey: "fire",

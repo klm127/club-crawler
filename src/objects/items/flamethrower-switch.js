@@ -16,7 +16,8 @@ const DEFAULT_FLAMETHROWER_PICKUP_STATS = {
     duration: 0, //not implemented
     spriteStartFrame: "flamethrower-still", //not implemented
     spriteTouchFrame: "flamethrower-activated", //not implemented
-    audioSpriteKey: "flamethrower-pickup-sound" //not implemented
+    audioSpriteKey: "flame-sound",
+    audioSpriteFrame: "pickup"
 }
 
 /** 
@@ -39,6 +40,7 @@ class FlameThrowerSwitch extends Phaser.GameObjects.Image {
 
         super(finalConfig.scene, finalConfig.x, finalConfig.y, finalConfig.spriteKey);
 
+        this.sfx = this.scene.sound.addAudioSprite(finalConfig.audioSpriteKey);
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
         this.setOrigin(0,0);
@@ -48,6 +50,12 @@ class FlameThrowerSwitch extends Phaser.GameObjects.Image {
 
     onPlayerTouch() {
         var player = this.scene.player;
+        // if(this.sfx) {
+        //     if(!this.sfx.isPlaying) {
+        //         this.sfx.play(this.audioSpriteFrame);
+        //         this.sfx.
+        //     }
+        // }
     
         if(dataManager.debug.items.overlap) {
             dataManager.log(`player touched flamethrower switch!`);

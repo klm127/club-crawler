@@ -4,9 +4,9 @@
     ],
     "spritemap": {
         "pickup": {
-            "start": 0,
+            "start": 0.5,
             "loop": false,
-            "end": 2
+            "end": 1
         },
         "fire": {
             "start": 8,
