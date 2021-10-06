@@ -16,7 +16,7 @@ const dataManager = {
     sfxVolume: 1,
     musicVolume: 0.5,
     debug: {
-        on: true,
+        on: false,
         duration: 3000, //how long a message stays on the screen,
         max: 10, //how many messages can appear
         weapon: {
