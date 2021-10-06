@@ -28,8 +28,7 @@
         <article>
             <pre class="prettyprint source linenums"><code>import Phaser from "phaser";
 
-const Bullet = require('./bullet');
-
+const Weapon = require('./weapon');
 const dataManager = require('./data');
 
 /** 
@@ -77,6 +76,7 @@ class Player extends Phaser.GameObjects.Image {
         //call super
         super(config.scene, config.x, config.y, "playerimages", selectedFrame); 
 
+        this.name = "Player";
         //add to scene
         config.scene.add.existing(this);
         if(config.scale) {
@@ -96,10 +96,19 @@ class Player extends Phaser.GameObjects.Image {
         this.health = config.health ? config.health : 50;
         dataManager.changeHealth(this.health);
         this.velocityIncrement = config.velocityIncrement ? config.velocityIncrement : 25;
-        this.weapon = null; // todo
 
         //create reticle
         this.reticle = new Reticle({player:this, scene:config.scene, x:config.x, y:config.y});
+        
+        //create weapon
+        this.weapon = new Weapon({
+            scene:this.scene,
+            wielder:this, 
+            target:this.reticle
+        });
+        if(dataManager.debug.on &amp;&amp; dataManager.debug.player.construction) {
+            dataManager.log(`player constructor? ${this.constructor.name} created, props ${Object.keys(this)}`)
+        }
     }
     /**
      * Applies velocity to the player, such as in response to keyboard input
@@ -118,6 +127,10 @@ class Player extends Phaser.GameObjects.Image {
         else {
             this.body.setVelocityY(this.body.velocity.y - this.velocityIncrement);
         }
+        // die if out of bounds
+        if(!this.scene.mapManager.floors.getTileAtWorldXY(this.x,this.y)) {
+            this.die();
+        };
     }
     die() {
         //die animation
@@ -144,14 +157,6 @@ class Player extends Phaser.GameObjects.Image {
  */
 class Reticle extends Phaser.GameObjects.Image {
 
-    /**
-     * Preloads the reticle image asset
-     * @param {Phaser.Scene} scene - See {@link https://newdocs.phaser.io/docs/3.55.2/Phaser.Scene Phaser.Scene}
-     */
-    static preload(scene) {
-        scene.load.image('reticle', 'images/reticle.png');
-        Bullet.preload(scene);
-    }
 
     /**
      * Description
@@ -220,13 +225,13 @@ module.exports = Player</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="ClubCrawler.Interfaces.html">Interfaces</a></li><li><a href="ClubCrawler.Interfaces.Interact.html">Interact</a></li><li><a href="ClubCrawler.Interfaces.Movement.html">Movement</a></li><li><a href="ClubCrawler.Interfaces.Sense.html">Sense</a></li><li><a href="ClubCrawler.Objects.html">Objects</a></li><li><a href="ClubCrawler.Scenes.html">Scenes</a></li><li><a href="ClubCrawler.Types.html">Types</a></li></ul><h3>Classes</h3><ul><li><a href="ClubCrawler.Objects.Bullet.html">Bullet</a></li><li><a href="ClubCrawler.Objects.DungeonMapManager.html">DungeonMapManager</a></li><li><a href="ClubCrawler.Objects.GameCoin.html">GameCoin</a></li><li><a href="ClubCrawler.Objects.Ogre.html">Ogre</a></li><li><a href="ClubCrawler.Objects.Player.html">Player</a></li><li><a href="ClubCrawler.Objects.Reticle.html">Reticle</a></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html">DungeonCrawlerGame</a></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerOverlay.html">DungeonCrawlerOverlay</a></li><li><a href="ClubCrawler.Scenes.TitleScreen.html">TitleScreen</a></li><li><a href="Target.html">Target</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="ClubCrawler.Interfaces.html">Interfaces</a></li><li><a href="ClubCrawler.Interfaces.Interact.html">Interact</a></li><li><a href="ClubCrawler.Interfaces.Movement.html">Movement</a></li><li><a href="ClubCrawler.Interfaces.Sense.html">Sense</a></li><li><a href="ClubCrawler.Objects.html">Objects</a></li><li><a href="ClubCrawler.Parsers.html">Parsers</a></li><li><a href="ClubCrawler.Scenes.html">Scenes</a></li><li><a href="ClubCrawler.Types.html">Types</a></li><li><a href="ClubCrawler.Utility.html">Utility</a></li><li><a href="ClubCrawler.Utility.Load.html">Load</a></li><li><a href="ClubCrawler.Utility.Parse.html">Parse</a></li></ul><h3>Classes</h3><ul><li><a href="ClubCrawler.Objects.Cylinder.html">Cylinder</a></li><li><a href="ClubCrawler.Objects.GameCoin.html">GameCoin</a></li><li><a href="ClubCrawler.Objects.Ogre.html">Ogre</a></li><li><a href="ClubCrawler.Objects.Player.html">Player</a></li><li><a href="ClubCrawler.Objects.Reticle.html">Reticle</a></li><li><a href="ClubCrawler.Objects.Weapon.html">Weapon</a></li><li><a href="ClubCrawler.Objects.Weapon.Projectile.html">Projectile</a></li><li><a href="ClubCrawler.Parsers.BlueWorldParser.html">BlueWorldParser</a></li><li><a href="ClubCrawler.Scenes.DebugOverlay.html">DebugOverlay</a></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html">DungeonCrawlerGame</a></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerOverlay.html">DungeonCrawlerOverlay</a></li><li><a href="ClubCrawler.Scenes.GameOver.html">GameOver</a></li><li><a href="ClubCrawler.Scenes.GameWin.html">GameWin</a></li><li><a href="ClubCrawler.Scenes.TitleScreen.html">TitleScreen</a></li><li><a href="FlameThrowerSwitch.html">FlameThrowerSwitch</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun Oct 03 2021 20:07:45 GMT-0400 (Eastern Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Oct 05 2021 19:59:46 GMT-0400 (Eastern Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: objects/enemies/ogre.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: objects/enemies/ogre.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import Phaser from "phaser";
+
+const Movement = require('../../interfaces/movement');
+const GameCoin = require('../items/coin');
+const Sense = require('../../interfaces/sense');
+const dataManager = require('../data');
+
+/**
+ * Default characteristics for the ogre - health, speed, damage, coin result, etc
+ * gamescenepassthrough.constructor.name
+ * @static
+ * @final
+ * @memberof ClubCrawler.Objects.Ogre
+ */
+const DEFAULT_OGRE_STATS = {
+    name: "Ogre",
+    health: 150,
+    speed: 100, // might be redundant with velocity increment being the more relevant one
+    maxSpeed: 500,
+    updateSpeed: 500,
+    velocityIncrement: 400,
+    mass: 5,
+    drag: 50,
+    maxCoins: 10,
+    minCoins: 5,
+    senseRange: 800,
+    damage: 5,
+    sfxVolume: 0.1, // not sure why i can't get this to work to turn down the volume on the ogre fx
+    spriteKey: "ogre",
+    spriteAttackFrame: "attack.png", // not implemented yet
+    spriteStillFrame: "still.png", // not implemented yet
+    audioSpriteKey: "ogre-sound",
+    weapon: null, // implement
+}
+
+/** 
+ * @classdesc 
+ * A class for an Ogre enemy. Uses an atlas w sprite animations
+ * 
+ * @memberof ClubCrawler.Objects
+ * @extends Phaser.GameObjects.Image
+*/
+class Ogre extends Phaser.GameObjects.Image {
+    
+
+    /**
+     * Constructs the ogre
+     * @param {Object} config - The configuration object // Create CreatureConfig
+     * @param {Phaser.Scene} config.scene - The creating scene
+     * @param {Item} config.item - The Tiled item having the x,y etc
+     */
+    constructor(config) {
+
+        //call super
+        super(config.scene, config.x, config.y, config.spriteKey ? config.spriteKey : DEFAULT_OGRE_STATS.spriteKey, config.spriteStillFrame ? config.spriteStillFrame : DEFAULT_OGRE_STATS.spriteStillFrame);
+        config.scene.add.existing(this);
+        config.scene.physics.add.existing(this);
+        Object.assign(this, DEFAULT_OGRE_STATS);
+        Object.assign(this, config);
+        this.setScale(0.75, 0.75);
+        this.dealDamageSfx = this.scene.sound.addAudioSprite(this.audioSpriteKey);
+        this.dealDamageSfx.volume = this.sfxVolume;
+        this.takeDamageSfx = this.scene.sound.addAudioSprite(this.audioSpriteKey);
+        this.takeDamageSfx.volume = this.sfxVolume;
+        this.shoutSfx = this.scene.sound.addAudioSprite(this.audioSpriteKey);
+        this.shoutSfx.volume = this.sfxVolume;
+        this.dieSfx = this.scene.sound.addAudioSprite(this.audioSpriteKey);
+        this.dieSfx.volume = this.sfxVolume;
+        this.hasSensedPlayer = false;
+        
+        this.scene.time.delayedCall(100, ()=> {
+            this.body.setMaxSpeed(this.maxSpeed);
+            this.body.setMass(this.mass);
+            this.body.setDrag(this.drag);
+            Sense.SensePlayerRepeat(this, {});
+
+        },[], this);
+    }
+
+    /**
+     * @deprecated
+     * old bullet interaction
+     * @param {any} bullet
+     * @returns {any}
+     */
+    hit(bullet) {
+        this.health -= bullet.damage;
+        if(this.health &lt;= 0) {
+            this.die();
+        } else {
+            //this.sfx.play('takedamage');
+        }
+    }
+    /**
+     * Plays damage sound
+     */
+    dealDamage() {
+        this.dealDamageSfx.play('dealdamage');
+    }
+    /**
+     * Called by collision function. Can react to damage here.
+     * 
+     * @param {number} damage - amount of damage taken
+     */
+    takeDamage(damage) { 
+        let ogre = this;
+        ogre.health -= damage;
+        this.takeDamageSfx.play('takedamage');
+    }
+    /**
+     * Called internally if the result of, for example, takeDamage causes it to die
+     * 
+     * Can clean up any other objects it needs to, like ongoing events, when it dies
+     * 
+     */
+    die() {
+        this.dieSfx.play('die');
+        this.scene.time.delayedCall(6000, (sounds)=> {
+            sounds.forEach( (sound) => {
+                sound.destroy();
+            })
+        }, [[this.dieSfx, this.takeDamageSfx, this.dealDamageSfx, this.shoutSfx]]);
+        for(let i = this.minCoins; i &lt; Math.random() * this.maxCoins + this.minCoins; i++) {
+            let coin = new GameCoin({scene:this.scene, x:this.x, y:this.y});
+            coin.body.setVelocityX(Math.random() * 100 - 50);
+            coin.body.setVelocityY(Math.random() * 100 - 50);
+        }
+        if(this.nextMoveEvent) {
+            this.nextMoveEvent.destroy();
+        }
+        if(this.senseEvents) {
+            this.senseEvents.forEach( (event)=> {
+                event.destroy();
+            });
+        }
+        dataManager.emitter.emit("enemyDied");
+        this.destroy();
+    }
+    /**
+     * Called by the repeating sense event. In case of Ogre, the senseevent is detecting player distance. This function is basically the entirety of the Ogre AI
+     * @param {ClubCrawler.Types.SensationConfig} sensation
+     */
+    sense(sensation) {
+        if(this.body.velocity.x > 0) {
+            this.setFlipX(true);
+        } else {
+            this.setFlipX(false);
+        }
+        if(sensation.distance &lt; this.senseRange) {
+            if(!this.hasSensedPlayer || !this.shoutSfx.isPlaying) { 
+                this.hasSensedPlayer = true;
+                this.shoutSfx.play("shout");
+            }
+            Movement.MoveTowardsPlayer(this, {});
+        } else {
+            Movement.MoveRandomly(this, {speedRatio:0.5});
+        }
+        if(sensation.distance &lt; this.senseRange/3*2) {
+            this.setFrame("attack.png")
+        } else {
+            this.hasSensedPlayer = false;
+            this.setFrame("still.png");
+        }
+    }
+
+}
+
+
+module.exports = Ogre</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="ClubCrawler.Interfaces.html">Interfaces</a></li><li><a href="ClubCrawler.Interfaces.Interact.html">Interact</a></li><li><a href="ClubCrawler.Interfaces.Movement.html">Movement</a></li><li><a href="ClubCrawler.Interfaces.Sense.html">Sense</a></li><li><a href="ClubCrawler.Objects.html">Objects</a></li><li><a href="ClubCrawler.Parsers.html">Parsers</a></li><li><a href="ClubCrawler.Scenes.html">Scenes</a></li><li><a href="ClubCrawler.Types.html">Types</a></li><li><a href="ClubCrawler.Utility.html">Utility</a></li><li><a href="ClubCrawler.Utility.Load.html">Load</a></li><li><a href="ClubCrawler.Utility.Parse.html">Parse</a></li></ul><h3>Classes</h3><ul><li><a href="ClubCrawler.Objects.Cylinder.html">Cylinder</a></li><li><a href="ClubCrawler.Objects.GameCoin.html">GameCoin</a></li><li><a href="ClubCrawler.Objects.Ogre.html">Ogre</a></li><li><a href="ClubCrawler.Objects.Player.html">Player</a></li><li><a href="ClubCrawler.Objects.Reticle.html">Reticle</a></li><li><a href="ClubCrawler.Objects.Weapon.html">Weapon</a></li><li><a href="ClubCrawler.Objects.Weapon.Projectile.html">Projectile</a></li><li><a href="ClubCrawler.Parsers.BlueWorldParser.html">BlueWorldParser</a></li><li><a href="ClubCrawler.Scenes.DebugOverlay.html">DebugOverlay</a></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html">DungeonCrawlerGame</a></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerOverlay.html">DungeonCrawlerOverlay</a></li><li><a href="ClubCrawler.Scenes.GameOver.html">GameOver</a></li><li><a href="ClubCrawler.Scenes.GameWin.html">GameWin</a></li><li><a href="ClubCrawler.Scenes.TitleScreen.html">TitleScreen</a></li><li><a href="FlameThrowerSwitch.html">FlameThrowerSwitch</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Oct 05 2021 19:59:46 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
