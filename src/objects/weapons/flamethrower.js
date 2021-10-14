@@ -9,12 +9,12 @@ const Projectile = Weapons.Projectile;
  */
 const FLAMETHROWER_DEFAULT_STATS = {
     name: "flamethrower",
-    duration: 1000,
-    projectileVelocity: 500,
-    spin: -2000,
+    duration: 420,
+    projectileVelocity: 550,
+    spin: -150,
     mass: 0,
-    damage: 1, // doesnt need a lot cause overlaps trigger a bunch
-    fireRate: 75, //lower is faster
+    damage: .06, // doesnt need a lot cause overlaps trigger a bunch
+    fireRate: 20, //lower is faster
     spriteKey: "flamestream",
     audioSpriteKey: "flame-sound",
     audioFireKey: "fire",
@@ -119,8 +119,8 @@ class Flame extends Projectile {
         const flame = this;
         //console.log(this.initialFlameScale, this.finalFlameScale);
         var tween = this.scene.tweens.addCounter({
-            from: 0.7,
-            to: 2.2,
+            from: 1.0,
+            to: 2.6,
             targets:this,
             duration: flame.duration/2,
             ease: 'Quadratic',
@@ -128,7 +128,7 @@ class Flame extends Projectile {
                 val = tween.getValue();
                 if(flame) {
                     flame.setScale(val*0.7,val);
-                    flame.setAlpha(1-tween.progress+0.5);
+                    flame.setAlpha(1-tween.progress+0.75);
                 }
             }
         })
