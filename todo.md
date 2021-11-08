@@ -1,7 +1,74 @@
 # TODO
 
+A todo-list for the project
+
+
+## General ToDos 
+
+1. Create an inventory screen / scene and the ability to pickup objects
+
+1. The ability to change weapons
+
+1. Weapons having ammos
+
+1. Create a high score table
+
+1. More maps
+
+1. More enemies
+
+1. More weapons
+
+1. More items (health potions, etc)
+
+1. A store or other way to spend points
+
+### Other notes, links
+
+Extend a Sprite in Phaser 3:
+
+https://phasergames.com/extend-a-sprite-in-phaser-3/?mc_cid=3f4ee26e5d&mc_eid=a4d9ee0291
+
+
+A tutorial on tilemaps: https://medium.com/@michaelwesthadley/modular-game-worlds-in-phaser-3-tilemaps-1-958fc7e6bbd6
+
+A free alternative to TexturePacker on the web : https://free-tex-packer.com/app/
+
+Paint.net is amazing for sprite creation
+
+
+## Completed To-Do Items
+1. Create a bad guy
+    1. Set up sprites
+    1. ~Spawn in map~
+    1. ~Set up movement~
+
+
+1. ~Create a basic weapon for player~
+    1. ~Shooting fireballs or something for now~
+    1. Should shoot at where mouse is located when space is pressed
+    1. ~Set bullets to damage bad guy~
+    1. Should be able to move reticle with wsad
+
+1. ~Set up documentation~
+    1. ~Will use jsdoc~
+    1. Will retrieve phaser info and directly link to those docs
+    1. Generate a sleek webpage
+
+1. Connect player health to overlay using an event emitter
+    1. ~Design and create eventcenter type paradigm using instance of phaser event emitter~
+    1. Create graphics for UI
+    1. Set up bad guy damaging player
+
+1. Create a game over scene with a restart button
+
+
+
+
+# Old To-Do List / Notes
+
 ## Refactor and Abstract Code Logic
-# _Templat-tize the game!_
+## _Templat-tize the game!_
 
 - **Event driven** - there is a central update function used in Game but it's mostly just for input detection... other things update by attaching events to timers 
 - Information on where to place everything except the overlay (for now) is derived from map data created by **Tiled**
@@ -33,51 +100,3 @@
 - Effects
     - probably set more overlaps than colliders
     - sprite animations or extending `Phaser.Graphics` for special effects might be interesting 
-
-
-## General ToDos 
-
-1. Create a bad guy
-    1. Set up sprites
-    1. ~Spawn in map~
-    1. ~Set up movement~
-
-1. ~Create a basic weapon for player~
-    1. ~Shooting fireballs or something for now~
-    1. Should shoot at where mouse is located when space is pressed
-    1. ~Set bullets to damage bad guy~
-    1. Should be able to move reticle with wsad
-
-1. ~Set up documentation~
-    1. ~Will use jsdoc~
-    1. Will retrieve phaser info and directly link to those docs
-    1. Generate a sleek webpage
-
-1. Connect player health to overlay using an event emitter
-    1. ~Design and create eventcenter type paradigm using instance of phaser event emitter~
-    1. Create graphics for UI
-    1. Set up bad guy damaging player
-
-1. Create a game over scene with a restart button
-
-1. Create a high score table
-
-1. Create an inventory screen / scene and the ability to pickup objects
-
-1. Clickable buttons on the overlay that don't cause player to shoot when they're clicked, and can open an inventory overlay
-
-### Other notes, links
-
-Extend a Sprite in Phaser 3:
-
-https://phasergames.com/extend-a-sprite-in-phaser-3/?mc_cid=3f4ee26e5d&mc_eid=a4d9ee0291
-
-
-A tutorial on tilemaps: https://medium.com/@michaelwesthadley/modular-game-worlds-in-phaser-3-tilemaps-1-958fc7e6bbd6
-
-A free alternative to TexturePacker on the web : https://free-tex-packer.com/app/
-
-Paint.net is amazing for sprite creation
-
-
-
