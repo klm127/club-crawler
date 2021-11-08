@@ -50,3 +50,18 @@ _You probably won't have to worry about these once you have node/npm_
 1. Execute `npm start` to start the web server
 
 1. In a browser such as Firefox, navigate to http://localhost:1234/
+
+
+## Descriptions of NPM Commands
+
+To run a command, from the command line in the project folder, execute `npm run <command name>`
+
+|command name | command execution  | explanation |
+--- | --- | ---
+|start|echo Wait for project to build! & parcel src/index.html -p 1234|Serves the game locally at localhost:1234|
+|build-netlify|parcel build src/index.html --no-minify|builds a version of the project for deployment on netlify|
+|document|jsdoc src -r -d ./docs/ -R todo.md && start ./docs/index.html|uses default jsdoc to generate documentation with 'todo.md' as the home page, then opens the local documentation in the default browser|
+|document-minami|jsdoc src -r -d ./docs/ -R Readme.md -t ./node_modules/minami && start ./docs/index.html|does the same as document but using the minami theme|
+|test|node tests/testParse.js|uses nodes to run some tests|
+|test-ui|parcel ui-mockup/index.html -d dist-uiTest -p 1234|runs a local server on port 1234 with a test ui|
+|test-ui-mockup|start ./ui-mockup/mockup.html|opens the browser to a simple ui mockup template|

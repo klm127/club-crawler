@@ -1,7 +1,8 @@
-# TODO
+## To-Do list
 
-A todo-list for the project
+This home page contains some todos for the project.
 
+To view the documentation for various classes and namespaces, click the links on the right side.
 
 ## General ToDos 
 
