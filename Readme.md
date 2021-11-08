@@ -2,40 +2,21 @@
 
 ![a screenshot from club-crawler](https://github.com/unhm-programming-team/club-crawler/blob/main/screen.png)
 
-[documentation](https://unhm-programming-team.github.io/club-crawler/)
+[Link to the documentation](https://unhm-programming-team.github.io/club-crawler/)
 
-This will be a dungeon crawler style javascript web game made with Phaser. It will run in the browser and eventually be embedded in the website.
+Club Crawler is a dungeon crawler style javascript web game made with Phaser. It runs client-side in the browser. An older version is playable on Netlify until the free builds run out at this link: [https://club-crawler.netlify.app/](https://club-crawler.netlify.app/)
 
-It will be sort of like the Arcade classic, gauntlet. Top down deal, where maybe you have to click to fire. Once we get something basic running, maybe we can add multiplayer, random map generation, etc.
+Club Crawler is similar to the Arcade classic [Gauntlet](https://en.wikipedia.org/wiki/Gauntlet_(1985_video_game)). Clicking causes the player to fire whatever weapon they are wielding in the direction of the mouse pointer. Arrow keys move the player around the map.
 
-If you would like to help on this project, it needs:
+Once a better base game is set up, we may look at making it more rogue-lite-like by adding procedural map generation with, for example, [Dungeoneer](https://github.com/LucianBuzzo/dungeoneer/). 
 
-- Levels 
-    - Uses [tiled](https://www.mapeditor.org/) for level editing
+## Contributing
 
-- Images/Sprites
-    - bad guys
-    - items
-    - players
-    - walls
-    - floors
-    - plants
+Reach out to klm127#5121 on Discord if you have any questions about the code base. The [documentation](https://unhm-programming-team.github.io/club-crawler/) may be helpful. If you have an idea or improvement to the code, fork this repository and make a pull request. Please make pull requests for just 1 feature at a time to make the review process more simple and don't add anything malicious to the code base.
 
-I use paint.net for sprite creation. Currently tiles are 128x128 but we can support other sizes. Any .png of 128x128 is useful
+Contributions don't have to be code. If you have some art, music, sound effect, or an idea to add to the game, you can either pull request that in or contact klm127 on Discord to add it for you. 
 
-- Sounds
-    - music 
-    - sound effects
-
-- Code
-    - items
-    - bad guys
-    - health
-
-- Ideas
-    - bad guy attack patterns
-    - weapons / spells
-    - dialogue
+Maps are currently created using [tiled](https://www.mapeditor.org/), which integrates well with Phaser. 
 
 There is a [tentative to-do list](https://github.com/unhm-programming-team/club-crawler/blob/main/todo.md)
 
