@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: objects/weapons/flamethrower.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: objects/weapons/flamethrower.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const Weapons = require('./weapon');
+const Weapon = Weapons.Weapon;
+const Projectile = Weapons.Projectile;
+
+/**
+ * @memberof ClubCrawler.Objects.Weapons
+ * 
+ * @classdesc A FlameThrower
+ */
+const FLAMETHROWER_DEFAULT_STATS = {
+    name: "flamethrower",
+    duration: 420,
+    projectileVelocity: 550,
+    spin: -150,
+    mass: 0,
+    damage: .06, // doesnt need a lot cause overlaps trigger a bunch
+    fireRate: 20, //lower is faster
+    spriteKey: "flamestream",
+    audioSpriteKey: "flame-sound",
+    audioFireKey: "fire",
+    audioBounceKey: "hit",
+    audioHitKey: "hit",
+    bounce: 0,
+    hitEnemies: false,
+    overlapEnemies: true,
+    hitWalls: true,
+    hitDestructibles: false,
+    overlapDestructibles: true,
+    hitPlayer: false,
+    overlapPlayer: true,
+    destroyOnWallTouch: false,
+    initialFlameScale: 0.5, // not working for some reason - have to apply directly
+    finalFlameScale: 1,
+}
+
+class FlameThrower extends Weapon {
+    constructor(config) {
+        const finalConfig = {};
+        Object.assign(finalConfig, FLAMETHROWER_DEFAULT_STATS);
+        Object.assign(finalConfig, config);
+        super(finalConfig);
+    }
+    /**
+     * Fires a flame class instead of regular projectile, called repeatedly if mouse pressed
+     * @override
+     * @param {number} time - update time, used to set lastTimeFired
+     */
+    fire(time) {
+        if(time > this.lastTimeFired + this.fireRate) {
+            let newFlameStream = new Flame(this);
+            this.lastTimeFired = time;
+        }
+
+    }
+}
+
+class Flame extends Projectile {
+
+    constructor(config) {
+        super(config);
+        this.initialFlameScale = FLAMETHROWER_DEFAULT_STATS.initialFlameScale;
+        this.finalFlameScale = FLAMETHROWER_DEFAULT_STATS.finalFlameScale;
+        this.setScale(this.initialFlameScale, this.initialFlameScale)
+        this.body.setCircle(this.width/4, this.width/4, this.height/4);
+        this.setRotation(Math.random()*359)
+    }
+
+    dealDamage() {
+
+    }
+
+    fireAt(target) {
+        let hypoteneuse = Phaser.Math.Distance.Between(this.x, this.y, target.x, target.y);
+
+        let adjacent = target.x - this.x;
+        let opposite = target.y - this.y;
+        let sine = opposite/hypoteneuse;
+        let cosine = adjacent/hypoteneuse;
+
+        let speedX = this.projectileVelocity * cosine;
+        let speedY = this.projectileVelocity * sine; 
+
+        let offsetX = this.x + ( (this.width/2+30) * cosine);
+        let offsetY = this.y + ( (this.height/2+30) * sine);
+
+        this.setX(offsetX);
+        this.setY(offsetY);
+
+
+
+        this.body.setVelocityX(speedX);
+        this.body.setVelocityY(speedY);
+
+        if(speedX > 0) {
+            this.setRotation(Math.asin(sine));
+        }
+        else {
+            this.setRotation(-Math.asin(sine));
+            this.setFlipX(true);
+        }
+
+        //this.setAngle(Phaser.Math.RAD_TO_DEG * Math.asin(sine));
+        
+
+        // if(speedX &lt; 0) {
+        //     this.setFlipX(true);
+        // }
+        // else {
+        //     this.setAngle(Phaser.Math.RAD_TO_DEG * Math.acos(cosine));
+        //     this.setFlipX(true);
+        // }
+        if(this.shotFX) {
+            this.shotFX.play(this.audioFireKey);
+
+        }
+        this.growInSize();
+    }
+    growInSize() {
+        const flame = this;
+        //console.log(this.initialFlameScale, this.finalFlameScale);
+        var tween = this.scene.tweens.addCounter({
+            from: 1.0,
+            to: 2.6,
+            targets:this,
+            duration: flame.duration/2,
+            ease: 'Quadratic',
+            onUpdate: function() {
+                val = tween.getValue();
+                if(flame) {
+                    flame.setScale(val*0.7,val);
+                    flame.setAlpha(1-tween.progress+0.75);
+                }
+            }
+        })
+
+    }
+}
+
+module.exports = FlameThrower;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="ClubCrawler.Interfaces.html">Interfaces</a></li><li><a href="ClubCrawler.Interfaces.Interact.html">Interact</a></li><li><a href="ClubCrawler.Interfaces.Movement.html">Movement</a></li><li><a href="ClubCrawler.Interfaces.Sense.html">Sense</a></li><li><a href="ClubCrawler.Objects.html">Objects</a></li><li><a href="ClubCrawler.Objects.Items%250D%250DItems%2520in%2520the%2520game.html">ClubCrawler.Objects.ItemsItems in the game</a></li><li><a href="ClubCrawler.Parsers.html">Parsers</a></li><li><a href="ClubCrawler.Scenes.html">Scenes</a></li><li><a href="ClubCrawler.Types.html">Types</a></li><li><a href="ClubCrawler.Utility.html">Utility</a></li><li><a href="ClubCrawler.Utility.Load.html">Load</a></li><li><a href="ClubCrawler.Utility.Parse.html">Parse</a></li></ul><h3>Classes</h3><ul><li><a href="ClubCrawler.Objects.Cylinder.html">Cylinder</a></li><li><a href="ClubCrawler.Objects.Items.FlameThrowerSwitch.html">FlameThrowerSwitch</a></li><li><a href="ClubCrawler.Objects.Items.GameCoin.html">GameCoin</a></li><li><a href="ClubCrawler.Objects.Ogre.html">Ogre</a></li><li><a href="ClubCrawler.Objects.Player.html">Player</a></li><li><a href="ClubCrawler.Objects.Reticle.html">Reticle</a></li><li><a href="ClubCrawler.Objects.Weapon.html">Weapon</a></li><li><a href="ClubCrawler.Objects.Weapon.Projectile.html">Projectile</a></li><li><a href="ClubCrawler.Parsers.BlueWorldParser.html">BlueWorldParser</a></li><li><a href="ClubCrawler.Scenes.DebugOverlay.html">DebugOverlay</a></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html">DungeonCrawlerGame</a></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerOverlay.html">DungeonCrawlerOverlay</a></li><li><a href="ClubCrawler.Scenes.GameOver.html">GameOver</a></li><li><a href="ClubCrawler.Scenes.GameWin.html">GameWin</a></li><li><a href="ClubCrawler.Scenes.TitleScreen.html">TitleScreen</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Mon Nov 08 2021 11:04:41 GMT-0500 (Eastern Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

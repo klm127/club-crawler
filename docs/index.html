@@ -43,9 +43,87 @@
 
 
     <section>
-        <article><h1>TODO</h1>
+        <article><h2>To-Do list</h2>
+<p>This home page contains some todos for the project.</p>
+<p>To view the documentation for various classes and namespaces, click the links on the right side.</p>
+<h2>General ToDos</h2>
+<ol>
+<li>
+<p>Create an inventory screen / scene and the ability to pickup objects</p>
+</li>
+<li>
+<p>The ability to change weapons</p>
+</li>
+<li>
+<p>Weapons having ammos</p>
+</li>
+<li>
+<p>Create a high score table</p>
+</li>
+<li>
+<p>More maps</p>
+</li>
+<li>
+<p>More enemies</p>
+</li>
+<li>
+<p>More weapons</p>
+</li>
+<li>
+<p>More items (health potions, etc)</p>
+</li>
+<li>
+<p>A store or other way to spend points</p>
+</li>
+</ol>
+<h3>Other notes, links</h3>
+<p>Extend a Sprite in Phaser 3:</p>
+<p>https://phasergames.com/extend-a-sprite-in-phaser-3/?mc_cid=3f4ee26e5d&amp;mc_eid=a4d9ee0291</p>
+<p>A tutorial on tilemaps: https://medium.com/@michaelwesthadley/modular-game-worlds-in-phaser-3-tilemaps-1-958fc7e6bbd6</p>
+<p>A free alternative to TexturePacker on the web : https://free-tex-packer.com/app/</p>
+<p>Paint.net is amazing for sprite creation</p>
+<h2>Completed To-Do Items</h2>
+<ol>
+<li>
+<p>Create a bad guy</p>
+<ol>
+<li>Set up sprites</li>
+<li>~Spawn in map~</li>
+<li>~Set up movement~</li>
+</ol>
+</li>
+<li>
+<p>~Create a basic weapon for player~</p>
+<ol>
+<li>~Shooting fireballs or something for now~</li>
+<li>Should shoot at where mouse is located when space is pressed</li>
+<li>~Set bullets to damage bad guy~</li>
+<li>Should be able to move reticle with wsad</li>
+</ol>
+</li>
+<li>
+<p>~Set up documentation~</p>
+<ol>
+<li>~Will use jsdoc~</li>
+<li>Will retrieve phaser info and directly link to those docs</li>
+<li>Generate a sleek webpage</li>
+</ol>
+</li>
+<li>
+<p>Connect player health to overlay using an event emitter</p>
+<ol>
+<li>~Design and create eventcenter type paradigm using instance of phaser event emitter~</li>
+<li>Create graphics for UI</li>
+<li>Set up bad guy damaging player</li>
+</ol>
+</li>
+<li>
+<p>Create a game over scene with a restart button</p>
+</li>
+</ol>
+<h1>Old To-Do List / Notes</h1>
 <h2>Refactor and Abstract Code Logic</h2>
-<h1><em>Templat-tize the game!</em></h1>
+<h2><em>Templat-tize the game!</em></h2>
 <ul>
 <li>
 <p><strong>Event driven</strong> - there is a central update function used in Game but it's mostly just for input detection... other things update by attaching events to timers</p>
@@ -92,61 +170,7 @@
 <li>sprite animations or extending <code>Phaser.Graphics</code> for special effects might be interesting</li>
 </ul>
 </li>
-</ul>
-<h2>General ToDos</h2>
-<ol>
-<li>
-<p>Create a bad guy</p>
-<ol>
-<li>Set up sprites</li>
-<li>~Spawn in map~</li>
-<li>~Set up movement~</li>
-</ol>
-</li>
-<li>
-<p>~Create a basic weapon for player~</p>
-<ol>
-<li>~Shooting fireballs or something for now~</li>
-<li>Should shoot at where mouse is located when space is pressed</li>
-<li>~Set bullets to damage bad guy~</li>
-<li>Should be able to move reticle with wsad</li>
-</ol>
-</li>
-<li>
-<p>~Set up documentation~</p>
-<ol>
-<li>~Will use jsdoc~</li>
-<li>Will retrieve phaser info and directly link to those docs</li>
-<li>Generate a sleek webpage</li>
-</ol>
-</li>
-<li>
-<p>Connect player health to overlay using an event emitter</p>
-<ol>
-<li>~Design and create eventcenter type paradigm using instance of phaser event emitter~</li>
-<li>Create graphics for UI</li>
-<li>Set up bad guy damaging player</li>
-</ol>
-</li>
-<li>
-<p>Create a game over scene with a restart button</p>
-</li>
-<li>
-<p>Create a high score table</p>
-</li>
-<li>
-<p>Create an inventory screen / scene and the ability to pickup objects</p>
-</li>
-<li>
-<p>Clickable buttons on the overlay that don't cause player to shoot when they're clicked, and can open an inventory overlay</p>
-</li>
-</ol>
-<h3>Other notes, links</h3>
-<p>Extend a Sprite in Phaser 3:</p>
-<p>https://phasergames.com/extend-a-sprite-in-phaser-3/?mc_cid=3f4ee26e5d&amp;mc_eid=a4d9ee0291</p>
-<p>A tutorial on tilemaps: https://medium.com/@michaelwesthadley/modular-game-worlds-in-phaser-3-tilemaps-1-958fc7e6bbd6</p>
-<p>A free alternative to TexturePacker on the web : https://free-tex-packer.com/app/</p>
-<p>Paint.net is amazing for sprite creation</p></article>
+</ul></article>
     </section>
 
 
@@ -157,13 +181,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="ClubCrawler.Interfaces.html">Interfaces</a></li><li><a href="ClubCrawler.Interfaces.Interact.html">Interact</a></li><li><a href="ClubCrawler.Interfaces.Movement.html">Movement</a></li><li><a href="ClubCrawler.Interfaces.Sense.html">Sense</a></li><li><a href="ClubCrawler.Objects.html">Objects</a></li><li><a href="ClubCrawler.Parsers.html">Parsers</a></li><li><a href="ClubCrawler.Scenes.html">Scenes</a></li><li><a href="ClubCrawler.Types.html">Types</a></li><li><a href="ClubCrawler.Utility.html">Utility</a></li><li><a href="ClubCrawler.Utility.Load.html">Load</a></li><li><a href="ClubCrawler.Utility.Parse.html">Parse</a></li></ul><h3>Classes</h3><ul><li><a href="ClubCrawler.Objects.Cylinder.html">Cylinder</a></li><li><a href="ClubCrawler.Objects.GameCoin.html">GameCoin</a></li><li><a href="ClubCrawler.Objects.Ogre.html">Ogre</a></li><li><a href="ClubCrawler.Objects.Player.html">Player</a></li><li><a href="ClubCrawler.Objects.Reticle.html">Reticle</a></li><li><a href="ClubCrawler.Objects.Weapon.html">Weapon</a></li><li><a href="ClubCrawler.Objects.Weapon.Projectile.html">Projectile</a></li><li><a href="ClubCrawler.Parsers.BlueWorldParser.html">BlueWorldParser</a></li><li><a href="ClubCrawler.Scenes.DebugOverlay.html">DebugOverlay</a></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html">DungeonCrawlerGame</a></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerOverlay.html">DungeonCrawlerOverlay</a></li><li><a href="ClubCrawler.Scenes.GameOver.html">GameOver</a></li><li><a href="ClubCrawler.Scenes.GameWin.html">GameWin</a></li><li><a href="ClubCrawler.Scenes.TitleScreen.html">TitleScreen</a></li><li><a href="FlameThrowerSwitch.html">FlameThrowerSwitch</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="ClubCrawler.Interfaces.html">Interfaces</a></li><li><a href="ClubCrawler.Interfaces.Interact.html">Interact</a></li><li><a href="ClubCrawler.Interfaces.Movement.html">Movement</a></li><li><a href="ClubCrawler.Interfaces.Sense.html">Sense</a></li><li><a href="ClubCrawler.Objects.html">Objects</a></li><li><a href="ClubCrawler.Objects.Items%250D%250DItems%2520in%2520the%2520game.html">ClubCrawler.Objects.ItemsItems in the game</a></li><li><a href="ClubCrawler.Parsers.html">Parsers</a></li><li><a href="ClubCrawler.Scenes.html">Scenes</a></li><li><a href="ClubCrawler.Types.html">Types</a></li><li><a href="ClubCrawler.Utility.html">Utility</a></li><li><a href="ClubCrawler.Utility.Load.html">Load</a></li><li><a href="ClubCrawler.Utility.Parse.html">Parse</a></li></ul><h3>Classes</h3><ul><li><a href="ClubCrawler.Objects.Cylinder.html">Cylinder</a></li><li><a href="ClubCrawler.Objects.Items.FlameThrowerSwitch.html">FlameThrowerSwitch</a></li><li><a href="ClubCrawler.Objects.Items.GameCoin.html">GameCoin</a></li><li><a href="ClubCrawler.Objects.Ogre.html">Ogre</a></li><li><a href="ClubCrawler.Objects.Player.html">Player</a></li><li><a href="ClubCrawler.Objects.Reticle.html">Reticle</a></li><li><a href="ClubCrawler.Objects.Weapon.html">Weapon</a></li><li><a href="ClubCrawler.Objects.Weapon.Projectile.html">Projectile</a></li><li><a href="ClubCrawler.Parsers.BlueWorldParser.html">BlueWorldParser</a></li><li><a href="ClubCrawler.Scenes.DebugOverlay.html">DebugOverlay</a></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html">DungeonCrawlerGame</a></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerOverlay.html">DungeonCrawlerOverlay</a></li><li><a href="ClubCrawler.Scenes.GameOver.html">GameOver</a></li><li><a href="ClubCrawler.Scenes.GameWin.html">GameWin</a></li><li><a href="ClubCrawler.Scenes.TitleScreen.html">TitleScreen</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Oct 05 2021 19:59:46 GMT-0400 (Eastern Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Mon Nov 08 2021 11:04:41 GMT-0500 (Eastern Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
