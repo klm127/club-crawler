@@ -1,9 +1,9 @@
 /**
- * Functions for ais to evaluate the world around them
+ * Functions for ais to evaluate the world around them.
  * 
- * Like Movement, work by firing events
+ * Objects using senses should define a sense function.
  * 
- * Objects using senses should define a sense function
+ * The "repeat" functions call .sense on the object using the sense function; that object should define how it responds to senses, such as by using a movement function.
  * 
  * @memberof ClubCrawler.Interfaces
  * 

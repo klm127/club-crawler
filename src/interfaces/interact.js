@@ -1,5 +1,5 @@
 /**
- * Contains functions for interactions
+ * Contains functions for interactions, to be called when two objects interact, such as when a bullet strikes an enemy or an enemy strikes a player.
  * 
  * @memberof ClubCrawler.Interfaces
  * 

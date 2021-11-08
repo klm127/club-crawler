@@ -1,5 +1,5 @@
 /**
- * Contains functions for different movement patterns
+ * Contains functions for different movement patterns to be used by AIs.
  * 
  * @memberof ClubCrawler.Interfaces
  * 
