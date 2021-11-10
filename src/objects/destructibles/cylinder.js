@@ -5,9 +5,7 @@ const GameCoin = require('../items/coin');
 const dataManager = require('../data');
 
 /**
- * Default characteristics for the ogre - health, speed, damage, coin result, etc
- * 
- * Not actually implemented yet (target is still being used) - need to improve mapmanager
+ * Default characteristics for the cylinder
  * 
  * @static
  * @final
@@ -40,9 +38,9 @@ class Cylinder extends Phaser.GameObjects.Image {
 
     /**
      * Constructs the cylinder
-     * @param {Object} config - The configuration object // Create CreatureConfig
+     * @param {ClubCrawler.Types.DestructibleConfig} config - The configuration object
      * @param {Phaser.Scene} config.scene - The creating scene
-     * @param {Item} config.item - The Tiled item having the x,y etc
+     * @param {Item} config.item - The Tiled item data having the x,y, and any default-overriding values
      */
     constructor(config) {
         if(dataManager.debug.on && dataManager.debug.destructibles.cylinder) {

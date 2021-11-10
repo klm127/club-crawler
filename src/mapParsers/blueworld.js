@@ -9,6 +9,11 @@ const Interact = require('../interfaces/interact');
 const Parse = require('../utility/parse');
 const dataManager = require('../objects/data');
 
+/**
+ * Describes how each Tiled object is mapped to a javascript object or function.
+ * 
+ * @memberof ClubCrawler.Parsers.BlueWorldParser
+ */
 const BLUEWORLD_DEFAULTS = {
     tileSetKey: "blue-tileset",
     mapKey: "blueworld",
@@ -61,6 +66,7 @@ const BLUEWORLD_DEFAULTS = {
  * Wraps and manages a Phaser.Tilemap, loads objects, applies physics to objects, and places player in the scene.
  * 
  * Will eventually handle loading of other maps.
+ * 
  * @memberof ClubCrawler.Parsers
  * 
  */
@@ -81,6 +87,7 @@ class BlueWorldParser {
 
         /**
          * The amount to scale the map - not yet implemented
+         * @todo Implement this
          * @property {number}
          */
         this.scale = config.scale ? config.scale : 1;
@@ -110,7 +117,7 @@ class BlueWorldParser {
 
     
     /**
-     * Places player at startX, startY, which should have been set by the Spawn object on map creation. Sets player to collide with walls.
+     * Places player at this.startX, this.startY
      * 
      * @param {Player} player - The player
      */

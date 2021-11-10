@@ -33,11 +33,13 @@ const DEFAULT_WEAPON = {
 /**
  * @memberof ClubCrawler.Objects
  * 
- * @classdesc Controls weapon class
+ * @classdesc Controls weapon class. Effectively a Projectile Factory.
  * 
- * Basically a bullet factory
  */
 class Weapon {
+    /**
+     * @param {ClubCrawler.Types.WeaponConfig} config - A weapon configuration
+     */
     constructor(config) {
         Object.assign(this, DEFAULT_WEAPON);
         Object.assign(this, config);
@@ -67,6 +69,10 @@ class Weapon {
  * @classdesc A projectile, created by a Weapon
  */
 class Projectile extends Phaser.GameObjects.Image {
+    
+    /**
+     * @param {ClubCrawler.Objects.Weapon} config - The firing weapon
+     */
     constructor(config) {
         super(config.scene, config.wielder.x, config.wielder.y, config.spriteKey);
 

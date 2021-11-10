@@ -7,7 +7,7 @@ const dataManager = require('../data');
 
 /**
  * Default characteristics for the ogre - health, speed, damage, coin result, etc
- * gamescenepassthrough.constructor.name
+ * 
  * @static
  * @final
  * @memberof ClubCrawler.Objects.Ogre
@@ -45,7 +45,7 @@ class Ogre extends Phaser.GameObjects.Image {
 
     /**
      * Constructs the ogre
-     * @param {Object} config - The configuration object // Create CreatureConfig
+     * @param {ClubCrawler.Types.EnemyConfig} config - The configuration object
      * @param {Phaser.Scene} config.scene - The creating scene
      * @param {Item} config.item - The Tiled item having the x,y etc
      */
