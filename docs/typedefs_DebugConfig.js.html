@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: Load</title>
+    <title>JSDoc: Source: typedefs/DebugConfig.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,241 +17,44 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: Load</h1>
+    <h1 class="page-title">Source: typedefs/DebugConfig.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-            <span class="ancestors"><a href="ClubCrawler.Utility.html">.Utility</a>.</span>Load</h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description">Load Utilities</div>
-        
-
-        
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utility_load.js.html">utility/load.js</a>, <a href="utility_load.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id=".preloadBlueWorldAssets"><span class="type-signature">(static) </span>preloadBlueWorldAssets<span class="signature">(scene)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Preloads assets blueWorld requires
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>scene</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Phaser.Scene</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utility_load.js.html">utility/load.js</a>, <a href="utility_load.js.html#line16">line 16</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @typedef {Object} ClubCrawler.Types.DebugConfig
+ * 
+ * Default configuration for a destructible object 
+ * 
+ * @property {boolean} [on=false] - Whether debug is active and should be displayed
+ * @property {number} [duration=3000] - How long a message remains on the scene
+ * @property {number} [max=10] - Max number of messages to show on the overlay
+ * @property {Object} weapon - Debug settings for weapon
+ * @property {boolean} weapon.sound - Info about weapon sounds
+ * @property {Object} items - Debug settings for items
+ * @property {boolean} items.overlap - Info about items overlapping players
+ * @property {Object} enemies - Debug settings for enemies
+ * @property {boolean} enemies.die - Info about enemy deaths
+ * @property {Object} destructibles - Debug settings for destructibles
+ * @property {boolean} destructibles.cylinder - Info about cylinders
+ * @property {boolean} destructibles.colliders - Info about cylinder colliders
+ * @property {Object} logic - Debug settings for game logic
+ * @property {boolean} logic.win - Info about game wins
+ * @property {Object} map - Debug settings for map parsings
+ * @property {boolean} map.placePlayer - Info about player start positions
+ * @property {boolean} map.layers - Info about map layers
+ * @property {boolean} map.functions - Info about map functions
+ * @property {Object} player - Debug settings for player
+ * @property {boolean} player.construction - Info about player construction
+ * 
+ * */</code></pre>
+        </article>
+    </section>
 
 
 

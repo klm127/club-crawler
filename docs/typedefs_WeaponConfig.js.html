@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: Load</title>
+    <title>JSDoc: Source: typedefs/WeaponConfig.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,241 +17,45 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: Load</h1>
+    <h1 class="page-title">Source: typedefs/WeaponConfig.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-            <span class="ancestors"><a href="ClubCrawler.Utility.html">.Utility</a>.</span>Load</h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description">Load Utilities</div>
-        
-
-        
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utility_load.js.html">utility/load.js</a>, <a href="utility_load.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id=".preloadBlueWorldAssets"><span class="type-signature">(static) </span>preloadBlueWorldAssets<span class="signature">(scene)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Preloads assets blueWorld requires
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>scene</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Phaser.Scene</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utility_load.js.html">utility/load.js</a>, <a href="utility_load.js.html#line16">line 16</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @typedef {Object} ClubCrawler.Types.WeaponConfig
+ * 
+ * Default configuration for a weapon and bullet. Default is the 'popper'
+ * 
+ * @property {number} [name="popper"] - Name of the weapon
+ * @property {number} [duration=1000] - How long before the bullet disappers
+ * @property {number} [projectileVelocity=1000] - Velocity of bullet
+ * @property {number} [spin=2000] - Angular velocity of bullet
+ * @property {number} [mass=0.1] - Mass of the bullet (affects knockback)
+ * @property {number} [damage=20] - Damage dealt
+ * @property {number} [fireRate=300] - Delay between bullet firings
+ * @property {number} [spriteKey="bullet"] -
+ * @property {number} [audioSpriteKey="bullet-sound"] -
+ * @property {number} [audioFireKey="shot1"] -
+ * @property {number} [audioBounceKey="bounce1"] -
+ * @property {number} [audioHitKey="bounce1"] -
+ * @property {number} [bounce=0.3] -
+ * @property {number} [hitEnemies=true] -
+ * @property {number} [overlapEnemies=false] -
+ * @property {number} [hitWalls=true] -
+ * @property {number} [hitPlayer=false] - Whether bullet hits player (causing physics transfer and damage)
+ * @property {number} [overlapPlayer=false] - Whether bullet damages player by overlap. Only hitPlayer or overlapPlayer should be set to true, not both, but both may be false.
+ * @property {number} [hitDestructibles=true] -
+ * @property {number} [overlapDestructibles=false] -
+ * @property {number} [destroyOnWallTouch=false] - Whether the bullet is destroyed when it contacts a wall
+ * 
+ * */</code></pre>
+        </article>
+    </section>
 
 
 

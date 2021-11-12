@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: Interact</title>
+    <title>JSDoc: Namespace: Data</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: Interact</h1>
+    <h1 class="page-title">Namespace: Data</h1>
 
     
 
@@ -28,8 +28,7 @@
 
 <header>
     
-        <h2>
-            <span class="ancestors"><a href="ClubCrawler.Interfaces.html">.Interfaces</a>.</span>Interact</h2>
+        <h2>Data</h2>
         
     
 </header>
@@ -37,8 +36,6 @@
 <article>
     <div class="container-overview">
     
-        
-            <div class="description">Contains functions for interactions, to be called when two objects interact, such as when a bullet strikes an enemy or an enemy strikes a player.</div>
         
 
         
@@ -73,7 +70,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="interfaces_interact.js.html">interfaces/interact.js</a>, <a href="interfaces_interact.js.html#line1">line 1</a>
+        <a href="typedefs_Data.js.html">typedefs/Data.js</a>, <a href="typedefs_Data.js.html#line1">line 1</a>
     </li></ul></dd>
     
 
@@ -102,39 +99,26 @@
     
 
     
-
-    
-        <h3 class="subsection-title">Methods</h3>
+        <h3 class="subsection-title">Members</h3>
 
         
             
+<h4 class="name" id=".dataManager"><span class="type-signature">(static, constant) </span>dataManager<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
 
     
 
-    
-    <h4 class="name" id=".damageCollision"><span class="type-signature">(static) </span>damageCollision<span class="signature">(sourceObject, damagedObject)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Damages an object... calls die() if its health is less than or equal to 0
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
+<table class="props">
     <thead>
     <tr>
         
@@ -156,13 +140,13 @@
 
         <tr>
             
-                <td class="name"><code>sourceObject</code></td>
+                <td class="name"><code>score</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">number</span>
 
 
             
@@ -172,143 +156,9 @@
 
             
 
-            <td class="description last">
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>damage</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">damage done</td>
+            <td class="description last">The game score. Displayed on the overlay.</td>
         </tr>
 
-    
-
-        <tr>
-            
-                <td class="name"><code>dealDamage</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">function to call on source object upon hit of target</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>damagedObject</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">-
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
     
 
         <tr>
@@ -319,7 +169,7 @@
             <td class="type">
             
                 
-<span class="param-type">int</span>
+<span class="param-type">number</span>
 
 
             
@@ -329,14 +179,129 @@
 
             
 
-            <td class="description last">health to decrement</td>
+            <td class="description last">The player health. Todo: Display on the overlay.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>die</code></td>
+                <td class="name"><code>emitter</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Phaser.Events.EventEmitter</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The global <a href="https://newdocs.phaser.io/docs/3.52.0/Phaser.Events.EventEmitter">Phaser.Events.EventEmitter</a> instance for cross scene and global communication.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>sfxVolume</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The sound effect volume (not currently working)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>musicVolume</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The music volume (not currently working)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>debug</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="ClubCrawler.Types.html#.DebugConfig">ClubCrawler.Types.DebugConfig</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">An object controlling what debug messages are displaying on the <a href="ClubCrawler.Scenes.DebugOverlay.html">ClubCrawler.Scenes.DebugOverlay</a></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>debugLines</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The currently visible debug lines</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>changeScore</code></td>
             
 
             <td class="type">
@@ -352,14 +317,14 @@
 
             
 
-            <td class="description last">Function to call if damagedObject dies</td>
+            <td class="description last">Called to change player score</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>damage</code></td>
+                <td class="name"><code>changeHealth</code></td>
             
 
             <td class="type">
@@ -375,21 +340,35 @@
 
             
 
-            <td class="description last">Function to call on damagedObject as it gets damaged</td>
+            <td class="description last">Called to change player health</td>
         </tr>
 
     
-    </tbody>
-</table>
 
+        <tr>
+            
+                <td class="name"><code>log</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
             </td>
+
+            
+
+            
+
+            <td class="description last">Called to log debug data if debug is active</td>
         </tr>
 
     
     </tbody>
 </table>
-
-
 
 
 
@@ -423,7 +402,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="interfaces_interact.js.html">interfaces/interact.js</a>, <a href="interfaces_interact.js.html#line47">line 47</a>
+        <a href="objects_data.js.html">objects/data.js</a>, <a href="objects_data.js.html#line19">line 19</a>
     </li></ul></dd>
     
 
@@ -439,221 +418,9 @@
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
         
-<div class="param-desc">
-    Whether damage succesfully applied
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-    </dd>
-</dl>
-
     
 
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id=".validateDamage"><span class="type-signature">(static) </span>validateDamage<span class="signature">(damagedObject, sourceObject)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Description
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>damagedObject</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">any</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>sourceObject</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">any</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="interfaces_interact.js.html">interfaces/interact.js</a>, <a href="interfaces_interact.js.html#line18">line 18</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
     
 
     
