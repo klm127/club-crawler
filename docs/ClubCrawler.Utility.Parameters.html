@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: Parsers</title>
+    <title>JSDoc: Namespace: Parameters</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: Parsers</h1>
+    <h1 class="page-title">Namespace: Parameters</h1>
 
     
 
@@ -28,7 +28,8 @@
 
 <header>
     
-        <h2>Parsers</h2>
+        <h2>
+            <span class="ancestors"><a href="ClubCrawler.Utility.html">.Utility</a>.</span>Parameters</h2>
         
     
 </header>
@@ -37,7 +38,7 @@
     <div class="container-overview">
     
         
-            <div class="description">Parsers for maps</div>
+            <div class="description">Utilities for extracting parameters from class instances in order to re-create them as necessary</div>
         
 
         
@@ -72,7 +73,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="typedefs_Parsers.js.html">typedefs/Parsers.js</a>, <a href="typedefs_Parsers.js.html#line1">line 1</a>
+        <a href="utility_parameters.js.html">utility/parameters.js</a>, <a href="utility_parameters.js.html#line1">line 1</a>
     </li></ul></dd>
     
 
@@ -93,13 +94,6 @@
     
 
     
-        <h3 class="subsection-title">Classes</h3>
-
-        <dl>
-            <dt><a href="ClubCrawler.Parsers.BlueWorldParser.html">BlueWorldParser</a></dt>
-            <dd></dd>
-        </dl>
-    
 
     
 
@@ -110,28 +104,37 @@
     
 
     
-
-    
-        <h3 class="subsection-title">Type Definitions</h3>
+        <h3 class="subsection-title">Methods</h3>
 
         
-                
-<h4 class="name" id=".Export">Export</h4>
-
-
-
-
-
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
+            
 
     
 
-<table class="props">
+    
+    <h4 class="name" id=".extract"><span class="type-signature">(static) </span>extract<span class="signature">(targetObject, model<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Extracts parameters from an object instance. If no second parameter is provided, extracts all primitive-valued properties
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -140,6 +143,8 @@
 
         <th>Type</th>
 
+        
+        <th>Attributes</th>
         
 
         
@@ -153,28 +158,71 @@
 
         <tr>
             
-                <td class="name"><code>BlueWorld</code></td>
+                <td class="name"><code>targetObject</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">ClubCrawler.Parser.BlueWorldParser</span>
+<span class="param-type">Object</span>
 
 
             
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last">The blueworld.json map loader</td>
+            <td class="description last">The object to extract parameters from</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>model</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">A model object</td>
         </tr>
 
     
     </tbody>
 </table>
+
+
 
 
 
@@ -208,7 +256,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="mapParsers_parsers.js.html">mapParsers/parsers.js</a>, <a href="mapParsers_parsers.js.html#line2">line 2</a>
+        <a href="utility_parameters.js.html">utility/parameters.js</a>, <a href="utility_parameters.js.html#line16">line 16</a>
     </li></ul></dd>
     
 
@@ -224,7 +272,23 @@
 
 
 
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
     
 
     

@@ -1,0 +1,4 @@
+Weapon.js
+
+- Add property descriptors for scene, wielder, etc.
+
