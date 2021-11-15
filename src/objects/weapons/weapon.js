@@ -28,6 +28,7 @@ const DEFAULT_WEAPON = {
     hitDestructibles: true,
     overlapDestructibles: false,
     destroyOnWallTouch: false,
+    inventorySprite: "popper-inventory"
 }
 
 /**

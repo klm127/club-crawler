@@ -31,6 +31,7 @@ const FLAMETHROWER_DEFAULT_STATS = {
     destroyOnWallTouch: false,
     initialFlameScale: 0.5, // not working for some reason - have to apply directly
     finalFlameScale: 1,
+    inventorySprite: "flamethrower"
 }
 
 class FlameThrower extends Weapon {

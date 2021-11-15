@@ -24,5 +24,6 @@
  * @property {number} [hitDestructibles=true] -
  * @property {number} [overlapDestructibles=false] -
  * @property {number} [destroyOnWallTouch=false] - Whether the bullet is destroyed when it contacts a wall
+ * @property {string} [inventorySprite="popper-inventory"] - The inventory sprite to display
  * 
  * */

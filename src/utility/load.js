@@ -31,11 +31,16 @@ function preloadBlueWorldAssets(scene) {
     scene.load.image('flamethrower', 'images/flamethrower127x33.png');
     scene.load.image('flamestream', 'images/flamethrowerstream64x64.png');
 
+    //inventory sprites
+
+    scene.load.image('popper-inventory', 'images/popper64x64.png');
+
     //audio sprites
     scene.load.audioSprite('bullet-sound', 'sounds/bullet.json', 'sounds/bullet.mp3');
     scene.load.audioSprite('ogre-sound', 'sounds/ogre.json', 'sounds/ogre.mp3');
     scene.load.audioSprite('gamecoin', 'sounds/gamecoin.json', 'sounds/gamecoin.mp3');
     scene.load.audioSprite('flame-sound', 'sounds/flame.json', 'sounds/flame.mp3');
+
 
     //tile maps
     
