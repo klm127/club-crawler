@@ -25,5 +25,9 @@
  * @property {number} [overlapDestructibles=false] -
  * @property {number} [destroyOnWallTouch=false] - Whether the bullet is destroyed when it contacts a wall
  * @property {string} [inventorySprite="popper-inventory"] - The inventory sprite to display
+ * @property {string} [itemType="weapon"] - The item type for inventory purposes; weapons can't have multiples
+ * @property {Phaser.Scene} scene - The scene where the weapon will operate _(added during run time!)_
+ * @property {ClubCrawler.Objects.Player} wielder - The player wielding the weapon _(added during run time!)_
+ * @property {ClubCrawler.Objects.Reticle} target - The target (reticle) for the weapon _(added during run time!)_
  * 
  * */

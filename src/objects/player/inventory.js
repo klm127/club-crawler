@@ -1,7 +1,17 @@
 const parameters = require('../../utility/parameters');
 
+/**
+ * @typedef InventoryConfig
+ * @property {number} [inventorySize=21] - The max number of items in inventory
+ * @property {ClubCrawler.Objects.Player} [player=null] - The player _(added at run time!)_
+ * @property {ClubCrawler.Objects.Reticle} [reticle=null] - The reticle _(added at run time!)_
+ * @property {ClubCrawler.Objects.Scene} [scene=null] - The scene _(added at run time!)_
+ */
 const PLAYER_INVENTORY_DEFAULTS = {
-    inventorySize: 21
+    inventorySize: 21,
+    player: null,
+    reticle: null,
+    scene: null
 }
 
 /**
@@ -136,9 +146,14 @@ class InventoryItemSlot {
      */
     getInstance(additionalConfig={}) {
         let finalConfig = {}
+        if(this.empty) return false;
         Object.assign(finalConfig, this.instanceConfig);
         Object.assign(finalConfig, additionalConfig);
-        if(this.empty) return false;
+        if(this.itemType == "weapon") {
+            finalConfig.wielder = this.parentInventory.player;
+            finalConfig.target = this.parentInventory.reticle;
+            finalConfig.scene = this.parentInventory.scene;
+        }
         let newInstance = new this.classRef(finalConfig);
         return newInstance;
     }

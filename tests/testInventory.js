@@ -10,6 +10,51 @@ class invTestItem {
     }
 }
 
+const weaponDefaults = {
+    name: "popper",
+    duration: 1000,
+    projectileVelocity: 1000,
+    spin: 2000,
+    mass: 0.1,
+    damage: 20,
+    fireRate: 300,
+    spriteKey: "bullet",
+    audioSpriteKey: "bullet-sound",
+    audioFireKey: "shot1",
+    audioBounceKey: "bounce1",
+    audioHitKey: "bounce1",
+    bounce: 0.3,
+    hitEnemies: true,
+    overlapEnemies: false,
+    hitWalls: true,
+    hitPlayer: false,
+    overlapPlayer: false,
+    hitDestructibles: true,
+    overlapDestructibles: false,
+    destroyOnWallTouch: false,
+    inventorySprite: "popper-inventory",
+    itemType: "weapon"
+
+}
+
+class WeaponStub {
+    constructor(config) {
+        Object.assign(this, weaponDefaults);
+        Object.assign(this, config);
+        this.scene = config.scene;
+        this.wielder = config.wielder;
+        this.target = config.target;
+        this.lastTimeFired = 0;
+
+    }
+    setTarget() {
+        return false;
+    }
+    fire() {
+        return false;
+    }
+}
+
 
 try {
     let inventory = new Inventory({inventorySize: 2});
@@ -48,6 +93,24 @@ try {
     retrievedItem = inventory.pop(1, {scene:"myscene"});
     assert.deepStrictEqual(retrievedItem.scene, "myscene", 'adding additional config options didnt work as expected')
     console.log('👍 additional config on pop call works as expected');
+
+    let weaponInventory = new Inventory({
+        inventorySize: 2,
+        player: {playerName:"bob"},
+        reticle: {reticleType:"targetty"},
+        scene: {sceneName:"mycoolScene"}
+    });
+    let popper = new WeaponStub({
+        scene: {sceneName:"mycoolScene"},
+        wielder: {playerName:"bob"}, 
+        target: {reticleType:"targetty"}
+    })
+    weaponInventory.addItem(popper);
+    let retrievedWeapon = weaponInventory.pop();
+    assert.deepStrictEqual(retrievedWeapon.wielder, {playerName:'bob'}, 'wielder did not transfer to new instance');
+    assert.deepStrictEqual(retrievedWeapon.target, {reticleType: 'targetty'}, 'reticle did not transfer to new instance');
+    assert.deepStrictEqual(retrievedWeapon.scene, {sceneName:'mycoolScene'}, 'scene did not transfer to weapon instance');
+    console.log('👍 popping weapon transferred runtime scene, reticle, wielder as expected')
     
 }
 catch(e) {

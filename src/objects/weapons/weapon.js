@@ -28,7 +28,8 @@ const DEFAULT_WEAPON = {
     hitDestructibles: true,
     overlapDestructibles: false,
     destroyOnWallTouch: false,
-    inventorySprite: "popper-inventory"
+    inventorySprite: "popper-inventory",
+    itemType: "weapon"
 }
 
 /**
@@ -188,4 +189,5 @@ class Projectile extends Phaser.GameObjects.Image {
 module.exports = {
     Weapon: Weapon,
     Projectile: Projectile,
+    DEFAULT: DEFAULT_WEAPON
 }
