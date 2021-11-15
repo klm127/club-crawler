@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 
-const Player = require('../objects/player');
+const Player = require('../objects/player/player');
 const Ogre = require('../objects/enemies/ogre');
 const GameCoin = require('../objects/items/coin');
 const FlameThrowerSwitch = require('../objects/items/flamethrower-switch')
