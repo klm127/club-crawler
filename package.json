@@ -26,7 +26,6 @@
   "author": "klm127",
   "license": "ISC",
   "dependencies": {
-    "bullet": "^0.1.0",
     "parcel-bundler": "^1.12.5",
     "parcel-plugin-static-files-copy": "^2.6.0",
     "phaser": "^3.55.2"
