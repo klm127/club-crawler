@@ -83,12 +83,30 @@ class InventoryUI {
         this.element.appendChild(this.slotsContainer);
         this.slots = [];
         this.inventory = null;
+        this.uiManager = null;
     }
+
+    loadManager(uiManager) {
+        this.uiManager = uiManager;
+        for(let slot of this.slots) {
+            slot.loadManager(this.uiManager);
+        }
+    }
+
     loadInventory(inventory) {
         this.inventory = inventory;
         for(let itemSlot of inventory.itemSlots) {
             let itemUI = new ItemSlotUI(this.slotsContainer, itemSlot);
+            if(this.uiManager) {
+                itemUI.loadManager(this.uiManager);
+            }
             this.slots.push(itemUI);
+        }
+    }
+
+    refreshInventory() {
+        for(let slot of this.slots) {
+            slot.updateDisplay();
         }
     }
     /**
@@ -118,6 +136,7 @@ class ItemSlotUI {
         this.element.appendChild(this.qty);
         this.element.appendChild(this.image);
         this.parentElement.appendChild(this.element);
+        this.uiManager = null;
         this.updateDisplay();        
     }
     updateDisplay() {
@@ -130,6 +149,9 @@ class ItemSlotUI {
                 this.qty.innerHTML == this.slot.quantity;
             }
         }
+    }
+    loadManager(uiManager) {
+        this.uiManager = uiManager;
     }
 }
 

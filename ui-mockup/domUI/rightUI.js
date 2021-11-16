@@ -29,12 +29,19 @@ class DOMRightUI {
 
         const scoreElement = document.createElement('div');
         this.scoreUI = new ScoreUI(scoreElement);
-
         
         this.element.appendChild(inventoryElement);
         this.element.appendChild(weaponElement);
         this.element.appendChild(healthBarElement);
         this.element.appendChild(scoreElement);
+
+        this.uiManager = null;
+    }
+
+    loadManager(uiManager) {
+        this.uiManager = uiManager;
+        this.inventoryUI.loadManager(uiManager);
+        this.weaponUI.loadManager(uiManager);
     }
 }
 

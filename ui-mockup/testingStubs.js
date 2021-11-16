@@ -15,7 +15,17 @@ const scene = {
                         }
                     }
                 }
+            },
+            "flamethrower": {
+                frames: {
+                    __BASE: {
+                        source: {
+                            source: new Image(64,64)
+                        }
+                    }
+                }
             }
+
         }
     }
 }
@@ -23,6 +33,10 @@ const scene = {
 setTimeout( ()=> {
     let popperSrc = document.getElementById("referenceImagePopper")
     scene.textures.list["popper-inventory"].frames.__BASE.source.source.src = popperSrc.src;
+    let flamethrowerSrc = document.getElementById("referenceImageFlamethrower");
+    scene.textures.list["flamethrower"].frames.__BASE.source.source.src = flamethrowerSrc.src;
+
+
 }, 500)
 
 
@@ -59,6 +73,35 @@ const WEAP_DEFAULTS = {
     itemType: "weapon"
 }
 
+const FLAME_DEFAULTS = {
+    name: "flamethrower",
+    description: "Easy to light your hair on fire with this sizzler.",
+    duration: 420,
+    projectileVelocity: 550,
+    spin: -150,
+    mass: 0,
+    damage: .06, // doesnt need a lot cause overlaps trigger a bunch
+    fireRate: 20, //lower is faster
+    spriteKey: "flamestream",
+    audioSpriteKey: "flame-sound",
+    audioFireKey: "fire",
+    audioBounceKey: "hit",
+    audioHitKey: "hit",
+    bounce: 0,
+    hitEnemies: false,
+    overlapEnemies: true,
+    hitWalls: true,
+    hitDestructibles: false,
+    overlapDestructibles: true,
+    hitPlayer: false,
+    overlapPlayer: true,
+    destroyOnWallTouch: false,
+    initialFlameScale: 0.5, // not working for some reason - have to apply directly
+    finalFlameScale: 1,
+    inventorySprite: "flamethrower",
+    itemType: "weapon" //inherited in regular game, copied for stubs
+}
+
 class PlayerStub {
     constructor(config) {
         Object.assign(this, this.config);
@@ -79,5 +122,7 @@ class PlayerStub {
 console.log('stubs created');
 
 module.exports = {
-    Player: PlayerStub
+    Player: PlayerStub,
+    GeneralStub: GeneralStub,
+    FLAME_DEFAULTS: FLAME_DEFAULTS
 }

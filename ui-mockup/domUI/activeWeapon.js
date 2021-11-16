@@ -64,6 +64,7 @@ class WeaponUI {
         this.element.appendChild(this.weaponContent);
         this.weaponContent.appendChild(this.weaponPicture);
         this.weaponContent.appendChild(this.weaponDesc);
+        this.uiManager = null;
 
     }
     /**
@@ -75,6 +76,10 @@ class WeaponUI {
             this.weaponDesc.innerHTML = weapon.description;
         }
         this.weaponPicture.src = weapon.scene.textures.list[weapon.inventorySprite].frames.__BASE.source.source.src
+    }
+
+    loadManager(uiManager) {
+        this.uiManager = uiManager;
     }
 }
 

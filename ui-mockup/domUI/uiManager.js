@@ -14,6 +14,9 @@ class UIManager {
         this.leftUI = leftUI;   
         this.weaponUI = this.rightUI.weaponUI;
         this.inventoryUI = this.rightUI.inventoryUI;
+
+        this.rightUI.loadManager(this);
+        this.leftUI.loadManager(this);
     }
 
     /**
@@ -24,6 +27,9 @@ class UIManager {
     }
     loadPlayerInventory() {
         this.inventoryUI.loadInventory(this.player.inventory);
+    }
+    refreshInventory() {
+        this.inventoryUI.refreshInventory();
     }
 }
 
