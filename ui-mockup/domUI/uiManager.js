@@ -31,6 +31,21 @@ class UIManager {
     refreshInventory() {
         this.inventoryUI.refreshInventory();
     }
+    slotClick(slot) {
+        if(slot.empty) {
+            return false;
+        }
+        if(slot.itemType == "weapon") {
+            if(slot.name != this.player.weapon.name) {
+                this.player.weapon = slot.getInstance({
+                    scene: this.player.scene,
+                    wielder: this.player,
+                    target: this.player.reticle
+                });
+                this.showPlayerWeapon();
+            }
+        }
+    }
 }
 
 module.exports = UIManager;

@@ -152,6 +152,10 @@ class ItemSlotUI {
     }
     loadManager(uiManager) {
         this.uiManager = uiManager;
+        var slot = this.slot;
+        this.element.addEventListener('click', (ev)=> {
+            uiManager.slotClick(slot)
+        })
     }
 }
 
