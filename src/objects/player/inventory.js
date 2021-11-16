@@ -46,11 +46,34 @@ class Inventory {
     /**
      * Adds an item to the inventory
      * @param {Object} gameItem - An item to add to the inventory
+     * @param {String} [gameItem.itemType="general"] - The game item type. Items of type weapon can only have 1 copy in inventory with identical name. Stackables increase quanity by one. General can have duplicates.
      * @returns {boolean} - Whether the item could be added
      */
     addItem(gameItem) {
         if(this.full) {
-            return false;
+            return false; // cant add to a full inventory
+        }
+        if(!gameItem.itemType) {
+            gameItem.itemType = "general";
+        }
+        else if(gameItem.itemType == "weapon") { //only 1 copy of each weapon
+            for(let slot of this.itemSlots) {
+                if(slot.itemType == "weapon") {
+                    if(slot.instanceConfig.name == gameItem.name) {
+                        return false;
+                    }
+                }
+            }
+        }
+        else if(gameItem.itemType == "stackable") {
+            for(let slot of this.itemSlots) {
+                if(slot.itemType == "stackable") {
+                    if(slot.instanceConfig.name == gameItem.name) {
+                        slot.quantity += 1;
+                        return true;
+                    }
+                }
+            }
         }
         let slot = this.itemSlots[this.nextFreeSlot];
         slot.loadItem(gameItem);
@@ -121,6 +144,8 @@ class InventoryItemSlot {
         this.itemType = null;
         /** @property {boolean} - Whether this slot is empty or not */
         this.empty = true;
+        /** @property {number} - The quantity (for stackable items) */
+        this.quantity = 0;
     }
     /**
      * Loads an item into this slot
@@ -137,6 +162,7 @@ class InventoryItemSlot {
         }
         this.instanceConfig = parameters.extract(gameItem);
         this.empty = false;
+        this.quantity = 1;
     }
     /**
      * Gets a new instance of the item referenced in this slot
@@ -163,7 +189,15 @@ class InventoryItemSlot {
      */
     popInstance(additionalConfig={}) {
         let instance = this.getInstance(additionalConfig);
-        this.empty = true;
+        if(this.itemType == "stackable") {
+            this.quantity -= 1;
+            if(this.quantity <= 0) {
+                this.empty = true;
+            }
+        }
+        else {
+            this.empty = true;
+        }
         return instance;
     }
 }

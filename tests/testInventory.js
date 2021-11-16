@@ -55,6 +55,12 @@ class WeaponStub {
     }
 }
 
+class PotionStub {
+    constructor(config) {
+        Object.assign(this, config);
+    }
+}
+
 
 try {
     let inventory = new Inventory({inventorySize: 2});
@@ -111,6 +117,48 @@ try {
     assert.deepStrictEqual(retrievedWeapon.target, {reticleType: 'targetty'}, 'reticle did not transfer to new instance');
     assert.deepStrictEqual(retrievedWeapon.scene, {sceneName:'mycoolScene'}, 'scene did not transfer to weapon instance');
     console.log('👍 popping weapon transferred runtime scene, reticle, wielder as expected')
+
+    let weapInventory2 = new Inventory({
+        inventorySize: 2,
+    })
+    let popper1 = new WeaponStub({
+        wielder: "a player",
+        scene:"a scene",
+        target: "a reticle"
+    })
+    let popper2 = new WeaponStub({
+        wielder: "a player",
+        scene:"a scene",
+        target: "a reticle"
+    })
+    weapInventory2.addItem(popper1);
+    let result1 = weapInventory2.addItem(popper2);
+    assert.equal(weapInventory2.full, false, "inventory adds duplicate weapons")
+    assert.equal(result1, false, "adding duplicate weapon doesnt return false")
+    console.log('👍 inventory does not add duplicate weapons');
+    let testitem1 = new PotionStub({
+        itemType: "stackable",
+        name: "potion"
+    });
+    let testItem2 = new PotionStub({
+        itemType: "stackable",
+        name: "potion"
+    });
+    let potionInventory = new Inventory({
+        inventorySize: 2
+    })
+    potionInventory.addItem(testitem1);
+    potionInventory.addItem(testItem2);
+    assert.equal(potionInventory.itemSlots[0].quantity, 2, "stackable inventory items dont stack");
+    assert.equal(potionInventory.itemSlots[1].empty, true, "stackable items duplicate in inventory");
+    console.log('👍 stackable inventory items stack correctly');
+    let retrievedPotion = potionInventory.pop(0);
+    assert.equal(potionInventory.itemSlots[0].quantity, 1, "stackable items dont decrement on pop");
+    retrievedPotion = potionInventory.pop(0);
+    assert.equal(potionInventory.itemSlots[0].empty, true, "stackable items dont empty");
+    retrievedPotion = potionInventory.pop(0);
+    assert.equal(retrievedPotion, false, "failure to retrieve stackable doesnt return false");
+    console.log('👍 stackable items decrement on pop as expected')
     
 }
 catch(e) {
