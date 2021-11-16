@@ -2,6 +2,7 @@ import Phaser from "phaser";
 
 const Weapons = require('../weapons/weapon');
 const dataManager = require('../data');
+const Inventory = require('./inventory');
 
 const Weapon = Weapons.Weapon;
 
@@ -80,6 +81,12 @@ class Player extends Phaser.GameObjects.Image {
             wielder:this, 
             target:this.reticle
         });
+        this.inventory = new Inventory({
+            player: this,
+            reticle: this.reticle,
+            scene: this.scene
+        })
+        this.inventory.addItem(this.weapon);    
         if(dataManager.debug.on && dataManager.debug.player.construction) {
             dataManager.log(`player constructor? ${this.constructor.name} created, props ${Object.keys(this)}`)
         }
