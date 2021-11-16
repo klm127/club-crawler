@@ -9,6 +9,7 @@ const Projectile = Weapons.Projectile;
  */
 const FLAMETHROWER_DEFAULT_STATS = {
     name: "flamethrower",
+    description: "Easy to light your hair on fire with this sizzler.",
     duration: 420,
     projectileVelocity: 550,
     spin: -150,

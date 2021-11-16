@@ -18,4 +18,11 @@ class InventoryUI {
     }
 }
 
+class ItemSlotUI {
+    constructor(element) {
+        this.element = element;
+        
+    }
+}
+
 module.exports = InventoryUI;

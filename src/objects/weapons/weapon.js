@@ -8,6 +8,7 @@ const dataManager = require('../data');
  */
 const DEFAULT_WEAPON = {
     name: "popper",
+    description: "Could knock over some soda cans, at least",
     duration: 1000,
     projectileVelocity: 1000,
     spin: 2000,
