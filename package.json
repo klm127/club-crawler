@@ -1,6 +1,6 @@
 {
   "name": "club-crawler",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "description": "A Phaser dungeon crawler learning project",
   "main": "index.js",
   "scripts": {
