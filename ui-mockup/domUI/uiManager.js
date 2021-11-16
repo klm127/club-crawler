@@ -13,15 +13,17 @@ class UIManager {
         this.rightUI = rightUI;
         this.leftUI = leftUI;   
         this.weaponUI = this.rightUI.weaponUI;
+        this.inventoryUI = this.rightUI.inventoryUI;
     }
 
     /**
      * Checks what weapon the player is wielding and displays that in the weapon info area
      */
     showPlayerWeapon() {
-        console.log('show player weapon called')
         this.weaponUI.showWeapon(this.player.weapon);
-
+    }
+    loadPlayerInventory() {
+        this.inventoryUI.loadInventory(this.player.inventory);
     }
 }
 

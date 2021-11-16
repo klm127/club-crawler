@@ -67,11 +67,12 @@ class PlayerStub {
         this.weapon.scene = scene;
         this.weapon.wielder = this;
         this.weapon.reticle = this.reticle;
-        this.Inventory = new Inventory({
+        this.inventory = new Inventory({
             player:this,
             reticle: this.reticle,
             scene: scene
         })
+        this.inventory.addItem(this.weapon);
         
     }
 }

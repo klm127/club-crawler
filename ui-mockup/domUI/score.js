@@ -1,5 +1,5 @@
 const DEFAULT_STYLES = {
-    height: "80px",
+    height: "60px",
     backgroundColor: "rgba(150,50,100,0.9)",
     color: "white"
 }

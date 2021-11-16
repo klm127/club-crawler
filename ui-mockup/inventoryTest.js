@@ -15,6 +15,7 @@ var uiManager = new UIManager(player, rightUI, leftUI);
 
 setTimeout(()=>{
     uiManager.showPlayerWeapon();
+    uiManager.loadPlayerInventory();
 }, 500)
 
 /**

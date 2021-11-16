@@ -1,7 +1,7 @@
 const SECTION_PROPS = {
     className: "club-crawler-weapon-ui",
     style: {
-        height: "140px",
+        height: "160px",
         width: "100%",
         backgroundColor: "rgba(50,50,100,0.9)",
         color: "white"
@@ -25,8 +25,8 @@ const WEAPON_CONTENT_PROPS = {
 const WEAPON_PICTURE_PROPS = {
     className: "club-crawler-weapon-picture",
     style: {
-        height: "100px",
-        width: "100px",
+        height: "128px",
+        width: "128px",
     }
 }
 
