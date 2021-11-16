@@ -12,7 +12,7 @@
     "test-parameters": "node tests/testParameters.js",
     "test-inventory": "node tests/testInventory.js",
     "test-ui": "parcel ui-mockup/index.html -d dist-uiTest -p 1234",
-    "test-ui-mockup": "start ./ui-mockup/mockup.html"
+    "test-ui-mockup": "start ./ui-mockup/basic-mockup/mockup.html"
   },
   "keywords": [
     "dungeon-crawler",

@@ -1,0 +1,26 @@
+
+#club-crawler-container {
+    display: flex;
+    height: 800px;
+    width: 100%;
+    justify-content: center;
+}
+
+#club-crawler-container canvas {
+    border: 2px solid gold;
+}
+
+#club-crawler-left-UI {
+    height: 100%;
+    width: 20px;
+}
+
+#club-crawler-right-UI {
+    height: 100%;
+    width: 20px;
+    border: 2px solid darkred;
+}
+
+body {
+    background-color: black;
+}
