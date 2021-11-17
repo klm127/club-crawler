@@ -39,13 +39,19 @@ const scene = {
     }
 }
 
+/**
+ * sets the image references in scene as they would be in the game after they load
+ */
 setTimeout( ()=> {
     let popperSrc = document.getElementById("referenceImagePopper")
     scene.textures.list["popper-inventory"].frames.__BASE.source.source.src = popperSrc.src;
+    popperSrc.style.display = "none";
     let flamethrowerSrc = document.getElementById("referenceImageFlamethrower");
     scene.textures.list["flamethrower"].frames.__BASE.source.source.src = flamethrowerSrc.src;
+    flamethrowerSrc.style.display = "none";
     let bluePotionSrc = document.getElementById("referenceImageBluePotion");
     scene.textures.list["blue-potion"].frames.__BASE.source.source.src = bluePotionSrc.src
+    bluePotionSrc.style.display = "none";
 
 
 }, 500)
@@ -131,10 +137,70 @@ class PlayerStub {
         
     }
 }
+const dataManager = {
+    score: 0,
+    health: 0,
+    emitter: new GeneralStub({"on": function() {return true}}),
+    sfxVolume: 1,
+    musicVolume: 0.5,
+    debug: {
+        on: false,
+        duration: 3000, //how long a message stays on the screen,
+        max: 10, //how many messages can appear
+        weapon: {
+            sound: false,
+        },
+        items: {
+            overlap: true
+        },
+        enemies: {
+            die: true
+        },
+        destructibles: {
+            cylinder: false,
+            colliders: false
+        },
+        logic: {
+            win: false
+        },
+        map: {
+            placePlayer: false,
+            layers: false,
+            functions: false,
+        },
+        player: {
+            construction: false
+        }
+    },
+    debugLines: ['debug'],
+    /**
+     * Changes the score and emits the 'scoreChange' event.
+     * @param {number} change - The amount to change the score by.
+     * @returns {number} - The data manager score
+     */
+    changeScore: function(change) {
+        dataManager.score += change;
+        emitter.emit('scoreChange');
+        return dataManager.score;
+    }, 
+    changeHealth: function(change) {
+        dataManager.health += change;
+        emitter.emit('healthChange');
+    },
+    log: function(newText) {
+        if(dataManager.debug.on) {
+            dataManager.debugLines.push(newText);
+            emitter.emit('debugChange');
+        }
+    }
+    
+};
+
 console.log('stubs created');
 
 module.exports = {
     Player: PlayerStub,
     GeneralStub: GeneralStub,
-    FLAME_DEFAULTS: FLAME_DEFAULTS
+    FLAME_DEFAULTS: FLAME_DEFAULTS,
+    dataManager: dataManager
 }

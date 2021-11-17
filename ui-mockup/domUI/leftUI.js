@@ -1,4 +1,5 @@
 const DebugUI = require('./debugUI');
+const SettingsUI = require('./settingsUI');
 
 const DEFAULT_STYLES = {
     width: "250px"
@@ -21,6 +22,10 @@ class DOMLeftUI {
         this.debug = new DebugUI(this.debugElement);
         this.element.appendChild(this.debugElement);
 
+        this.settingsElement = document.createElement('div');
+        this.settingsUI = new SettingsUI(this.settingsElement);
+        this.element.appendChild(this.settingsElement);   
+
         this.uiManager = null;        
         
     }
@@ -28,6 +33,15 @@ class DOMLeftUI {
     loadManager(uiManager) {
         this.uiManager = uiManager;
         this.debug.loadManager(uiManager);
+        this.settingsUI.loadManager(uiManager);
+    }
+
+    /**
+     * @param {ClubCrawler.Data.dataManager} - The data manager
+     */
+    loadDataManager(dataManager) {
+        this.settingsUI.loadSettingsObject(dataManager, "settings");
+
     }
 }
 

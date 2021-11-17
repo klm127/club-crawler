@@ -13,6 +13,8 @@ var player = new testingStubs.Player({});
 
 var uiManager = new UIManager(player, rightUI, leftUI);
 
+uiManager.loadDataManager(testingStubs.dataManager);
+
 setTimeout(()=>{
     uiManager.showPlayerWeapon();
     uiManager.loadPlayerInventory();

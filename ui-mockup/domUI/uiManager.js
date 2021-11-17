@@ -25,9 +25,10 @@ class DOMUIManager {
         this.healthBar = this.rightUI.healthBarUI;
         /** @property {ClubCrawler.DOMUserInterface.ScoreUI} - The score display*/
         this.score = this.rightUI.scoreUI;
+        /** @property {ClubCrawler.Data.dataManager} - The dataManager */
+        this.dataManager = null;
 
         this.healthBar.setFullHealth(player.health);
-
         this.rightUI.loadManager(this);
         this.leftUI.loadManager(this);
     }
@@ -84,6 +85,16 @@ class DOMUIManager {
             let retrievedItem = slot.parentInventory.pop(slot.slotIndex);
             this.refreshInventory();
         }
+    }
+
+    /**
+     * Loads the dataManager
+     * 
+     * @param {ClubCrawler.Data.dataManager}
+     */
+    loadDataManager(dataManager) {
+        this.leftUI.loadDataManager(dataManager);
+
     }
 }
 
