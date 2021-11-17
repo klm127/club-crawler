@@ -142,6 +142,27 @@ const dataManager = {
     health: 0,
     emitter: new GeneralStub({"emit": function(s) {console.log(`emit: ${s}`)}}),
     sfxVolume: 1,
+    
+    settings: {
+        sound: {
+            sfxVol: {
+                name: "Sound Effects Volume",
+                type: "number",
+                value: 1,
+                min: 0,
+                max: 2,
+                increment: 0.1
+            },
+            musicVol: {
+                name: "Music Volume",
+                type: "number",
+                value: 0.5,
+                min: 0,
+                max: 2,
+                increment: 0.1
+            }
+        }
+    },
     musicVolume: 0.5,
     debug: {
         on: true,

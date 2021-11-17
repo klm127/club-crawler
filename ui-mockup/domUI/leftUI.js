@@ -1,3 +1,4 @@
+const _DebugUI = require('./_debugUI');
 const DebugUI = require('./debugUI');
 const SettingsUI = require('./settingsUI');
 const DebugMessages = require('./debugMessages');
@@ -22,13 +23,17 @@ class DOMLeftUI {
         //
         // !! remove this on integration with game !!
         //
-        this.debugElement = document.createElement('div');
-        this.debug = new DebugUI(this.debugElement);
-        this.element.appendChild(this.debugElement);
+        this._debugElement = document.createElement('div');
+        this._debug = new _DebugUI(this._debugElement);
+        this.element.appendChild(this._debugElement);
 
         this.settingsElement = document.createElement('div');
         this.settingsUI = new SettingsUI(this.settingsElement);
         this.element.appendChild(this.settingsElement);   
+
+        this.debugElement = document.createElement('div');
+        this.debug = new DebugUI(this.debugElement);
+        this.element.appendChild(this.debugElement);
 
         this.debugMessagesElement = document.createElement('div');
         this.debugMessages = new DebugMessages(this.debugMessagesElement);
@@ -40,6 +45,7 @@ class DOMLeftUI {
 
     loadManager(uiManager) {
         this.uiManager = uiManager;
+        this._debug.loadManager(uiManager);
         this.debug.loadManager(uiManager);
         this.settingsUI.loadManager(uiManager);
     }
@@ -50,8 +56,9 @@ class DOMLeftUI {
      * @param {ClubCrawler.Data.dataManager} - The data manager
      */
     loadDataManager(dataManager) {
-        this.settingsUI.loadSettingsObject(dataManager, "settings");
+        this.settingsUI.loadSettingsObject(dataManager.settings, "settings");
         this.debugMessages.loadDebugObject(dataManager.debug);
+        this.debug.loadSettingsObject(dataManager.debug, "debug");
 
     }
 }

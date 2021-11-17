@@ -69,7 +69,7 @@ class SettingsUI {
 
     /**
      * @param {Object} settingsObject - The object to load and create interfaces for
-     * @param {string} name - The name for the drop down button
+     * @param {string} [name="settings"] - The name for the drop down button
      */
     loadSettingsObject(settingsObject, name="settings") {
         this.settingsObject = settingsObject;
@@ -79,34 +79,23 @@ class SettingsUI {
         let keys = Object.keys(settingsObject);
         for(let key of keys) {
             testValue = settingsObject[key];
-            if(typeof testValue == "function") { // skip functions
-                continue;
-            }
-            if(typeof testValue == "object") { // skip class instances
-                let constructorName =  testValue.constructor.toString().substring(9,15);
-                if(constructorName != "Object") {
-                    continue;
-                }
-            }
-            let newElement = document.createElement('div');
             if(typeof testValue == "object") {
-                let subObjectSettingsUI = new SettingsUI(newElement);
-                this.children.push(subObjectSettingsUI);
-                subObjectSettingsUI.loadSettingsObject(testValue, key);
-            }
-            else {
-                let inputObject = new InputComponent(newElement, key, testValue);
-                this.children.push(inputObject);
-                inputObject.inputElement.addEventListener('change', (ev)=> {
-                    inputObject.validate();
-                    settingsObject[key] = inputObject.value;
-                })
-            }
-            this.inputContainer.appendChild(newElement);
-        }
-        for(let child of this.children) {
-            if(child instanceof SettingsUI) {
-                child.loadManager(this.uiManager);
+                let newElement = document.createElement('div');
+                if(testValue.name) {
+                    let inputObject = new InputComponent(newElement, testValue);
+                    inputObject.inputElement.addEventListener('change', (ev)=> {
+                        inputObject.validate();
+                    });
+                    this.children.push(inputObject);
+
+                }
+                else {
+                    let subObjectSettingsUI = new SettingsUI(newElement);
+                    this.children.push(subObjectSettingsUI);
+                    subObjectSettingsUI.loadSettingsObject(testValue, key);
+
+                }
+                this.inputContainer.appendChild(newElement);
             }
         }
 
@@ -116,12 +105,10 @@ class SettingsUI {
      * @param {ClubCrawler.DOMUserInterface.DOMUIManager} - The manager
      */
     loadManager(uiManager) {
-        this.uiManager = uiManager;
         for(let child of this.children) {
-            if(child instanceof SettingsUI) {
-                child.loadManager(uiManager);
-            }
+            child.loadManager(uiManager);
         }
+        this.uiManager = uiManager;
     }
 }
 
@@ -165,40 +152,38 @@ class InputComponent {
      * @param {string} name - The name to display
      * @param {string} value - The starting value
      */
-    constructor(element, name, value) {  
+    constructor(element, inputSettingsObject) { 
+        /** @property {HTMLElement} - The container */
         this.element = element;
+        /** @property {ClubCrawler.Types.InputConfig} - The input configuration object this models */
+        this.config = inputSettingsObject;
         Object.assign(this.element, INPUT_COMPONENT);
         Object.assign(this.element.style, INPUT_COMPONENT.style);
-        this.name = name;
-        this.value = value;
+        /** @property {HTMLElement} - The element showing the name of this control */
         this.nameElement = document.createElement('span');
         Object.assign(this.nameElement, INPUT_NAME);
         Object.assign(this.nameElement, INPUT_NAME.style);
-        this.nameElement.innerHTML = "➡" + name;
+        this.nameElement.innerHTML = "➡" + this.config.name;
         this.element.appendChild(this.nameElement);
+        /** @property {HTMLElement} - The input element */
         this.inputElement = document.createElement('input');
-        /** @property {string} - Custom validation types because of non-working number validation in browsers */
-        this.validationType = "string";
-        switch(typeof value) {
+        switch(typeof this.config.type) {
             case "boolean": {
                 Object.assign(this.inputElement, INPUT_BOOLEAN);
                 Object.assign(this.inputElement.style, INPUT_BOOLEAN.style);
-                this.inputElement.checked = value;
-                this.validationType = "boolean";
+                this.inputElement.checked = this.config.value;
                 break;
             }
             case "number": {
                 Object.assign(this.inputElement, INPUT_NUMBER);
                 Object.assign(this.inputElement.style, INPUT_NUMBER.style);
-                this.inputElement.value = value;
-                this.validationType = "number";
+                this.inputElement.value = this.config.value;
                 break;
             }
             default: {
                 Object.assign(this.inputElement, INPUT_STRING);
                 Object.assign(this.inputElement.style, INPUT_STRING.style);
-                this.inputElement.value = value;
-                this.validationType = "string";
+                this.inputElement.value = this.config.value;
                 break;
             }
         }
@@ -208,22 +193,29 @@ class InputComponent {
 
     /** validates input and sets this.value to the input*/
     validate() {
-        let val = this.value;
-        if(this.validationType == "number") {
+        if(this.config.type == "number") {
+            let inputVal = this.inputElement.value;
             try {
-                val = parseFloat(this.inputElement.value);
-                this.value = val;
-                this.inputElement.value = val;
+                this.config.value = parseFloat(this.inputElement.value);
+                this.inputElement.value = this.config.value;
             }
             catch(e) {
-                this.inputElement.value = this.value;
+                this.inputElement.value = this.config.value;
             }
+            if(this.config.value > this.config.max) {
+                this.config.value = this.config.max;
+                this.inputElement.value = this.config.value;
+            }
+            if(this.config.value < this.config.min) {
+                this.config.value = this.config.min;
+                this.inputElement.value = this.config.value;
+            }            
         }
-        else if(this.validationType == "checkbox") {
-            this.value = this.inputElement.checked;
+        else if(this.config.type == "boolean") {
+            this.config.value = this.inputElement.checked;
         }
-        else {
-            this.value = this.inputElement.value;
+        else { // string
+            this.config.value = this.inputElement.value;
         }
     }
 }

@@ -20,9 +20,28 @@ const dataManager = {
     score: 0,
     health: 0,
     emitter: emitter,
-    sfxVolume: 1,
-    musicVolume: 0.5,
+    settings: {
+        sound: {
+            sfxVol: {
+                name: "Sound Effects Volume",
+                type: "number",
+                value: 1,
+                min: 0,
+                max: 2,
+                increment: 0.1
+            },
+            musicVol: {
+                name: "Music Volume",
+                type: "number",
+                value: 0.5,
+                min: 0,
+                max: 2,
+                increment: 0.1
+            }
+        }
+    },
     debug: {
+        debugLines: ['debug'],
         on: false,
         duration: 3000, //how long a message stays on the screen,
         max: 10, //how many messages can appear
