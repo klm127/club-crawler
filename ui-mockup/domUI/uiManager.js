@@ -27,6 +27,8 @@ class DOMUIManager {
         this.score = this.rightUI.scoreUI;
         /** @property {ClubCrawler.Data.dataManager} - The dataManager */
         this.dataManager = null;
+        /** @property {ClubCrawler.DOMUserInterface.DebugMessageBox} */
+        this.debugMessages = this.leftUI.debugMessages;
 
         this.healthBar.setFullHealth(player.health);
         this.rightUI.loadManager(this);
@@ -93,8 +95,15 @@ class DOMUIManager {
      * @param {ClubCrawler.Data.dataManager}
      */
     loadDataManager(dataManager) {
+        this.dataManager = dataManager;
         this.leftUI.loadDataManager(dataManager);
+    }
 
+    /**
+     * Updates debug messages
+     */
+    updateDebugMessages() {
+        this.debugMessages.updateDebugMessages();
     }
 }
 

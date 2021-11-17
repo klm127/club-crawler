@@ -28,11 +28,14 @@ class DebugUI {
         this.loseHealth.innerHTML = "subtract 7 health";
         this.addScore = document.createElement('button');
         this.addScore.innerHTML = "add 1 score";
+        this.addDebugMessage = document.createElement('button');
+        this.addDebugMessage.innerHTML = "add debug message";
         this.element.appendChild(this.pickupFlame);
         this.element.appendChild(this.pickupPotion);
         this.element.appendChild(this.addHealth);
         this.element.appendChild(this.loseHealth);
         this.element.appendChild(this.addScore);
+        this.element.appendChild(this.addDebugMessage);
         this.uiManager = null;
     }
 
@@ -60,6 +63,11 @@ class DebugUI {
         this.loseHealth.addEventListener('click', (ev) => {
             uiManager.player.health -= 5;
             uiManager.healthChange();
+        })
+        this.addDebugMessage.addEventListener('click', (ev)=> {
+            uiManager.dataManager.log('test a rather longer debug message, which might take multiple lines  ' + Math.floor(Math.random()*100));
+            uiManager.updateDebugMessages();
+
         })
     }
 

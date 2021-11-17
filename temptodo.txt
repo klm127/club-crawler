@@ -2,3 +2,12 @@ Weapon.js
 
 - Add property descriptors for scene, wielder, etc.
 
+
+
+Integrating ui mockup
+
+- remove debugUI and portions of leftUI which relate to it
+
+- change dataManager so debug lines are within debug object 
+
+- create a settings object for dataManager

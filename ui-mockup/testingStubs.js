@@ -140,12 +140,13 @@ class PlayerStub {
 const dataManager = {
     score: 0,
     health: 0,
-    emitter: new GeneralStub({"on": function() {return true}}),
+    emitter: new GeneralStub({"emit": function(s) {console.log(`emit: ${s}`)}}),
     sfxVolume: 1,
     musicVolume: 0.5,
     debug: {
-        on: false,
+        on: true,
         duration: 3000, //how long a message stays on the screen,
+        debugLines: [],
         max: 10, //how many messages can appear
         weapon: {
             sound: false,
@@ -190,7 +191,8 @@ const dataManager = {
     log: function(newText) {
         if(dataManager.debug.on) {
             dataManager.debugLines.push(newText);
-            emitter.emit('debugChange');
+            dataManager.debug.debugLines.push(newText);
+            dataManager.emitter.emit('debugChange');
         }
     }
     
