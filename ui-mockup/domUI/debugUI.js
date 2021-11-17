@@ -22,9 +22,17 @@ class DebugUI {
         this.pickupFlame.innerHTML = "pickup a flamethrower";
         this.pickupPotion = document.createElement('button');
         this.pickupPotion.innerHTML = "pickup a potion";
+        this.addHealth = document.createElement('button');
+        this.addHealth.innerHTML = "add 5 health";
+        this.loseHealth = document.createElement('button');
+        this.loseHealth.innerHTML = "subtract 7 health";
+        this.addScore = document.createElement('button');
+        this.addScore.innerHTML = "add 1 score";
         this.element.appendChild(this.pickupFlame);
         this.element.appendChild(this.pickupPotion);
-
+        this.element.appendChild(this.addHealth);
+        this.element.appendChild(this.loseHealth);
+        this.element.appendChild(this.addScore);
         this.uiManager = null;
     }
 
@@ -44,6 +52,14 @@ class DebugUI {
             })
             uiManager.player.inventory.addItem(potion);
             uiManager.refreshInventory();
+        });
+        this.addHealth.addEventListener('click', (ev) => {
+            uiManager.player.health += 5;
+            uiManager.healthChange();
+        })
+        this.loseHealth.addEventListener('click', (ev) => {
+            uiManager.player.health -= 5;
+            uiManager.healthChange();
         })
     }
 

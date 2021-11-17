@@ -21,9 +21,22 @@ class DOMUIManager {
         this.weaponUI = this.rightUI.weaponUI;
         /** @property {ClubCrawler.DOMUserInterface.InventoryUI} - The inventory UI */
         this.inventoryUI = this.rightUI.inventoryUI;
+        /** @property {ClubCrawler.DOMUserInterface.HealthBarUI} - The health bar display */
+        this.healthBar = this.rightUI.healthBarUI;
+        /** @property {ClubCrawler.DOMUserInterface.ScoreUI} - The score display*/
+        this.score = this.rightUI.scoreUI;
+
+        this.healthBar.setFullHealth(player.health);
 
         this.rightUI.loadManager(this);
         this.leftUI.loadManager(this);
+    }
+
+    /**
+     * Tells health bar to change after players health has changed
+     */
+    healthChange() {
+        this.healthBar.changeHealth(this.player.health);
     }
 
     /**

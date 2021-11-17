@@ -127,6 +127,7 @@ class PlayerStub {
             scene: scene
         })
         this.inventory.addItem(this.weapon);
+        this.health = 100;
         
     }
 }
