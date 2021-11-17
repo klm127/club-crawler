@@ -4,6 +4,10 @@ const DEFAULT_STYLES = {
     width: "250px"
 }
 
+/**
+ * @classdesc Creates instances and DOM elements for the left side UI
+ * @memberof ClubCrawler.DOMUserInterface
+ */
 
 class DOMLeftUI {
     /**
