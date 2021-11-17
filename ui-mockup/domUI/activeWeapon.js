@@ -1,21 +1,19 @@
 const SECTION_PROPS = {
-    className: "club-crawler-weapon-ui",
+    id: "club-crawler-weapon-ui",
     style: {
         height: "160px",
-        width: "100%",
-        backgroundColor: "rgba(50,50,100,0.9)",
-        color: "white"
+        width: "100%"
     }
 }
 
 const WEAPON_TITLE_PROPS = {
-    className: "club-crawler-weapon-name",
+    id: "club-crawler-weapon-name",
     style: {
     }
 }
 
 const WEAPON_CONTENT_PROPS = {
-    className: "club-crawler-weapon-content",
+    id: "club-crawler-weapon-content",
     style: {
         display: "flex",
         justifyContent: "center"
@@ -23,7 +21,7 @@ const WEAPON_CONTENT_PROPS = {
 }
 
 const WEAPON_PICTURE_PROPS = {
-    className: "club-crawler-weapon-picture",
+    id: "club-crawler-weapon-picture",
     style: {
         height: "128px",
         width: "128px",
@@ -31,7 +29,7 @@ const WEAPON_PICTURE_PROPS = {
 }
 
 const WEAPON_DESC_PROPS = {
-    className: "club-crawler-weapon-desc",
+    id: "club-crawler-weapon-desc",
     style: {
         width: "50%",
     }

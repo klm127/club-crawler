@@ -145,7 +145,7 @@ const INPUT_NUMBER = {
     className: "club-crawler-input-number", 
     // avoid type:number, because of buggy browsers
     style: { 
-        width:"25%"
+        width:"15%"
     }}
 const INPUT_STRING = {
     className: "club-crawler-input-string",

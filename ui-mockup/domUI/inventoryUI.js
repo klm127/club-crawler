@@ -1,28 +1,23 @@
 const INVENTORY_PROPS = {
     className : "club-crawler-inventory",
     style: {
-        height: "500px",
-        backgroundColor: "rgba(0,0,100,0.9)",
-        color: "white",
-
     }
 }
 
 const INVENTORY_CONTAINER_PROPS = {
-    className : "club-crawler-inventory-slots-container",
+    id : "club-crawler-inventory-slots-container",
     style: {
         display: "flex",
         flexWrap: "wrap",
         aligItems: "stretch",
         gap: "10px",
         alignContent: "end",
-        padding: "10px",
         boxSizing:"border-box"
     }
 }
 
 const TITLE_PROPS = {
-    className: "club-crawler-inventory-title",
+    id: "club-crawler-inventory-title",
     style: {
         width: "100%"
     },
@@ -34,7 +29,6 @@ const SLOT_PROPS = {
     style: {
         height: "55px",
         width: "55px",
-        backgroundColor: "rgba(50,50,50,0.5)",
         position: "relative"
     }
 }

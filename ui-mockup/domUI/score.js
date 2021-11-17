@@ -1,14 +1,11 @@
 const CONTAINER_PROPS = {
-    className: "club-crawler-score-display",
+    id: "club-crawler-score-display",
     style: {
-        height: "60px",
-        backgroundColor: "rgba(150,50,100,0.9)",
-        color: "white"
     }
 }
 
 const TITLE_PROPS = {
-    className: "club-crawler-score-display-title",
+    id: "club-crawler-score-display-title",
     innerHTML: "score",
     style: {
         width:"100%"
@@ -16,7 +13,7 @@ const TITLE_PROPS = {
 }
 
 const SCORE_PROPS = {
-    className: "club-crawler-score-display-value",
+    id: "club-crawler-score-display-value",
     innerHTML: 0,
     style: {
     }

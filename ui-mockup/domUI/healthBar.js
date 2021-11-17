@@ -1,13 +1,10 @@
 const CONTAINER_PROPS = {
-    className: "club-crawler-health-container",
+    id: "club-crawler-health-container",
     style:{
-        height: "80px",
-        backgroundColor: "rgba(0,50,100,0.9)",
-        color: "white"
     }
 }
 const TITLE_PROPS = {
-    className: "club-crawler-health-title",
+    id: "club-crawler-health-title",
     innerHTML: "health",
     style: {
         width: "100%"
@@ -15,19 +12,17 @@ const TITLE_PROPS = {
 }
 
 const HEALTH_BAR_OUTER = {
-    className: "club-crawler-health-bg",
+    id: "club-crawler-health-bg",
     style: {
-        width: "100%",
+        width: "90%",
         height: "20px",
-        backgroundColor: "purple"
     }
 }
 
 const HEALTH_BAR = {
-    className: "club-crawler-health-bar",
+    id: "club-crawler-health-bar",
     style: {
         height: "99%",
-        backgroundColor: "red"
     }
 }
 
