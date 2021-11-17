@@ -159,6 +159,29 @@ try {
     retrievedPotion = potionInventory.pop(0);
     assert.equal(retrievedPotion, false, "failure to retrieve stackable doesnt return false");
     console.log('👍 stackable items decrement on pop as expected')
+    let swapInventory = new Inventory({
+        inventorySize: 3
+    })
+    let testItem1 = new PotionStub({
+        itemType: "stackable",
+        name: "potion"
+    })
+    testItem2 = new PotionStub({
+        itemType:"stackable",
+        name:"potion2"
+    });
+    swapInventory.addItem(testItem1);
+    swapInventory.addItem(testItem2);
+    swapInventory.swapSlots(swapInventory.itemSlots[0], swapInventory.itemSlots[1]);
+    let retrievedItem1 = swapInventory.pop(0);
+    let retrievedItem2 = swapInventory.pop(1);
+    assert.deepStrictEqual(retrievedItem1, testItem2, "item in slot 1 did not become slot 2 on swap!");
+    assert.deepStrictEqual(retrievedItem2, testItem1, "item in slot 2 did not become the item in slot 1 on swap!");
+    swapInventory.addItem(testItem1);
+    swapInventory.swapSlots(swapInventory.itemSlots[0], swapInventory.itemSlots[2]);
+    assert.equal(swapInventory.itemSlots[0].empty, true, "swapping to an empty slot didnt work!");
+    assert.equal(swapInventory.itemSlots[2].empty, false, "swapping to an empty slot didnt work!")
+    console.log('👍 slots swap positions as expected');
     
 }
 catch(e) {

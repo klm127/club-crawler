@@ -24,6 +24,15 @@ const scene = {
                         }
                     }
                 }
+            },
+            "blue-potion": {
+                frames: {
+                    __BASE: {
+                        source: {
+                            source: new Image(64,64)
+                        }
+                    }
+                }
             }
 
         }
@@ -35,6 +44,8 @@ setTimeout( ()=> {
     scene.textures.list["popper-inventory"].frames.__BASE.source.source.src = popperSrc.src;
     let flamethrowerSrc = document.getElementById("referenceImageFlamethrower");
     scene.textures.list["flamethrower"].frames.__BASE.source.source.src = flamethrowerSrc.src;
+    let bluePotionSrc = document.getElementById("referenceImageBluePotion");
+    scene.textures.list["blue-potion"].frames.__BASE.source.source.src = bluePotionSrc.src
 
 
 }, 500)

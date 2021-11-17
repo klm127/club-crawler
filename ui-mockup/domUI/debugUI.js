@@ -20,7 +20,10 @@ class DebugUI {
 
         this.pickupFlame = document.createElement('button');
         this.pickupFlame.innerHTML = "pickup a flamethrower";
+        this.pickupPotion = document.createElement('button');
+        this.pickupPotion.innerHTML = "pickup a potion";
         this.element.appendChild(this.pickupFlame);
+        this.element.appendChild(this.pickupPotion);
 
         this.uiManager = null;
     }
@@ -32,6 +35,15 @@ class DebugUI {
             uiManager.player.inventory.addItem(flamethrower);
             uiManager.refreshInventory();
 
+        });
+        this.pickupPotion.addEventListener('click', (ev)=> {
+            let potion = new testingStubs.GeneralStub({
+                name:"health potion",
+                itemType: "stackable",
+                inventorySprite: "blue-potion"
+            })
+            uiManager.player.inventory.addItem(potion);
+            uiManager.refreshInventory();
         })
     }
 

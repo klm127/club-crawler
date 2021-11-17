@@ -58,8 +58,7 @@ const SLOT_QTY_PROPS = {
         position: "absolute",
         top: "2px",
         left: "2px"
-    },
-    innerHTML:0
+    }
 }
 
 /**
@@ -84,6 +83,8 @@ class InventoryUI {
         this.slots = [];
         this.inventory = null;
         this.uiManager = null;
+        this.draggingSlot = null;
+        this.draggingOverSlot = null;
     }
 
     loadManager(uiManager) {
@@ -101,6 +102,29 @@ class InventoryUI {
                 itemUI.loadManager(this.uiManager);
             }
             this.slots.push(itemUI);
+        }
+        this.setDragListeners();
+    }
+
+    setDragListeners() {
+        var inventoryUI = this;
+        for(let itemUI of this.slots) {
+            itemUI.element.addEventListener('dragstart', (event)=> {
+                if(!itemUI.slot.empty) {
+                    inventoryUI.draggingSlot = itemUI.slot;
+                }
+            })
+            itemUI.element.addEventListener('dragenter', (event)=> {
+                inventoryUI.draggingOverSlot = itemUI.slot;
+            })
+            itemUI.element.addEventListener('dragend', (event)=> {
+                if(inventoryUI.draggingOverSlot) {
+                    inventoryUI.inventory.swapSlots(inventoryUI.draggingSlot, inventoryUI.draggingOverSlot);
+                    let inventory = inventoryUI.inventory;
+                    inventoryUI.clearInventory();
+                    inventoryUI.loadInventory(inventory);
+                }
+            })
         }
     }
 
@@ -142,12 +166,18 @@ class ItemSlotUI {
     updateDisplay() {
         if(!this.slot.empty) {
             this.image.src = this.slot.parentInventory.scene.textures.list[this.slot.instanceConfig.inventorySprite].frames.__BASE.source.source.src;
+            this.image.title = this.slot.instanceConfig.name;
             if(this.slot.itemType != "stackable") {
                 this.qty.innerHTML = "";
             }
             else {
-                this.qty.innerHTML == this.slot.quantity;
+                this.qty.innerHTML = this.slot.quantity;
             }
+        }
+        else {
+            this.image.src = "";
+            this.image.title = "";
+            this.qty.innerHTML = "";
         }
     }
     loadManager(uiManager) {

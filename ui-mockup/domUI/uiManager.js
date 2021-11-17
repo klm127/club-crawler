@@ -37,13 +37,17 @@ class UIManager {
         }
         if(slot.itemType == "weapon") {
             if(slot.name != this.player.weapon.name) {
-                this.player.weapon = slot.getInstance({
+                this.player.weapon = slot.parentInventory.getInstance(slot.slotIndex, {
                     scene: this.player.scene,
                     wielder: this.player,
                     target: this.player.reticle
                 });
                 this.showPlayerWeapon();
             }
+        }
+        else if(slot.itemType == "stackable") {
+            let retrievedItem = slot.parentInventory.pop(slot.slotIndex);
+            this.refreshInventory();
         }
     }
 }

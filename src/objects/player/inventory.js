@@ -68,9 +68,11 @@ class Inventory {
         else if(gameItem.itemType == "stackable") {
             for(let slot of this.itemSlots) {
                 if(slot.itemType == "stackable") {
-                    if(slot.instanceConfig.name == gameItem.name) {
-                        slot.quantity += 1;
-                        return true;
+                    if(!slot.empty) {
+                        if(slot.instanceConfig.name == gameItem.name) {
+                            slot.quantity += 1;
+                            return true;
+                        }
                     }
                 }
             }
@@ -94,6 +96,20 @@ class Inventory {
         }
         this.full = true;
         return false;
+    }
+    /**
+     * Swaps the positions of two slots. 
+     * @param {InventoryItemSlot} slot1 - A slot
+     * @param {InventoryItemSlot} slot2 - A slot
+     */
+    swapSlots(slot1, slot2) {
+        let indexHolder = slot1.slotIndex;
+        this.itemSlots[slot1.slotIndex] = slot2;
+        this.itemSlots[slot2.slotIndex] = slot1;
+        slot1.slotIndex = slot2.slotIndex;
+        slot2.slotIndex = indexHolder;
+        this.setNextFreeItemSlot();
+
     }
     /**
      * gets an instance of an item at a slot index
