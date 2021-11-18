@@ -36,10 +36,17 @@ class DOMUIManager {
     }
 
     /**
-     * Tells health bar to change after players health has changed
+     * Tells health bar to change in response to health change event
      */
     healthChange() {
         this.healthBar.changeHealth(this.player.health);
+    }
+
+    /**
+     * Tells score to change in response to score change event
+     */
+    pointsChange() {
+        this.score.changeScore(this.dataManager.score);
     }
 
     /**
@@ -97,6 +104,8 @@ class DOMUIManager {
     loadDataManager(dataManager) {
         this.dataManager = dataManager;
         this.leftUI.loadDataManager(dataManager);
+        dataManager.emitter.on('scoreChange', this.pointsChange, this);
+        dataManager.emitter.on('healthChange', this.healthChange, this);
     }
 
     /**

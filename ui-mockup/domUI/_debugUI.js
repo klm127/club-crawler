@@ -67,14 +67,6 @@ class DebugUI {
             uiManager.player.inventory.addItem(potion);
             uiManager.refreshInventory();
         });
-        this.addHealth.addEventListener('click', (ev) => {
-            uiManager.player.health += 5;
-            uiManager.healthChange();
-        })
-        this.loseHealth.addEventListener('click', (ev) => {
-            uiManager.player.health -= 5;
-            uiManager.healthChange();
-        })
         this.addDebugMessage.addEventListener('click', (ev)=> {
             uiManager.dataManager.log('test a rather longer debug message, which might take multiple lines  ' + Math.floor(Math.random()*100));
             uiManager.updateDebugMessages();
@@ -82,9 +74,22 @@ class DebugUI {
     }
     loadDataManager(dataManager) {
         this.dataManager = dataManager;
+        uiManager = this.uiManager;
         dataManager.emitter.on("testEvent", this.listenResponse, this);
         this.emitTestEvent.addEventListener('click', (ev)=> {
             dataManager.emitter.emit("testEvent");
+        });
+        this.addHealth.addEventListener('click', (ev) => {
+            uiManager.player.health += 5;
+            dataManager.emitter.emit("healthChange");
+        })
+        this.loseHealth.addEventListener('click', (ev) => {
+            uiManager.player.health -= 5;
+            dataManager.emitter.emit("healthChange");
+        });
+        this.addScore.addEventListener('click', (ev)=> {
+            dataManager.score += 1;
+            dataManager.emitter.emit('scoreChange');
         })
 
     }
