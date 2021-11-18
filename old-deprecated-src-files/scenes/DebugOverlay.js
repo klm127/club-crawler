@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 
-const dataManager = require('../objects/data');
+const dataManager = require('../../src/objects/data');
 
 /** 
  * @classdesc

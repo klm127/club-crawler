@@ -99,10 +99,6 @@ class DungeonCrawlerGame extends Phaser.Scene
         this.input.on('pointerup', ()=> {
             this.pointerDown = false;
         },this);
-        
-
-        //launch the overlay 
-        this.scene.launch('crawleroverlay');
 
         dataManager.uiManager.initialize(this.player);
 

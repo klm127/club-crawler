@@ -54,10 +54,6 @@ class TitleScreen extends Phaser.Scene
                 musicManager.music.play();
             }
         }
-        if(dataManager.debug.on) {
-            console.log('debug on in title screen, trying to launch overlay')
-            console.log(this.scene.launch('debugoverlay'));
-        }
     }
     update(time,delta) {
         if(this.titleText.green < 255) {
