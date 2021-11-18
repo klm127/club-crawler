@@ -14,7 +14,7 @@ const FLAMETHROWER_DEFAULT_STATS = {
     projectileVelocity: 550,
     spin: -150,
     mass: 0,
-    damage: .06, // doesnt need a lot cause overlaps trigger a bunch
+    damage: .5, // doesnt need a lot cause overlaps trigger a bunch
     fireRate: 20, //lower is faster
     spriteKey: "flamestream",
     audioSpriteKey: "flame-sound",

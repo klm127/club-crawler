@@ -5,6 +5,10 @@ const dataManager = require('../objects/data');
 const Load = require('../utility/load');
 const MapParser = require('../mapParsers/parsers');
 
+const GAME_SETTINGS = {
+    validationTime: 3000
+}
+
 /** 
  * @classdesc
  * The main game containing the mapmanager, player, and input detection
@@ -32,7 +36,7 @@ class DungeonCrawlerGame extends Phaser.Scene
     create() {
         /**
          * The map manager
-         * @type {ClubCrawler.Objects.DungeonMapManager}
+         * @type {ClubCrawler.Parsers.BlueWorldParser}
          */
         this.mapManager = new MapParser.BlueWorld({scene:this, map:'blueworld'});
         // new DungeonMapManager({scene: this, map: 'blueworld'});
@@ -102,7 +106,31 @@ class DungeonCrawlerGame extends Phaser.Scene
 
         dataManager.uiManager.initialize(this.player);
 
+        //new Clock(this); // creates this.time
+
+        this.time.addEvent({
+            delay: GAME_SETTINGS.validationTime,
+            loop: true,
+            callback: this.validateGame,
+            callbackScope: this
+        })
+
     }
+
+    /**
+     * Every few seconds, checks to make sure enemies and player are not out of bounds. If they are, it kills them.
+     */
+    validateGame() {
+        for(let enemy of this.mapManager.enemies.children.entries) {
+            if(!this.mapManager.floors.getTileAtWorldXY(enemy.x, enemy.y)) {
+                enemy.die();
+            }
+        }
+    }
+
+    /**
+     * Called when an enemy died and there are no remaining enemies.
+     */
     win() {
         
         if(dataManager.debug.on && dataManager.debug.logic.win) {

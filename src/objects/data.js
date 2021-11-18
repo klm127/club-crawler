@@ -52,7 +52,7 @@ const dataManager = {
             pickup: true
         },
         enemies: {
-            die: false
+            die: true
         },
         destructibles: {
             cylinder: false,
