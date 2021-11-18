@@ -53,8 +53,12 @@ class DOMUIManager {
         this.rightUI.loadManager(this);
         this.leftUI.loadManager(this);
 
+        this.inventoryUI.loadInventory(this.player.inventory);
+        this.weaponUI.showWeapon(this.player.weapon);
+
         this.dataManager.emitter.on('scoreChange', this.pointsChange, this);
         this.dataManager.emitter.on('healthChange', this.healthChange, this);
+        this.dataManager.emitter.on("inventoryChange", this.inventoryUI.refreshInventory, this.inventoryUI);
     }
 
     /**

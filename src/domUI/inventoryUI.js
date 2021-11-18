@@ -108,7 +108,9 @@ class InventoryUI {
      * @param {ClubCrawler.Objects.Inventory.Inventory} inventory - The inventory to interact with
      */
     loadInventory(inventory) {
+        this.clearInventory();
         this.inventory = inventory;
+        // probably gonna make dup. inventories on scene reload
         for(let itemSlot of inventory.itemSlots) {
             let itemUI = new ItemSlotUI(this.slotsContainer, itemSlot);
             if(this.uiManager) {
