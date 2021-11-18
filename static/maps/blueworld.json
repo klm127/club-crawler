@@ -2439,17 +2439,6 @@
                 }, 
                 {
                  "height":33,
-                 "id":157,
-                 "name":"flamethrower-switch",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":127,
-                 "x":424.242,
-                 "y":433.333
-                }, 
-                {
-                 "height":33,
                  "id":158,
                  "name":"flamethrower-pickup",
                  "properties":[
@@ -2467,8 +2456,8 @@
                  "type":"item-pickup",
                  "visible":true,
                  "width":127,
-                 "x":871.591,
-                 "y":1340.83
+                 "x":427.591,
+                 "y":434.83
                 }],
          "opacity":1,
          "type":"objectgroup",

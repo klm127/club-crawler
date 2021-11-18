@@ -3,7 +3,6 @@ import Phaser from "phaser";
 const Player = require('../objects/player/player');
 const Ogre = require('../objects/enemies/ogre');
 const GameCoin = require('../objects/items/coin');
-const FlameThrowerSwitch = require('../objects/items/flamethrower-switch');
 const ItemPickup = require('../objects/items/itempickup');
 const Cylinder = require('../objects/destructibles/cylinder');
 const Interact = require('../interfaces/interact');
@@ -52,12 +51,7 @@ const BLUEWORLD_DEFAULTS = {
                     "item-pickup": {
                         creates: ItemPickup
                     }
-                },
-                name: {
-                    "flamethrower-switch": {
-                        creates: FlameThrowerSwitch
-                    }
-                }                
+                }             
             }
         }
     }

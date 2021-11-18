@@ -863,8 +863,7 @@
    </properties>
    <point/>
   </object>
-  <object id="157" name="flamethrower-switch" x="424.242" y="433.333" width="127" height="33"/>
-  <object id="158" name="flamethrower-pickup" type="item-pickup" x="871.591" y="1340.83" width="127" height="33">
+  <object id="158" name="flamethrower-pickup" type="item-pickup" x="427.591" y="434.83" width="127" height="33">
    <properties>
     <property name="gettable" value="flamethrower"/>
     <property name="gettable-type" value="weapon"/>
