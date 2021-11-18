@@ -6,18 +6,22 @@ const DungeonCrawlerOverlay = require('./scenes/DungeonCrawlerOverlay');
 const DebugOverlay = require('./scenes/DebugOverlay');
 const GameOver = require('./scenes/GameOver');
 const GameWin = require('./scenes/GameWin');
+const dataManager = require('./objects/data');
 
 const LeftUI = require('./domUI/leftUI');
 const RightUI = require('./domUI/rightUI');
+const UIManager = require('./domUI/uiManager');
 
 const parent = document.getElementById("club-crawler-container")
 
 const leftUIelement = document.getElementById("club-crawler-left-ui");
 const leftUI = new LeftUI(leftUIelement);
-
-
 const rightUIelement = document.getElementById("club-crawler-right-ui")
 const rightUI = new RightUI(rightUIelement);
+
+const uiManager = new UIManager(leftUI, rightUI, dataManager);
+
+
 
 const config = {
     width: 800,

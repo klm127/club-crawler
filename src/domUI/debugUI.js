@@ -127,25 +127,6 @@ class DebugUI {
         }
     }
 
-    // /**
-    //  * Adds event listener to the top level "on" input to tell debug message box to show/hide.
-    //  * @private
-    //  * @param {Phaser.Events.EventEmitter} emitter - The phaser event emitter found in dataManager.emitter
-    //  */
-    // addDebugMessageOnListener(emitter) {
-    //     let onCheckBox = null;
-    //     for(let input of this.children) {
-    //         if(input.name == "on") {
-    //             onCheckBox = input.inputElement;
-    //             break;
-    //         }
-    //     }
-    //     if(onCheckBox) {
-    //         onCheckBox.addEventListener('change', (ev)=> {
-    //             emitter.emit('debugDisplayChange');
-    //         });
-    //     }
-    // }
 }
 
 const INPUT_COMPONENT = {
@@ -242,12 +223,19 @@ class InputComponent {
                 this.inputElement.value = this.value;
             }
         }
-        else if(this.validationType == "checkbox") {
+        else if(this.validationType == "boolean") {
             this.value = this.inputElement.checked;
         }
         else {
             this.value = this.inputElement.value;
         }
+    }
+
+    /**
+     * Stub for bug
+     */
+    loadManager() {
+
     }
 }
 

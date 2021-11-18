@@ -1,7 +1,5 @@
 import Phaser from "phaser";
 
-const emitter = new Phaser.Events.EventEmitter()
-
 /**
  * @memberof ClubCrawler.Data
  * 
@@ -15,11 +13,13 @@ const emitter = new Phaser.Events.EventEmitter()
  * @property {function} changeScore - Called to change player score
  * @property {function} changeHealth - Called to change player health
  * @property {function} log - Called to log debug data if debug is active
+ * @property {ClubCrawler.UserInterface.DOMUIManager} uiManager - The user interface manager
  */
 const dataManager = {
     score: 0,
     health: 0,
-    emitter: emitter,
+    emitter: new Phaser.Events.EventEmitter(),
+    uiManager: null, // added main
     settings: {
         sound: {
             sfxVol: {
@@ -41,8 +41,9 @@ const dataManager = {
         }
     },
     debug: {
+        emitter: new Phaser.Events.EventEmitter(),
         debugLines: ['debug'],
-        on: false,
+        on: true,
         duration: 3000, //how long a message stays on the screen,
         max: 10, //how many messages can appear
         weapon: {
@@ -78,17 +79,17 @@ const dataManager = {
      */
     changeScore: function(change) {
         dataManager.score += change;
-        emitter.emit('scoreChange');
+        dataManager.emitter.emit('scoreChange');
         return dataManager.score;
     }, 
     changeHealth: function(change) {
         dataManager.health += change;
-        emitter.emit('healthChange');
+        dataManager.emitter.emit('healthChange');
     },
     log: function(newText) {
         if(dataManager.debug.on) {
-            dataManager.debugLines.push(newText);
-            emitter.emit('debugChange');
+            dataManager.debug.debugLines.push(newText);
+            dataManager.debug.emitter.emit('debugLog');
         }
     }
     

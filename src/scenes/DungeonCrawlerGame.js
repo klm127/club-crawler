@@ -104,6 +104,8 @@ class DungeonCrawlerGame extends Phaser.Scene
         //launch the overlay 
         this.scene.launch('crawleroverlay');
 
+        dataManager.uiManager.initialize(this.player);
+
     }
     win() {
         

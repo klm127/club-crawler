@@ -106,7 +106,9 @@ class SettingsUI {
      */
     loadManager(uiManager) {
         for(let child of this.children) {
-            child.loadManager(uiManager);
+            if(child.loadManager) {
+                child.loadManager(uiManager);
+            }
         }
         this.uiManager = uiManager;
     }

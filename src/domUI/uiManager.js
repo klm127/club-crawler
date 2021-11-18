@@ -4,15 +4,13 @@
  * @memberof ClubCrawler.DOMUserInterface
  */
 class DOMUIManager {
+
     /**
-     * 
-     * @param {ClubCrawler.Objects.Player} player - The player
-     * @param {Object} rightUI - the right UI
-     * @param {Object} leftUI - the left UI
+     * @param {ClubCrawler.UserInterface.LeftUI} leftUI - the left user interface
+     * @param {ClubCrawler.UserInterface.RightUI} rightUI - the right user interface
+     * @param {ClubCrawler.Data.dataManager} dataManager - the data manager
      */
-    constructor(player, rightUI, leftUI) {
-        /** @property {ClubCrawler.Objects.Player} - The player */
-        this.player = player;
+    constructor(leftUI, rightUI, dataManager) {
         /** @property {ClubCrawler.DOMUserInterface.RightUI} - The right side UI */
         this.rightUI = rightUI;
         /** @property {ClubCrawler.DOMUserInterface.LeftUI} - The left side UI */
@@ -25,14 +23,38 @@ class DOMUIManager {
         this.healthBar = this.rightUI.healthBarUI;
         /** @property {ClubCrawler.DOMUserInterface.ScoreUI} - The score display*/
         this.score = this.rightUI.scoreUI;
-        /** @property {ClubCrawler.Data.dataManager} - The dataManager */
-        this.dataManager = null;
         /** @property {ClubCrawler.DOMUserInterface.DebugMessageBox} */
         this.debugMessages = this.leftUI.debugMessages;
+        /** @property {ClubCrawler.Data.dataManager} - The dataManager */
+        this.dataManager = dataManager;
+
+        // properties initialized when game starts
+        
+        /** @property {ClubCrawler.Objects.Player} - The player */
+        this.player = null;
+        
+        this.leftUI.loadDataManager(dataManager);
+
+        dataManager.uiManager = this;
+        
+
+    }
+    /**
+     * 
+     * @param {ClubCrawler.Objects.Player} player - The player
+     * @param {Object} rightUI - the right UI
+     * @param {Object} leftUI - the left UI
+     */
+    initialize(player) {
+        /** @property {ClubCrawler.Objects.Player} - The player */
+        this.player = player;
 
         this.healthBar.setFullHealth(player.health);
         this.rightUI.loadManager(this);
         this.leftUI.loadManager(this);
+
+        this.dataManager.emitter.on('scoreChange', this.pointsChange, this);
+        this.dataManager.emitter.on('healthChange', this.healthChange, this);
     }
 
     /**
@@ -94,18 +116,6 @@ class DOMUIManager {
             let retrievedItem = slot.parentInventory.pop(slot.slotIndex);
             this.refreshInventory();
         }
-    }
-
-    /**
-     * Loads the dataManager
-     * 
-     * @param {ClubCrawler.Data.dataManager}
-     */
-    loadDataManager(dataManager) {
-        this.dataManager = dataManager;
-        this.leftUI.loadDataManager(dataManager);
-        dataManager.emitter.on('scoreChange', this.pointsChange, this);
-        dataManager.emitter.on('healthChange', this.healthChange, this);
     }
 
     /**

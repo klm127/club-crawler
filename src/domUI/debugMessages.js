@@ -37,7 +37,15 @@ class DebugMessageBox {
             else {
                 this.element.style.display = "block";
             }
-        }, this)
+        }, this);
+        debugObject.emitter.on('debugLog', this.updateDebugMessages, this);
+        this.updateDebugMessages();
+        if(this.debugObject.on) {
+            this.element.display = "block";
+        }
+        else {
+            this.element.display = "none";
+        }
     }
 
     /**
