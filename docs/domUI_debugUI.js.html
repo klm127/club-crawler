@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: domUI/debugUI.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: domUI/debugUI.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const CONTAINER_PROPS = {
+    className: "club-crawler-settings-container",
+    style: {
+        width: "100%",
+        color: "white",
+    }
+}
+
+const DROP_DOWN_PROPS = {
+    className: "club-crawler-settings-drop-down",
+    style: {
+        cursor: "pointer",
+    }
+}
+
+const INPUT_CONTAINER = {
+    className: "club-crawler-settings-drop-down-area",
+    style: {
+        display: "none"
+    }
+}
+
+/**
+ * @classdesc Presents an expandable menu for the user to change debug messaging settings, which appear in the the [DebugMessageBox]{@link ClubCrawler.DOMUserInterface.DebugMessageBox}. Creates a new instance of DebugUI for each nested object inside the object which it models.
+ * @memberof ClubCrawler.DOMUserInterface
+ */
+class DebugUI {
+    /**
+     * @param {HTMLElement} element - The container element.
+     */
+    constructor(element) {
+        /** @member {HTMLElement} - The container element. */
+        this.element = element;
+        Object.assign(this.element, CONTAINER_PROPS);
+        Object.assign(this.element.style, CONTAINER_PROPS.style);
+        /** @member {ClubCrawler.Types.DebugConfig} - The object whose properties to make configurable, which is the top-level DebugConfig for the first DebugUI created, then nested objects for the subsequent ones. */
+        this.settingsObject = null;
+        /** @member {HTMLElement} - The drop down button with the title. When clicked, it will toggle showing of [DebugUI.inputContainer]{@link ClubCrawler.DOMUserInterface.DebugUI#inputContainer}. */
+        this.dropDownElement = document.createElement('div');
+        Object.assign(this.dropDownElement, DROP_DOWN_PROPS);
+        Object.assign(this.dropDownElement.style, DROP_DOWN_PROPS.style);
+        this.element.appendChild(this.dropDownElement);
+        /** @member {HTMLElement} - The element containing the options. Will be hidden or shown when [DebugUI.dropDownElement]{@link ClubCrawler.DOMUserInterface.DebugUI#dropDownElement} is clicked  */
+        this.inputContainer = document.createElement('div');
+        Object.assign(this.inputContainer, INPUT_CONTAINER);
+        Object.assign(this.inputContainer.style, INPUT_CONTAINER.style);
+        this.element.appendChild(this.inputContainer);
+        /** @member {Array} - The DebugUIs and InputComponents which were created by the DebugUI. */
+        this.children = [];
+        /** @member {ClubCrawler.UserInterface.DOMUIManager} - The ui manager. */
+        this.uiManager = null;
+
+        this.addDropDownListener();
+
+    }
+
+    /**
+     * Adds a click listener to [DebugUI.dropDownElement]{@link ClubCrawler.DOMUserInterface.DebugUI#dropDownElement}.
+     */
+    addDropDownListener() {
+        let dropDownArea = this.inputContainer;
+        this.dropDownElement.addEventListener('click', (ev)=> {
+            switch(dropDownArea.style.display) {
+                case "none":
+                    dropDownArea.style.display = "block";
+                    break;
+                default:
+                    dropDownArea.style.display = "none";
+                    break;
+            }
+        })
+    }
+
+    /**
+     * Creates a check box for each boolean property in the settings object. Creates a new DebugUI for each nested object in the settings object.
+     * @param {Object} settingsObject - The object to load and create buttons for.
+     * @param {string} name - The name for the drop down button to be displayed in [DebugUI.dropDownElement]{@link ClubCrawler.DOMUserInterface.DebugUI#dropDownElement}.
+     */
+    loadDebugObject(settingsObject, name="debug") {
+        this.settingsObject = settingsObject;
+        
+        this.dropDownElement.innerHTML = name + "⬇";
+
+        let keys = Object.keys(settingsObject);
+        for(let key of keys) {
+            testValue = settingsObject[key];
+            if(typeof testValue == "function") { // skip functions
+                continue;
+            }
+            if(typeof testValue == "object") { // skip class instances
+                let constructorName =  testValue.constructor.toString().substring(9,15);
+                if(constructorName != "Object") {
+                    continue;
+                }
+            }
+            let newElement = document.createElement('div');
+            if(typeof testValue == "object") {
+                let subObjectSettingsUI = new DebugUI(newElement);
+                this.children.push(subObjectSettingsUI);
+                subObjectSettingsUI.loadDebugObject(testValue, key);
+            }
+            else {
+                let inputObject = new InputComponent(newElement, key, testValue);
+                this.children.push(inputObject);
+                inputObject.inputElement.addEventListener('change', (ev)=> {
+                    inputObject.validate();
+                    settingsObject[key] = inputObject.value;
+                    if(key == "on") {
+                        settingsObject.emitter.emit("debugMessageToggle")
+                    }
+                })
+            }
+            this.inputContainer.appendChild(newElement);
+        }
+        for(let child of this.children) {
+            if(child instanceof DebugUI) {
+                child.loadManager(this.uiManager);
+            }
+        }
+
+    }
+
+    /** load the UI manager into this and all children objects
+     * @param {ClubCrawler.DOMUserInterface.DOMUIManager} - The manager
+     */
+    loadManager(uiManager) {
+        this.uiManager = uiManager;
+        for(let child of this.children) {
+            if(child instanceof DebugUI) {
+                child.loadManager(uiManager);
+            }
+        }
+    }
+
+}
+
+const INPUT_COMPONENT = {
+    className: "club-crawler-input",
+    style: {
+
+    }}
+const INPUT_NAME = {
+    className: "club-crawler-input-name",
+    style: {
+        width: "25%"
+    }}
+const INPUT_BOOLEAN = {
+    className: "club-crawler-input-bool",
+    type:"checkbox",
+    style: {
+
+    }}
+const INPUT_NUMBER = {
+    className: "club-crawler-input-number", 
+    // avoid type:number, because of buggy browsers
+    style: { 
+        width:"15%"
+    }}
+const INPUT_STRING = {
+    className: "club-crawler-input-string",
+    style: {
+        width:"25%",
+
+    }}
+
+/**
+ * @private
+ * 
+ * A component for allowing user selection
+ */
+class InputComponent {
+    /**
+     * @param {HTMLElement} element - The container element
+     * @param {string} name - The name to display
+     * @param {string} value - The starting value
+     */
+    constructor(element, name, value) {  
+        this.element = element;
+        Object.assign(this.element, INPUT_COMPONENT);
+        Object.assign(this.element.style, INPUT_COMPONENT.style);
+        this.name = name;
+        this.value = value;
+        this.nameElement = document.createElement('span');
+        Object.assign(this.nameElement, INPUT_NAME);
+        Object.assign(this.nameElement, INPUT_NAME.style);
+        this.nameElement.innerHTML = "➡" + name;
+        this.element.appendChild(this.nameElement);
+        this.inputElement = document.createElement('input');
+        /** @property {string} - Custom validation types because of non-working number validation in browsers */
+        this.validationType = "string";
+        switch(typeof value) {
+            case "boolean": {
+                Object.assign(this.inputElement, INPUT_BOOLEAN);
+                Object.assign(this.inputElement.style, INPUT_BOOLEAN.style);
+                this.inputElement.checked = value;
+                this.validationType = "boolean";
+                break;
+            }
+            case "number": {
+                Object.assign(this.inputElement, INPUT_NUMBER);
+                Object.assign(this.inputElement.style, INPUT_NUMBER.style);
+                this.inputElement.value = value;
+                this.validationType = "number";
+                break;
+            }
+            default: {
+                Object.assign(this.inputElement, INPUT_STRING);
+                Object.assign(this.inputElement.style, INPUT_STRING.style);
+                this.inputElement.value = value;
+                this.validationType = "string";
+                break;
+            }
+        }
+        this.element.appendChild(this.inputElement);
+
+    }
+
+    /** validates input and sets this.value to the input*/
+    validate() {
+        let val = this.value;
+        if(this.validationType == "number") {
+            try {
+                val = parseFloat(this.inputElement.value);
+                this.value = val;
+                this.inputElement.value = val;
+            }
+            catch(e) {
+                this.inputElement.value = this.value;
+            }
+        }
+        else if(this.validationType == "boolean") {
+            this.value = this.inputElement.checked;
+        }
+        else {
+            this.value = this.inputElement.value;
+        }
+    }
+
+    /**
+     * Stub for bug
+     */
+    loadManager() {
+
+    }
+}
+
+module.exports = DebugUI;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="ClubCrawler.Data.html">Data</a></li><li><a href="ClubCrawler.DOMUserInterface.html">DOMUserInterface</a></li><li><a href="ClubCrawler.Interfaces.html">Interfaces</a></li><li><a href="ClubCrawler.Interfaces.Interact.html">Interact</a></li><li><a href="ClubCrawler.Interfaces.Movement.html">Movement</a></li><li><a href="ClubCrawler.Interfaces.Sense.html">Sense</a></li><li><a href="ClubCrawler.Objects.html">Objects</a></li><li><a href="ClubCrawler.Objects.Inventory.html">Inventory</a></li><li><a href="ClubCrawler.Parsers.html">Parsers</a></li><li><a href="ClubCrawler.Scenes.html">Scenes</a></li><li><a href="ClubCrawler.Types.html">Types</a></li><li><a href="ClubCrawler.Utility.html">Utility</a></li><li><a href="ClubCrawler.Utility.Load.html">Load</a></li><li><a href="ClubCrawler.Utility.Parameters.html">Parameters</a></li><li><a href="ClubCrawler.Utility.Parse.html">Parse</a></li></ul><h3>Classes</h3><ul><li><a href="ClubCrawler.DOMUserInterface.DebugMessageBox.html">DebugMessageBox</a></li><li><a href="ClubCrawler.DOMUserInterface.DebugUI.html">DebugUI</a></li><li><a href="ClubCrawler.DOMUserInterface.DOMUIManager.html">DOMUIManager</a></li><li><a href="ClubCrawler.DOMUserInterface.HealthBarUI.html">HealthBarUI</a></li><li><a href="ClubCrawler.DOMUserInterface.InventoryUI.html">InventoryUI</a></li><li><a href="ClubCrawler.DOMUserInterface.ItemSlotUI.html">ItemSlotUI</a></li><li><a href="ClubCrawler.DOMUserInterface.LeftUI.html">LeftUI</a></li><li><a href="ClubCrawler.DOMUserInterface.RightUI.html">RightUI</a></li><li><a href="ClubCrawler.DOMUserInterface.SettingsUI.html">SettingsUI</a></li><li><a href="ClubCrawler.DOMUserInterface.WeaponUI.html">WeaponUI</a></li><li><a href="ClubCrawler.Objects.Cylinder.html">Cylinder</a></li><li><a href="ClubCrawler.Objects.Inventory.Inventory.html">Inventory</a></li><li><a href="ClubCrawler.Objects.Inventory.InventoryItemSlot.html">InventoryItemSlot</a></li><li><a href="ClubCrawler.Objects.Items.GameCoin.html">GameCoin</a></li><li><a href="ClubCrawler.Objects.Items.ItemPickup.html">ItemPickup</a></li><li><a href="ClubCrawler.Objects.Ogre.html">Ogre</a></li><li><a href="ClubCrawler.Objects.Player.html">Player</a></li><li><a href="ClubCrawler.Objects.Reticle.html">Reticle</a></li><li><a href="ClubCrawler.Objects.Weapon.html">Weapon</a></li><li><a href="ClubCrawler.Objects.Weapon.Projectile.html">Projectile</a></li><li><a href="ClubCrawler.Parsers.BlueWorldParser.html">BlueWorldParser</a></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html">DungeonCrawlerGame</a></li><li><a href="ClubCrawler.Scenes.GameOver.html">GameOver</a></li><li><a href="ClubCrawler.Scenes.GameWin.html">GameWin</a></li><li><a href="ClubCrawler.Scenes.TitleScreen.html">TitleScreen</a></li><li><a href="ClubCrawler.UserInterface.DebugMessage.html">DebugMessage</a></li><li><a href="ScoreUI.html">ScoreUI</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Thu Nov 18 2021 15:10:54 GMT-0500 (Eastern Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

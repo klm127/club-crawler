@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: domUI/uiManager.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: domUI/uiManager.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+/**
+ * @classdesc Manages changes to displayed UI, event listeners, and changing game data based on UI interactions
+ * @memberof ClubCrawler.DOMUserInterface
+ */
+class DOMUIManager {
+
+    /**
+     * @param {ClubCrawler.DOMUserInterface.LeftUI} leftUI - the left user interface
+     * @param {ClubCrawler.DOMUserInterface.RightUI} rightUI - the right user interface
+     * @param {ClubCrawler.Data.dataManager} dataManager - the data manager
+     */
+    constructor(leftUI, rightUI, dataManager) {
+        /** @member {ClubCrawler.DOMUserInterface.RightUI} - The right side UI */
+        this.rightUI = rightUI;
+        /** @member {ClubCrawler.DOMUserInterface.LeftUI} - The left side UI */
+        this.leftUI = leftUI;   
+        /** @member {ClubCrawler.DOMUserInterface.WeaponUI} - The weapon display UI */
+        this.weaponUI = this.rightUI.weaponUI;
+        /** @member {ClubCrawler.DOMUserInterface.InventoryUI} - The inventory UI */
+        this.inventoryUI = this.rightUI.inventoryUI;
+        /** @member {ClubCrawler.DOMUserInterface.HealthBarUI} - The health bar display */
+        this.healthBar = this.rightUI.healthBarUI;
+        /** @member {ClubCrawler.DOMUserInterface.ScoreUI} - The score display*/
+        this.score = this.rightUI.scoreUI;
+        /** @member {ClubCrawler.DOMUserInterface.DebugMessageBox} */
+        this.debugMessages = this.leftUI.debugMessages;
+        /** @member {ClubCrawler.Data.dataManager} - The dataManager */
+        this.dataManager = dataManager;
+
+        // properties initialized when game starts
+        
+        /** @member {ClubCrawler.Objects.Player} - The player */
+        this.player = null;
+        
+        this.leftUI.loadDataManager(dataManager);
+
+        dataManager.uiManager = this;
+        
+
+    }
+    /**
+     * Initializes the User Inteface objects
+     * @param {ClubCrawler.Objects.Player} player - The player
+     */
+    initialize(player) {
+        /** @property {ClubCrawler.Objects.Player} - The player */
+        this.player = player;
+
+        this.healthBar.setFullHealth(player.health);
+        this.rightUI.loadManager(this);
+        this.leftUI.loadManager(this);
+
+        this.inventoryUI.loadInventory(this.player.inventory);
+        this.weaponUI.showWeapon(this.player.weapon);
+
+        this.dataManager.emitter.on('scoreChange', this.pointsChange, this);
+        this.dataManager.emitter.on('healthChange', this.healthChange, this);
+        this.dataManager.emitter.on("inventoryChange", this.inventoryUI.refreshInventory, this.inventoryUI);
+    }
+
+    /**
+     * Tells health bar to change in response to health change event
+     */
+    healthChange() {
+        this.healthBar.changeHealth(this.player.health);
+    }
+
+    /**
+     * Tells score to change in response to score change event
+     */
+    pointsChange() {
+        this.score.changeScore(this.dataManager.score);
+    }
+
+    /**
+     * Checks what weapon the player is wielding and displays that in the weapon info area
+     */
+    showPlayerWeapon() {
+        this.weaponUI.showWeapon(this.player.weapon);
+    }
+    /**
+     * Loads the player inventory into the inventory UI
+     */
+    loadPlayerInventory() {
+        this.inventoryUI.loadInventory(this.player.inventory);
+    }
+    /**
+     * Refreshes inventory UI
+     */
+    refreshInventory() {
+        this.inventoryUI.refreshInventory();
+    }
+    /**
+     * Called when an inventory slot is clicked.
+     * 
+     * If it's a weapon, equips that weapon and shows it in the weapon UI.
+     * 
+     * If it's a stackable it pops that item and... (implement)
+     * 
+     * @param {ClubCrawler.Objects.Inventory.InventoryItemSlot} slot - The slot that was clicked on
+     */
+    slotClick(slot) {
+        if(slot.empty) {
+            return false;
+        }
+        if(slot.itemType == "weapon") {
+            if(slot.name != this.player.weapon.name) {
+                this.player.weapon = slot.parentInventory.getInstance(slot.slotIndex, {
+                    scene: this.player.scene,
+                    wielder: this.player,
+                    target: this.player.reticle
+                });
+                this.showPlayerWeapon();
+            }
+        }
+        else if(slot.itemType == "stackable") {
+            let retrievedItem = slot.parentInventory.pop(slot.slotIndex);
+            this.refreshInventory();
+        }
+    }
+
+    /**
+     * Updates debug messages
+     */
+    updateDebugMessages() {
+        this.debugMessages.updateDebugMessages();
+    }
+}
+
+module.exports = DOMUIManager;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="ClubCrawler.Data.html">Data</a></li><li><a href="ClubCrawler.DOMUserInterface.html">DOMUserInterface</a></li><li><a href="ClubCrawler.Interfaces.html">Interfaces</a></li><li><a href="ClubCrawler.Interfaces.Interact.html">Interact</a></li><li><a href="ClubCrawler.Interfaces.Movement.html">Movement</a></li><li><a href="ClubCrawler.Interfaces.Sense.html">Sense</a></li><li><a href="ClubCrawler.Objects.html">Objects</a></li><li><a href="ClubCrawler.Objects.Inventory.html">Inventory</a></li><li><a href="ClubCrawler.Parsers.html">Parsers</a></li><li><a href="ClubCrawler.Scenes.html">Scenes</a></li><li><a href="ClubCrawler.Types.html">Types</a></li><li><a href="ClubCrawler.Utility.html">Utility</a></li><li><a href="ClubCrawler.Utility.Load.html">Load</a></li><li><a href="ClubCrawler.Utility.Parameters.html">Parameters</a></li><li><a href="ClubCrawler.Utility.Parse.html">Parse</a></li></ul><h3>Classes</h3><ul><li><a href="ClubCrawler.DOMUserInterface.DebugMessageBox.html">DebugMessageBox</a></li><li><a href="ClubCrawler.DOMUserInterface.DebugUI.html">DebugUI</a></li><li><a href="ClubCrawler.DOMUserInterface.DOMUIManager.html">DOMUIManager</a></li><li><a href="ClubCrawler.DOMUserInterface.HealthBarUI.html">HealthBarUI</a></li><li><a href="ClubCrawler.DOMUserInterface.InventoryUI.html">InventoryUI</a></li><li><a href="ClubCrawler.DOMUserInterface.ItemSlotUI.html">ItemSlotUI</a></li><li><a href="ClubCrawler.DOMUserInterface.LeftUI.html">LeftUI</a></li><li><a href="ClubCrawler.DOMUserInterface.RightUI.html">RightUI</a></li><li><a href="ClubCrawler.DOMUserInterface.SettingsUI.html">SettingsUI</a></li><li><a href="ClubCrawler.DOMUserInterface.WeaponUI.html">WeaponUI</a></li><li><a href="ClubCrawler.Objects.Cylinder.html">Cylinder</a></li><li><a href="ClubCrawler.Objects.Inventory.Inventory.html">Inventory</a></li><li><a href="ClubCrawler.Objects.Inventory.InventoryItemSlot.html">InventoryItemSlot</a></li><li><a href="ClubCrawler.Objects.Items.GameCoin.html">GameCoin</a></li><li><a href="ClubCrawler.Objects.Items.ItemPickup.html">ItemPickup</a></li><li><a href="ClubCrawler.Objects.Ogre.html">Ogre</a></li><li><a href="ClubCrawler.Objects.Player.html">Player</a></li><li><a href="ClubCrawler.Objects.Reticle.html">Reticle</a></li><li><a href="ClubCrawler.Objects.Weapon.html">Weapon</a></li><li><a href="ClubCrawler.Objects.Weapon.Projectile.html">Projectile</a></li><li><a href="ClubCrawler.Parsers.BlueWorldParser.html">BlueWorldParser</a></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html">DungeonCrawlerGame</a></li><li><a href="ClubCrawler.Scenes.GameOver.html">GameOver</a></li><li><a href="ClubCrawler.Scenes.GameWin.html">GameWin</a></li><li><a href="ClubCrawler.Scenes.TitleScreen.html">TitleScreen</a></li><li><a href="ClubCrawler.UserInterface.DebugMessage.html">DebugMessage</a></li><li><a href="ScoreUI.html">ScoreUI</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Thu Nov 18 2021 15:10:54 GMT-0500 (Eastern Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -27,9 +27,10 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>const parameters = require('../../utility/parameters');
+const dataManager = require('../data');
 
 /**
- * @typedef InventoryConfig
+ * @typedef ClubCrawler.Types.InventoryConfig
  * @property {number} [inventorySize=21] - The max number of items in inventory
  * @property {ClubCrawler.Objects.Player} [player=null] - The player _(added at run time!)_
  * @property {ClubCrawler.Objects.Reticle} [reticle=null] - The reticle _(added at run time!)_
@@ -74,15 +75,50 @@ class Inventory {
     /**
      * Adds an item to the inventory
      * @param {Object} gameItem - An item to add to the inventory
+     * @param {String} [gameItem.itemType="general"] - The game item type. Items of type weapon can only have 1 copy in inventory with identical name. Stackables increase quanity by one. General can have duplicates.
      * @returns {boolean} - Whether the item could be added
      */
     addItem(gameItem) {
+        if(dataManager.debug.on &amp;&amp; dataManager.debug.player.inventory) {
+            dataManager.log('adding item to inventory?')
+        }
         if(this.full) {
-            return false;
+            if(dataManager.debug.on &amp;&amp; dataManager.debug.player.inventory) {
+                dataManager.log("player inventory full!")
+            }
+            return false; // cant add to a full inventory
+        }
+        if(!gameItem.itemType) {
+            gameItem.itemType = "general";
+        }
+        else if(gameItem.itemType == "weapon") { //only 1 copy of each weapon
+            for(let slot of this.itemSlots) {
+                if(slot.itemType == "weapon") {
+                    if(slot.instanceConfig.name == gameItem.name) {
+                        if(dataManager.debug.on &amp;&amp; dataManager.debug.player.inventory) {
+                            dataManager.log(`cant add duplicate weapon! ${gameItem.name}`);
+                        }
+                        return false;
+                    }
+                }
+            }
+        }
+        else if(gameItem.itemType == "stackable") {
+            for(let slot of this.itemSlots) {
+                if(slot.itemType == "stackable") {
+                    if(!slot.empty) {
+                        if(slot.instanceConfig.name == gameItem.name) {
+                            slot.quantity += 1;
+                            return true;
+                        }
+                    }
+                }
+            }
         }
         let slot = this.itemSlots[this.nextFreeSlot];
         slot.loadItem(gameItem);
         this.setNextFreeItemSlot();
+        dataManager.emitter.emit("inventoryChange");
         return true;
 
     }
@@ -99,6 +135,20 @@ class Inventory {
         }
         this.full = true;
         return false;
+    }
+    /**
+     * Swaps the positions of two slots. 
+     * @param {InventoryItemSlot} slot1 - A slot
+     * @param {InventoryItemSlot} slot2 - A slot
+     */
+    swapSlots(slot1, slot2) {
+        let indexHolder = slot1.slotIndex;
+        this.itemSlots[slot1.slotIndex] = slot2;
+        this.itemSlots[slot2.slotIndex] = slot1;
+        slot1.slotIndex = slot2.slotIndex;
+        slot2.slotIndex = indexHolder;
+        this.setNextFreeItemSlot();
+
     }
     /**
      * gets an instance of an item at a slot index
@@ -149,6 +199,8 @@ class InventoryItemSlot {
         this.itemType = null;
         /** @property {boolean} - Whether this slot is empty or not */
         this.empty = true;
+        /** @property {number} - The quantity (for stackable items) */
+        this.quantity = 0;
     }
     /**
      * Loads an item into this slot
@@ -165,6 +217,7 @@ class InventoryItemSlot {
         }
         this.instanceConfig = parameters.extract(gameItem);
         this.empty = false;
+        this.quantity = 1;
     }
     /**
      * Gets a new instance of the item referenced in this slot
@@ -191,7 +244,15 @@ class InventoryItemSlot {
      */
     popInstance(additionalConfig={}) {
         let instance = this.getInstance(additionalConfig);
-        this.empty = true;
+        if(this.itemType == "stackable") {
+            this.quantity -= 1;
+            if(this.quantity &lt;= 0) {
+                this.empty = true;
+            }
+        }
+        else {
+            this.empty = true;
+        }
         return instance;
     }
 }
@@ -206,13 +267,13 @@ module.exports = Inventory;</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="ClubCrawler.Data.html">Data</a></li><li><a href="ClubCrawler.Interfaces.html">Interfaces</a></li><li><a href="ClubCrawler.Interfaces.Interact.html">Interact</a></li><li><a href="ClubCrawler.Interfaces.Movement.html">Movement</a></li><li><a href="ClubCrawler.Interfaces.Sense.html">Sense</a></li><li><a href="ClubCrawler.Objects.html">Objects</a></li><li><a href="ClubCrawler.Objects.Inventory.html">Inventory</a></li><li><a href="ClubCrawler.Parsers.html">Parsers</a></li><li><a href="ClubCrawler.Scenes.html">Scenes</a></li><li><a href="ClubCrawler.Types.html">Types</a></li><li><a href="ClubCrawler.Utility.html">Utility</a></li><li><a href="ClubCrawler.Utility.Load.html">Load</a></li><li><a href="ClubCrawler.Utility.Parameters.html">Parameters</a></li><li><a href="ClubCrawler.Utility.Parse.html">Parse</a></li></ul><h3>Classes</h3><ul><li><a href="ClubCrawler.Objects.Cylinder.html">Cylinder</a></li><li><a href="ClubCrawler.Objects.Inventory.Inventory.html">Inventory</a></li><li><a href="ClubCrawler.Objects.Inventory.InventoryItemSlot.html">InventoryItemSlot</a></li><li><a href="ClubCrawler.Objects.Items.FlameThrowerSwitch.html">FlameThrowerSwitch</a></li><li><a href="ClubCrawler.Objects.Items.GameCoin.html">GameCoin</a></li><li><a href="ClubCrawler.Objects.Ogre.html">Ogre</a></li><li><a href="ClubCrawler.Objects.Player.html">Player</a></li><li><a href="ClubCrawler.Objects.Reticle.html">Reticle</a></li><li><a href="ClubCrawler.Objects.Weapon.html">Weapon</a></li><li><a href="ClubCrawler.Objects.Weapon.Projectile.html">Projectile</a></li><li><a href="ClubCrawler.Parsers.BlueWorldParser.html">BlueWorldParser</a></li><li><a href="ClubCrawler.Scenes.DebugOverlay.html">DebugOverlay</a></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html">DungeonCrawlerGame</a></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerOverlay.html">DungeonCrawlerOverlay</a></li><li><a href="ClubCrawler.Scenes.GameOver.html">GameOver</a></li><li><a href="ClubCrawler.Scenes.GameWin.html">GameWin</a></li><li><a href="ClubCrawler.Scenes.TitleScreen.html">TitleScreen</a></li></ul><h3><a href="global.html">Global</a></h3>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="ClubCrawler.Data.html">Data</a></li><li><a href="ClubCrawler.DOMUserInterface.html">DOMUserInterface</a></li><li><a href="ClubCrawler.Interfaces.html">Interfaces</a></li><li><a href="ClubCrawler.Interfaces.Interact.html">Interact</a></li><li><a href="ClubCrawler.Interfaces.Movement.html">Movement</a></li><li><a href="ClubCrawler.Interfaces.Sense.html">Sense</a></li><li><a href="ClubCrawler.Objects.html">Objects</a></li><li><a href="ClubCrawler.Objects.Inventory.html">Inventory</a></li><li><a href="ClubCrawler.Parsers.html">Parsers</a></li><li><a href="ClubCrawler.Scenes.html">Scenes</a></li><li><a href="ClubCrawler.Types.html">Types</a></li><li><a href="ClubCrawler.Utility.html">Utility</a></li><li><a href="ClubCrawler.Utility.Load.html">Load</a></li><li><a href="ClubCrawler.Utility.Parameters.html">Parameters</a></li><li><a href="ClubCrawler.Utility.Parse.html">Parse</a></li></ul><h3>Classes</h3><ul><li><a href="ClubCrawler.DOMUserInterface.DebugMessageBox.html">DebugMessageBox</a></li><li><a href="ClubCrawler.DOMUserInterface.DebugUI.html">DebugUI</a></li><li><a href="ClubCrawler.DOMUserInterface.DOMUIManager.html">DOMUIManager</a></li><li><a href="ClubCrawler.DOMUserInterface.HealthBarUI.html">HealthBarUI</a></li><li><a href="ClubCrawler.DOMUserInterface.InventoryUI.html">InventoryUI</a></li><li><a href="ClubCrawler.DOMUserInterface.ItemSlotUI.html">ItemSlotUI</a></li><li><a href="ClubCrawler.DOMUserInterface.LeftUI.html">LeftUI</a></li><li><a href="ClubCrawler.DOMUserInterface.RightUI.html">RightUI</a></li><li><a href="ClubCrawler.DOMUserInterface.SettingsUI.html">SettingsUI</a></li><li><a href="ClubCrawler.DOMUserInterface.WeaponUI.html">WeaponUI</a></li><li><a href="ClubCrawler.Objects.Cylinder.html">Cylinder</a></li><li><a href="ClubCrawler.Objects.Inventory.Inventory.html">Inventory</a></li><li><a href="ClubCrawler.Objects.Inventory.InventoryItemSlot.html">InventoryItemSlot</a></li><li><a href="ClubCrawler.Objects.Items.GameCoin.html">GameCoin</a></li><li><a href="ClubCrawler.Objects.Items.ItemPickup.html">ItemPickup</a></li><li><a href="ClubCrawler.Objects.Ogre.html">Ogre</a></li><li><a href="ClubCrawler.Objects.Player.html">Player</a></li><li><a href="ClubCrawler.Objects.Reticle.html">Reticle</a></li><li><a href="ClubCrawler.Objects.Weapon.html">Weapon</a></li><li><a href="ClubCrawler.Objects.Weapon.Projectile.html">Projectile</a></li><li><a href="ClubCrawler.Parsers.BlueWorldParser.html">BlueWorldParser</a></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html">DungeonCrawlerGame</a></li><li><a href="ClubCrawler.Scenes.GameOver.html">GameOver</a></li><li><a href="ClubCrawler.Scenes.GameWin.html">GameWin</a></li><li><a href="ClubCrawler.Scenes.TitleScreen.html">TitleScreen</a></li><li><a href="ClubCrawler.UserInterface.DebugMessage.html">DebugMessage</a></li><li><a href="ScoreUI.html">ScoreUI</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun Nov 14 2021 23:39:11 GMT-0500 (Eastern Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Thu Nov 18 2021 15:10:54 GMT-0500 (Eastern Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -163,29 +163,6 @@
 
         <tr>
             
-                <td class="name"><code>health</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The player health. Todo: Display on the overlay.</td>
-        </tr>
-
-    
-
-        <tr>
-            
                 <td class="name"><code>emitter</code></td>
             
 
@@ -203,6 +180,29 @@
             
 
             <td class="description last">The global <a href="https://newdocs.phaser.io/docs/3.52.0/Phaser.Events.EventEmitter">Phaser.Events.EventEmitter</a> instance for cross scene and global communication.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code></code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ClubCrawler.Types.SettingsConfig</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The game settings object.</td>
         </tr>
 
     
@@ -271,30 +271,7 @@
 
             
 
-            <td class="description last">An object controlling what debug messages are displaying on the <a href="ClubCrawler.Scenes.DebugOverlay.html">ClubCrawler.Scenes.DebugOverlay</a></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>debugLines</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The currently visible debug lines</td>
+            <td class="description last">Debug settings.</td>
         </tr>
 
     
@@ -317,7 +294,7 @@
 
             
 
-            <td class="description last">Called to change player score</td>
+            <td class="description last">Called to change player score.</td>
         </tr>
 
     
@@ -340,7 +317,7 @@
 
             
 
-            <td class="description last">Called to change player health</td>
+            <td class="description last">Called to change player health.</td>
         </tr>
 
     
@@ -363,7 +340,30 @@
 
             
 
-            <td class="description last">Called to log debug data if debug is active</td>
+            <td class="description last">Called to log debug data if debug is active.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>uiManager</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="ClubCrawler.DOMUserInterface.DOMUIManager.html">ClubCrawler.DOMUserInterface.DOMUIManager</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The user interface manager</td>
         </tr>
 
     
@@ -402,7 +402,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_data.js.html">objects/data.js</a>, <a href="objects_data.js.html#line19">line 19</a>
+        <a href="objects_data.js.html">objects/data.js</a>, <a href="objects_data.js.html#line17">line 17</a>
     </li></ul></dd>
     
 
@@ -436,13 +436,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="ClubCrawler.Data.html">Data</a></li><li><a href="ClubCrawler.Interfaces.html">Interfaces</a></li><li><a href="ClubCrawler.Interfaces.Interact.html">Interact</a></li><li><a href="ClubCrawler.Interfaces.Movement.html">Movement</a></li><li><a href="ClubCrawler.Interfaces.Sense.html">Sense</a></li><li><a href="ClubCrawler.Objects.html">Objects</a></li><li><a href="ClubCrawler.Objects.Inventory.html">Inventory</a></li><li><a href="ClubCrawler.Parsers.html">Parsers</a></li><li><a href="ClubCrawler.Scenes.html">Scenes</a></li><li><a href="ClubCrawler.Types.html">Types</a></li><li><a href="ClubCrawler.Utility.html">Utility</a></li><li><a href="ClubCrawler.Utility.Load.html">Load</a></li><li><a href="ClubCrawler.Utility.Parameters.html">Parameters</a></li><li><a href="ClubCrawler.Utility.Parse.html">Parse</a></li></ul><h3>Classes</h3><ul><li><a href="ClubCrawler.Objects.Cylinder.html">Cylinder</a></li><li><a href="ClubCrawler.Objects.Inventory.Inventory.html">Inventory</a></li><li><a href="ClubCrawler.Objects.Inventory.InventoryItemSlot.html">InventoryItemSlot</a></li><li><a href="ClubCrawler.Objects.Items.FlameThrowerSwitch.html">FlameThrowerSwitch</a></li><li><a href="ClubCrawler.Objects.Items.GameCoin.html">GameCoin</a></li><li><a href="ClubCrawler.Objects.Ogre.html">Ogre</a></li><li><a href="ClubCrawler.Objects.Player.html">Player</a></li><li><a href="ClubCrawler.Objects.Reticle.html">Reticle</a></li><li><a href="ClubCrawler.Objects.Weapon.html">Weapon</a></li><li><a href="ClubCrawler.Objects.Weapon.Projectile.html">Projectile</a></li><li><a href="ClubCrawler.Parsers.BlueWorldParser.html">BlueWorldParser</a></li><li><a href="ClubCrawler.Scenes.DebugOverlay.html">DebugOverlay</a></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html">DungeonCrawlerGame</a></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerOverlay.html">DungeonCrawlerOverlay</a></li><li><a href="ClubCrawler.Scenes.GameOver.html">GameOver</a></li><li><a href="ClubCrawler.Scenes.GameWin.html">GameWin</a></li><li><a href="ClubCrawler.Scenes.TitleScreen.html">TitleScreen</a></li></ul><h3><a href="global.html">Global</a></h3>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="ClubCrawler.Data.html">Data</a></li><li><a href="ClubCrawler.DOMUserInterface.html">DOMUserInterface</a></li><li><a href="ClubCrawler.Interfaces.html">Interfaces</a></li><li><a href="ClubCrawler.Interfaces.Interact.html">Interact</a></li><li><a href="ClubCrawler.Interfaces.Movement.html">Movement</a></li><li><a href="ClubCrawler.Interfaces.Sense.html">Sense</a></li><li><a href="ClubCrawler.Objects.html">Objects</a></li><li><a href="ClubCrawler.Objects.Inventory.html">Inventory</a></li><li><a href="ClubCrawler.Parsers.html">Parsers</a></li><li><a href="ClubCrawler.Scenes.html">Scenes</a></li><li><a href="ClubCrawler.Types.html">Types</a></li><li><a href="ClubCrawler.Utility.html">Utility</a></li><li><a href="ClubCrawler.Utility.Load.html">Load</a></li><li><a href="ClubCrawler.Utility.Parameters.html">Parameters</a></li><li><a href="ClubCrawler.Utility.Parse.html">Parse</a></li></ul><h3>Classes</h3><ul><li><a href="ClubCrawler.DOMUserInterface.DebugMessageBox.html">DebugMessageBox</a></li><li><a href="ClubCrawler.DOMUserInterface.DebugUI.html">DebugUI</a></li><li><a href="ClubCrawler.DOMUserInterface.DOMUIManager.html">DOMUIManager</a></li><li><a href="ClubCrawler.DOMUserInterface.HealthBarUI.html">HealthBarUI</a></li><li><a href="ClubCrawler.DOMUserInterface.InventoryUI.html">InventoryUI</a></li><li><a href="ClubCrawler.DOMUserInterface.ItemSlotUI.html">ItemSlotUI</a></li><li><a href="ClubCrawler.DOMUserInterface.LeftUI.html">LeftUI</a></li><li><a href="ClubCrawler.DOMUserInterface.RightUI.html">RightUI</a></li><li><a href="ClubCrawler.DOMUserInterface.SettingsUI.html">SettingsUI</a></li><li><a href="ClubCrawler.DOMUserInterface.WeaponUI.html">WeaponUI</a></li><li><a href="ClubCrawler.Objects.Cylinder.html">Cylinder</a></li><li><a href="ClubCrawler.Objects.Inventory.Inventory.html">Inventory</a></li><li><a href="ClubCrawler.Objects.Inventory.InventoryItemSlot.html">InventoryItemSlot</a></li><li><a href="ClubCrawler.Objects.Items.GameCoin.html">GameCoin</a></li><li><a href="ClubCrawler.Objects.Items.ItemPickup.html">ItemPickup</a></li><li><a href="ClubCrawler.Objects.Ogre.html">Ogre</a></li><li><a href="ClubCrawler.Objects.Player.html">Player</a></li><li><a href="ClubCrawler.Objects.Reticle.html">Reticle</a></li><li><a href="ClubCrawler.Objects.Weapon.html">Weapon</a></li><li><a href="ClubCrawler.Objects.Weapon.Projectile.html">Projectile</a></li><li><a href="ClubCrawler.Parsers.BlueWorldParser.html">BlueWorldParser</a></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html">DungeonCrawlerGame</a></li><li><a href="ClubCrawler.Scenes.GameOver.html">GameOver</a></li><li><a href="ClubCrawler.Scenes.GameWin.html">GameWin</a></li><li><a href="ClubCrawler.Scenes.TitleScreen.html">TitleScreen</a></li><li><a href="ClubCrawler.UserInterface.DebugMessage.html">DebugMessage</a></li><li><a href="ScoreUI.html">ScoreUI</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun Nov 14 2021 23:39:11 GMT-0500 (Eastern Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Thu Nov 18 2021 15:10:54 GMT-0500 (Eastern Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

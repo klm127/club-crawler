@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: domUI/leftUI.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: domUI/leftUI.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const DebugUI = require('./debugUI');
+const SettingsUI = require('./settingsUI');
+const DebugMessages = require('./debugMessages');
+
+const DEFAULT_STYLES = {
+    id:"club-crawler-left-ui",
+    style: {
+        width: "250px"
+    }
+}
+
+/**
+ * @classdesc Creates instances and DOM elements for the left side UI
+ * @memberof ClubCrawler.DOMUserInterface
+ */
+class LeftUI {
+    /**
+     * @param {HTMLElement} element - The left container element
+     */
+    constructor(element) {
+        this.element = element;
+        Object.assign(this.element, DEFAULT_STYLES);
+        Object.assign(this.element.style, DEFAULT_STYLES.style);
+
+        /**
+         * @property {HTMLElement} - The SettingsUI container element
+         */
+        this.settingsElement = document.createElement('div');
+        /**
+         * @property {ClubCrawler.DOMUserInterface.SettingsUI} - The Settings User Interface
+         */
+        this.settingsUI = new SettingsUI(this.settingsElement);
+        this.element.appendChild(this.settingsElement);   
+
+        /**
+         * @property {HTMLElement} - The DebugUI container element
+         */
+        this.debugElement = document.createElement('div');
+        /**
+         * @property {ClubCrawler.DOMUserInterface.DebugUI} - The Debug options user interface
+         */
+        this.debug = new DebugUI(this.debugElement);
+        this.element.appendChild(this.debugElement);
+
+        /**
+         * @property {HTMLElement} - The DebugMessages container element
+         */
+        this.debugMessagesElement = document.createElement('div');
+        /** @property {ClubCrawler.DOMUserInterface.DebugMessageBox}- The DebugMessages user interface */
+        this.debugMessages = new DebugMessages(this.debugMessagesElement);
+        this.element.appendChild(this.debugMessagesElement);
+
+        /** @property {ClubCrawler.DOMUserInterface.UIManager} - The UI manager */
+        this.uiManager = null;        
+        
+    }
+
+    /**
+     * Loads the UI manager into this left UI and loads it into the debug and settings UI.
+     * @param {ClubCrawler.DOMUserInterface.UIManager} - The UIManager
+     */
+    loadManager(uiManager) {
+        this.uiManager = uiManager;
+        this.debug.loadManager(uiManager);
+        this.settingsUI.loadManager(uiManager);
+    }
+
+    /**
+     * Loads the settings into the settings object
+     * Loads the global debug config object into the debug messages object
+     * @param {ClubCrawler.Data.dataManager} - The data manager
+     */
+    loadDataManager(dataManager) {
+        this.settingsUI.loadSettingsObject(dataManager.settings, "settings");
+        this.debugMessages.loadDebugObject(dataManager.debug);
+        this.debug.loadDebugObject(dataManager.debug, "debug");
+
+    }
+}
+
+module.exports = LeftUI;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="ClubCrawler.Data.html">Data</a></li><li><a href="ClubCrawler.DOMUserInterface.html">DOMUserInterface</a></li><li><a href="ClubCrawler.Interfaces.html">Interfaces</a></li><li><a href="ClubCrawler.Interfaces.Interact.html">Interact</a></li><li><a href="ClubCrawler.Interfaces.Movement.html">Movement</a></li><li><a href="ClubCrawler.Interfaces.Sense.html">Sense</a></li><li><a href="ClubCrawler.Objects.html">Objects</a></li><li><a href="ClubCrawler.Objects.Inventory.html">Inventory</a></li><li><a href="ClubCrawler.Parsers.html">Parsers</a></li><li><a href="ClubCrawler.Scenes.html">Scenes</a></li><li><a href="ClubCrawler.Types.html">Types</a></li><li><a href="ClubCrawler.Utility.html">Utility</a></li><li><a href="ClubCrawler.Utility.Load.html">Load</a></li><li><a href="ClubCrawler.Utility.Parameters.html">Parameters</a></li><li><a href="ClubCrawler.Utility.Parse.html">Parse</a></li></ul><h3>Classes</h3><ul><li><a href="ClubCrawler.DOMUserInterface.DebugMessageBox.html">DebugMessageBox</a></li><li><a href="ClubCrawler.DOMUserInterface.DebugUI.html">DebugUI</a></li><li><a href="ClubCrawler.DOMUserInterface.DOMUIManager.html">DOMUIManager</a></li><li><a href="ClubCrawler.DOMUserInterface.HealthBarUI.html">HealthBarUI</a></li><li><a href="ClubCrawler.DOMUserInterface.InventoryUI.html">InventoryUI</a></li><li><a href="ClubCrawler.DOMUserInterface.ItemSlotUI.html">ItemSlotUI</a></li><li><a href="ClubCrawler.DOMUserInterface.LeftUI.html">LeftUI</a></li><li><a href="ClubCrawler.DOMUserInterface.RightUI.html">RightUI</a></li><li><a href="ClubCrawler.DOMUserInterface.SettingsUI.html">SettingsUI</a></li><li><a href="ClubCrawler.DOMUserInterface.WeaponUI.html">WeaponUI</a></li><li><a href="ClubCrawler.Objects.Cylinder.html">Cylinder</a></li><li><a href="ClubCrawler.Objects.Inventory.Inventory.html">Inventory</a></li><li><a href="ClubCrawler.Objects.Inventory.InventoryItemSlot.html">InventoryItemSlot</a></li><li><a href="ClubCrawler.Objects.Items.GameCoin.html">GameCoin</a></li><li><a href="ClubCrawler.Objects.Items.ItemPickup.html">ItemPickup</a></li><li><a href="ClubCrawler.Objects.Ogre.html">Ogre</a></li><li><a href="ClubCrawler.Objects.Player.html">Player</a></li><li><a href="ClubCrawler.Objects.Reticle.html">Reticle</a></li><li><a href="ClubCrawler.Objects.Weapon.html">Weapon</a></li><li><a href="ClubCrawler.Objects.Weapon.Projectile.html">Projectile</a></li><li><a href="ClubCrawler.Parsers.BlueWorldParser.html">BlueWorldParser</a></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html">DungeonCrawlerGame</a></li><li><a href="ClubCrawler.Scenes.GameOver.html">GameOver</a></li><li><a href="ClubCrawler.Scenes.GameWin.html">GameWin</a></li><li><a href="ClubCrawler.Scenes.TitleScreen.html">TitleScreen</a></li><li><a href="ClubCrawler.UserInterface.DebugMessage.html">DebugMessage</a></li><li><a href="ScoreUI.html">ScoreUI</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Thu Nov 18 2021 15:10:54 GMT-0500 (Eastern Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

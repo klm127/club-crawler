@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: domUI/activeWeapon.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: domUI/activeWeapon.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const SECTION_PROPS = {
+    id: "club-crawler-weapon-ui",
+    style: {
+        height: "160px",
+        width: "100%"
+    }
+}
+
+const WEAPON_TITLE_PROPS = {
+    id: "club-crawler-weapon-name",
+    style: {
+    }
+}
+
+const WEAPON_CONTENT_PROPS = {
+    id: "club-crawler-weapon-content",
+    style: {
+        display: "flex",
+        justifyContent: "center"
+    }
+}
+
+const WEAPON_PICTURE_PROPS = {
+    id: "club-crawler-weapon-picture",
+    style: {
+        height: "128px",
+        width: "128px",
+    }
+}
+
+const WEAPON_DESC_PROPS = {
+    id: "club-crawler-weapon-desc",
+    style: {
+        width: "50%",
+    }
+}
+
+/**
+ * @classdesc UI for info about wielded weapon
+ * 
+ * @memberof ClubCrawler.DOMUserInterface
+ */
+class WeaponUI {
+    /**
+     * @param {HTMLElement} element - The DOM container element.
+     */
+    constructor(element) {
+        /** @member {HTMLElement} - The container element. */
+        this.element = element;
+        /** @member {HTMLImageElement} - The picture of the equipped weapon as it appears in inventory. */
+        this.weaponPicture = document.createElement('img');
+        /** @member {HTMLElement} - The element containing the picture and description. */
+        this.weaponContent = document.createElement('div');
+        /** @member {HTMLElement} - The element containing the name of the weapon. */
+        this.weaponName = document.createElement('div');
+        /** @member {HTMLElement} - The element containing the weapon description. */
+        this.weaponDesc = document.createElement('div');
+        Object.assign(this.element, SECTION_PROPS);
+        Object.assign(this.weaponName, WEAPON_TITLE_PROPS);
+        Object.assign(this.weaponContent, WEAPON_CONTENT_PROPS);
+        Object.assign(this.weaponPicture, WEAPON_PICTURE_PROPS);
+        Object.assign(this.weaponDesc, WEAPON_DESC_PROPS);
+        Object.assign(this.element.style, SECTION_PROPS.style);
+        Object.assign(this.weaponName.style, WEAPON_TITLE_PROPS.style);
+        Object.assign(this.weaponContent.style, WEAPON_CONTENT_PROPS.style);
+        Object.assign(this.weaponPicture.style, WEAPON_PICTURE_PROPS.style);
+        Object.assign(this.weaponDesc.style, WEAPON_DESC_PROPS.style);
+        this.element.appendChild(this.weaponName);
+        this.element.appendChild(this.weaponContent);
+        this.weaponContent.appendChild(this.weaponPicture);
+        this.weaponContent.appendChild(this.weaponDesc);
+        /** @member {ClubCrawler.DOMUserInterface.DOMUIManager} - The UI manager. */
+        this.uiManager = null;
+
+    }
+    /**
+     * Displays information about a weapon in the User Interface.
+     * 
+     * @param {ClubCrawler.Objects.Weapon} weapon - The weapon to display.
+     */
+    showWeapon(weapon) {
+        this.weaponName.innerHTML = weapon.name;
+        if(weapon.description) {
+            this.weaponDesc.innerHTML = weapon.description;
+        }
+        this.weaponPicture.src = weapon.scene.textures.list[weapon.inventorySprite].frames.__BASE.source.source.src
+    }
+
+    /**
+     * Loads the UI Manager.
+     * 
+     * @param {ClubCrawler.DOMUserInterface.DOMUIManager} uiManager - The UI Manager.
+     */
+    loadManager(uiManager) {
+        this.uiManager = uiManager;
+    }
+}
+
+module.exports = WeaponUI;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="ClubCrawler.Data.html">Data</a></li><li><a href="ClubCrawler.DOMUserInterface.html">DOMUserInterface</a></li><li><a href="ClubCrawler.Interfaces.html">Interfaces</a></li><li><a href="ClubCrawler.Interfaces.Interact.html">Interact</a></li><li><a href="ClubCrawler.Interfaces.Movement.html">Movement</a></li><li><a href="ClubCrawler.Interfaces.Sense.html">Sense</a></li><li><a href="ClubCrawler.Objects.html">Objects</a></li><li><a href="ClubCrawler.Objects.Inventory.html">Inventory</a></li><li><a href="ClubCrawler.Parsers.html">Parsers</a></li><li><a href="ClubCrawler.Scenes.html">Scenes</a></li><li><a href="ClubCrawler.Types.html">Types</a></li><li><a href="ClubCrawler.Utility.html">Utility</a></li><li><a href="ClubCrawler.Utility.Load.html">Load</a></li><li><a href="ClubCrawler.Utility.Parameters.html">Parameters</a></li><li><a href="ClubCrawler.Utility.Parse.html">Parse</a></li></ul><h3>Classes</h3><ul><li><a href="ClubCrawler.DOMUserInterface.DebugMessageBox.html">DebugMessageBox</a></li><li><a href="ClubCrawler.DOMUserInterface.DebugUI.html">DebugUI</a></li><li><a href="ClubCrawler.DOMUserInterface.DOMUIManager.html">DOMUIManager</a></li><li><a href="ClubCrawler.DOMUserInterface.HealthBarUI.html">HealthBarUI</a></li><li><a href="ClubCrawler.DOMUserInterface.InventoryUI.html">InventoryUI</a></li><li><a href="ClubCrawler.DOMUserInterface.ItemSlotUI.html">ItemSlotUI</a></li><li><a href="ClubCrawler.DOMUserInterface.LeftUI.html">LeftUI</a></li><li><a href="ClubCrawler.DOMUserInterface.RightUI.html">RightUI</a></li><li><a href="ClubCrawler.DOMUserInterface.SettingsUI.html">SettingsUI</a></li><li><a href="ClubCrawler.DOMUserInterface.WeaponUI.html">WeaponUI</a></li><li><a href="ClubCrawler.Objects.Cylinder.html">Cylinder</a></li><li><a href="ClubCrawler.Objects.Inventory.Inventory.html">Inventory</a></li><li><a href="ClubCrawler.Objects.Inventory.InventoryItemSlot.html">InventoryItemSlot</a></li><li><a href="ClubCrawler.Objects.Items.GameCoin.html">GameCoin</a></li><li><a href="ClubCrawler.Objects.Items.ItemPickup.html">ItemPickup</a></li><li><a href="ClubCrawler.Objects.Ogre.html">Ogre</a></li><li><a href="ClubCrawler.Objects.Player.html">Player</a></li><li><a href="ClubCrawler.Objects.Reticle.html">Reticle</a></li><li><a href="ClubCrawler.Objects.Weapon.html">Weapon</a></li><li><a href="ClubCrawler.Objects.Weapon.Projectile.html">Projectile</a></li><li><a href="ClubCrawler.Parsers.BlueWorldParser.html">BlueWorldParser</a></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html">DungeonCrawlerGame</a></li><li><a href="ClubCrawler.Scenes.GameOver.html">GameOver</a></li><li><a href="ClubCrawler.Scenes.GameWin.html">GameWin</a></li><li><a href="ClubCrawler.Scenes.TitleScreen.html">TitleScreen</a></li><li><a href="ClubCrawler.UserInterface.DebugMessage.html">DebugMessage</a></li><li><a href="ScoreUI.html">ScoreUI</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Thu Nov 18 2021 15:10:54 GMT-0500 (Eastern Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

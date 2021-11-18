@@ -2,7 +2,7 @@ const parameters = require('../../utility/parameters');
 const dataManager = require('../data');
 
 /**
- * @typedef InventoryConfig
+ * @typedef ClubCrawler.Types.InventoryConfig
  * @property {number} [inventorySize=21] - The max number of items in inventory
  * @property {ClubCrawler.Objects.Player} [player=null] - The player _(added at run time!)_
  * @property {ClubCrawler.Objects.Reticle} [reticle=null] - The reticle _(added at run time!)_
