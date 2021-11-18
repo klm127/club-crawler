@@ -10,6 +10,14 @@
     border: 2px solid gold;
 }
 
+body {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    letter-spacing: 0.6mm;
+    background-color: black;
+}
+
+
+
 #club-crawler-left-UI {
     height: 100%;
     width: 20px;
@@ -20,6 +28,67 @@
     width: 20px;
 }
 
-body {
-    background-color: black;
+#club-crawler-inventory-slots-container {
+    color: white;
+    min-width: 220px;
+    padding-left: 25px;
+    padding-bottom: 25px;
+}
+
+#club-crawler-inventory-title,
+#club-crawler-weapon-name,
+#club-crawler-health-title,
+#club-crawler-score-display-title {
+    color: white;
+    padding-left: 20px;
+    padding-bottom: 5px;
+}
+
+.club-crawler-inventory-slot {
+    background-color: rgba(50,50,50,0.5);
+}
+
+#club-crawler-weapon-ui {
+    padding-left: 5px;
+    color: white;
+    padding-right: 5px;
+    box-sizing: border-box;
+}
+
+#club-crawler-weapon-picture {
+    background-color: rgba(50,50,50,0.5);
+    border-radius: 50px;
+}
+
+#club-crawler-weapon-desc {
+    padding-left: 10px;
+}
+
+#club-crawler-health-container{
+    margin-bottom: 10px;
+}
+#club-crawler-health-bar {
+    background-color: aquamarine;
+    color: orangered;
+    padding-left: 5px;
+    box-sizing: border-box;
+}
+
+#club-crawler-health-bg {
+    margin-left: 15px;
+    background-color: rgb(78, 4, 4);
+}
+
+#club-crawler-score-display-value {
+    color: gold;
+    padding-left: 20px;
+    font-size: 28px;
+}
+
+.club-crawler-settings-container {
+    text-align: center;
+    border-bottom:1px dotted darkslategray;
+}
+.club-crawler-settings-drop-down {
+    color: lightblue;
 }

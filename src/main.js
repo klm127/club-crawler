@@ -7,17 +7,23 @@ const DebugOverlay = require('./scenes/DebugOverlay');
 const GameOver = require('./scenes/GameOver');
 const GameWin = require('./scenes/GameWin');
 
+const LeftUI = require('./domUI/leftUI');
+const RightUI = require('./domUI/rightUI');
+
 const parent = document.getElementById("club-crawler-container")
 
-const leftUI = document.createElement('div');
-leftUI.id = "club-crawler-left-UI";
-parent.appendChild(leftUI);
+const leftUIelement = document.getElementById("club-crawler-left-ui");
+const leftUI = new LeftUI(leftUIelement);
+
+
+const rightUIelement = document.getElementById("club-crawler-right-ui")
+const rightUI = new RightUI(rightUIelement);
 
 const config = {
     width: 800,
     height: 800,
     type: Phaser.AUTO,
-    parent : parent,
+    parent : document.getElementById("club-crawler-canvas-container"),
     physics: {
         default: 'arcade',
         aracade: {
@@ -30,12 +36,6 @@ const config = {
 }
 
 const game = new Phaser.Game(config);
-
-const rightUI = document.createElement('div');
-rightUI.id = "club-crawler-right-UI"
-setTimeout( ()=> {
-    parent.appendChild(rightUI);
-},1000)
 
 
 game.scene.add('titlescreen', TitleScreen);
