@@ -21,38 +21,42 @@ const INPUT_CONTAINER = {
 }
 
 /**
- * @classdesc Allows user to change debug settings
- * @memberof ClubCrawler.UserInterface
+ * @classdesc Presents an expandable menu for the user to change debug messaging settings, which appear in the the [DebugMessageBox]{@link ClubCrawler.DOMUserInterface.DebugMessageBox}. Creates a new instance of DebugUI for each nested object inside the object which it models.
+ * @memberof ClubCrawler.DOMUserInterface
  */
 class DebugUI {
     /**
-     * @param {HTMLElement} element - The container element
+     * @param {HTMLElement} element - The container element.
      */
     constructor(element) {
+        /** @member {HTMLElement} - The container element. */
         this.element = element;
         Object.assign(this.element, CONTAINER_PROPS);
         Object.assign(this.element.style, CONTAINER_PROPS.style);
-        /** @property {Object} - The object whose properties to make configurable */
+        /** @member {ClubCrawler.Types.DebugConfig} - The object whose properties to make configurable, which is the top-level DebugConfig for the first DebugUI created, then nested objects for the subsequent ones. */
         this.settingsObject = null;
-        /** @property {HTMLElement} - The drop down button with the title */
+        /** @member {HTMLElement} - The drop down button with the title. When clicked, it will toggle showing of [DebugUI.inputContainer]{@link ClubCrawler.DOMUserInterface.DebugUI#inputContainer}. */
         this.dropDownElement = document.createElement('div');
         Object.assign(this.dropDownElement, DROP_DOWN_PROPS);
         Object.assign(this.dropDownElement.style, DROP_DOWN_PROPS.style);
         this.element.appendChild(this.dropDownElement);
-        /** @property {HTMLElement} - The element containing the options, to hide/show on drop down click */
+        /** @member {HTMLElement} - The element containing the options. Will be hidden or shown when [DebugUI.dropDownElement]{@link ClubCrawler.DOMUserInterface.DebugUI#dropDownElement} is clicked  */
         this.inputContainer = document.createElement('div');
         Object.assign(this.inputContainer, INPUT_CONTAINER);
         Object.assign(this.inputContainer.style, INPUT_CONTAINER.style);
         this.element.appendChild(this.inputContainer);
-        /** @property {Array} - The child settingsUIs and InputComponents created */
+        /** @member {Array} - The DebugUIs and InputComponents which were created by the DebugUI. */
         this.children = [];
-        /** @property {ClubCrawler.UserInterface.DOMUIManager} - The ui manager */
+        /** @member {ClubCrawler.UserInterface.DOMUIManager} - The ui manager. */
         this.uiManager = null;
 
         this.addDropDownListener();
 
     }
 
+    /**
+     * Adds a click listener to [DebugUI.dropDownElement]{@link ClubCrawler.DOMUserInterface.DebugUI#dropDownElement}.
+     */
     addDropDownListener() {
         let dropDownArea = this.inputContainer;
         this.dropDownElement.addEventListener('click', (ev)=> {
@@ -68,8 +72,9 @@ class DebugUI {
     }
 
     /**
-     * @param {Object} settingsObject - The object to load and create interfaces for
-     * @param {string} name - The name for the drop down button
+     * Creates a check box for each boolean property in the settings object. Creates a new DebugUI for each nested object in the settings object.
+     * @param {Object} settingsObject - The object to load and create buttons for.
+     * @param {string} name - The name for the drop down button to be displayed in [DebugUI.dropDownElement]{@link ClubCrawler.DOMUserInterface.DebugUI#dropDownElement}.
      */
     loadDebugObject(settingsObject, name="debug") {
         this.settingsObject = settingsObject;

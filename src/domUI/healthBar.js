@@ -27,7 +27,7 @@ const HEALTH_BAR = {
 }
 
 /**
- * @classdesc The player health bar area
+ * @classdesc The player health bar area. Update is called by UIManager on a HealthChange event. How large the health bar is depends on the largest health the player has reached.
  * @memberof ClubCrawler.DOMUserInterface
  */
 class HealthBarUI {
@@ -35,35 +35,35 @@ class HealthBarUI {
      * @param {HTMLElement} element - The health bar container element
      */
     constructor(element) {
-        /** @property {HTMLElement} - The health bar container element */
+        /** @member {HTMLElement} - The health bar area container element. */
         this.element = element;
         Object.assign(this.element, CONTAINER_PROPS);       
         Object.assign(this.element.style, CONTAINER_PROPS.style);
-        /** @property {HTMLElement} - The health bar title element */
+        /** @member {HTMLElement} - The health bar title element. */
         this.title = document.createElement('div');
         Object.assign(this.title, TITLE_PROPS);
         Object.assign(this.title.style, TITLE_PROPS.style);
         this.element.appendChild(this.title);
-        /** @property {HTMLElement} - The health bar background */
+        /** @member {HTMLElement} - The health bar background element. */
         this.healthBack = document.createElement('div');
         Object.assign(this.healthBack, HEALTH_BAR_OUTER);
         Object.assign(this.healthBack.style, HEALTH_BAR_OUTER.style);
         this.element.appendChild(this.healthBack);
-        /** @property {HTMLElement} - The health bar which changes size */
+        /** @member {HTMLElement} - The health bar which changes size based on player health.*/
         this.healthBar = document.createElement('div');
         Object.assign(this.healthBar, HEALTH_BAR);
         Object.assign(this.healthBar.style, HEALTH_BAR.style);
         this.healthBack.appendChild(this.healthBar);
 
-        /** @property {number} - The largest health recorded */
+        /** @member {number} - The largest health recorded. */
         this.largestHealth = 50;
-        /** @property {number} - The current health */
+        /** @member {number} - The current health. */
         this.currentHealth = null;
     }
 
     /**
-     * Sets the full health value
-     * @param {number} health - The health value
+     * Sets the largest health value and refreshes the health bar.
+     * @param {number} health - The health value.
      */
     setFullHealth(health) {
         this.largestHealth = health;
@@ -74,8 +74,8 @@ class HealthBarUI {
     }
 
     /**
-     * Changes health stat and refreshes bar
-     * @param {number} newHealth - the new health of the player
+     * Changes health stat and refreshes bar.
+     * @param {number} newHealth - The new health of the player.
      */
     changeHealth(newHealth) {
         this.currentHealth = newHealth;
@@ -89,7 +89,7 @@ class HealthBarUI {
     }
 
     /**
-     * Sets the health bar size based on max health achieved, displays the value
+     * Sets the health bar size based on max health achieved and displays the current health.
      */
     refreshHealthBar() {
         let healthRatio = this.currentHealth/this.largestHealth;

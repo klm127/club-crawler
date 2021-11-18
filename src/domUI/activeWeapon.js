@@ -42,18 +42,18 @@ const WEAPON_DESC_PROPS = {
  */
 class WeaponUI {
     /**
-     * @param {HTMLElement} element - The DOM container element
+     * @param {HTMLElement} element - The DOM container element.
      */
     constructor(element) {
-        /** @property {HTMLElement} - The DOM container element */
+        /** @member {HTMLElement} - The container element. */
         this.element = element;
-        /** @property {HTMLImageElement} - The picture of the equipped weapon as it appears in inventory */
+        /** @member {HTMLImageElement} - The picture of the equipped weapon as it appears in inventory. */
         this.weaponPicture = document.createElement('img');
-        /** @property {HTMLElement} - The DOM element containing the picture and description */
+        /** @member {HTMLElement} - The element containing the picture and description. */
         this.weaponContent = document.createElement('div');
-        /** @property {HTMLElement} - The DOM element containing the name of the weapon */
+        /** @member {HTMLElement} - The element containing the name of the weapon. */
         this.weaponName = document.createElement('div');
-        /** @property {HTMLElement} - The DOM element containing the weapon description */
+        /** @member {HTMLElement} - The element containing the weapon description. */
         this.weaponDesc = document.createElement('div');
         Object.assign(this.element, SECTION_PROPS);
         Object.assign(this.weaponName, WEAPON_TITLE_PROPS);
@@ -69,13 +69,14 @@ class WeaponUI {
         this.element.appendChild(this.weaponContent);
         this.weaponContent.appendChild(this.weaponPicture);
         this.weaponContent.appendChild(this.weaponDesc);
+        /** @member {ClubCrawler.DOMUserInterface.DOMUIManager} - The UI manager. */
         this.uiManager = null;
 
     }
     /**
      * Displays information about a weapon in the User Interface.
      * 
-     * @param {ClubCrawler.Objects.Weapon} weapon - The weapon to display
+     * @param {ClubCrawler.Objects.Weapon} weapon - The weapon to display.
      */
     showWeapon(weapon) {
         this.weaponName.innerHTML = weapon.name;
@@ -86,9 +87,9 @@ class WeaponUI {
     }
 
     /**
-     * Loads the UI Manager
+     * Loads the UI Manager.
      * 
-     * @param {ClubCrawler.DOMUserInterface.DOMUIManager} uiManager - The UI Manager
+     * @param {ClubCrawler.DOMUserInterface.DOMUIManager} uiManager - The UI Manager.
      */
     loadManager(uiManager) {
         this.uiManager = uiManager;

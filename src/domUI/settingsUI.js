@@ -21,38 +21,43 @@ const INPUT_CONTAINER = {
 }
 
 /**
- * @classdesc Allows user to change settings
- * @memberof ClubCrawler.UserInterface
+ * @classdesc Presents an expandable menu(s) for the user to change game settings. Creates a new instance of SettingsUI for each nested non-input nested object (category) inside the object which it models and creates inputs for each [inputConfig]{@link ClubCrawler.Types.SettingsInputConfig} object which it finds nested in its modeled object.
+ * @memberof ClubCrawler.DOMUserInterface
  */
 class SettingsUI {
     /**
-     * @param {HTMLElement} element - The container element
+     * @param {HTMLElement} element - The container element.
      */
     constructor(element) {
+        /** @member {HTMLElement} - The container element. */
         this.element = element;
         Object.assign(this.element, CONTAINER_PROPS);
         Object.assign(this.element.style, CONTAINER_PROPS.style);
-        /** @property {Object} - The object whose properties to make configurable */
+        /** @member {Object} - The object whose properties to display as inputs and categories. */
         this.settingsObject = null;
-        /** @property {HTMLElement} - The drop down button with the title */
+        /** @member {HTMLElement} - The drop down button with the category title. When clicked, it will toggle showing of [SettingsUI.inputContainer]{@link ClubCrawler.DOMUserInterface.SettingsUI#inputContainer}. */
         this.dropDownElement = document.createElement('div');
         Object.assign(this.dropDownElement, DROP_DOWN_PROPS);
         Object.assign(this.dropDownElement.style, DROP_DOWN_PROPS.style);
         this.element.appendChild(this.dropDownElement);
-        /** @property {HTMLElement} - The element containing the options, to hide/show on drop down click */
+        /** @member {HTMLElement} - The element containing the options, which will toggle visibility when [DebugUI.dropDownElement]{@link ClubCrawler.DOMUserInterface.SettingsUI#dropDownElement} is clicked. */
         this.inputContainer = document.createElement('div');
         Object.assign(this.inputContainer, INPUT_CONTAINER);
         Object.assign(this.inputContainer.style, INPUT_CONTAINER.style);
         this.element.appendChild(this.inputContainer);
-        /** @property {Array} - The child settingsUIs and InputComponents created */
+        /** @member {Array} - The child settingsUIs and InputComponents created */
         this.children = [];
-        /** @property {ClubCrawler.UserInterface.DOMUIManager} - The ui manager */
+        /** @member {ClubCrawler.UserInterface.DOMUIManager} - The ui manager */
         this.uiManager = null;
 
         this.addDropDownListener();
 
     }
 
+
+    /**
+     * Adds a click listener to [SettingsUI.dropDownElement]{@link ClubCrawler.DOMUserInterface.SettingsUI#dropDownElement}
+     */
     addDropDownListener() {
         let dropDownArea = this.inputContainer;
         this.dropDownElement.addEventListener('click', (ev)=> {
@@ -68,8 +73,9 @@ class SettingsUI {
     }
 
     /**
-     * @param {Object} settingsObject - The object to load and create interfaces for
-     * @param {string} [name="settings"] - The name for the drop down button
+     * Creates an input component for each settings in the settings object. Creates a new SettingsUI for each non input (category) in the settings object.
+     * @param {Object} settingsObject - The object to load and create interfaces for.
+     * @param {string} [name="settings"] - The name for the drop down button.
      */
     loadSettingsObject(settingsObject, name="settings") {
         this.settingsObject = settingsObject;

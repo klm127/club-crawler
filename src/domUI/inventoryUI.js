@@ -56,44 +56,44 @@ const SLOT_QTY_PROPS = {
 }
 
 /**
- * @classdesc The inventory user interface
+ * @classdesc The inventory user interface.
  * @memberof ClubCrawler.DOMUserInterface
  */
 class InventoryUI {
     /**
-     * @param {HTMLElement} element - The right UI container element
+     * @param {HTMLElement} element - The container element.
      */
     constructor(element) {
-        /** @property {HTMLElement} - The containing html element */
+        /** @member {HTMLElement} - The containing html element. */
         this.element = element;
         Object.assign(this.element, INVENTORY_PROPS);      
         Object.assign(this.element.style, INVENTORY_PROPS.style);
-        /** @property {HTMLElement} - Contains the word "inventory" */
+        /** @member {HTMLElement} - Contains the word "inventory". */
         this.titleElement = document.createElement('div');
         Object.assign(this.titleElement, TITLE_PROPS);
         Object.assign(this.titleElement.style, TITLE_PROPS.style);
-        /** @property {HTMLElement} - Contains the inventory slots */
+        /** @member {HTMLElement} - Contains the inventory slot displays. */
         this.slotsContainer = document.createElement('div');
         Object.assign(this.slotsContainer, INVENTORY_CONTAINER_PROPS);
         Object.assign(this.slotsContainer.style, INVENTORY_CONTAINER_PROPS.style);
         this.element.appendChild(this.titleElement);
         this.element.appendChild(this.slotsContainer);
-        /** @property {Array} - The inventory slots */
+        /** @member {Array} - The inventory slots. */
         this.slots = [];
-        /** @property {ClubCrawler.Objects.Inventory.Inventory} - The inventory to interface with, loaded on runtime */
+        /** @member {ClubCrawler.Objects.Inventory.Inventory} - The inventory to interface with, loaded on runtime. */
         this.inventory = null;
-        /** @property {ClubCrawler.Objects.UserInterface.Manager} - The UI manager, loaded on runtime */
+        /** @member {ClubCrawler.Objects.DOMUserInterface.DOMUIManager} - The UI manager, loaded on runtime. */
         this.uiManager = null;
-        /** @property {ClubCrawler.Objects.Inventory.InventoryItemSlot} - An inventory item slot which is being dragged */
+        /** @member {ClubCrawler.Objects.Inventory.InventoryItemSlot} - An inventory item slot which is being dragged. */
         this.draggingSlot = null;
-        /** @property {ClubCrawler.Objects.Inventory.InventoryItemSlot} - An inventory item slot which is being dragged over */
+        /** @member {ClubCrawler.Objects.Inventory.InventoryItemSlot} - An inventory item slot which is being dragged over. */
         this.draggingOverSlot = null;
     }
 
     /**
-     * Loads the UI Manager
+     * Loads the UI Manager.
      * 
-     * @param {ClubCrawler.DOMUserInterface.DOMUIManager} uiManager - The UI Manager
+     * @param {ClubCrawler.DOMUserInterface.DOMUIManager} uiManager - The UI Manager.
      */
     loadManager(uiManager) {
         this.uiManager = uiManager;
@@ -103,9 +103,9 @@ class InventoryUI {
     }
 
     /**
-     * Loads an inventory
+     * Loads an inventory.
      * 
-     * @param {ClubCrawler.Objects.Inventory.Inventory} inventory - The inventory to interact with
+     * @param {ClubCrawler.Objects.Inventory.Inventory} inventory - The inventory to be displayed.
      */
     loadInventory(inventory) {
         this.clearInventory();
@@ -122,7 +122,7 @@ class InventoryUI {
     }
 
     /**
-     * Sets event listeners and logic for the drag-to-rearrange functionality of the inventory UI
+     * Sets event listeners and logic for the drag-to-rearrange functionality of the inventory UI.
      */
     setDragListeners() {
         var inventoryUI = this;
@@ -147,7 +147,7 @@ class InventoryUI {
     }
 
     /**
-     * Calls updateDisplay on each UI slot to refresh it from inventory
+     * Calls updateDisplay on each UI slot to refresh it from inventory.
      */
     refreshInventory() {
         for(let slot of this.slots) {
@@ -155,7 +155,7 @@ class InventoryUI {
         }
     }
     /**
-     * Clears inventory and DOM elements
+     * Clears inventory and DOM elements.
      */
     clearInventory() {
         this.slots = []
@@ -165,42 +165,42 @@ class InventoryUI {
 }
 
 /**
- * @classdesc UI component representing an inventory slot
+ * @classdesc UI component representing an inventory slot.
  * @memberof ClubCrawler.DOMUserInterface
  */
 class ItemSlotUI {
     /**
-     * Represents an Inventory Item Slot on the UI using the DOM
+     * Represents an Inventory Item Slot on the UI.
      * 
-     * @param {HTMLElement} parentElement - The container element one level above this
-     * @param {ClubCrawler.Objects.Inventory.InventoryItemSlot} itemSlot - The inventory item slot to be represented
+     * @param {HTMLElement} parentElement - The container element one level above this.
+     * @param {ClubCrawler.Objects.Inventory.InventoryItemSlot} itemSlot - The inventory item slot to be represented.
      */
     constructor(parentElement, itemSlot) {
-        /** @property {HTMLElement} - The parent container */
+        /** @property {HTMLElement} - The parent container. */
         this.parentElement = parentElement;
-        /** @property {ClubCrawler.Objects.Inventory.InventoryItemSlot} - the linked inventory item slot represented by this component*/
+        /** @property {ClubCrawler.Objects.Inventory.InventoryItemSlot} - the linked inventory item slot represented by this component.*/
         this.slot = itemSlot;
-        /** @property {HTMLElement} - The container for the inventory image and quantity */
+        /** @property {HTMLElement} - The container for the inventory image and quantity. */
         this.element = document.createElement('div');
         Object.assign(this.element, SLOT_PROPS);
         Object.assign(this.element.style, SLOT_PROPS.style);
-        /** @property {HTMLImageElement} - An image of the item as it appears in inventory */
+        /** @property {HTMLImageElement} - An image of the item as it appears in inventory. */
         this.image = document.createElement('img');
         Object.assign(this.image, SLOT_IMG_PROPS);
         Object.assign(this.image.style, SLOT_IMG_PROPS.style);
-        /** @property {HTMLElement} - Displays quantity in inventory of stackable items */
+        /** @property {HTMLElement} - Displays quantity in inventory of stackable items. */
         this.qty = document.createElement('div');
         Object.assign(this.qty, SLOT_QTY_PROPS);
         Object.assign(this.qty.style, SLOT_QTY_PROPS.style);
         this.element.appendChild(this.qty);
         this.element.appendChild(this.image);
         this.parentElement.appendChild(this.element);
-        /** @property {ClubCrawler.DOMUserInterface.DOMUIManager} - The manager */
+        /** @property {ClubCrawler.DOMUserInterface.DOMUIManager} - The manager. */
         this.uiManager = null;
         this.updateDisplay();        
     }
     /**
-     * Updates the display from the linked inventory item slot
+     * Updates display from the linked inventory item slot.
      */
     updateDisplay() {
         if(!this.slot.empty) {
@@ -220,7 +220,7 @@ class ItemSlotUI {
         }
     }
     /**
-     * Loads the UI Manager adds click listener
+     * Loads the UI Manager adds a click listener which calls [uiManager.slotClick]{@link ClubCrawler.DOMUserInterface.DOMUIManager#slotClick} when this slotUI is clicked, passing the linked [itemSlot]{@link ClubCrawler.Objects.Inventory.InventoryItemSlot} as a parameter.
      * @param {ClubCrawler.DOMUserInterface.DOMUIManager} uiManager - The manager
      */
     loadManager(uiManager) {

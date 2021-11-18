@@ -8,27 +8,27 @@ const MESSAGE_BOX = {
     }}
 
 /**
- * @classdesc Contains debug messages when activated
- * @memberof ClubCrawler.UserInterface
+ * @classdesc Contains displayed debug messages created by [dataManager.log]{@link ClubCrawler.Data.dataManager} when [dataManager.debug.on]{@link ClubCrawler.Types.DebugConfig} is true.
+ * @memberof ClubCrawler.DOMUserInterface
  */
 class DebugMessageBox {
     /**
-     * @param {HTMLElement} container - The DOM container elemenet
+     * @param {HTMLElement} container - The DOM container element.
      */
     constructor(container) {
-        /** @property {HTMLElement} - The DOM container element */
+        /** @member {HTMLElement} - The DOM container element. */
         this.element = container;
         Object.assign(this.element, MESSAGE_BOX);
         Object.assign(this.element.style, MESSAGE_BOX.style);
-        /** @property {ClubCrawler.Types.DebugConfig} - The global debug settings object to reference  */
+        /** @member {ClubCrawler.Types.DebugConfig} - The debug settings object to reference.  */
         this.debugObject = null;
-        /** @property {Array} - The debug message elements */
+        /** @member {Array} - The debug message elements. */
         this.messages = [];
     }
 
     /**
-     * Loads the debug object
-     * @property {ClubCrawler.Types.DebugConfig} - The global debug settings object
+     * Loads the debug object. Adds listeners to debug.emitter for changes to debug.debugLines.
+     * @property {ClubCrawler.Types.DebugConfig} - The global debug settings object.
      */
     loadDebugObject(debugObject) {
         this.debugObject = debugObject;
@@ -53,7 +53,7 @@ class DebugMessageBox {
     /**
      * Updates debug messages.
      * 
-     * Also deletes extra messages which are larger than max debug lines
+     * Also deletes extra messages which are larger than max debug lines.
      */
     updateDebugMessages() {
         this.element.innerHTML = "";
@@ -68,8 +68,8 @@ class DebugMessageBox {
     }
 
     /**
-     * Deletes a message from debug lines then updates debug messages
-     * @param {ClubCrawler.UserInterface.DebugMessage} debugMessage - The message to delete
+     * Deletes a message from debug lines when the "x" on a message is clicked, then calls updateDebugMessages.
+     * @param {ClubCrawler.UserInterface.DebugMessage} debugMessage - The message to delete.
      */
     deleteMessage(debugMessage) {
         let dblines = this.debugObject.debugLines
@@ -97,24 +97,26 @@ const MESSAGE_X = {
     } }
 
 /**
- * @classdesc A DOM Message box for debug messages
+ * @classdesc A Message box for displaying a single debug message.
  * @memberof ClubCrawler.UserInterface
  */
 class DebugMessage {
     /**
-     * @param {ClubCrawler.UserInterface.DebugMessageBox} - The creating message box
+     * @param {ClubCrawler.UserInterface.DebugMessageBox} messagebox - The creating message box.
+     * @param {string} message - The message to display.
      */
     constructor(messagebox, message) {
-        /** @property {ClubCrawler.UserInterface.DebugMessageBox} - The creating message box */
+        /** @member {ClubCrawler.UserInterface.DebugMessageBox} - The creating message box. */
         this.parentBox = messagebox;
-        /** @property {string} - The message */
+        /** @member {string} - The message. */
         this.messageText = message;
-        /** @property {HTMLElement} - The displayed message */
+        /** @member {HTMLElement} - The div which displays the message. */
         this.element = document.createElement('div');
         Object.assign(this.element, MESSAGE);
         Object.assign(this.element.style, MESSAGE.style);
         this.element.innerHTML = message;
         this.parentBox.element.appendChild(this.element);
+        /** @member {HTMLSpanElement} - The button for deleting this message. */
         this.deleteButton = document.createElement('span');
         this.deleteButton.innerHTML = "❌";
         Object.assign(this.deleteButton, MESSAGE_X);
@@ -127,9 +129,9 @@ class DebugMessage {
     }
 
     /**
-     * Called when the "X" is clicked on a debug message
-     * Tells DebugMessageBox to delete this message from the debugLines
-     * Also deletes the html element
+     * Called when the "X" is clicked on a debug message.
+     * Tells DebugMessageBox to delete this message from the debugLines.
+     * Also deletes the html element.
      */
     delete() {
         this.parentBox.deleteMessage(this);

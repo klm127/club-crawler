@@ -1,36 +1,36 @@
 
 /**
- * @classdesc Manages changes to displayed UI and changing game data based on UI interactions
+ * @classdesc Manages changes to displayed UI, event listeners, and changing game data based on UI interactions
  * @memberof ClubCrawler.DOMUserInterface
  */
 class DOMUIManager {
 
     /**
-     * @param {ClubCrawler.UserInterface.LeftUI} leftUI - the left user interface
-     * @param {ClubCrawler.UserInterface.RightUI} rightUI - the right user interface
+     * @param {ClubCrawler.DOMUserInterface.LeftUI} leftUI - the left user interface
+     * @param {ClubCrawler.DOMUserInterface.RightUI} rightUI - the right user interface
      * @param {ClubCrawler.Data.dataManager} dataManager - the data manager
      */
     constructor(leftUI, rightUI, dataManager) {
-        /** @property {ClubCrawler.DOMUserInterface.RightUI} - The right side UI */
+        /** @member {ClubCrawler.DOMUserInterface.RightUI} - The right side UI */
         this.rightUI = rightUI;
-        /** @property {ClubCrawler.DOMUserInterface.LeftUI} - The left side UI */
+        /** @member {ClubCrawler.DOMUserInterface.LeftUI} - The left side UI */
         this.leftUI = leftUI;   
-        /** @property {ClubCrawler.DOMUserInterface.WeaponUI} - The weapon display UI */
+        /** @member {ClubCrawler.DOMUserInterface.WeaponUI} - The weapon display UI */
         this.weaponUI = this.rightUI.weaponUI;
-        /** @property {ClubCrawler.DOMUserInterface.InventoryUI} - The inventory UI */
+        /** @member {ClubCrawler.DOMUserInterface.InventoryUI} - The inventory UI */
         this.inventoryUI = this.rightUI.inventoryUI;
-        /** @property {ClubCrawler.DOMUserInterface.HealthBarUI} - The health bar display */
+        /** @member {ClubCrawler.DOMUserInterface.HealthBarUI} - The health bar display */
         this.healthBar = this.rightUI.healthBarUI;
-        /** @property {ClubCrawler.DOMUserInterface.ScoreUI} - The score display*/
+        /** @member {ClubCrawler.DOMUserInterface.ScoreUI} - The score display*/
         this.score = this.rightUI.scoreUI;
-        /** @property {ClubCrawler.DOMUserInterface.DebugMessageBox} */
+        /** @member {ClubCrawler.DOMUserInterface.DebugMessageBox} */
         this.debugMessages = this.leftUI.debugMessages;
-        /** @property {ClubCrawler.Data.dataManager} - The dataManager */
+        /** @member {ClubCrawler.Data.dataManager} - The dataManager */
         this.dataManager = dataManager;
 
         // properties initialized when game starts
         
-        /** @property {ClubCrawler.Objects.Player} - The player */
+        /** @member {ClubCrawler.Objects.Player} - The player */
         this.player = null;
         
         this.leftUI.loadDataManager(dataManager);
@@ -40,10 +40,8 @@ class DOMUIManager {
 
     }
     /**
-     * 
+     * Initializes the User Inteface objects
      * @param {ClubCrawler.Objects.Player} player - The player
-     * @param {Object} rightUI - the right UI
-     * @param {Object} leftUI - the left UI
      */
     initialize(player) {
         /** @property {ClubCrawler.Objects.Player} - The player */
@@ -98,9 +96,9 @@ class DOMUIManager {
      * 
      * If it's a weapon, equips that weapon and shows it in the weapon UI.
      * 
-     * If it's a stackable it...
+     * If it's a stackable it pops that item and... (implement)
      * 
-     * @param {ClubCrawler.Objects.Inventory.InventorySlot} slot - The slot that was clicked on
+     * @param {ClubCrawler.Objects.Inventory.InventoryItemSlot} slot - The slot that was clicked on
      */
     slotClick(slot) {
         if(slot.empty) {
