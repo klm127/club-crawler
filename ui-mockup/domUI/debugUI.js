@@ -71,7 +71,7 @@ class DebugUI {
      * @param {Object} settingsObject - The object to load and create interfaces for
      * @param {string} name - The name for the drop down button
      */
-    loadSettingsObject(settingsObject, name="settings") {
+    loadDebugObject(settingsObject, name="debug") {
         this.settingsObject = settingsObject;
         
         this.dropDownElement.innerHTML = name + "⬇";
@@ -92,7 +92,7 @@ class DebugUI {
             if(typeof testValue == "object") {
                 let subObjectSettingsUI = new DebugUI(newElement);
                 this.children.push(subObjectSettingsUI);
-                subObjectSettingsUI.loadSettingsObject(testValue, key);
+                subObjectSettingsUI.loadDebugObject(testValue, key);
             }
             else {
                 let inputObject = new InputComponent(newElement, key, testValue);
@@ -100,6 +100,9 @@ class DebugUI {
                 inputObject.inputElement.addEventListener('change', (ev)=> {
                     inputObject.validate();
                     settingsObject[key] = inputObject.value;
+                    if(key == "on") {
+                        settingsObject.emitter.emit("debugMessageToggle")
+                    }
                 })
             }
             this.inputContainer.appendChild(newElement);
@@ -123,6 +126,26 @@ class DebugUI {
             }
         }
     }
+
+    // /**
+    //  * Adds event listener to the top level "on" input to tell debug message box to show/hide.
+    //  * @private
+    //  * @param {Phaser.Events.EventEmitter} emitter - The phaser event emitter found in dataManager.emitter
+    //  */
+    // addDebugMessageOnListener(emitter) {
+    //     let onCheckBox = null;
+    //     for(let input of this.children) {
+    //         if(input.name == "on") {
+    //             onCheckBox = input.inputElement;
+    //             break;
+    //         }
+    //     }
+    //     if(onCheckBox) {
+    //         onCheckBox.addEventListener('change', (ev)=> {
+    //             emitter.emit('debugDisplayChange');
+    //         });
+    //     }
+    // }
 }
 
 const INPUT_COMPONENT = {

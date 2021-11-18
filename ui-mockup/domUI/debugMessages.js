@@ -30,6 +30,14 @@ class DebugMessageBox {
      */
     loadDebugObject(debugObject) {
         this.debugObject = debugObject;
+        debugObject.emitter.on('debugMessageToggle', ()=>{
+            if(this.element.style.display != "none") {
+                this.element.style.display = "none";
+            }
+            else {
+                this.element.style.display = "block";
+            }
+        }, this)
     }
 
     /**
@@ -54,7 +62,6 @@ class DebugMessageBox {
      * @param {ClubCrawler.UserInterface.DebugMessage} debugMessage - The message to delete
      */
     deleteMessage(debugMessage) {
-        console.log('lines prior to delete', this.debugObject.debugLines);
         let dblines = this.debugObject.debugLines
         let index = dblines.indexOf(debugMessage.messageText);
         let pre = dblines.slice(0, index);

@@ -30,13 +30,24 @@ class DebugUI {
         this.addScore.innerHTML = "add 1 score";
         this.addDebugMessage = document.createElement('button');
         this.addDebugMessage.innerHTML = "add debug message";
+        this.emitTestEvent = document.createElement('button');
+        this.emitTestEvent.innerHTML = "emit test event";
+        this.emitResponse = document.createElement('div');
         this.element.appendChild(this.pickupFlame);
         this.element.appendChild(this.pickupPotion);
         this.element.appendChild(this.addHealth);
         this.element.appendChild(this.loseHealth);
         this.element.appendChild(this.addScore);
         this.element.appendChild(this.addDebugMessage);
+        this.element.appendChild(this.emitTestEvent);
+        this.element.appendChild(this.emitResponse);
         this.uiManager = null;
+        this.dataManager = null;
+    }
+
+    listenResponse() {
+        this.emitResponse.innerHTML = `event detected. rand number: ${Math.floor(Math.random()*100)}`
+        console.log('test event detected... context:', this);
     }
 
     loadManager(uiManager) {
@@ -67,8 +78,15 @@ class DebugUI {
         this.addDebugMessage.addEventListener('click', (ev)=> {
             uiManager.dataManager.log('test a rather longer debug message, which might take multiple lines  ' + Math.floor(Math.random()*100));
             uiManager.updateDebugMessages();
-
         })
+    }
+    loadDataManager(dataManager) {
+        this.dataManager = dataManager;
+        dataManager.emitter.on("testEvent", this.listenResponse, this);
+        this.emitTestEvent.addEventListener('click', (ev)=> {
+            dataManager.emitter.emit("testEvent");
+        })
+
     }
 
 

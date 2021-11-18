@@ -11,3 +11,5 @@ Integrating ui mockup
 - change dataManager so debug lines are within debug object 
 
 - create a settings object for dataManager
+
+- add second debug emitter under dataManager.debug

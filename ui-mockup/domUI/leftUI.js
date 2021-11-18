@@ -58,7 +58,9 @@ class DOMLeftUI {
     loadDataManager(dataManager) {
         this.settingsUI.loadSettingsObject(dataManager.settings, "settings");
         this.debugMessages.loadDebugObject(dataManager.debug);
-        this.debug.loadSettingsObject(dataManager.debug, "debug");
+        this.debug.loadDebugObject(dataManager.debug, "debug");
+        //this.debug.addDebugMessageOnListener(dataManager.emitter);
+        this._debug.loadDataManager(dataManager);
 
     }
 }

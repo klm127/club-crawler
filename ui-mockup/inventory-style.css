@@ -87,6 +87,7 @@ body {
 
 .club-crawler-settings-container {
     text-align: center;
+    border-bottom:1px dotted darkslategray;
 }
 .club-crawler-settings-drop-down {
     color: lightblue;

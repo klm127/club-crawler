@@ -56,6 +56,36 @@ setTimeout( ()=> {
 
 }, 500)
 
+class EmitterStub {
+    constructor() {
+        this.eventFunctions = {};
+        this.eventContext = {};
+    }
+    emit(str) {
+        if(this.eventFunctions[str]) {
+            let funcs = this.eventFunctions[str];
+            let contexts = this.eventContext[str];
+            for(let i = 0; i < funcs.length; i++) {
+                let context = contexts[i];
+                let boundFunction = funcs[i].bind(context);
+                boundFunction();
+                
+            }
+        }
+        console.log(str,'event emitted');
+    }
+    on(str, f, ctx) {
+        if(this.eventFunctions[str]) {
+            this.eventFunctions[str].push(f);
+            this.eventContext[str].push(ctx);
+        }
+        else {
+            this.eventFunctions[str] = [f];
+            this.eventContext[str] = [ctx];
+        }
+    }
+}
+
 
 class GeneralStub {
     constructor(config) {
@@ -140,7 +170,7 @@ class PlayerStub {
 const dataManager = {
     score: 0,
     health: 0,
-    emitter: new GeneralStub({"emit": function(s) {console.log(`emit: ${s}`)}}),
+    emitter: new EmitterStub(),
     sfxVolume: 1,
     
     settings: {
@@ -166,6 +196,7 @@ const dataManager = {
     musicVolume: 0.5,
     debug: {
         on: true,
+        emitter: new EmitterStub(),
         duration: 3000, //how long a message stays on the screen,
         debugLines: [],
         max: 10, //how many messages can appear
