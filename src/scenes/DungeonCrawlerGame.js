@@ -93,6 +93,14 @@ class DungeonCrawlerGame extends Phaser.Scene
          * @type {Phaser.Types.Input.Keyboard.CursorKeys}
          */
         this.cursors = this.input.keyboard.createCursorKeys();
+        this.cursors.w = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+        this.cursors.s = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+        this.cursors.a = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+        this.cursors.d = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+
+
+
+        console.log(this.cursors)
 
         this.pointerDown = false;
 
@@ -148,16 +156,16 @@ class DungeonCrawlerGame extends Phaser.Scene
      * @param {number} delta - change in time since last update
      */
     update(time, delta) {
-        if(this.cursors.left.isDown) {
+        if(this.cursors.left.isDown || this.cursors.a.isDown) {
             this.player.move('w');
         }
-        if(this.cursors.right.isDown) {
+        if(this.cursors.right.isDown || this.cursors.d.isDown) {
             this.player.move('e');
         }
-        if(this.cursors.down.isDown) {
+        if(this.cursors.down.isDown || this.cursors.s.isDown) {
             this.player.move('s');
         }
-        if(this.cursors.up.isDown) {
+        if(this.cursors.up.isDown || this.cursors.w.isDown) {
             this.player.move('n');
         }
         this.player.reticle.update();
