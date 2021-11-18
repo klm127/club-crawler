@@ -2,7 +2,9 @@
 const MESSAGE_BOX = {
     className: "club-crawler-debug-messages",
     style: {
-        width:"100%",
+        width: "80%",
+        marginLeft: "auto",
+        marginRight: "auto"
     }}
 
 /**
@@ -41,10 +43,10 @@ class DebugMessageBox {
         debugObject.emitter.on('debugLog', this.updateDebugMessages, this);
         this.updateDebugMessages();
         if(this.debugObject.on) {
-            this.element.display = "block";
+            this.element.style.display = "block";
         }
         else {
-            this.element.display = "none";
+            this.element.style.display = "none";
         }
     }
 
@@ -83,7 +85,6 @@ class DebugMessageBox {
 const MESSAGE = {
     className: "club-crawler-debug-message",
     style: {
-        width: "100%",
         backgroundColor: "red",
         margin: "5px"
     } }

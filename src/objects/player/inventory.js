@@ -1,4 +1,5 @@
 const parameters = require('../../utility/parameters');
+const dataManager = require('../data');
 
 /**
  * @typedef InventoryConfig
@@ -50,7 +51,13 @@ class Inventory {
      * @returns {boolean} - Whether the item could be added
      */
     addItem(gameItem) {
+        if(dataManager.debug.on && dataManager.debug.player.inventory) {
+            dataManager.log('adding item to inventory?')
+        }
         if(this.full) {
+            if(dataManager.debug.on && dataManager.debug.player.inventory) {
+                dataManager.log("player inventory full!")
+            }
             return false; // cant add to a full inventory
         }
         if(!gameItem.itemType) {
@@ -60,6 +67,9 @@ class Inventory {
             for(let slot of this.itemSlots) {
                 if(slot.itemType == "weapon") {
                     if(slot.instanceConfig.name == gameItem.name) {
+                        if(dataManager.debug.on && dataManager.debug.player.inventory) {
+                            dataManager.log(`cant add duplicate weapon! ${gameItem.name}`);
+                        }
                         return false;
                     }
                 }
@@ -80,6 +90,7 @@ class Inventory {
         let slot = this.itemSlots[this.nextFreeSlot];
         slot.loadItem(gameItem);
         this.setNextFreeItemSlot();
+        dataManager.emitter.emit("inventoryChange");
         return true;
 
     }

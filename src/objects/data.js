@@ -43,17 +43,18 @@ const dataManager = {
     debug: {
         emitter: new Phaser.Events.EventEmitter(),
         debugLines: ['debug'],
-        on: true,
+        on: false,
         duration: 3000, //how long a message stays on the screen,
         max: 10, //how many messages can appear
         weapon: {
             sound: false,
         },
         items: {
-            overlap: true
+            overlap: true,
+            pickup: true
         },
         enemies: {
-            die: true
+            die: false
         },
         destructibles: {
             cylinder: false,
@@ -66,9 +67,11 @@ const dataManager = {
             placePlayer: false,
             layers: false,
             functions: false,
+            objects: false,
         },
         player: {
-            construction: false
+            construction: false,
+            inventory: false,
         }
     },
     debugLines: ['debug'],

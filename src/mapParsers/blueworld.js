@@ -3,7 +3,8 @@ import Phaser from "phaser";
 const Player = require('../objects/player/player');
 const Ogre = require('../objects/enemies/ogre');
 const GameCoin = require('../objects/items/coin');
-const FlameThrowerSwitch = require('../objects/items/flamethrower-switch')
+const FlameThrowerSwitch = require('../objects/items/flamethrower-switch');
+const ItemPickup = require('../objects/items/itempickup');
 const Cylinder = require('../objects/destructibles/cylinder');
 const Interact = require('../interfaces/interact');
 const Parse = require('../utility/parse');
@@ -47,6 +48,9 @@ const BLUEWORLD_DEFAULTS = {
                 type: {
                     points: {
                         creates: GameCoin
+                    },
+                    "item-pickup": {
+                        creates: ItemPickup
                     }
                 },
                 name: {
@@ -173,8 +177,11 @@ class BlueWorldParser {
             }
             mapLayer.objects.forEach( (tiledObject)=> { // iterate through each object in the layer
                 let extractedProperties = Parse.getFlatTiledObjectProperties(tiledObject.properties); // get the custom properties, flattened
-                if(dataManager.debug.on && dataManager.debug.map.layers) {
-                    dataManager.log(`tiledObject ${tiledObject.name} extracted Properties: ${Object.keys(extractedProperties)}`)
+                if(dataManager.debug.on && dataManager.debug.map.objects) {
+                    let dbname = tiledObject.name;
+                    let preprop1 = tiledObject.properties;
+                    let dbprop1 = Object.keys(extractedProperties)[0];
+                    dataManager.log(`▶tiled name ${dbname}.▶ extracted: ${extractedProperties}▶ key1 : ${dbprop1} ▶preprop1: ${preprop1}`)
                 }
                 Object.assign(tiledObject, extractedProperties); // assign the custom properties to this object as top level properties rather than nested
                 let constructorConfig = Parse.getConstructorConfigFromLayerMap(tiledObject, layers[layerName]); // find the object with the "create" property that matches to this
@@ -192,6 +199,9 @@ class BlueWorldParser {
                         dataManager.log(`Constructor config mapping found: ${constructorConfig.constructor.name}`)
                     }
                     let target = constructorConfig.creates;
+                    extractedProperties.scene = mapManager.scene;
+                    extractedProperties.x = tiledObject.x;
+                    extractedProperties.y = tiledObject.y;
                     let constructorParameters = {
                         scene: mapManager.scene,
                         x: tiledObject.x,
@@ -199,7 +209,7 @@ class BlueWorldParser {
                         tiledData: tiledObject
                     }
                     if(!constructorConfig.function) { // if the target is a class, then create a class and add it to the physics group if there is one
-                        let newInstance = new target(constructorParameters);
+                        let newInstance = new target(extractedProperties);
                         if(dataManager.debug.on && dataManager.debug.map.layers) {
                             dataManager.log(`Creating an instance of: ${newInstance.constructor.name}`)
                         }
