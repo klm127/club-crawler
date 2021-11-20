@@ -1,3 +1,5 @@
+<img src = "images/ogre.png" alt="beware the ogre!" class="centered-image"/>
+
 # club-crawler
 
 club-crawler is a javascript game utilizing the Phaser game engine.

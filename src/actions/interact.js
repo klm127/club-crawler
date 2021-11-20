@@ -5,6 +5,8 @@
  * 
  * @namespace Interact
  * 
+ * @category [Actions]
+ * 
  */
 
 /**

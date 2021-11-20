@@ -1,0 +1,21 @@
+
+#club-crawler {
+    font-size: 40px;
+    font-family:'Courier New', Courier, monospace;
+    background-color: rgb(6, 6, 43);
+    color: white;
+    padding: 4px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.centered-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p a {
+    color:rgb(6, 6, 43);
+    background-color: rgba(230, 230, 254, 0.9);
+}

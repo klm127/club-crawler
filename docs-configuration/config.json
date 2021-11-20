@@ -1,5 +1,5 @@
 {
-    "plugins": [],
+    "plugins": ["plugins/markdown"],
     "recurseDepth": 10,
     "source": {
         "includePattern": ".+\\.js(doc|x)?$",
@@ -17,8 +17,19 @@
         "cleverLinks": false,
         "monospaceLinks": false,
         "default": {
-            "useLongnameInNav":false
+            "layoutFile": "./docs-configuration/layout.tmpl",
+            "useLongnameInNav":false,
+            "staticFiles": {
+                "include": [
+                    "./docs-configuration/static"
+                ]
+            }
         }
+    },
+    "markdown": {
+        "parser": "gfm",
+        "hardwrap": true,
+        "idInHeadings":true
     },
     "docdash":{
         "sectionOrder": [
@@ -31,6 +42,28 @@
             "Classes",
             "Interfaces"
         ],
-        "collapse":true
+        "collapse":true,
+        "openGraph": {
+            "title":"club-crawler",
+            "type":"website",
+            "image":"0.png",
+            "site_name": "club-crawler documentation",
+            "url": "https://unhm-programming-team.github.io/club-crawler/"
+        },
+        "meta": {
+            "title": "club-crawler",
+            "description": "A javascript dungeon crawler bullet hell game made with the Phaser framework",
+            "keyword": "club-crawler, phaser, javascript, game, js-game, unhm, unh, hampshire"
+        },
+        "search":true,
+        "typedefs":true,
+        "menu":{
+            "github": {
+                "href":"https://github.com/unhm-programming-team/club-crawler",
+                "target":"_blank",
+                "class":"menu-item",
+                "id":"repository"
+            }
+        }
     }
 }

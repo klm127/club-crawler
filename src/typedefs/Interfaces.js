@@ -1,4 +1,0 @@
-/**
- * @namespace Interfaces
- * @memberof ClubCrawler
- */

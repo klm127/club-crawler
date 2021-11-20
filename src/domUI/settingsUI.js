@@ -150,9 +150,9 @@ const INPUT_STRING = {
     }}
 
 /**
- * @private
  * 
  * A component for allowing user selection
+ * @private
  */
 class InputComponent {
     /**
