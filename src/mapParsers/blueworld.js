@@ -5,7 +5,7 @@ const Ogre = require('../objects/enemies/ogre');
 const GameCoin = require('../objects/items/coin');
 const ItemPickup = require('../objects/items/itempickup');
 const Cylinder = require('../objects/destructibles/cylinder');
-const Interact = require('../interfaces/interact');
+const Interact = require('../actions/interact');
 const Parse = require('../utility/parse');
 const dataManager = require('../objects/data');
 

@@ -1,17 +1,17 @@
 /**
  * Contains functions for different movement patterns to be used by AIs.
  * 
- * @memberof ClubCrawler.Interfaces
+ * @memberof ClubCrawler.Actions
  * 
  * @namespace Movement
- * 
+ *  
  */
 import Phaser from "phaser";
 
 /**
  * Validates a MovementConfig Object
  * 
- * @memberof ClubCrawler.Interfaces.Movement
+ * @memberof ClubCrawler.Actions.Movement
  * @param {Phaser.GameObjects.GameObject} caller - The caller game object
  * @param {ClubCrawler.Types.MovementConfig} config - The movement config
  * @returns {boolean}
@@ -74,7 +74,7 @@ function validatePhysicsMove(caller, config) {
 /**
  * retreat from player movement pattern
  * 
- * @memberof ClubCrawler.Interfaces.Movement
+ * @memberof ClubCrawler.Actions.Movement
  * @param {Phaser.GameObjects.GameObject} caller - The caller game object
  * @param {ClubCrawler.Types.MovementConfig} config - The movement config
  * @returns {boolean}
@@ -107,7 +107,7 @@ function retreatFromPlayer(caller, config) {
 /**
  * move towards player
  * 
- * @memberof ClubCrawler.Interfaces.Movement
+ * @memberof ClubCrawler.Actions.Movement
  * @param {Phaser.GameObjects.GameObject} caller - The caller game object
  * @param {ClubCrawler.Types.MovementConfig} config - The movement config
  * @returns {boolean}
@@ -140,7 +140,7 @@ function moveTowardsPlayer(caller, config) {
 /**
  * move towards player repeatedly (probably not necessary if you are calling it after a regular Sense update)
  * 
- * @memberof ClubCrawler.Interfaces.Movement
+ * @memberof ClubCrawler.Actions.Movement
  * @param {Phaser.GameObjects.GameObject} caller - The caller game object
  * @param {ClubCrawler.Types.MovementConfig} config - The movement config
  * @returns {boolean}
@@ -159,7 +159,7 @@ function moveTowardsPlayerRepeat(caller, config) {
 /**
  * Moves in a random direction, but tries not to move into colliding walls
  * 
- * @memberof ClubCrawler.Interfaces.Movement
+ * @memberof ClubCrawler.Actions.Movement
  * @param {Phaser.GameObjects.GameObject} caller - The caller game object
  * @param {ClubCrawler.Types.MovementConfig} config - The movement config
  * @returns {boolean}
@@ -186,7 +186,7 @@ function moveRandomly(caller, config) {
 /**
  * move randomly repeatedly (not necessary if you are trying to move after a sense update)
  * 
- * @memberof ClubCrawler.Interfaces.Movement
+ * @memberof ClubCrawler.Actions.Movement
  * @param {Phaser.GameObjects.GameObject} caller - The caller game object
  * @param {ClubCrawler.Types.MovementConfig} config - The movement config
  * @returns {boolean}

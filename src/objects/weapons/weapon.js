@@ -1,10 +1,11 @@
 import Phaser from "phaser";
 //const Bullet = require('./bullet');
-const Interact = require('../../interfaces/interact');
+const Interact = require('../../actions/interact');
 const dataManager = require('../data');
 
 /**
  * @memberof ClubCrawler.Objects.Weapon
+ * @constant
  */
 const DEFAULT_WEAPON = {
     name: "popper",
@@ -70,6 +71,7 @@ class Weapon {
  * @memberof ClubCrawler.Objects.Weapon
  * 
  * @classdesc A projectile, created by a Weapon
+ * @implements {ClubCrawler.Actions.Interact.DamageDealer}
  */
 class Projectile extends Phaser.GameObjects.Image {
     

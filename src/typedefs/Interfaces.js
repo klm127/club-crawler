@@ -1,4 +1,4 @@
 /**
- * @namespace ClubCrawler.Interfaces
- * @description Functions in ClubCrawler
+ * @namespace Interfaces
+ * @memberof ClubCrawler
  */

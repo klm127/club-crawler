@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 
-const Movement = require('../../interfaces/movement');
+const Movement = require('../../actions/movement');
 const GameCoin = require('../items/coin');
 const dataManager = require('../data');
 
@@ -41,6 +41,7 @@ class Cylinder extends Phaser.GameObjects.Image {
      * @param {ClubCrawler.Types.DestructibleConfig} config - The configuration object
      * @param {Phaser.Scene} config.scene - The creating scene
      * @param {Item} config.item - The Tiled item data having the x,y, and any default-overriding values
+     * @implements {ClubCrawler.Actions.Interact.Hurtable}
      */
     constructor(config) {
         if(dataManager.debug.on && dataManager.debug.destructibles.cylinder) {
@@ -75,6 +76,7 @@ class Cylinder extends Phaser.GameObjects.Image {
         let cylinder = this;
         cylinder.health -= damage;
     }
+
     /**
      * Called internally if the result of, for example, takeDamage causes it to die
      * 

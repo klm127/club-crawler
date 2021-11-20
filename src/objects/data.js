@@ -16,6 +16,7 @@ import Phaser from "phaser";
  * @fires ClubCrawler.Events.debugLog
  * @fires ClubCrawler.Events.scoreChange
  * @fires ClubCrawler.Events.healthChange
+ * @global
  */
 const dataManager = {
     score: 0,

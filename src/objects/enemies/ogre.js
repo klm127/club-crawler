@@ -1,8 +1,8 @@
 import Phaser from "phaser";
 
-const Movement = require('../../interfaces/movement');
+const Movement = require('../../actions/movement');
 const GameCoin = require('../items/coin');
-const Sense = require('../../interfaces/sense');
+const Sense = require('../../actions/sense');
 const dataManager = require('../data');
 
 /**
@@ -39,12 +39,16 @@ const DEFAULT_OGRE_STATS = {
  * 
  * @memberof ClubCrawler.Objects
  * @extends Phaser.GameObjects.Image
+ * @implements {ClubCrawler.Actions.Sense.Senser}
+ * @implements {ClubCrawler.Actions.Interact.Hurtable}
+ * @implements {ClubCrawler.Actions.Interact.DamageDealer}
 */
 class Ogre extends Phaser.GameObjects.Image {
     
 
     /**
-     * Constructs the ogre
+     * Constructs the ogre. Ogre uses {@link ClubCrawler.Actions.Sense.sensePlayerRepeat sensePlayerRepeat action} to determine behavior based on player distance.
+     * 
      * @param {ClubCrawler.Types.EnemyConfig} config - The configuration object
      * @param {Phaser.Scene} config.scene - The creating scene
      * @param {Item} config.item - The Tiled item having the x,y etc
@@ -137,8 +141,14 @@ class Ogre extends Phaser.GameObjects.Image {
         this.destroy();
     }
     /**
-     * Called by the repeating sense event. In case of Ogre, the senseevent is detecting player distance. This function is basically the entirety of the Ogre AI
+     * Implementation of the sense interface.
+     * 
+     * This is where Ogre determines action depending on player distance.
+     * 
+     * Uses either {@link ClubCrawler.Actions.MoveRandomly moveRandomly} or {@link ClubCrawler.Actions.MoveTowardsPlayer moveTowardsPlayer} actions.
+     * 
      * @param {ClubCrawler.Types.SensationConfig} sensation
+     * @override
      */
     sense(sensation) {
         if(this.body.velocity.x > 0) {

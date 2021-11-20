@@ -1,7 +1,7 @@
 /**
  * Contains functions for interactions, to be called when two objects interact, such as when a bullet strikes an enemy or an enemy strikes a player.
  * 
- * @memberof ClubCrawler.Interfaces
+ * @memberof ClubCrawler.Actions
  * 
  * @namespace Interact
  * 
@@ -9,7 +9,7 @@
 
 /**
  * Description
- * @memberof ClubCrawler.Interfaces.Interact
+ * @memberof ClubCrawler.Actions.Interact
  * 
  * @param {any} damagedObject
  * @param {any} sourceObject
@@ -33,7 +33,7 @@ function validateDamage(damagedObject, sourceObject) {
 
 /**
  * Damages an object... calls die() if its health is less than or equal to 0 
- * @memberof ClubCrawler.Interfaces.Interact
+ * @memberof ClubCrawler.Actions.Interact
  * 
  * @param {Object} sourceObject
  * @param {int} sourceObject.damage - damage done
@@ -61,7 +61,7 @@ function damageCollision(damagedObject, sourceObject) {
 }
 
 /**
- * @memberof ClubCrawler.Interfaces.Interact
+ * @memberof ClubCrawler.Actions.Interact
  * Calls damageCollision with reversed parameters
  * @param {any} sourceObject
  * @param {any} damagedObject
@@ -76,3 +76,32 @@ module.exports = {
     DamageCollision: damageCollision,
     DamageCollisionReversed: damageCollisionReversed
 }
+
+
+///   ---- These interfaces are defined for documentation purposes and has no effect on game logic ------- /// 
+
+/**
+ * @description Implemented by objects that take damage
+ * @memberof ClubCrawler.Actions.Interact
+ * @interface 
+ */
+ function Hurtable() {}
+ 
+ /** @param {number} damage - The damage to take */
+ Hurtable.takeDamage = (damage)=>{ throw new Error("not implemented!") };
+ /** @property {number} health - The health of the Hurtable */
+ Hurtable.health = null;
+ /** called if health is <= 0 */
+ Hurtable.die = ()=> {throw new Error("not implemented")};
+
+
+/**
+ * @description Implemented by objects that deal damage
+ * @memberof ClubCrawler.Actions.Interact
+ * @interface
+ */
+function DamageDealer() {}
+/** Called on the object as it deals damage */
+DamageDealer.dealDamage = () => {throw new Error("not implemented!") };
+/** @property {number} damage - The damage the DamageDealer deals */
+DamageDealer.damage = null;

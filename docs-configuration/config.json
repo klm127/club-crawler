@@ -17,7 +17,7 @@
         "cleverLinks": false,
         "monospaceLinks": false,
         "default": {
-            "useLongnameInNav":true
+            "useLongnameInNav":false
         }
     },
     "docdash":{
@@ -27,8 +27,8 @@
             "Modules",
             "Namespaces",
             "Events",
-            "Classes",
             "Mixins",
+            "Classes",
             "Interfaces"
         ],
         "collapse":true

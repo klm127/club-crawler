@@ -4,7 +4,7 @@ const Projectile = Weapons.Projectile;
 
 /**
  * @memberof ClubCrawler.Objects.Weapons
- * 
+ * @constant
  * @classdesc A FlameThrower
  */
 const FLAMETHROWER_DEFAULT_STATS = {

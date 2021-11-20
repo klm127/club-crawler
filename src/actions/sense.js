@@ -5,18 +5,20 @@
  * 
  * The "repeat" functions call .sense on the object using the sense function; that object should define how it responds to senses, such as by using a movement function.
  * 
- * @memberof ClubCrawler.Interfaces
+ * @memberof ClubCrawler.Actions
  * 
  * @namespace Sense
  * 
  */
+
+
 
 import Phaser from "phaser"
 
 /**
  * Validates a SenseConfig Object
  * 
- * @memberof ClubCrawler.Interfaces.Sense
+ * @memberof ClubCrawler.Actions.Sense
  * @param {Phaser.GameObjects.GameObject} caller - The caller game object
  * @param {ClubCrawler.Types.SenseConfig} config - The sense config
  * @returns {boolean}
@@ -63,7 +65,7 @@ function validateSense(caller, config) {
 /**
  * Senses the player, then calles sense on caller on it
  * 
- * @memberof ClubCrawler.Interfaces.Sense
+ * @memberof ClubCrawler.Actions.Sense
  * @param {Phaser.GameObjects.GameObject} caller - The caller game object
  * @param {ClubCrawler.Types.SenseConfig} config - The sense config
  * @returns {boolean}
@@ -85,7 +87,7 @@ function sensePlayer(caller, config) {
 /**
  * Senses the player, and repeats sensing at set intervals
  * 
- * @memberof ClubCrawler.Interfaces.Sense
+ * @memberof ClubCrawler.Actions.Sense
  * @param {Phaser.GameObjects.GameObject} caller - The caller game object
  * @param {ClubCrawler.Types.SenseConfig} config - The sense config
  * @returns {boolean}
@@ -101,7 +103,26 @@ function sensePlayerRepeat(caller, config) {
 }
 
 
+
 module.exports = {
     SensePlayer:sensePlayer,
     SensePlayerRepeat:sensePlayerRepeat
 }
+
+
+///   ---- This interface is defined for documentation purposes and has no effect on game logic ------- /// 
+
+/**
+ * @memberof ClubCrawler.Actions.Sense
+ * @interface 
+ */
+ function Senser() {}
+
+ /**
+  * A sense function called on an object which is using the {@link ClubCrawler.Actions.Sense sense mixin}.
+  * 
+  * @param {ClubCrawler.Types.SensationConfig} sensationConfig - The result of sensing the target
+  */
+  Senser.sense = function(sensationConfig) {
+     throw new Error("not implemented!")
+ }
