@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Sense - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Tutorials</h3><ul><li><a href="tutorial-overview.html">Overview</a></li></ul><h3>Modules</h3><ul><li><a href="module-initialize.html">initialize</a></li></ul><h3>Namespaces</h3><ul><li><a href="ClubCrawler.html">ClubCrawler</a></li><li><a href="ClubCrawler.Actions.html">Actions</a></li><li><a href="ClubCrawler.Actions.Interact.html">Interact</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Interact.html#.damageCollision">damageCollision</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Interact.html#.validateDamage">validateDamage</a></li></ul></li><li><a href="ClubCrawler.Actions.Movement.html">Movement</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Movement.html#.moveRandomly">moveRandomly</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Movement.html#.moveRandomlyRepeat">moveRandomlyRepeat</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Movement.html#.moveTowardsPlayer">moveTowardsPlayer</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Movement.html#.moveTowardsPlayerRepeat">moveTowardsPlayerRepeat</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Movement.html#.retreatFromPlayer">retreatFromPlayer</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Movement.html#.validatePhysicsMove">validatePhysicsMove</a></li></ul></li><li><a href="ClubCrawler.Actions.Sense.html">Sense</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Sense.html#.sensePlayer">sensePlayer</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Sense.html#.sensePlayerRepeat">sensePlayerRepeat</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Sense.html#.validateSense">validateSense</a></li></ul></li><li><a href="ClubCrawler.Data.html">Data</a></li><li><a href="ClubCrawler.DOMUserInterface.html">DOMUserInterface</a></li><li><a href="ClubCrawler.Events.html">Events</a></li><li><a href="ClubCrawler.Interfaces.html">Interfaces</a></li><li><a href="ClubCrawler.Objects.html">Objects</a></li><li><a href="ClubCrawler.Objects.Inventory.html">Inventory</a></li><li><a href="ClubCrawler.Parsers.html">Parsers</a></li><li><a href="ClubCrawler.Scenes.html">Scenes</a></li><li><a href="ClubCrawler.Types.html">Types</a></li><li><a href="ClubCrawler.Utility.html">Utility</a></li><li><a href="ClubCrawler.Utility.Load.html">Load</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Utility.Load.html#.preloadBlueWorldAssets">preloadBlueWorldAssets</a></li></ul></li><li><a href="ClubCrawler.Utility.Parameters.html">Parameters</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Utility.Parameters.html#.extract">extract</a></li></ul></li><li><a href="ClubCrawler.Utility.Parse.html">Parse</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Utility.Parse.html#.getConstructorConfigFromLayerMap">getConstructorConfigFromLayerMap</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Utility.Parse.html#.getFlatTiledObjectProperties">getFlatTiledObjectProperties</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Utility.Parse.html#.isConstructorConfig">isConstructorConfig</a></li></ul></li></ul><h3>Events</h3><ul><li><a href="ClubCrawler.Events.html#.event:debugLog">debugLog</a></li><li><a href="ClubCrawler.Events.html#.event:debugMessageToggle">debugMessageToggle</a></li><li><a href="ClubCrawler.Events.html#.event:enemyDied">enemyDied</a></li><li><a href="ClubCrawler.Events.html#.event:healthChange">healthChange</a></li><li><a href="ClubCrawler.Events.html#.event:inventoryChange">inventoryChange</a></li><li><a href="ClubCrawler.Events.html#.event:playerDied">playerDied</a></li><li><a href="ClubCrawler.Events.html#.event:scoreChange">scoreChange</a></li></ul><h3>Classes</h3><ul><li><a href="ClubCrawler.DOMUserInterface.DebugMessage.html">DebugMessage</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DebugMessage.html#delete">delete</a></li></ul></li><li><a href="ClubCrawler.DOMUserInterface.DebugMessageBox.html">DebugMessageBox</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DebugMessageBox.html#deleteMessage">deleteMessage</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DebugMessageBox.html#loadDebugObject">loadDebugObject</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DebugMessageBox.html#updateDebugMessages">updateDebugMessages</a></li></ul></li><li><a href="ClubCrawler.DOMUserInterface.DebugUI.html">DebugUI</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DebugUI.html#addDropDownListener">addDropDownListener</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DebugUI.html#loadDebugObject">loadDebugObject</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DebugUI.html#loadManager">loadManager</a></li></ul></li><li><a href="ClubCrawler.DOMUserInterface.DOMUIManager.html">DOMUIManager</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DOMUIManager.html#healthChange">healthChange</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DOMUIManager.html#initialize">initialize</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DOMUIManager.html#loadPlayerInventory">loadPlayerInventory</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DOMUIManager.html#pointsChange">pointsChange</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DOMUIManager.html#refreshInventory">refreshInventory</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DOMUIManager.html#showPlayerWeapon">showPlayerWeapon</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DOMUIManager.html#slotClick">slotClick</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DOMUIManager.html#updateDebugMessages">updateDebugMessages</a></li></ul></li><li><a href="ClubCrawler.DOMUserInterface.HealthBarUI.html">HealthBarUI</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.HealthBarUI.html#changeHealth">changeHealth</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.HealthBarUI.html#refreshHealthBar">refreshHealthBar</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.HealthBarUI.html#setFullHealth">setFullHealth</a></li></ul></li><li><a href="ClubCrawler.DOMUserInterface.InventoryUI.html">InventoryUI</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.InventoryUI.html#clearInventory">clearInventory</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.InventoryUI.html#loadInventory">loadInventory</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.InventoryUI.html#loadManager">loadManager</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.InventoryUI.html#refreshInventory">refreshInventory</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.InventoryUI.html#setDragListeners">setDragListeners</a></li></ul></li><li><a href="ClubCrawler.DOMUserInterface.ItemSlotUI.html">ItemSlotUI</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.ItemSlotUI.html#loadManager">loadManager</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.ItemSlotUI.html#updateDisplay">updateDisplay</a></li></ul></li><li><a href="ClubCrawler.DOMUserInterface.LeftUI.html">LeftUI</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.LeftUI.html#loadDataManager">loadDataManager</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.LeftUI.html#loadManager">loadManager</a></li></ul></li><li><a href="ClubCrawler.DOMUserInterface.RightUI.html">RightUI</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.RightUI.html#loadManager">loadManager</a></li></ul></li><li><a href="ClubCrawler.DOMUserInterface.ScoreUI.html">ScoreUI</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.ScoreUI.html#changeScore">changeScore</a></li></ul></li><li><a href="ClubCrawler.DOMUserInterface.SettingsUI.html">SettingsUI</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.SettingsUI.html#addDropDownListener">addDropDownListener</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.SettingsUI.html#loadManager">loadManager</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.SettingsUI.html#loadSettingsObject">loadSettingsObject</a></li></ul></li><li><a href="ClubCrawler.DOMUserInterface.WeaponUI.html">WeaponUI</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.WeaponUI.html#loadManager">loadManager</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.WeaponUI.html#showWeapon">showWeapon</a></li></ul></li><li><a href="ClubCrawler.Objects.Cylinder.html">Cylinder</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Cylinder.html#die">die</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Cylinder.html#takeDamage">takeDamage</a></li></ul></li><li><a href="ClubCrawler.Objects.Inventory.Inventory.html">Inventory</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Inventory.Inventory.html#addItem">addItem</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Inventory.Inventory.html#getInstance">getInstance</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Inventory.Inventory.html#pop">pop</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Inventory.Inventory.html#setNextFreeItemSlot">setNextFreeItemSlot</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Inventory.Inventory.html#swapSlots">swapSlots</a></li></ul></li><li><a href="ClubCrawler.Objects.Inventory.InventoryItemSlot.html">InventoryItemSlot</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Inventory.InventoryItemSlot.html#getInstance">getInstance</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Inventory.InventoryItemSlot.html#loadItem">loadItem</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Inventory.InventoryItemSlot.html#popInstance">popInstance</a></li></ul></li><li><a href="ClubCrawler.Objects.Items.GameCoin.html">GameCoin</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Items.GameCoin.html#fadeCoin">fadeCoin</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Items.GameCoin.html#overlapWithPlayer">overlapWithPlayer</a></li></ul></li><li><a href="ClubCrawler.Objects.Items.ItemPickup.html">ItemPickup</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Items.ItemPickup.html#onPlayerTouch">onPlayerTouch</a></li></ul></li><li><a href="ClubCrawler.Objects.Ogre.html">Ogre</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Ogre.html#dealDamage">dealDamage</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Ogre.html#die">die</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Ogre.html#hit">hit</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Ogre.html#sense">sense</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Ogre.html#takeDamage">takeDamage</a></li></ul></li><li><a href="ClubCrawler.Objects.Player.html">Player</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Player.html#.preload">preload</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Player.html#die">die</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Player.html#move">move</a></li></ul></li><li><a href="ClubCrawler.Objects.Reticle.html">Reticle</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Reticle.html#moveToPlayer">moveToPlayer</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Reticle.html#update">update</a></li></ul></li><li><a href="ClubCrawler.Objects.Weapon.html">Weapon</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Weapon.html#setTarget">setTarget</a></li></ul></li><li><a href="ClubCrawler.Objects.Weapon.Projectile.html">Projectile</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Weapon.Projectile.html#dealDamage">dealDamage</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Weapon.Projectile.html#fireAt">fireAt</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Weapon.Projectile.html#hitWall">hitWall</a></li></ul></li><li><a href="ClubCrawler.Parsers.BlueWorldParser.html">BlueWorldParser</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Parsers.BlueWorldParser.html#addColliders">addColliders</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Parsers.BlueWorldParser.html#placeMappedObjects">placeMappedObjects</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Parsers.BlueWorldParser.html#startPlayer">startPlayer</a></li></ul></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html">DungeonCrawlerGame</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html#checkWinCondition">checkWinCondition</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html#create">create</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html#preload">preload</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html#update">update</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html#validateGame">validateGame</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html#win">win</a></li></ul></li><li><a href="ClubCrawler.Scenes.GameOver.html">GameOver</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Scenes.GameOver.html#create">create</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Scenes.GameOver.html#preload">preload</a></li></ul></li><li><a href="ClubCrawler.Scenes.GameWin.html">GameWin</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Scenes.GameWin.html#create">create</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Scenes.GameWin.html#preload">preload</a></li></ul></li><li><a href="ClubCrawler.Scenes.TitleScreen.html">TitleScreen</a></li></ul><h3>Interfaces</h3><ul><li><a href="ClubCrawler.Actions.Interact.Hurtable.html">Hurtable</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Interact.Hurtable.html#.dealDamage">dealDamage</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Interact.Hurtable.html#.takeDamage">takeDamage</a></li></ul></li><li><a href="ClubCrawler.Actions.Sense.Sense.html">Sense</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Sense.Sense.html#.sense">sense</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#dataManager">dataManager</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Sense</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+            <span class="ancestors"><a href="ClubCrawler.html">ClubCrawler</a><a href="ClubCrawler.Actions.html">.Actions</a><a href="ClubCrawler.Actions.Sense.html">.Sense</a>.</span>
+        
+        Sense
+        </h2>
+        
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="actions_sense.js.html">actions/sense.js</a>, <a href="actions_sense.js.html#line119">line 119</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+            
+
+            
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id=".sense"><span class="type-signature">(static) </span>sense<span class="signature">(sensationConfig)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="actions_sense.js.html">actions/sense.js</a>, <a href="actions_sense.js.html#line126">line 126</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    A sense function called on an object which is using the <a href="ClubCrawler.Actions.Sense.html">sense mixin</a>.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sensationConfig</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="ClubCrawler.Types.html#.SensationConfig">ClubCrawler.Types.SensationConfig</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The result of sensing the target</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Sat Nov 20 2021 17:13:01 GMT-0500 (Eastern Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
+</body>
+</html>

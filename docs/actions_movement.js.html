@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>actions/movement.js - club-crawler</title>
+    
+    <meta name="description" content="A javascript dungeon crawler bullet hell game made with the Phaser framework" />
+    
+        <meta name="keywords" content="club-crawler, phaser, javascript, game, js-game, unhm, unh, hampshire" />
+        <meta name="keyword" content="club-crawler, phaser, javascript, game, js-game, unhm, unh, hampshire" />
+    
+    
+    
+    <meta property="og:title" content="club-crawler"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="0.png"/>
+    <meta property="og:site_name" content="club-crawler documentation"/>
+    <meta property="og:url" content="https://unhm-programming-team.github.io/club-crawler/"/>
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <link type="text/css" rel="stylesheet" href="styles/styles.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/unhm-programming-team/club-crawler" target="_blank" class="menu-item" id="repository" >github</a></h2><h3>Tutorials</h3><ul><li><a href="tutorial-overview.html">Overview</a></li></ul><h3>Modules</h3><ul><li><a href="module-initialize.html">initialize</a></li></ul><h3>Namespaces</h3><ul><li><a href="ClubCrawler.html">ClubCrawler</a></li><li><a href="ClubCrawler.Actions.html">Actions</a></li><li><a href="ClubCrawler.Actions.Interact.html">Interact</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Interact.html#.damageCollision">damageCollision</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Interact.html#.validateDamage">validateDamage</a></li></ul></li><li><a href="ClubCrawler.Actions.Movement.html">Movement</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Movement.html#.moveRandomly">moveRandomly</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Movement.html#.moveRandomlyRepeat">moveRandomlyRepeat</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Movement.html#.moveTowardsPlayer">moveTowardsPlayer</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Movement.html#.moveTowardsPlayerRepeat">moveTowardsPlayerRepeat</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Movement.html#.retreatFromPlayer">retreatFromPlayer</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Movement.html#.validatePhysicsMove">validatePhysicsMove</a></li></ul></li><li><a href="ClubCrawler.Actions.Sense.html">Sense</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Sense.html#.sensePlayer">sensePlayer</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Sense.html#.sensePlayerRepeat">sensePlayerRepeat</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Sense.html#.validateSense">validateSense</a></li></ul></li><li><a href="ClubCrawler.Data.html">Data</a></li><li><a href="ClubCrawler.DOMUserInterface.html">DOMUserInterface</a></li><li><a href="ClubCrawler.Events.html">Events</a></li><li><a href="ClubCrawler.Objects.html">Objects</a></li><li><a href="ClubCrawler.Objects.Inventory.html">Inventory</a></li><li><a href="ClubCrawler.Parsers.html">Parsers</a></li><li><a href="ClubCrawler.Scenes.html">Scenes</a></li><li><a href="ClubCrawler.Types.html">Types</a></li><li><a href="ClubCrawler.Utility.html">Utility</a></li><li><a href="ClubCrawler.Utility.Load.html">Load</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Utility.Load.html#.preloadBlueWorldAssets">preloadBlueWorldAssets</a></li></ul></li><li><a href="ClubCrawler.Utility.Parameters.html">Parameters</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Utility.Parameters.html#.extract">extract</a></li></ul></li><li><a href="ClubCrawler.Utility.Parse.html">Parse</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Utility.Parse.html#.getConstructorConfigFromLayerMap">getConstructorConfigFromLayerMap</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Utility.Parse.html#.getFlatTiledObjectProperties">getFlatTiledObjectProperties</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Utility.Parse.html#.isConstructorConfig">isConstructorConfig</a></li></ul></li></ul><h3>Events</h3><ul><li><a href="ClubCrawler.Events.html#.event:debugLog">debugLog</a></li><li><a href="ClubCrawler.Events.html#.event:debugMessageToggle">debugMessageToggle</a></li><li><a href="ClubCrawler.Events.html#.event:enemyDied">enemyDied</a></li><li><a href="ClubCrawler.Events.html#.event:healthChange">healthChange</a></li><li><a href="ClubCrawler.Events.html#.event:inventoryChange">inventoryChange</a></li><li><a href="ClubCrawler.Events.html#.event:playerDied">playerDied</a></li><li><a href="ClubCrawler.Events.html#.event:scoreChange">scoreChange</a></li></ul><h3>Classes</h3><ul><li><a href="ClubCrawler.DOMUserInterface.DebugMessage.html">DebugMessage</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DebugMessage.html#delete">delete</a></li></ul></li><li><a href="ClubCrawler.DOMUserInterface.DebugMessageBox.html">DebugMessageBox</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DebugMessageBox.html#deleteMessage">deleteMessage</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DebugMessageBox.html#loadDebugObject">loadDebugObject</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DebugMessageBox.html#updateDebugMessages">updateDebugMessages</a></li></ul></li><li><a href="ClubCrawler.DOMUserInterface.DebugUI.html">DebugUI</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DebugUI.html#addDropDownListener">addDropDownListener</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DebugUI.html#loadDebugObject">loadDebugObject</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DebugUI.html#loadManager">loadManager</a></li></ul></li><li><a href="ClubCrawler.DOMUserInterface.DOMUIManager.html">DOMUIManager</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DOMUIManager.html#healthChange">healthChange</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DOMUIManager.html#initialize">initialize</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DOMUIManager.html#loadPlayerInventory">loadPlayerInventory</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DOMUIManager.html#pointsChange">pointsChange</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DOMUIManager.html#refreshInventory">refreshInventory</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DOMUIManager.html#showPlayerWeapon">showPlayerWeapon</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DOMUIManager.html#slotClick">slotClick</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.DOMUIManager.html#updateDebugMessages">updateDebugMessages</a></li></ul></li><li><a href="ClubCrawler.DOMUserInterface.HealthBarUI.html">HealthBarUI</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.HealthBarUI.html#changeHealth">changeHealth</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.HealthBarUI.html#refreshHealthBar">refreshHealthBar</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.HealthBarUI.html#setFullHealth">setFullHealth</a></li></ul></li><li><a href="ClubCrawler.DOMUserInterface.InventoryUI.html">InventoryUI</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.InventoryUI.html#clearInventory">clearInventory</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.InventoryUI.html#loadInventory">loadInventory</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.InventoryUI.html#loadManager">loadManager</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.InventoryUI.html#refreshInventory">refreshInventory</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.InventoryUI.html#setDragListeners">setDragListeners</a></li></ul></li><li><a href="ClubCrawler.DOMUserInterface.ItemSlotUI.html">ItemSlotUI</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.ItemSlotUI.html#loadManager">loadManager</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.ItemSlotUI.html#updateDisplay">updateDisplay</a></li></ul></li><li><a href="ClubCrawler.DOMUserInterface.LeftUI.html">LeftUI</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.LeftUI.html#loadDataManager">loadDataManager</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.LeftUI.html#loadManager">loadManager</a></li></ul></li><li><a href="ClubCrawler.DOMUserInterface.RightUI.html">RightUI</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.RightUI.html#loadManager">loadManager</a></li></ul></li><li><a href="ClubCrawler.DOMUserInterface.ScoreUI.html">ScoreUI</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.ScoreUI.html#changeScore">changeScore</a></li></ul></li><li><a href="ClubCrawler.DOMUserInterface.SettingsUI.html">SettingsUI</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.SettingsUI.html#addDropDownListener">addDropDownListener</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.SettingsUI.html#loadManager">loadManager</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.SettingsUI.html#loadSettingsObject">loadSettingsObject</a></li></ul></li><li><a href="ClubCrawler.DOMUserInterface.WeaponUI.html">WeaponUI</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.WeaponUI.html#loadManager">loadManager</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.DOMUserInterface.WeaponUI.html#showWeapon">showWeapon</a></li></ul></li><li><a href="ClubCrawler.Objects.Cylinder.html">Cylinder</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Cylinder.html#die">die</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Cylinder.html#takeDamage">takeDamage</a></li></ul></li><li><a href="ClubCrawler.Objects.Inventory.Inventory.html">Inventory</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Inventory.Inventory.html#addItem">addItem</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Inventory.Inventory.html#getInstance">getInstance</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Inventory.Inventory.html#pop">pop</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Inventory.Inventory.html#setNextFreeItemSlot">setNextFreeItemSlot</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Inventory.Inventory.html#swapSlots">swapSlots</a></li></ul></li><li><a href="ClubCrawler.Objects.Inventory.InventoryItemSlot.html">InventoryItemSlot</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Inventory.InventoryItemSlot.html#getInstance">getInstance</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Inventory.InventoryItemSlot.html#loadItem">loadItem</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Inventory.InventoryItemSlot.html#popInstance">popInstance</a></li></ul></li><li><a href="ClubCrawler.Objects.Items.GameCoin.html">GameCoin</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Items.GameCoin.html#fadeCoin">fadeCoin</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Items.GameCoin.html#overlapWithPlayer">overlapWithPlayer</a></li></ul></li><li><a href="ClubCrawler.Objects.Items.ItemPickup.html">ItemPickup</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Items.ItemPickup.html#onPlayerTouch">onPlayerTouch</a></li></ul></li><li><a href="ClubCrawler.Objects.Ogre.html">Ogre</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Ogre.html#dealDamage">dealDamage</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Ogre.html#die">die</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Ogre.html#hit">hit</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Ogre.html#sense">sense</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Ogre.html#takeDamage">takeDamage</a></li></ul></li><li><a href="ClubCrawler.Objects.Player.html">Player</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Player.html#.preload">preload</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Player.html#die">die</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Player.html#move">move</a></li></ul></li><li><a href="ClubCrawler.Objects.Reticle.html">Reticle</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Reticle.html#moveToPlayer">moveToPlayer</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Reticle.html#update">update</a></li></ul></li><li><a href="ClubCrawler.Objects.Weapon.html">Weapon</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Weapon.html#setTarget">setTarget</a></li></ul></li><li><a href="ClubCrawler.Objects.Weapon.Projectile.html">Projectile</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Weapon.Projectile.html#dealDamage">dealDamage</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Weapon.Projectile.html#fireAt">fireAt</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Objects.Weapon.Projectile.html#hitWall">hitWall</a></li></ul></li><li><a href="ClubCrawler.Parsers.BlueWorldParser.html">BlueWorldParser</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Parsers.BlueWorldParser.html#addColliders">addColliders</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Parsers.BlueWorldParser.html#placeMappedObjects">placeMappedObjects</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Parsers.BlueWorldParser.html#startPlayer">startPlayer</a></li></ul></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html">DungeonCrawlerGame</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html#checkWinCondition">checkWinCondition</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html#create">create</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html#preload">preload</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html#update">update</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html#validateGame">validateGame</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html#win">win</a></li></ul></li><li><a href="ClubCrawler.Scenes.GameOver.html">GameOver</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Scenes.GameOver.html#create">create</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Scenes.GameOver.html#preload">preload</a></li></ul></li><li><a href="ClubCrawler.Scenes.GameWin.html">GameWin</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Scenes.GameWin.html#create">create</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Scenes.GameWin.html#preload">preload</a></li></ul></li><li><a href="ClubCrawler.Scenes.TitleScreen.html">TitleScreen</a></li></ul><h3>Interfaces</h3><ul><li><a href="ClubCrawler.Actions.Interact.DamageDealer.html">DamageDealer</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Interact.DamageDealer.html#.dealDamage">dealDamage</a></li></ul></li><li><a href="ClubCrawler.Actions.Interact.Hurtable.html">Hurtable</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Interact.Hurtable.html#.die">die</a></li><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Interact.Hurtable.html#.takeDamage">takeDamage</a></li></ul></li><li><a href="ClubCrawler.Actions.Sense.Senser.html">Senser</a><ul class='methods'><li data-type='method' style='display: none;'><a href="ClubCrawler.Actions.Sense.Senser.html#.sense">sense</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#dataManager">dataManager</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">actions/movement.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Contains functions for different movement patterns to be used by AIs.
+ * 
+ * @memberof ClubCrawler.Actions
+ * 
+ * @namespace Movement
+ *  
+ */
+import Phaser from "phaser";
+
+/**
+ * Validates a MovementConfig Object
+ * 
+ * @memberof ClubCrawler.Actions.Movement
+ * @param {Phaser.GameObjects.GameObject} caller - The caller game object
+ * @param {ClubCrawler.Types.MovementConfig} config - The movement config
+ * @returns {boolean}
+ */
+function validatePhysicsMove(caller, config) {
+    if(!caller) {
+        validatePhysicsMove(this, config);
+    }
+    if(!config.scene) {
+        if(!caller.scene) {
+            console.error('No scene could be found for', caller);
+            return false;
+        }
+        else {
+            config.scene = caller.scene;
+        }
+    }
+    if(!caller.body) {
+        console.error('No physics body found in moveTowards function on', caller);
+        return false;
+    }
+    if(!config.repeatTime) {
+        if(!caller.updateSpeed) {
+            console.error('No update speed could be determined in movetowards function on', caller);
+            return false;
+        } else {
+            config.repeatTime = caller.updateSpeed;
+        }
+    } else {
+        config.repeatTime = config.repeatTime;
+    }
+    if(!config.velocityIncrement) {
+        if(!caller.velocityIncrement) {
+            console.error('No velocity Increment could be determined for', caller);
+            return false;
+        } else{
+            config.velocityIncrement = caller.velocityIncrement;
+        }
+    }
+    if(!caller.moving) {
+        //console.error('No "moving" boolean property could be found for', caller);
+        caller.moving = true;
+    }
+    if(!config.moveRatio) config.moveRatio = 1;
+    if(!config.lastX) config.lastX = caller.x;
+    if(!config.lastY) config.lastY = caller.y;
+    if(!config.failedAttempts) config.failedAttempts = 0;
+    if(!config.maxFailedAttempts) config.maxFailedAttempts = 10;
+    if(!config.failureDrift) config.failureDrift = 1;
+    if(Phaser.Math.Difference(config.lastX, caller.x) &lt;= config.failureDrift &amp;&amp; Phaser.Math.Difference(config.lastY, caller.y) &lt;= config.failureDrift) {
+        if(config.maxFailedAttempts > 0) {
+            config.failedAttempts += 1;
+        }
+    }
+    if(config.failedAttempts > config.maxFailedAttempts &amp;&amp; config.maxFailedAttempts > 0) {
+        return false;
+    }
+    return true;
+}
+/**
+ * retreat from player movement pattern
+ * 
+ * @memberof ClubCrawler.Actions.Movement
+ * @param {Phaser.GameObjects.GameObject} caller - The caller game object
+ * @param {ClubCrawler.Types.MovementConfig} config - The movement config
+ * @returns {boolean}
+ */
+function retreatFromPlayer(caller, config) {
+    if(!caller) {
+        caller = this;
+    }
+    if(!validatePhysicsMove(caller, config)) {
+        return false;
+    }
+    let player = config.scene.player;
+
+    let hypoteneuse = Phaser.Math.Distance.Between(player.x, player.y, caller.x, caller.y);
+    
+    let adjacent = caller.x - player.x;
+    let opposite = caller.y - player.y;
+    let sine = opposite/hypoteneuse;
+    let cosine = adjacent/hypoteneuse;
+
+    let speedX = config.velocityIncrement * cosine * config.moveRatio;
+    let speedY = config.velocityIncrement * sine * config.moveRatio; 
+
+    caller.body.setVelocityX(speedX);
+    caller.body.setVelocityY(speedY);
+
+    config.scene.time.delayedCall(config.repeatTime, moveTowardsPlayer, [caller, config]);
+}
+
+/**
+ * move towards player
+ * 
+ * @memberof ClubCrawler.Actions.Movement
+ * @param {Phaser.GameObjects.GameObject} caller - The caller game object
+ * @param {ClubCrawler.Types.MovementConfig} config - The movement config
+ * @returns {boolean}
+ */
+function moveTowardsPlayer(caller, config) {
+    if(!caller) {
+        caller = this;
+    }
+    if(!validatePhysicsMove(caller, config)) {
+        return false;
+    }
+    let player = config.scene.player;
+
+    let hypoteneuse = Phaser.Math.Distance.Between(player.x, player.y, caller.x, caller.y);
+    
+    let adjacent = player.x - caller.x;
+    let opposite = player.y - caller.y;
+    let sine = opposite/hypoteneuse;
+    let cosine = adjacent/hypoteneuse;
+
+    let speedX = config.velocityIncrement * cosine;
+    let speedY = config.velocityIncrement * sine; 
+
+    caller.body.setVelocityX(speedX);
+    caller.body.setVelocityY(speedY);
+
+    return true;
+}
+
+/**
+ * move towards player repeatedly (probably not necessary if you are calling it after a regular Sense update)
+ * 
+ * @memberof ClubCrawler.Actions.Movement
+ * @param {Phaser.GameObjects.GameObject} caller - The caller game object
+ * @param {ClubCrawler.Types.MovementConfig} config - The movement config
+ * @returns {boolean}
+ */
+function moveTowardsPlayerRepeat(caller, config) {
+    if(!caller) {
+        caller = this;
+    }
+    if(moveTowardsPlayer(caller, config)) {
+        caller.nextMoveEvent = config.scene.time.delayedCall(config.repeatTime, moveTowardsPlayerRepeat, [caller, config]);
+        return true;
+    } else {
+        return false;
+    }
+}
+/**
+ * Moves in a random direction, but tries not to move into colliding walls
+ * 
+ * @memberof ClubCrawler.Actions.Movement
+ * @param {Phaser.GameObjects.GameObject} caller - The caller game object
+ * @param {ClubCrawler.Types.MovementConfig} config - The movement config
+ * @returns {boolean}
+ */
+function moveRandomly(caller, config) {
+    if(!validatePhysicsMove(caller, config)) {
+        return false;
+    } 
+    let sine = (Math.random() - 0.5)*2;
+    let cosine = (Math.random() - 0.5)*2;
+    let speedX = config.velocityIncrement * cosine * config.moveRatio;
+    let speedY = config.velocityIncrement * sine * config.moveRatio;
+    let collisions = caller.body.checkCollision;
+    if(collisions.up || collisions.down) {
+        speedY = -speedY;
+    }
+    if(collisions.left || collisions.right) {
+        speedX = -speedX;
+    }
+    caller.body.setVelocityX(speedX);
+    caller.body.setVelocityY(speedY);
+    return true;
+}
+/**
+ * move randomly repeatedly (not necessary if you are trying to move after a sense update)
+ * 
+ * @memberof ClubCrawler.Actions.Movement
+ * @param {Phaser.GameObjects.GameObject} caller - The caller game object
+ * @param {ClubCrawler.Types.MovementConfig} config - The movement config
+ * @returns {boolean}
+ */
+function moveRandomlyRepeat(caller, config) {
+    if(!caller) {
+        caller = this;
+    }
+    if(moveRandomly(caller, config)) {
+        caller.nextMoveEvent = config.scene.time.delayedCall(config.repeatTime, moveRandomlyRepeat, [caller, config], this);
+        return true;
+    } else {
+        return false;
+    }
+}
+
+module.exports = {
+    circle: null,
+    chargePlayer: null,
+    MoveTowardsPlayer: moveTowardsPlayer,
+    MoveTowardsPlayerRepeat: moveTowardsPlayerRepeat,
+    RetreatFromPlayer: retreatFromPlayer,
+    MoveRandomly: moveRandomly,
+    MoveRandomlyRepeat: moveRandomlyRepeat,
+    zigZag: null
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Sat Nov 20 2021 18:33:42 GMT-0500 (Eastern Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
+</body>
+</html>

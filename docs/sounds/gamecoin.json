@@ -1,0 +1,12 @@
+{
+    "resources": [
+        "./gamecoin.mp3"
+    ],
+    "spritemap": {
+        "ding": {
+            "start": 0,
+            "loop": false,
+            "end": 2
+        }
+    }
+}

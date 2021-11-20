@@ -1,0 +1,17 @@
+{
+    "resources": [
+        "./bullet.mp3"
+    ],
+    "spritemap": {
+        "shot1": {
+            "start": 0,
+            "loop": false,
+            "end": 2
+        },
+        "bounce1": {
+            "start": 4.1,
+            "loop": false,
+            "end": 5
+        }
+    }
+}
