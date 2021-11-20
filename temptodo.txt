@@ -6,3 +6,9 @@ Weapon.js
 Features
 
 - Add a player "sprint" feature with space. (cooldown?)
+
+
+Possible Hidden Bug
+
+- When the ClubCrawlerGame scene starts, it calls "initialize" on the UI manager, passing player as a parameter. The UI manager adds event listeners to the dataManager.emitter for health changes and score changes. It is possible that on re-loads of the game, excess listeners are being added to the event emitter and functions like 'refreshinventory' are being called excessively, which would slow down the game on repeated plays. This could probably be fixed by storing the event listeners as uimanager properties and deleting them, if they exist, whenever uimanager.initialize is called, prior to adding new ones. 
+
