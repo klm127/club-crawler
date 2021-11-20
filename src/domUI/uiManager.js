@@ -61,6 +61,7 @@ class DOMUIManager {
 
     /**
      * Tells health bar to change in response to health change event
+     * @listens ClubCrawler.Events.healthChange
      */
     healthChange() {
         this.healthBar.changeHealth(this.player.health);
@@ -68,6 +69,7 @@ class DOMUIManager {
 
     /**
      * Tells score to change in response to score change event
+     * @listens ClubCrawler.Events.scoreChange
      */
     pointsChange() {
         this.score.changeScore(this.dataManager.score);
@@ -87,6 +89,7 @@ class DOMUIManager {
     }
     /**
      * Refreshes inventory UI
+     * @listens ClubCrawler.Events.inventoryChange
      */
     refreshInventory() {
         this.inventoryUI.refreshInventory();

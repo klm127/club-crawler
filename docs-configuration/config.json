@@ -10,11 +10,27 @@
         "allowUnknownTags": true,
         "dictionaries": ["jsdoc","closure"]
     },
+    "opts": {
+        "template": "node_modules/docdash"
+    },
     "templates": {
         "cleverLinks": false,
         "monospaceLinks": false,
         "default": {
             "useLongnameInNav":true
         }
+    },
+    "docdash":{
+        "sectionOrder": [
+            "Tutorials",
+            "Externals",
+            "Modules",
+            "Namespaces",
+            "Events",
+            "Classes",
+            "Mixins",
+            "Interfaces"
+        ],
+        "collapse":true
     }
 }

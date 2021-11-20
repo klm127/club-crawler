@@ -113,7 +113,14 @@ class Player extends Phaser.GameObjects.Image {
             this.die();
         };
     }
+
+    /**
+     * Player death. Currently immediately stops the scene and starts gameover. Should instead unhook controls and fire a player death event.
+     * @todo Set up a death animation, event handling
+     * @fires ClubCrawler.Events.playerDied
+     */
     die() {
+        dataManager.emitter.emit('playerDied');
         //die animation
         this.scene.scene.stop('crawlergame');
         this.scene.scene.start('gameover');

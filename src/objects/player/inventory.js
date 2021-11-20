@@ -49,6 +49,7 @@ class Inventory {
      * @param {Object} gameItem - An item to add to the inventory
      * @param {String} [gameItem.itemType="general"] - The game item type. Items of type weapon can only have 1 copy in inventory with identical name. Stackables increase quanity by one. General can have duplicates.
      * @returns {boolean} - Whether the item could be added
+     * @fires ClubCrawler.Events.inventoryChange
      */
     addItem(gameItem) {
         if(dataManager.debug.on && dataManager.debug.player.inventory) {

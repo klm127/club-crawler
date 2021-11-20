@@ -71,18 +71,7 @@ class DungeonCrawlerGame extends Phaser.Scene
         
         var gamescenepassthrough = this;
         //listen for win condition
-        dataManager.emitter.on("enemyDied", (gamescene)=> {
-            gamescenepassthrough.time.delayedCall(2000, ()=> {
-                let remainingEnemies = this.scene.scene.mapManager.enemies.children.entries.length;
-                if(dataManager.debug.on && (dataManager.debug.logic.win || dataManager.debug.enemies.die) ) {
-                    dataManager.log(`an enemy death event was detected in Scene! remaining ${remainingEnemies}`);
-                }
-                if(remainingEnemies <= 0) {
-                    gamescenepassthrough.win();
-                }
-            })
-
-        });
+        dataManager.emitter.on("enemyDied", this.checkWinCondition, this);
 
         //set up input event listening
         /**
@@ -123,6 +112,21 @@ class DungeonCrawlerGame extends Phaser.Scene
             callbackScope: this
         })
 
+    }
+    /**
+     * Checks if game is won whenever an enemy dies
+     * @listens ClubCrawler.Events.enemyDied
+     */
+    checkWinCondition() {
+        this.time.delayedCall(2000, ()=> {
+            let remainingEnemies = this.mapManager.enemies.children.entries.length;
+            if(dataManager.debug.on && (dataManager.debug.logic.win || dataManager.debug.enemies.die) ) {
+                dataManager.log(`an enemy death event was detected in Scene! remaining ${remainingEnemies}`);
+            }
+            if(remainingEnemies <= 0) {
+                this.win();
+            }
+        },[], this)
     }
 
     /**

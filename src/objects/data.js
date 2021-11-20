@@ -13,6 +13,9 @@ import Phaser from "phaser";
  * @property {function} changeHealth - Called to change player health.
  * @property {function} log - Called to log debug data if debug is active.
  * @property {ClubCrawler.DOMUserInterface.DOMUIManager} uiManager - The user interface manager
+ * @fires ClubCrawler.Events.debugLog
+ * @fires ClubCrawler.Events.scoreChange
+ * @fires ClubCrawler.Events.healthChange
  */
 const dataManager = {
     score: 0,

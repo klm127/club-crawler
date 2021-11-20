@@ -75,6 +75,7 @@ class DebugUI {
      * Creates a check box for each boolean property in the settings object. Creates a new DebugUI for each nested object in the settings object.
      * @param {Object} settingsObject - The object to load and create buttons for.
      * @param {string} name - The name for the drop down button to be displayed in [DebugUI.dropDownElement]{@link ClubCrawler.DOMUserInterface.DebugUI#dropDownElement}.
+     * @fires ClubCrawler.Events.debugMessageToggle
      */
     loadDebugObject(settingsObject, name="debug") {
         this.settingsObject = settingsObject;

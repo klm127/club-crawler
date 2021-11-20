@@ -111,7 +111,7 @@ class Ogre extends Phaser.GameObjects.Image {
      * Called internally if the result of, for example, takeDamage causes it to die
      * 
      * Can clean up any other objects it needs to, like ongoing events, when it dies
-     * 
+     * @fires ClubCrawler.Events.enemyDied
      */
     die() {
         this.dieSfx.play('die');

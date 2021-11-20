@@ -23,5 +23,6 @@
  * @property {boolean} map.functions - Info about map functions
  * @property {Object} player - Debug settings for player
  * @property {boolean} player.construction - Info about player construction
+ * @property {Phaser.Events.EventEmitter} emitter - An emitter for debug messaging events.
  * 
  * */

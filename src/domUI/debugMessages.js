@@ -29,6 +29,7 @@ class DebugMessageBox {
     /**
      * Loads the debug object. Adds listeners to debug.emitter for changes to debug.debugLines.
      * @property {ClubCrawler.Types.DebugConfig} - The global debug settings object.
+     * @listens ClubCrawler.Events.debugMessageToggle
      */
     loadDebugObject(debugObject) {
         this.debugObject = debugObject;
@@ -54,6 +55,7 @@ class DebugMessageBox {
      * Updates debug messages.
      * 
      * Also deletes extra messages which are larger than max debug lines.
+     * @listens ClubCrawler.Events.debugLog
      */
     updateDebugMessages() {
         this.element.innerHTML = "";
