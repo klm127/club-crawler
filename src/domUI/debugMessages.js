@@ -98,15 +98,15 @@ const MESSAGE_X = {
 
 /**
  * @classdesc A Message box for displaying a single debug message.
- * @memberof ClubCrawler.UserInterface
+ * @memberof ClubCrawler.DOMUserInterface
  */
 class DebugMessage {
     /**
-     * @param {ClubCrawler.UserInterface.DebugMessageBox} messagebox - The creating message box.
+     * @param {ClubCrawler.DOMUserInterface.DebugMessageBox} messagebox - The creating message box.
      * @param {string} message - The message to display.
      */
     constructor(messagebox, message) {
-        /** @member {ClubCrawler.UserInterface.DebugMessageBox} - The creating message box. */
+        /** @member {ClubCrawler.DOMUserInterface.DebugMessageBox} - The creating message box. */
         this.parentBox = messagebox;
         /** @member {string} - The message. */
         this.messageText = message;

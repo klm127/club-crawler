@@ -33,6 +33,10 @@ const dataManager = require('../objects/data');
 const Load = require('../utility/load');
 const MapParser = require('../mapParsers/parsers');
 
+const GAME_SETTINGS = {
+    validationTime: 3000
+}
+
 /** 
  * @classdesc
  * The main game containing the mapmanager, player, and input detection
@@ -60,7 +64,7 @@ class DungeonCrawlerGame extends Phaser.Scene
     create() {
         /**
          * The map manager
-         * @type {ClubCrawler.Objects.DungeonMapManager}
+         * @type {ClubCrawler.Parsers.BlueWorldParser}
          */
         this.mapManager = new MapParser.BlueWorld({scene:this, map:'blueworld'});
         // new DungeonMapManager({scene: this, map: 'blueworld'});
@@ -117,6 +121,14 @@ class DungeonCrawlerGame extends Phaser.Scene
          * @type {Phaser.Types.Input.Keyboard.CursorKeys}
          */
         this.cursors = this.input.keyboard.createCursorKeys();
+        this.cursors.w = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+        this.cursors.s = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+        this.cursors.a = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+        this.cursors.d = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+
+
+
+        console.log(this.cursors)
 
         this.pointerDown = false;
 
@@ -130,7 +142,31 @@ class DungeonCrawlerGame extends Phaser.Scene
 
         dataManager.uiManager.initialize(this.player);
 
+        //new Clock(this); // creates this.time
+
+        this.time.addEvent({
+            delay: GAME_SETTINGS.validationTime,
+            loop: true,
+            callback: this.validateGame,
+            callbackScope: this
+        })
+
     }
+
+    /**
+     * Every few seconds, checks to make sure enemies and player are not out of bounds. If they are, it kills them.
+     */
+    validateGame() {
+        for(let enemy of this.mapManager.enemies.children.entries) {
+            if(!this.mapManager.floors.getTileAtWorldXY(enemy.x, enemy.y)) {
+                enemy.die();
+            }
+        }
+    }
+
+    /**
+     * Called when an enemy died and there are no remaining enemies.
+     */
     win() {
         
         if(dataManager.debug.on &amp;&amp; dataManager.debug.logic.win) {
@@ -148,16 +184,16 @@ class DungeonCrawlerGame extends Phaser.Scene
      * @param {number} delta - change in time since last update
      */
     update(time, delta) {
-        if(this.cursors.left.isDown) {
+        if(this.cursors.left.isDown || this.cursors.a.isDown) {
             this.player.move('w');
         }
-        if(this.cursors.right.isDown) {
+        if(this.cursors.right.isDown || this.cursors.d.isDown) {
             this.player.move('e');
         }
-        if(this.cursors.down.isDown) {
+        if(this.cursors.down.isDown || this.cursors.s.isDown) {
             this.player.move('s');
         }
-        if(this.cursors.up.isDown) {
+        if(this.cursors.up.isDown || this.cursors.w.isDown) {
             this.player.move('n');
         }
         this.player.reticle.update();
@@ -178,13 +214,13 @@ module.exports = DungeonCrawlerGame;</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="ClubCrawler.Data.html">Data</a></li><li><a href="ClubCrawler.DOMUserInterface.html">DOMUserInterface</a></li><li><a href="ClubCrawler.Interfaces.html">Interfaces</a></li><li><a href="ClubCrawler.Interfaces.Interact.html">Interact</a></li><li><a href="ClubCrawler.Interfaces.Movement.html">Movement</a></li><li><a href="ClubCrawler.Interfaces.Sense.html">Sense</a></li><li><a href="ClubCrawler.Objects.html">Objects</a></li><li><a href="ClubCrawler.Objects.Inventory.html">Inventory</a></li><li><a href="ClubCrawler.Parsers.html">Parsers</a></li><li><a href="ClubCrawler.Scenes.html">Scenes</a></li><li><a href="ClubCrawler.Types.html">Types</a></li><li><a href="ClubCrawler.Utility.html">Utility</a></li><li><a href="ClubCrawler.Utility.Load.html">Load</a></li><li><a href="ClubCrawler.Utility.Parameters.html">Parameters</a></li><li><a href="ClubCrawler.Utility.Parse.html">Parse</a></li></ul><h3>Classes</h3><ul><li><a href="ClubCrawler.DOMUserInterface.DebugMessageBox.html">DebugMessageBox</a></li><li><a href="ClubCrawler.DOMUserInterface.DebugUI.html">DebugUI</a></li><li><a href="ClubCrawler.DOMUserInterface.DOMUIManager.html">DOMUIManager</a></li><li><a href="ClubCrawler.DOMUserInterface.HealthBarUI.html">HealthBarUI</a></li><li><a href="ClubCrawler.DOMUserInterface.InventoryUI.html">InventoryUI</a></li><li><a href="ClubCrawler.DOMUserInterface.ItemSlotUI.html">ItemSlotUI</a></li><li><a href="ClubCrawler.DOMUserInterface.LeftUI.html">LeftUI</a></li><li><a href="ClubCrawler.DOMUserInterface.RightUI.html">RightUI</a></li><li><a href="ClubCrawler.DOMUserInterface.SettingsUI.html">SettingsUI</a></li><li><a href="ClubCrawler.DOMUserInterface.WeaponUI.html">WeaponUI</a></li><li><a href="ClubCrawler.Objects.Cylinder.html">Cylinder</a></li><li><a href="ClubCrawler.Objects.Inventory.Inventory.html">Inventory</a></li><li><a href="ClubCrawler.Objects.Inventory.InventoryItemSlot.html">InventoryItemSlot</a></li><li><a href="ClubCrawler.Objects.Items.GameCoin.html">GameCoin</a></li><li><a href="ClubCrawler.Objects.Items.ItemPickup.html">ItemPickup</a></li><li><a href="ClubCrawler.Objects.Ogre.html">Ogre</a></li><li><a href="ClubCrawler.Objects.Player.html">Player</a></li><li><a href="ClubCrawler.Objects.Reticle.html">Reticle</a></li><li><a href="ClubCrawler.Objects.Weapon.html">Weapon</a></li><li><a href="ClubCrawler.Objects.Weapon.Projectile.html">Projectile</a></li><li><a href="ClubCrawler.Parsers.BlueWorldParser.html">BlueWorldParser</a></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html">DungeonCrawlerGame</a></li><li><a href="ClubCrawler.Scenes.GameOver.html">GameOver</a></li><li><a href="ClubCrawler.Scenes.GameWin.html">GameWin</a></li><li><a href="ClubCrawler.Scenes.TitleScreen.html">TitleScreen</a></li><li><a href="ClubCrawler.UserInterface.DebugMessage.html">DebugMessage</a></li><li><a href="ScoreUI.html">ScoreUI</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-initialize.html">initialize</a></li></ul><h3>Namespaces</h3><ul><li><a href="ClubCrawler.html">ClubCrawler</a></li><li><a href="ClubCrawler.Data.html">ClubCrawler.Data</a></li><li><a href="ClubCrawler.DOMUserInterface.html">ClubCrawler.DOMUserInterface</a></li><li><a href="ClubCrawler.Interfaces.html">ClubCrawler.Interfaces</a></li><li><a href="ClubCrawler.Interfaces.Interact.html">ClubCrawler.Interfaces.Interact</a></li><li><a href="ClubCrawler.Interfaces.Movement.html">ClubCrawler.Interfaces.Movement</a></li><li><a href="ClubCrawler.Interfaces.Sense.html">ClubCrawler.Interfaces.Sense</a></li><li><a href="ClubCrawler.Objects.html">ClubCrawler.Objects</a></li><li><a href="ClubCrawler.Objects.Inventory.html">ClubCrawler.Objects.Inventory</a></li><li><a href="ClubCrawler.Parsers.html">ClubCrawler.Parsers</a></li><li><a href="ClubCrawler.Scenes.html">ClubCrawler.Scenes</a></li><li><a href="ClubCrawler.Types.html">ClubCrawler.Types</a></li><li><a href="ClubCrawler.Utility.html">ClubCrawler.Utility</a></li><li><a href="ClubCrawler.Utility.Load.html">ClubCrawler.Utility.Load</a></li><li><a href="ClubCrawler.Utility.Parameters.html">ClubCrawler.Utility.Parameters</a></li><li><a href="ClubCrawler.Utility.Parse.html">ClubCrawler.Utility.Parse</a></li></ul><h3>Classes</h3><ul><li><a href="ClubCrawler.DOMUserInterface.DebugMessage.html">ClubCrawler.DOMUserInterface.DebugMessage</a></li><li><a href="ClubCrawler.DOMUserInterface.DebugMessageBox.html">ClubCrawler.DOMUserInterface.DebugMessageBox</a></li><li><a href="ClubCrawler.DOMUserInterface.DebugUI.html">ClubCrawler.DOMUserInterface.DebugUI</a></li><li><a href="ClubCrawler.DOMUserInterface.DOMUIManager.html">ClubCrawler.DOMUserInterface.DOMUIManager</a></li><li><a href="ClubCrawler.DOMUserInterface.HealthBarUI.html">ClubCrawler.DOMUserInterface.HealthBarUI</a></li><li><a href="ClubCrawler.DOMUserInterface.InventoryUI.html">ClubCrawler.DOMUserInterface.InventoryUI</a></li><li><a href="ClubCrawler.DOMUserInterface.ItemSlotUI.html">ClubCrawler.DOMUserInterface.ItemSlotUI</a></li><li><a href="ClubCrawler.DOMUserInterface.LeftUI.html">ClubCrawler.DOMUserInterface.LeftUI</a></li><li><a href="ClubCrawler.DOMUserInterface.RightUI.html">ClubCrawler.DOMUserInterface.RightUI</a></li><li><a href="ClubCrawler.DOMUserInterface.ScoreUI.html">ClubCrawler.DOMUserInterface.ScoreUI</a></li><li><a href="ClubCrawler.DOMUserInterface.SettingsUI.html">ClubCrawler.DOMUserInterface.SettingsUI</a></li><li><a href="ClubCrawler.DOMUserInterface.WeaponUI.html">ClubCrawler.DOMUserInterface.WeaponUI</a></li><li><a href="ClubCrawler.Objects.Cylinder.html">ClubCrawler.Objects.Cylinder</a></li><li><a href="ClubCrawler.Objects.Inventory.Inventory.html">ClubCrawler.Objects.Inventory.Inventory</a></li><li><a href="ClubCrawler.Objects.Inventory.InventoryItemSlot.html">ClubCrawler.Objects.Inventory.InventoryItemSlot</a></li><li><a href="ClubCrawler.Objects.Items.GameCoin.html">ClubCrawler.Objects.Items.GameCoin</a></li><li><a href="ClubCrawler.Objects.Items.ItemPickup.html">ClubCrawler.Objects.Items.ItemPickup</a></li><li><a href="ClubCrawler.Objects.Ogre.html">ClubCrawler.Objects.Ogre</a></li><li><a href="ClubCrawler.Objects.Player.html">ClubCrawler.Objects.Player</a></li><li><a href="ClubCrawler.Objects.Reticle.html">ClubCrawler.Objects.Reticle</a></li><li><a href="ClubCrawler.Objects.Weapon.html">ClubCrawler.Objects.Weapon</a></li><li><a href="ClubCrawler.Objects.Weapon.Projectile.html">ClubCrawler.Objects.Weapon.Projectile</a></li><li><a href="ClubCrawler.Parsers.BlueWorldParser.html">ClubCrawler.Parsers.BlueWorldParser</a></li><li><a href="ClubCrawler.Scenes.DungeonCrawlerGame.html">ClubCrawler.Scenes.DungeonCrawlerGame</a></li><li><a href="ClubCrawler.Scenes.GameOver.html">ClubCrawler.Scenes.GameOver</a></li><li><a href="ClubCrawler.Scenes.GameWin.html">ClubCrawler.Scenes.GameWin</a></li><li><a href="ClubCrawler.Scenes.TitleScreen.html">ClubCrawler.Scenes.TitleScreen</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Thu Nov 18 2021 15:10:54 GMT-0500 (Eastern Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sat Nov 20 2021 13:22:59 GMT-0500 (Eastern Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

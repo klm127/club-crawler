@@ -21,6 +21,7 @@ const SCORE_PROPS = {
 
 /**
  * @classdesc The score display area. Update is called by UIManager on ScoreChange event.
+ * @memberof ClubCrawler.DOMUserInterface
  */
 class ScoreUI {
     /**
