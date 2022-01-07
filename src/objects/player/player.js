@@ -126,13 +126,13 @@ class Player extends Phaser.GameObjects.Image {
         this.scene.scene.start('gameover');
     }
     takeDamage(amount) {
-        console.log('took damage!')
-        dataManager.changeHealth(-amount);
-        this.health = dataManager.health;
+        dataManager.changeHealth(-amount, this);
         if(this.health <= 0) {
             this.die();
         }
-
+    }
+    heal(amount) {
+        dataManager.changeHealth(amount, this)
     }
 }
 

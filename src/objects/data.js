@@ -82,8 +82,9 @@ const dataManager = {
         dataManager.emitter.emit('scoreChange');
         return dataManager.score;
     }, 
-    changeHealth: function(change) {
+    changeHealth: function(change, player) {
         dataManager.health += change;
+        if(player) player.health = dataManager.health
         dataManager.emitter.emit('healthChange');
     },
     log: function(newText) {

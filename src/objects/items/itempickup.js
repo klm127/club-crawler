@@ -1,6 +1,7 @@
 
 
 import Phaser from "phaser";
+const HealthPotion = require("./healthPotion");
 
 const dataManager = require('../data');
 const FlameThrower = require('../weapons/flamethrower');
@@ -21,6 +22,11 @@ const GETTABLES = {
         makes: null,
         type: null,
         sprite: "errorSprite"
+    },
+    healthPotion: {
+        makes: HealthPotion,
+        type: "stackable",
+        sprite:"blue-potion"
     }
 }
 

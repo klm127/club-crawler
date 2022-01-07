@@ -1,5 +1,8 @@
 {
     "overview":{
         "title":"Overview"
+    },
+    "addingAnItem": {
+        "title":"Adding an Item"
     }
 }

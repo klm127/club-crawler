@@ -26,6 +26,7 @@ function preloadBlueWorldAssets(scene) {
     });
     scene.load.image('reticle', 'images/reticle.png');
     scene.load.image('bullet', 'images/bullet1.png');
+    scene.load.image('blue-potion', 'images/bluePotion61x54.png');
     scene.load.image('coin', "images/coin.png");
     scene.load.image('cylinder', 'images/cylinder.png');
     scene.load.image('flamethrower', 'images/flamethrower127x33.png');

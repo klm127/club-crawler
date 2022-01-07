@@ -207,6 +207,9 @@ class InventoryItemSlot {
             finalConfig.target = this.parentInventory.reticle;
             finalConfig.scene = this.parentInventory.scene;
         }
+        else if(this.itemType == "stackable") {
+            finalConfig.player = this.parentInventory.player
+        }
         let newInstance = new this.classRef(finalConfig);
         return newInstance;
     }
