@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>GameCoin - club-crawler</title>
+    <title>Tutorial: Adding an Item - club-crawler</title>
     
     <meta name="description" content="A javascript dungeon crawler bullet hell game made with the Phaser framework" />
     
@@ -47,852 +47,107 @@
 
 <div id="main">
     
-    <h1 class="page-title">GameCoin</h1>
+    <h1 class="page-title">Tutorial: Adding an Item</h1>
     
 
-    
-
-
-
-
-<section>
+    <section>
 
 <header>
     
-        <h2>
-        GameCoin
-        </h2>
-        
-            <div class="class-description usertext"><p>A class for representing a Coin object, which increases the player score when overlapped.</p></div>
-        
-    
+
+    <h2>Adding an Item</h2>
 </header>
 
 <article>
-    
-        <div class="container-overview">
-        
-            
-
-    
-    <h2>Constructor</h2>
-    
-
-    <h4 class="name" id="GameCoin"><span class="type-signature"></span>new GameCoin<span class="signature">(config, item)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_items_coin.js.html">objects/items/coin.js</a>, <a href="objects_items_coin.js.html#line14">line 14</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a href="https://newdocs.phaser.io/docs/3.55.2/Phaser.GameObjects.Image">Phaser.GameObjects.Image</a></li>
-        </ul>
-    </dd>
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>config</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Configuration</p>
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>scene</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Phaser.Scene</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"><p>The <a href="https://newdocs.phaser.io/docs/3.52.0/Phaser.Scene">Phaser.Scene</a> where this is drawn</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>player</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="ClubCrawler.Objects.Player.html">ClubCrawler.Objects.Player</a></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"><p>The player which can trigger the coin</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>spinrate</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    <code>4000</code>
-                
-                </td>
-            
-
-            <td class="description last"><p>The angular velocity to apply when the coin is touched</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>item</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Phaser.Types.Tilemaps.TiledObject</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>item structured by Tiled as per <a href="https://newdocs.phaser.io/docs/3.52.0/Phaser.Tilemaps.TiledObject">Phaser.Types.Tilemaps.TiledObject</a></p>
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>properties.value</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    <code>1</code>
-                
-                </td>
-            
-
-            <td class="description last"><p>The value of the coin as set in Tiled custom properties</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        </div>
-    
-
-    
-        <h3 class="subsection-title">Extends</h3>
-
-        
-
-
-    <ul>
-        <li>Phaser.GameObjects.Image</li>
-    </ul>
-
-
-    
-
-    
-
-    
-    
-    
-
-     
-
-    
-
-    
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id="coinValue"><span class="type-signature"></span>coinValue<span class="type-signature"> :number</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_items_coin.js.html">objects/items/coin.js</a>, <a href="objects_items_coin.js.html#line54">line 54</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-default">Default Value:</dt>
-    <dd class="tag-default"><ul class="dummy">
-            <li>1</li>
-        </ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    <p>The value of the coin</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">number</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="spinning"><span class="type-signature"></span>spinning<span class="type-signature"> :boolean</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_items_coin.js.html">objects/items/coin.js</a>, <a href="objects_items_coin.js.html#line48">line 48</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-default">Default Value:</dt>
-    <dd class="tag-default"><ul class="dummy">
-            <li>false</li>
-        </ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    <p>Whether the coin has already been triggered</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">boolean</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id="fadeCoin"><span class="type-signature"></span>fadeCoin<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_items_coin.js.html">objects/items/coin.js</a>, <a href="objects_items_coin.js.html#line83">line 83</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    <p>The fade out function for the coin. 'This' scope is the Coin, as applied by <a href="https://newdocs.phaser.io/docs/3.55.1/Phaser.Time.Clock#delayedCall">scene.time.delayedCall</a>. Callback triggered on a timer after spinning starts. Shrinks coin and deletes it after it shrinks to nothing.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="overlapWithPlayer"><span class="type-signature"></span>overlapWithPlayer<span class="signature">(player, coin)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_items_coin.js.html">objects/items/coin.js</a>, <a href="objects_items_coin.js.html#line67">line 67</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    <p>Callback function applied when player touches the coin. Increases the score and begins spinning the coin.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>player</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="ClubCrawler.Objects.Player.html">ClubCrawler.Objects.Player</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The player</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>coin</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">ClubCrawler.Objects.GameCoin</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The coin</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-    
-
-    
-
-    
+    <h1 id="adding-a-gettable-item">Adding a Gettable Item</h1>
+<h3 id="intro">Intro</h3>
+<p>This tutorial describes, step by step, how to add a new gettable item to ClubCrawler.</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ol>
+<li><a href="#add-a-location-for-the-item-in-tiled-and-set-tiled-properties">Add a location for the item in Tiled and set tiled properties</a></li>
+<li><a href="#add-the-image-file-and-add-it-to-the-sprite-map-in-the-preload-function">Add the image file and add it to the sprite map in the preload function</a></li>
+<li><a href="#write-the-item-class">Write the item Class</a></li>
+<li><a href="#add-the-item-to-the-gettables-map-in-item-pickup">Add the item to the Gettables map in Item pickup</a></li>
+</ol>
+<h2 id="add-a-location-for-the-item-in-tiled-and-set-tiled-properties">Add a location for the item in Tiled and set tiled properties</h2>
+<p>Open <a href="https://www.mapeditor.org/">Tiled</a>, a free and open source map editor that is highly compatible with Phaser and used for this game.</p>
+<p>Open <code>blueworld.tmx</code> in <code>./Tiled Map Editor Files</code></p>
+<p>Select the item layer.</p>
+<img src = "images/tiled-item-layer-select.png" alt="an image of the item layer being selected in Tiled" class="centered-image"/>
+<p>Add a point object somewhere in the map where you want the item to appear.</p>
+<img src = "images/tiled-point-select.png" alt="a user cursor in Tiled selecting a point object" class="centered-image"/>
+<br />
+<img src = "images/tiled-place-point.png" alt="a user in Tiled placing a point" class="centered-image"/>
+<p>You must set the <code>type</code> property of the point to <code>item-pickup</code>.</p>
+<p>You must also add a custom property called <code>gettable</code> to the object. This is a name for your object which you will later map to your class, explained later in this guide.</p>
+<p><strong>remember the name you define in 'gettable'! It will be used later.</strong></p>
+<img src = "images/tiled-set-custom-properties.png" alt="a user setting custom properties in Tiled" class="centered-image"/>
+<p>Great! Now we just need to export the map to a .json file which ClubCrawler will parse.</p>
+<p>Export it as <code>blueworld.json</code> in <code>static/maps/</code></p>
+<img src = "images/tiled-export-as.png" alt="a user selecting the export option in Tiled" class="centered-image"/>
+<br />
+<img src = "images/tiled-export-as-save.png" alt="a user selecting the export location in Tiled" class="centered-image"/>
+<h2 id="add-the-image-file-and-add-it-to-the-sprite-map-in-the-preload-function">Add the image file and add it to the sprite map in the preload function</h2>
+<p>Drop the item image file in <code>./static/images</code>.</p>
+<p>Phaser takes image files and maps them to strings during its preload phase. Preloading for ClubCrawler currently happens in the function <code>preloadBlueWorldAssets</code> in <code>utility/load.js</code>.</p>
+<p>In this function, add your image mapping with a unique name. The path should <em>not</em> include &quot;static&quot;.</p>
+<p><em>utility/load.js</em></p>
+<pre class="prettyprint source"><code>function preloadBlueWorldAssets(scene) {
+//...
+    scene.load.image('potion', 'images/bluePotion61x54.png')
+//...
+}
+</code></pre>
+<p><em>Note</em>: This is <em>not</em> associated with the name defined in 'gettable' in the TiledMapEditor. It can be the same as that one or different.</p>
+<h2 id="write-the-item-class">Write the item Class</h2>
+<p>The item Class <em>must</em> have these two properties to work: <code>itemType</code> and <code>inventorySprite</code>. ItemType should be &quot;stackable&quot;. inventorySprite can be the same image you mapped earlier in the <code>preloadBlueworldAssets</code> function or a different image to show in the inventory, depending on what you want.</p>
+<p>The class is actually called a couple times. When the player touches the item on the map, the class is instanced once to get all of its properties.</p>
+<p>Then, when a player clicks the item in their inventory after picking it up, the class is instanced again, but with an additional property, 'player', which is, of course, the instance of <code>ClubCrawler.Objects.Player</code></p>
+<p>The player property can be used to access other objects if needed.</p>
+<p>So <em>all</em> of the core logic for what the item does is done in the constructor function!</p>
+<p>This is a little unusual, but that's just how the program evolved and will stay until it gets refactored.</p>
+<p>So the constructor function should check its <code>config</code> object for the property <code>player</code> to determine if it's being put in inventory or used.</p>
+<p><em>objects/items/healthpotion.js</em></p>
+<pre class="prettyprint source"><code>class HealthPotion {
+
+    constructor(config) {
+        this.inventorySprite = &quot;blue-potion&quot;
+        this.itemType = &quot;stackable&quot;
+        if(&quot;player&quot; in config) {
+            config.player.heal(50)
+        }
+    }
+}
+
+module.exports = HealthPotion
+</code></pre>
+<p>Make sure to include the <code>module.exports</code> for your class.</p>
+<h2 id="add-the-item-to-the-gettables-map-in-item-pickup">Add the item to the Gettables map in Item pickup</h2>
+<p>The item now needs to be added to the &quot;gettable&quot; map in ItemPickup to map the string to the class. Add a key to GETTABLES that is the same as the string provided to <code>gettable</code> in the Tiled Map Editor. Assign that key to an object with three properties; &quot;makes&quot;, &quot;type&quot; and &quot;sprite&quot;.</p>
+<p>&quot;makes&quot; should link to the Class you defined. (Not an instance, the Class itself)</p>
+<p>&quot;type&quot; should be &quot;stackable&quot; or &quot;weapon&quot;.</p>
+<p>&quot;sprite&quot; should be the sprite name you defined in <code>preloadBlueworldAssets()</code></p>
+<p><em>objects/items/itempickup.js</em></p>
+<pre class="prettyprint source"><code>const HealthPotion = require('../items/healthpotion');
+
+//...
+
+const GETTABLES = {
+//...
+    healthPotion: {
+        makes: HealthPotion,
+        type: &quot;stackable&quot;,
+        sprite: &quot;potion&quot; // this is the sprite name given in step 1
+    }
+//...
+}
+</code></pre>
+<p>The key here <em>must</em> be the same as the string provided to <code>gettable</code> in the TiledMapEditor.</p>
+<h2 id="you're-done">You're done</h2>
+<p>That's it! Start up club crawler by typing <code>npm run start</code> and test out your item!</p>
 </article>
 
 </section>
-
-
-
 
     
     
